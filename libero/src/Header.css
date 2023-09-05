@@ -1,0 +1,29 @@
+/* HEADER */
+
+.header {
+    background-color: var(--HEADER-BGCOLOR);
+    border-bottom: var(--BORDERS);
+
+}
+
+.header__h1 {
+    text-shadow: 1px 1px 1px white;
+    margin-bottom: 0;
+}
+
+.header__h1::before,
+.header__h1::after {
+    content: " 🐂 ";
+}
+
+.header p {
+    font-weight: 900;
+}
+
+@media screen and (min-width: 992px) {
+
+    .header {
+        font-size: 0.5rem;
+    }
+
+}
