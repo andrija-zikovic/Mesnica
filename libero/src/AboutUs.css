@@ -1,5 +1,6 @@
 .aboutUs {
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
 }
@@ -9,6 +10,7 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    max-width: 100%;
 }
 
 .aboutUs__article-imgs {
@@ -20,17 +22,113 @@
     justify-content: center;
     align-items: center;
     max-height: 500px;
-
+    max-width: 100%;
 }
 
 .aboutUs__article-imgs img {
     position: absolute;
-    width: 90%;
     max-width: 600px;
-    height: auto;
+    width: auto;
+    height: 80%;
     border: var(--BORDERS);
     border-radius: 5px;
     box-shadow: 2px 2px 5px #333;
+}
+
+.aboutUs__section_o-nama {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    margin-bottom: 10px;
+    max-width: 800px;
+    font-size: 1rem;
+}
+
+.aboutUs__article_o-nama {
+    text-align: justify;
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    margin-bottom: 10px;
+    border-bottom: var(--BORDERS);
+}
+
+.aboutUs__article_o-nama h3 {
+    text-align: center;
+}
+
+.aboutUs__section_lokacija {
+    text-align: center;
+}
+
+.aboutUs__article_lokacija {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row;
+}
+
+.aboutUs__article_lokacija img {
+    width: 50%;
+    height: auto;
+    border: var(--BORDERS);
+    border-radius: 5px;
+}
+
+.aboutUs__section_contact {
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    width: 100%;
+}
+
+.aboutUs__article_contact {
+    width: 100%;
+    margin-top: 10px;
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+}
+
+
+.contact__form {
+    margin-top: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 90%;
+}
+
+.contact__form div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact__fieldset {
+    border: none;
+    width: 100%;
+}
+
+.contact__p {
+    margin: 1em 0;
+}
+
+.contact__lable {
+    display: block;
+    font-weight: bold;
+}
+
+.contact__input,
+.contact__textarea {
+    padding: 0.5em;
+    border-radius: var(--BORDER-RADIUS);
+    border-width: 2px;
+    width: 100%;
+}
+
+.contact__button {
+    padding: 0.5em;
+    border-radius: var(--BORDER-RADIUS);
+    background-color: var(--LINK-ACTIVE);
+    color: var(--BUTTON-COLOR);
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 /* Apply the animation to the element */
@@ -64,5 +162,54 @@
     100% {
         opacity: 0;
         /* End with full transparency (invisible) */
+    }
+}
+
+@media screen and (min-width: 992px) {
+
+    .aboutUs__section_o-nama {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-auto-rows: auto;
+        grid-template-areas:
+            "hd hd"
+            "cl cr";
+        gap: 1rem;
+        min-width: 100%;
+        order: 1;
+    }
+
+    .aboutUs__section_o-nama h2 {
+        grid-area: hd;
+        text-align: center;
+    }
+
+    .aboutUs__section_o-nama:nth-child(even) {
+        grid-area: mn;
+    }
+
+    .aboutUs__article_o-nama {
+        min-height: 100%;
+        font-size: 0.5rem;
+    }
+
+    .aboutUs__section {
+        order: 2;
+    }
+
+    .aboutUs__section_contact {
+        order: 4;
+    }
+
+    .aboutUs__section_lokacija {
+        order: 3;
+    }
+
+    .aboutUs {
+        font-size: 0.5rem;
+    }
+
+    .contact__form div {
+        justify-content: left;
     }
 }

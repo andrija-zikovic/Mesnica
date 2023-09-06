@@ -1,18 +1,23 @@
 .products {
     display: grid;
     grid-template-columns: repeat(1, 1fr 5fr);
-    grid-auto-rows: 90vh auto 75px;
+    grid-auto-rows: 82vh auto 75px;
     gap: 0.5rem;
 }
 
 .sideNav {
     border-right: var(--BORDERS);
     padding: var(--PADDING-SIDE) var(--PADDING-TB);
+    font-size: 1rem;
 }
 
 .sideNav h3 {
     border-bottom: var(--BORDERS);
     margin-bottom: 0;
+}
+
+.sideNav__ul {
+    list-style: none;
 }
 
 .sideNav__li {
@@ -28,3 +33,13 @@
 .sideNav__p:hover {
     background-color: var(--LINK-HOVER);
 }
+
+@media screen and (min-width: 576px) {}
+
+@media screen and (min-width: 768px) {
+    .sideNav {
+        font-size: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 992px) {}
