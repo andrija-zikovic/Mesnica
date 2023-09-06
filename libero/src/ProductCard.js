@@ -32,23 +32,26 @@ const ProductCard = ({ id, src, title, price }) => {
             <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '5px' }}>
                 <input
                     type='radio'
-                    id='kg'
+                    name='kg'
+                    id={id + '-kg'}
                     checked={selectedUnit === 'kg'}
                     onChange={() => setSelectedUnit('kg')}
                 />
-                <label htmlFor="kg">kg</label>
+                <label htmlFor={id + "-kg"}>kg</label>
                 <input
                     type='radio'
-                    id='dag'
+                    name='dag'
+                    id={id + '-dag'}
                     checked={selectedUnit === 'dag'}
                     onChange={() => setSelectedUnit('dag')}
                 />
-                <label htmlFor="dag">dag</label>
+                <label htmlFor={id + "-dag"}>dag</label>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '5px' }}>
                 <button onClick={handleDecrement}>−</button>
                 <input
                     type='number'
+                    id={id + '-amount'}
                     min={1}
                     max={99}
                     placeholder='Amount'

@@ -10,6 +10,7 @@
     display: inline-block;
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     font-size: var(--FS-CARD);
+    margin-top: 0;
 }
 
 .product-card img {
@@ -38,9 +39,9 @@
 @media screen and (min-width: 768px) {
 
     .product-card {
-        white-space: nowrap;
+        white-space: wrap;
         max-width: none;
-        font-size: 0.8em;
+        font-size: 70%;
     }
 
 }
@@ -50,7 +51,7 @@
     .product-card {
         white-space: nowrap;
         max-width: none;
-        font-size: 1em;
+        font-size: 70%;
     }
 
 }

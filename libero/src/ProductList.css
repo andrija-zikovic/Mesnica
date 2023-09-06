@@ -3,15 +3,16 @@
 .products-list {
     background-color: whitesmoke;
     display: grid;
-    place-content: center;
+    place-content: start;
     grid-template-columns: repeat(1, 1fr 1fr);
     gap: 3rem;
     max-width: 1200px;
-    overflow-y: scroll;
+    overflow: scroll;
     height: auto;
     width: auto;
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     border-bottom: var(--BORDERS);
+    text-align: center;
 }
 
 .prducts-list__h2 {

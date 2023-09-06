@@ -1,0 +1,30 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr 5fr);
+    grid-auto-rows: 90vh auto 75px;
+    gap: 0.5rem;
+}
+
+.sideNav {
+    border-right: var(--BORDERS);
+    padding: var(--PADDING-SIDE) var(--PADDING-TB);
+}
+
+.sideNav h3 {
+    border-bottom: var(--BORDERS);
+    margin-bottom: 0;
+}
+
+.sideNav__li {
+    border-bottom: var(--BORDERS);
+}
+
+.sideNav__p {
+    padding: var(--PADDING-TB);
+}
+
+.sideNav__p:hover,
+.sideNav__p:active,
+.sideNav__p:hover {
+    background-color: var(--LINK-HOVER);
+}

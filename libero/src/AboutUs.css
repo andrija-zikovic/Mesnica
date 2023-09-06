@@ -1,0 +1,68 @@
+.aboutUs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutUs__section {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutUs__article-imgs {
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    position: relative;
+    width: 90vw;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 500px;
+
+}
+
+.aboutUs__article-imgs img {
+    position: absolute;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    border: var(--BORDERS);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #333;
+}
+
+/* Apply the animation to the element */
+.fade {
+    animation-name: fade;
+    /* Use the "fade" keyframes animation */
+    animation-duration: 10s;
+    /* Animation duration (adjust as needed) */
+    animation-timing-function: ease-in-out;
+    /* Timing function for easing */
+    animation-iteration-count: infinite;
+    /* Repeat the animation infinitely */
+}
+
+.show {
+    visibility: visible;
+}
+
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+        /* Start with full transparency (invisible) */
+    }
+
+    50% {
+        opacity: 1;
+        /* Middle of the animation, fully visible */
+    }
+
+    100% {
+        opacity: 0;
+        /* End with full transparency (invisible) */
+    }
+}

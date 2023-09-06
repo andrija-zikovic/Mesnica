@@ -3,12 +3,11 @@
 .header {
     background-color: var(--HEADER-BGCOLOR);
     border-bottom: var(--BORDERS);
-
+    text-align: center;
 }
 
 .header__h1 {
     text-shadow: 1px 1px 1px white;
-    margin-bottom: 0;
 }
 
 .header__h1::before,

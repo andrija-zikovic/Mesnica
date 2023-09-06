@@ -17,6 +17,15 @@
     gap: 1rem;
 }
 
+.nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.nav__input {
+    width: 7rem;
+}
+
 .nav li {
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     border-bottom: var(--BORDERS);

@@ -5,6 +5,7 @@ const About = () => {
   const art1 = useRef(null)
   const art2 = useRef(null)
   const art3 = useRef(null)
+  const art4 = useRef(null)
 
   useEffect(() => {
     const observerOptions = {
@@ -31,6 +32,9 @@ const About = () => {
     if (art3.current) {
       observer.observe(art3.current);
     }
+    if (art4.current) {
+      observer.observe(art4.current);
+    }
 
   }, []);
 
@@ -48,7 +52,7 @@ const About = () => {
         <h2>Posjetite nas!</h2>
         <p>Zajedno sa svojom obitelji i prijateljima, pridružite nam se u otkrivanju pravih okusa. Budite sigurni da ćemo vas osvojiti našom kvalitetom, uslugom i strašću prema mesu.</p>
       </article>
-      <article className='about_location'>
+      <article className='about_location' ref={art4}>
         <h2>Lokacija</h2>
         <address>
           Šijanska cesta 5<br />
