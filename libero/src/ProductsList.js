@@ -8,25 +8,25 @@ const HomeProducts = ({ handleAmountChange}) => {
             {
                 "id": 1,
                 "title": "Svinjska lopatica",
-                "price": 10,
+                "price": 9.99,
                 "src": "img/Svinjska-Lopatica600x400.jpg",
             },
             {
                 "id": 2,
                 "title": "Pileca prsa",
-                "price": 10,
+                "price": 6.99,
                 "src": "img/Pileca-Prsa600x400.jpg",
             },
             {
                 "id": 3,
                 "title": "Čevapčići",
-                "price": 10,
+                "price": 7.99,
                 "src": "img/Cevapi600x400.jpg",
             },
             {
                 "id": 4,
                 "title": "Pljeskavica",
-                "price": 10,
+                "price": 7.99,
                 "src": "img/Pljeskavica600x400.jpg",
             }
         ]

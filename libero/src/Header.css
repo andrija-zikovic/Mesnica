@@ -51,6 +51,14 @@
     margin-bottom: 5px;
 }
 
+.bucket__tbody tr td:first-child {
+    text-align: left;
+}
+
+.bucket__tbody tr td:last-child {
+    text-align: right;
+}
+
 .close {
     border-radius: 50%;
     top: 4px;

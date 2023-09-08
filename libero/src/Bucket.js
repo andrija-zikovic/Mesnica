@@ -6,13 +6,15 @@ const Bucket = ({ cartItems, setCartItems }) => {
 
     // Calculate the total price based on selectedUnit
     const calculateTotalPrice = () => {
-        return cartItems.reduce((total, cartItem) => {
+        const totalPrice = cartItems.reduce((total, cartItem) => {
             if (cartItem.unit === 'kg') {
                 return total + cartItem.amount * cartItem.price;
             } else {
                 return total + (cartItem.amount * cartItem.price) / 100;
             }
         }, 0);
+
+        return totalPrice.toFixed(2); // Rounds to two decimal places
     };
 
     if (cartItems.length === 0) {
