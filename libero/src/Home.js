@@ -4,15 +4,17 @@ import ProductsList from './ProductsList'
 import About from './About'
 import './Home.css'
 
-const Home = () => {
+const Home = ({ handleAmountChange}) => {
+  
   return (
     <main className='home'>
       <Hero/>
       <h2 className='prducts-list__h2'>Top Sellers</h2 >
-      <ProductsList/>
+      <ProductsList handleAmountChange={handleAmountChange}/>
       <About/>
     </main>
   )
+
 }
 
 export default Home
