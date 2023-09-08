@@ -49,8 +49,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav cartItems={cartItems} setCartItems={setCartItems} />
-      <Header title={'Mesnica'} />
+      <Nav />
+      <Header title={'Mesnica'} cartItems={cartItems} setCartItems={setCartItems}/>
       <Routes>
         <Route index element={<Home handleAmountChange={handleAmountChange} />} />
         <Route path='proizvodi' element={<Products handleAmountChange={handleAmountChange} />} />

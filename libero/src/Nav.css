@@ -39,6 +39,21 @@
     background-color: var(--LINK-ACTIVE);
 }
 
+.nav_bucket {
+    padding: 0;
+}
+
+.nav_bucket button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    width: 100%;
+    height: auto;
+}
+
+.nav_bucket:hover {
+    background-color: var(--LINK-ACTIVE);
+}
+
 @media screen and (min-width: 768px) {
 
     .nav {

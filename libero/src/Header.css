@@ -31,6 +31,13 @@
     height: auto;
     border: 2px solid var(--HEADER-BGCOLOR);
     border-radius: 2px;
+    z-index: 1;
+}
+
+.bucket div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .bucket__table {
@@ -38,23 +45,51 @@
     border-spacing: 10px;
 }
 
-.bucket__button {
+.bucket button {
+    color: var(--BUTTON-COLOR);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.close {
+    border-radius: 50%;
     top: 4px;
     right: 4px;
     position: absolute;
-    width: 2rem;
-    height: auto;
+    height: 1.7rem;
+    width: 1.7rem;
+}
+
+.close:hover,
+.close:focus {
+    background-color: rgba(255, 0, 0, 0.918);
+}
+
+.clear {
+    border-radius: var(--BORDER-RADIUS);
+    padding: 0.25rem;
+    background-color: rgba(255, 0, 0, 0.918);
+}
+
+.clear:hover,
+.clear:focus {
+    background-color: rgba(255, 0, 0, 0.600);
+}
+
+.send {
+    border-radius: var(--BORDER-RADIUS);
+    padding: 0.25rem;
+    background-color: rgba(0, 128, 0, 0.918);
+}
+
+.send:hover,
+.send:focus {
+    background-color: rgba(0, 128, 0, 0.600);
 }
 
 .bucket__button svg {
     margin-top: 0.2rem;
 }
-
-.bucket__button:hover,
-.bucket__button:active {
-    background-color: var(--LINK-HOVER);
-}
-
 
 @media screen and (min-width: 576px) {}
 
@@ -65,6 +100,11 @@
 
     .header {
         font-size: 0.5rem;
+    }
+
+    .close {
+        width: 1rem;
+        height: 1rem;
     }
 
 }
