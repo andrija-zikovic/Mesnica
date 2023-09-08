@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Bucket = ({ cartItems, setCartItems }) => {
+const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart}) => {
     console.log(cartItems);
 
 
@@ -37,6 +37,7 @@ const Bucket = ({ cartItems, setCartItems }) => {
                             <th>Proizvod</th>
                             <th>Količina</th>
                             <th>Cijena</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody className='bucket__tbody'>
@@ -54,6 +55,7 @@ const Bucket = ({ cartItems, setCartItems }) => {
                                     ).toFixed(2)}{' '}
                                     €
                                 </td>
+                                <td><button className='delete' onClick={() => deleteItem(cartItem.id)}><svg xmlns="http://www.w3.org/2000/svg" height="0.7em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" /></svg></button></td>
                             </tr>
                         ))}
                     </tbody>
@@ -61,12 +63,13 @@ const Bucket = ({ cartItems, setCartItems }) => {
                         <tr>
                             <td colSpan={2}>UKUPNO</td>
                             <td>{calculateTotalPrice()} €</td>
+                            <td></td>
                         </tr>
                     </tfoot>
                 </table>
-                <button className='bucket__button close'><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" /></svg></button>
+                
                 <div>
-                    <button className='clear'>CLEAR</button>
+                    <button className='clear' onClick={() => clearCart()}>CLEAR</button>
                     <button className='send'>SEND</button>
                 </div>
             </section>

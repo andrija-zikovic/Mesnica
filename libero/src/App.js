@@ -10,6 +10,15 @@ import { useState } from 'react';
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
+  const deleteItem = (itemId) => {
+    const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
+    setCartItems(updatedCartItems);
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const handleAmountChange = (operation, id, title, price, selectedUnit, amount, setAmount) => {
     const incrementValue = selectedUnit === 'kg' ? 1 : 10;
     const newAmount = operation === 'increment' ? amount + incrementValue : amount - incrementValue;
@@ -49,8 +58,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav />
-      <Header title={'Mesnica'} cartItems={cartItems} setCartItems={setCartItems}/>
+      <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart}/>
+      <Header title={'Mesnica'} />
       <Routes>
         <Route index element={<Home handleAmountChange={handleAmountChange} />} />
         <Route path='proizvodi' element={<Products handleAmountChange={handleAmountChange} />} />
