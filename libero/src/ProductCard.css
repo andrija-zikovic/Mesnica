@@ -11,6 +11,7 @@
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     font-size: var(--FS-CARD);
     margin-top: 0;
+    white-space: nowrap;
 }
 
 .product-card img {
@@ -39,7 +40,7 @@
 @media screen and (min-width: 768px) {
 
     .product-card {
-        white-space: wrap;
+        white-space: nowrap;
         max-width: none;
         font-size: 70%;
     }
@@ -51,7 +52,7 @@
     .product-card {
         white-space: nowrap;
         max-width: none;
-        font-size: 70%;
+        font-size: 90%;
     }
 
 }
