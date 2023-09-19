@@ -11,3 +11,5 @@ const productsSchema = new Schema({
 console.log(productsSchema);
 
 module.exports = mongoose.model('Products', productsSchema);
+
+/* đa disko */
