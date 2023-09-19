@@ -5,7 +5,7 @@ const productsController = require('../../controllers/productsController');
 router.route('/')
     .get(productsController.getAllProducts);
 
-router.route('/:specNum')
+router.route('/:title')
     .get(productsController.getSpecificProducts);
 
 module.exports = router;
