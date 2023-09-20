@@ -4,14 +4,14 @@ import ProductsList from './ProductsList'
 import About from './About'
 import './Home.css'
 
-const Home = ({ handleAmountChange}) => {
-  
+const Home = ({ handleAmountChange }) => {
+
   return (
     <main className='home'>
-      <Hero/>
+      <Hero />
       <h2 className='prducts-list__h2'>Top Sellers</h2 >
-      <ProductsList handleAmountChange={handleAmountChange}/>
-      <About/>
+      <ProductsList handleAmountChange={handleAmountChange} meatType={''} />
+      <About />
     </main>
   )
 

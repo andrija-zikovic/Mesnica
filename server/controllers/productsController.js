@@ -18,7 +18,7 @@ const getSpecificProducts = async (req, res) => {
         if (!req?.params?.title) {
             return res.status(400).json({ message: 'Product Title required' });
         }
-        const products = await Products.find({ title: req.params.title }).exec();
+        const products = await Products.find({ meatType: req.params.title });
         if (products.length === 0) {
             return res.status(204).json({ message: `No products match ${req.params.title}` });
         }

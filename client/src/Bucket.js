@@ -1,8 +1,6 @@
 import React from 'react'
 
 const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart}) => {
-    console.log(cartItems);
-
 
     // Calculate the total price based on selectedUnit
     const calculateTotalPrice = () => {
