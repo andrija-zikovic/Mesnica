@@ -3,13 +3,13 @@ const Products = require('../model/Products');
 const getAllProducts = async (req, res) => {
     try {
         const products = await Products.find();
-        if (products.length === 0) {
-            return res.status(204).json({ message: 'No products found' });
+        if (!products) {
+            return res.status(204).json({ 'message': 'No products found.' });
         }
         res.json(products);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({ 'message': 'Internal Server Error' });
     }
 }
 
@@ -29,7 +29,22 @@ const getSpecificProducts = async (req, res) => {
     }
 }
 
+const createProduct = async (req, res) => {
+    if (!req?.body?.title) {
+        return res.status(400).json({ 'message': 'Title is required.' })
+    }
+
+    try {
+        const result = await Products.create({
+            title: req.body.title
+        })
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 module.exports = {
+    createProduct,
     getAllProducts,
     getSpecificProducts
 }

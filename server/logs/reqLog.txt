@@ -72,3 +72,17 @@
 19.09.2023	12:34:18	9757cc4a-99d5-4c29-abc3-f8732411147f	GET	undefined	/products/piletin
 19.09.2023	12:47:32	1cb194ea-267c-4110-a1a3-474bf5dc1787	GET	undefined	/products/piletin
 19.09.2023	12:47:41	4379e393-5c11-4298-b034-bb9736165b27	GET	undefined	/products
+20.09.2023	09:35:34	72637c74-56ed-40cc-8a3a-b9c694b94cbc	GET	undefined	/
+20.09.2023	09:35:42	d2087aea-be62-4755-b6e8-d8103d69a94e	GET	undefined	/products
+20.09.2023	09:37:53	665ce07f-c211-4978-b3aa-641a2a5cb44e	GET	undefined	/products
+20.09.2023	09:38:17	9b5c9393-ba26-48c8-8cac-eb5481ce64f2	GET	undefined	/products/
+20.09.2023	09:38:41	4cc81410-f38a-49a0-bd36-91dc467fab73	GET	undefined	/
+20.09.2023	09:38:49	ba1e8b15-dd58-49cf-b64f-96d974f1e735	GET	undefined	/products
+20.09.2023	09:40:23	c47ba30e-cae3-46df-b481-e2f5a3adfdd0	GET	undefined	/products
+20.09.2023	09:46:17	303a7d97-9e13-4be2-90df-31bf06113634	GET	undefined	/products
+20.09.2023	09:46:38	c86cc77c-7afc-4958-b7ba-bf233b962008	GET	undefined	/products
+20.09.2023	09:48:01	af5230c1-8801-44e7-adc6-e89a756dabab	GET	undefined	/products
+20.09.2023	09:48:31	e476ab5a-935c-4154-892b-d7cb9e4e511d	GET	undefined	/products
+20.09.2023	09:52:16	241d1fdd-adff-4427-8711-d276b6726b23	GET	undefined	/products
+20.09.2023	09:53:05	748e3edc-3f6e-4636-8b8b-43c2fe39c092	GET	undefined	/products
+20.09.2023	10:01:09	fd1c29ee-40f5-457c-98a6-7d1e524f5a18	POST	undefined	/products/
