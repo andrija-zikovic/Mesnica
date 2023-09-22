@@ -1,3 +1,6 @@
 19.09.2023	10:44:23	cf5a8c98-15c1-4474-be30-cde67c463af3	ReferenceError: path is not defined
 }19.09.2023	12:15:53	113fa2fc-7dde-439e-8c9e-8aa3e2e2156a	ReferenceError: path is not defined
 19.09.2023	12:16:00	47eb9b7a-3ab0-4407-9b73-9c3b88086df7	ReferenceError: path is not defined
+22.09.2023	10:18:44	0e619062-af2b-4155-a66c-adc0df5080ad	SyntaxError: Unexpected number in JSON at position 1336
+22.09.2023	10:21:23	6ffac642-17cd-40fc-bcef-6397faec40d0	SyntaxError: Unexpected number in JSON at position 1335
+22.09.2023	10:48:37	c7663c46-174a-4d60-a8e0-dce340020a2d	SyntaxError: Expected double-quoted property name in JSON at position 1773

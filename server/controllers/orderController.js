@@ -1,7 +1,13 @@
 var fs = require('fs');
 var easyinvoice = require('easyinvoice');
+const { format } = require('date-fns')
+const invoiceNum = require('../pdf/invoiceNum')
 
 const orderHandler = async (req, res) => {
+    console.log(req.body);
+    const nextInvoiceNumber = invoiceNum.incrementInvoiceCount();
+    const currentDate = new Date();
+    const formattedDate = format(currentDate, 'yyyy-MM-dd HH:mm:ss');
     try {
         var data = {
             // Customize enables you to provide your own templates
@@ -12,12 +18,10 @@ const orderHandler = async (req, res) => {
             "images": {
                 // The logo on top of your invoice
                 "logo": "https://public.easyinvoice.cloud/img/logo_en_original.png",
-                // The invoice background
-                "background": "https://public.easyinvoice.cloud/img/watermark-draft.jpg"
             },
             // Your own data
             "sender": {
-                "company": "Sample Corp",
+                "company": "Mesnica",
                 "address": "Sample Street 123",
                 "zip": "1234 AB",
                 "city": "Sampletown",
@@ -28,50 +32,29 @@ const orderHandler = async (req, res) => {
             },
             // Your recipient
             "client": {
-                "company": "Client Corp",
-                "address": "Clientstreet 456",
-                "zip": "4567 CD",
-                "city": "Clientcity",
-                "country": "Clientcountry"
+                "company": req.body.buyer.company,
+                "address": req.body.buyer.street,
+                "zip": req.body.buyer.zip,
+                "city": req.body.buyer.city,
+                "country": req.body.buyer.country
                 // "custom1": "custom value 1",
                 // "custom2": "custom value 2",
                 // "custom3": "custom value 3"
             },
             "information": {
                 // Invoice number
-                "number": "2021.0001",
+                "number": nextInvoiceNumber,
                 // Invoice data
-                "date": "12-12-2021",
-                // Invoice due date
-                "due-date": "31-12-2021"
+                "date": formattedDate
             },
             // The products you would like to see on your invoice
             // Total values are being calculated automatically
-            "products": [
-                {
-                    "quantity": 2,
-                    "description": "Product 1",
-                    "tax-rate": 6,
-                    "price": 33.87
-                },
-                {
-                    "quantity": 4.1,
-                    "description": "Product 2",
-                    "tax-rate": 6,
-                    "price": 12.34
-                },
-                {
-                    "quantity": 4.5678,
-                    "description": "Product 3",
-                    "tax-rate": 21,
-                    "price": 6324.453456
-                }
-            ],
+            "products": req.body.products,
             // The message you would like to display on the bottom of your invoice
-            "bottom-notice": "Kindly pay your invoice within 15 days.",
+            "bottom-notice": "Thank you for your purchase.",
             // Settings to customize your invoice
             "settings": {
-                "currency": "USD", // See documentation 'Locales and Currency' for more info. Leave empty for no currency.
+                "currency": "EUR", // See documentation 'Locales and Currency' for more info. Leave empty for no currency.
                 // "locale": "nl-NL", // Defaults to en-US, used for number formatting (See documentation 'Locales and Currency')        
                 // "margin-top": 25, // Defaults to '25'
                 // "margin-right": 25, // Defaults to '25'
@@ -99,7 +82,7 @@ const orderHandler = async (req, res) => {
         };
 
         const result = await easyinvoice.createInvoice(data);
-        await fs.writeFileSync("invoice.pdf", result.pdf, 'base64');
+        await fs.writeFileSync(`./pdf/${nextInvoiceNumber}.pdf`, result.pdf, 'base64');
         res.status(200).json({ 'message': "pdf created" })
     } catch (err) {
         res.status(500).json({ 'message': 'Internal Server Error' })

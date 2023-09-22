@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-
+  console.log(cartItems);
   const deleteItem = (itemId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
     setCartItems(updatedCartItems);
@@ -29,9 +29,10 @@ function App() {
       // Create an item object
       const item = {
         id: id,
-        title: title,
+        description: title,
         price: price,
-        amount: newAmount,
+        taxRate: 0.1,
+        quantity: newAmount,
         unit: selectedUnit,
       };
 
@@ -57,7 +58,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart}/>
+      <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />
       <Header title={'Mesnica'} />
       <Routes>
         <Route index element={<Home handleAmountChange={handleAmountChange} />} />

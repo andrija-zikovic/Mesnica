@@ -1,14 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart}) => {
+
+const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
+    const [orderSent, setOrderSent] = useState(false);
+    const buyer = {
+        company: "Andrija Žiković",
+        address: "Šijanska cesta 5",
+        zip: "52100",
+        city: "Pula",
+        country: "Hrvatska"
+    }
+    const handleOrderSend = async (products) => {
+        try {
+            console.log(cartItems);
+            const url = 'http://localhost:3500/order/'
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ "products": cartItems, "buyer": buyer }), // Send cartItems as JSON
+            });
+            if (res.ok) {
+                clearCart()
+                setOrderSent(true);
+            }
+        } catch (err) {
+            console.error('Error giving order:', err)
+        }
+
+    };
 
     // Calculate the total price based on selectedUnit
     const calculateTotalPrice = () => {
         const totalPrice = cartItems.reduce((total, cartItem) => {
             if (cartItem.unit === 'kg') {
-                return total + cartItem.amount * cartItem.price;
+                return total + cartItem.quantity * cartItem.price;
             } else {
-                return total + (cartItem.amount * cartItem.price) / 100;
+                return total + (cartItem.quantity * cartItem.price) / 100;
             }
         }, 0);
 
@@ -18,7 +47,7 @@ const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart}) => {
     if (cartItems.length === 0) {
         return (
             <section className='bucket'>
-                <p>Your cart is empty.</p>
+                {orderSent ? (<p>Order has been sent successfully!</p>) : (<p>Your cart is empty.</p>)}
             </section>
         );
     } else {
@@ -41,15 +70,15 @@ const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart}) => {
                     <tbody className='bucket__tbody'>
                         {cartItems.map((cartItem, index) => (
                             <tr key={index}>
-                                <td>{cartItem.title}</td>
+                                <td>{cartItem.description}</td>
                                 <td>
-                                    {cartItem.amount} {cartItem.unit}
+                                    {cartItem.quantity} {cartItem.unit}
                                 </td>
                                 <td>
                                     {parseFloat(
                                         cartItem.unit === 'kg'
-                                            ? cartItem.amount * cartItem.price
-                                            : cartItem.amount * (cartItem.price / 100)
+                                            ? cartItem.quantity * cartItem.price
+                                            : cartItem.quantity * (cartItem.price / 100)
                                     ).toFixed(2)}{' '}
                                     €
                                 </td>
@@ -65,10 +94,10 @@ const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart}) => {
                         </tr>
                     </tfoot>
                 </table>
-                
+
                 <div>
                     <button className='clear' onClick={() => clearCart()}>CLEAR</button>
-                    <button className='send'>SEND</button>
+                    <button className='send' onClick={() => handleOrderSend()}>SEND</button>
                 </div>
             </section>
         )
