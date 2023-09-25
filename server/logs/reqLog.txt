@@ -421,3 +421,7 @@
 22.09.2023	11:44:42	52e549ed-bca4-43a5-a0f2-0fbfb4ec9da5	POST	http://localhost:3000	/order/
 22.09.2023	11:46:10	492be8dd-bc74-4aaf-94cb-cbd875720dda	OPTIONS	http://localhost:3000	/order/
 22.09.2023	11:46:10	ca5a8bfb-1cd7-4b66-96ab-feeff76a8c15	POST	http://localhost:3000	/order/
+25.09.2023	11:20:53	9e089fa6-ac72-4f34-8ab5-e96cc196add1	GET	http://localhost:3000	/products/
+25.09.2023	11:20:53	92052d7e-4bd6-4334-9f46-a5e869b0755d	GET	http://localhost:3000	/products/
+25.09.2023	11:21:22	6fc7f4b4-e6cd-4149-9f0f-918de688d4d1	OPTIONS	http://localhost:3000	/order/
+25.09.2023	11:21:22	ecd8e8be-7d5a-480a-ac75-86e9aa0869d2	POST	http://localhost:3000	/order/
