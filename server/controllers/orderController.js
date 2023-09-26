@@ -1,23 +1,38 @@
 var fs = require('fs');
 var easyinvoice = require('easyinvoice');
 const { format } = require('date-fns')
+const QRCode = require('qrcode');
 const invoiceNum = require('../pdf/invoiceNum')
 
 const orderHandler = async (req, res) => {
-    console.log(req.body);
     const nextInvoiceNumber = invoiceNum.incrementInvoiceCount();
     const currentDate = new Date();
     const formattedDate = format(currentDate, 'yyyy-MM-dd HH:mm:ss');
+    const paymentData = {
+        accountNumber: '1234567',
+        beneficiaryName: req.body.buyer.company,
+        amount: req.body.products.reduce((accumulator, object) => {
+            return accumulator + (object.price * object.quantity);
+        }, 0),
+        reference: `Plaćanje računa ${nextInvoiceNumber}`,
+    };
+
+    const paymentString = `BANK:${paymentData.accountNumber};NAME:${paymentData.beneficiaryName};AMOUNT:${paymentData.amount};REFERENCE:${paymentData.reference}`;
+
+    const qrCodeFilePath = `./qr/${nextInvoiceNumber}.png`;
+
     try {
+        await generateQRCodeAsPNG(qrCodeFilePath, paymentString);
+        console.log("try");
         var data = {
             // Customize enables you to provide your own templates
             // Please review the documentation for instructions and examples
             "customize": {
-                //  "template": fs.readFileSync('template.html', 'base64') // Must be base64 encoded html 
+                "template": fs.readFileSync('./config/template.html', 'base64') // Must be base64 encoded html 
             },
             "images": {
                 // The logo on top of your invoice
-                "logo": "https://public.easyinvoice.cloud/img/logo_en_original.png",
+                "logo": fs.readFileSync(`./qr/${nextInvoiceNumber}.png`, 'base64'),
             },
             // Your own data
             "sender": {
@@ -67,17 +82,15 @@ const orderHandler = async (req, res) => {
             },
             // Translate your invoice to your preferred language
             "translate": {
-                // "invoice": "FACTUUR",  // Default to 'INVOICE'
-                // "number": "Nummer", // Defaults to 'Number'
-                // "date": "Datum", // Default to 'Date'
-                // "due-date": "Verloopdatum", // Defaults to 'Due Date'
-                // "subtotal": "Subtotaal", // Defaults to 'Subtotal'
-                // "products": "Producten", // Defaults to 'Products'
-                // "quantity": "Aantal", // Default to 'Quantity'
-                // "price": "Prijs", // Defaults to 'Price'
-                // "product-total": "Totaal", // Defaults to 'Total'
-                // "total": "Totaal", // Defaults to 'Total'
-                // "vat": "btw" // Defaults to 'vat'
+                "products": "Proizvodi",
+                "quantity": "Količina",
+                "price": "Cijena",
+                "total": "Ukupno",
+                "number": "Broj računa",
+                "date": "Datum",
+                "tax-notation": "PDV",
+                "subtotal": "Ukupno",
+                "invoice": "RAČUN"
             },
         };
 
@@ -88,6 +101,20 @@ const orderHandler = async (req, res) => {
         res.status(500).json({ 'message': 'Internal Server Error' })
     }
 
+};
+
+async function generateQRCodeAsPNG(filePath, data) {
+    return new Promise((resolve, reject) => {
+        QRCode.toFile(filePath, data, (error) => {
+            if (error) {
+                console.error('Error generating QR code:', error);
+                reject(error);
+            } else {
+                console.log('QR code generated successfully.');
+                resolve();
+            }
+        });
+    });
 }
 
 module.exports = { orderHandler };
