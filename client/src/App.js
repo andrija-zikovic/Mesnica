@@ -3,6 +3,7 @@ import Nav from './Nav'
 import Header from './Header';
 import Home from './Home';
 import AboutUs from './AboutUs';
+import OrderForm from './OrderForm';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Products from './Products';
 import { useState } from 'react';
@@ -19,6 +20,14 @@ function App() {
     setCartItems([]);
   };
 
+  const calculateQuantity = (newAmount, selectedUnit) => {
+    if (selectedUnit === "kg") {
+      return newAmount;
+    } else {
+      return newAmount / 100;
+    }
+  };
+
   const handleAmountChange = (operation, id, title, price, selectedUnit, amount, setAmount) => {
     const incrementValue = selectedUnit === 'kg' ? 1 : 10;
     const newAmount = operation === 'increment' ? amount + incrementValue : amount - incrementValue;
@@ -28,12 +37,12 @@ function App() {
 
       // Create an item object
       const item = {
-        id: id,
-        description: title,
-        price: price,
-        taxRate: 0.1,
-        quantity: newAmount,
-        unit: selectedUnit,
+        "id": id,
+        "description": title,
+        "price": price,
+        "tax-rate": 5,
+        "quantity": calculateQuantity(newAmount, selectedUnit),
+        "unit": selectedUnit,
       };
 
       if (cartItems.length === 0) {
@@ -64,6 +73,7 @@ function App() {
         <Route index element={<Home handleAmountChange={handleAmountChange} />} />
         <Route path='proizvodi' element={<Products handleAmountChange={handleAmountChange} />} />
         <Route path='o_nama' element={<AboutUs />} />
+        <Route path='naruđba' element={<OrderForm />} />
       </Routes>
     </BrowserRouter>
   );

@@ -2,7 +2,7 @@ var fs = require('fs');
 var easyinvoice = require('easyinvoice');
 const { format } = require('date-fns')
 const QRCode = require('qrcode');
-const invoiceNum = require('../pdf/invoiceNum')
+const invoiceNum = require('./invoiceNumController')
 
 const orderHandler = async (req, res) => {
     const nextInvoiceNumber = invoiceNum.incrementInvoiceCount();
@@ -23,7 +23,6 @@ const orderHandler = async (req, res) => {
 
     try {
         await generateQRCodeAsPNG(qrCodeFilePath, paymentString);
-        console.log("try");
         var data = {
             // Customize enables you to provide your own templates
             // Please review the documentation for instructions and examples
@@ -66,7 +65,7 @@ const orderHandler = async (req, res) => {
             // Total values are being calculated automatically
             "products": req.body.products,
             // The message you would like to display on the bottom of your invoice
-            "bottom-notice": "Thank you for your purchase.",
+            "bottom-notice": "Hvala!",
             // Settings to customize your invoice
             "settings": {
                 "currency": "EUR", // See documentation 'Locales and Currency' for more info. Leave empty for no currency.
@@ -96,6 +95,15 @@ const orderHandler = async (req, res) => {
 
         const result = await easyinvoice.createInvoice(data);
         await fs.writeFileSync(`./pdf/${nextInvoiceNumber}.pdf`, result.pdf, 'base64');
+
+        fs.unlink(`./qr/${nextInvoiceNumber}.png`, (err) => {
+            if (err) {
+                console.error('Error deleting QR code file:', err);
+            } else {
+                console.log('QR code file deleted successfully.');
+            }
+        });
+
         res.status(200).json({ 'message': "pdf created" })
     } catch (err) {
         res.status(500).json({ 'message': 'Internal Server Error' })

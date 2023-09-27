@@ -80,6 +80,7 @@
         #logo-wrapper {
             vertical-align: top;
             text-align: left;
+            width: auto;
         }
 
         #logo {
@@ -168,7 +169,16 @@
         }
 
         #bottom-notice-wrapper tbody tr td {
-            text-align: center;
+            text-align: left;
+        }
+
+        #bottom-notice-wrapper p {
+            font-size: 0.5rem;
+        }
+
+        #logo-wrapper figcaption {
+            font-size: 0.5rem;
+            padding-left: 15px;
         }
     </style>
     <table id="header">
@@ -178,7 +188,7 @@
         </tr>
         <tr>
             <td id="logo-wrapper">
-                %logo%
+
             </td>
             <td id="document-type-wrapper">
                 <p id="document-type">%document-title%</p><br />
@@ -186,13 +196,9 @@
                 %address-from%<br />
                 %zip-from%, %city-from%<br />
                 %country-from%<br />
-                %sender-custom-1%<br />
-                %sender-custom-2%<br />
-                %sender-custom-3%
             </td>
         </tr>
     </table>
-    <br />
     <hr />
     <table id="receiver-details-wrapper">
         <tr>
@@ -203,13 +209,9 @@
         <tr>
             <td>
                 <b>%company-to%</b>
-                <br />
                 %address-to%<br />
                 %zip-to%, %city-to%<br />
                 %country-to%<br />
-                %client-custom-1%<br />
-                %client-custom-2%<br />
-                %client-custom-3%
             </td>
             <td id="details-label-wrapper">
                 <b>%number-title%:</b><br />
@@ -222,7 +224,6 @@
             </td>
         </tr>
     </table>
-    <br />
     <br />
     <table id="products-table">
         <thead>
@@ -249,7 +250,7 @@
                 <tr>
                     <td>%description%</td>
                     <td align="center">%quantity% kg</td>
-                    <td>%price%</td>
+                    <td>%price%/kg</td>
                     <td>%row-total%</td>
                 </tr>
             </products>
@@ -262,7 +263,6 @@
             </tr>
         </tfoot>
     </table>
-    <br />
     <table id="total-wrapper">
         <thead>
             <tr>
@@ -292,8 +292,10 @@
             </tr>
         </tfoot>
     </table>
-    <br />
-    <br />
+    <figure id="logo-wrapper">
+        <figcaption>Slikaj i plati:</figcaption>
+        %logo%
+    </figure>
     <table id="bottom-notice-wrapper">
         <thead>
             <tr>
@@ -302,7 +304,14 @@
         </thead>
         <tbody>
             <tr>
-                <td>%bottom-notice%</td>
+                <td>
+                    <p>Napomena: PDV je uračunat u cijenu proizvoda.</p>
+                    <p>Račun je pisan elektroničkim putem i važeći je bez štambilja i potpisa.</p>
+                    <p>Uplatu molimo izvršite na naš račun otvoren kod Sample bank d.d., broj: HRXXXXXXXXXXXXXXXX.</p>
+                    <p>Odgovorna osoba: XXXXXXX XXXXXXX</p>
+                    <p>Potpis:XXXXXXX</p>
+                    <p>%bottom-notice%</p>
+                </td>
             </tr>
         </tbody>
     </table>
