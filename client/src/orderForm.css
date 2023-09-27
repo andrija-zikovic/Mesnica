@@ -1,0 +1,53 @@
+.order {
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.order_table {
+    border-spacing: 10px;
+}
+
+.order button {
+    color: var(--BUTTON-COLOR);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.buyerInfo {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: auto auto auto auto;
+    column-gap: 10%;
+    row-gap: 10px;
+}
+
+.orderButtons {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.buyerInfo_Form {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.buyerInfo__email {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.emptyMessage {
+    text-align: center;
+    margin-top: 30vh;
+}

@@ -1,35 +1,7 @@
-import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 
-const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
-    const [orderSent, setOrderSent] = useState(false);
-    const buyer = {
-        company: "Andrija Žiković",
-        address: "Šijanska cesta 5",
-        zip: "52100",
-        city: "Pula",
-        country: "Hrvatska"
-    }
-    const handleOrderSend = async (products) => {
-        try {
-            console.log(cartItems);
-            const url = 'http://localhost:3500/order/'
-            const res = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ "products": cartItems, "buyer": buyer }), // Send cartItems as JSON
-            });
-            if (res.ok) {
-                clearCart()
-                setOrderSent(true);
-            }
-        } catch (err) {
-            console.error('Error giving order:', err)
-        }
-
-    };
+const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart, toggleBucketVisibility }) => {
 
     // Calculate the total price based on selectedUnit
     const calculateTotalPrice = () => {
@@ -40,14 +12,13 @@ const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
         return totalPrice.toFixed(2); // Rounds to two decimal places
     };
 
-    if (cartItems.length === 0) {
+    if (cartItems.length < 1) {
         return (
             <section className='bucket'>
-                {orderSent ? (<p>Order has been sent successfully!</p>) : (<p>Your cart is empty.</p>)}
+                <p style={{ textAlign: 'center' }}>Vaša košarica je prazna!</p>
             </section>
-        );
+        )
     } else {
-
 
         return (
             <section className='bucket'>
@@ -88,11 +59,12 @@ const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
 
                 <div>
                     <button className='clear' onClick={() => clearCart()}>CLEAR</button>
-                    <button className='send' onClick={() => handleOrderSend()}>SEND</button>
+                    <Link to="/naruđba"><button className='send' onClick={toggleBucketVisibility}>ORDER</button></Link>
                 </div>
             </section>
         )
     }
 }
+
 
 export default Bucket

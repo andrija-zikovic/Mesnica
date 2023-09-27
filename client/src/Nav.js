@@ -36,7 +36,7 @@ const Nav = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
                         </button>
                     </li>
                 </ul>
-                { isBucketVisible && <Bucket cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />}
+                { isBucketVisible && <Bucket cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} toggleBucketVisibility={toggleBucketVisibility} />}
             </nav>
             <Outlet />
         </>

@@ -3,7 +3,7 @@ import Nav from './Nav'
 import Header from './Header';
 import Home from './Home';
 import AboutUs from './AboutUs';
-import OrderForm from './OrderForm';
+import OrderForm from './orderForm';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Products from './Products';
 import { useState } from 'react';
@@ -73,7 +73,7 @@ function App() {
         <Route index element={<Home handleAmountChange={handleAmountChange} />} />
         <Route path='proizvodi' element={<Products handleAmountChange={handleAmountChange} />} />
         <Route path='o_nama' element={<AboutUs />} />
-        <Route path='naruđba' element={<OrderForm />} />
+        <Route path='naruđba' element={<OrderForm cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />} />
       </Routes>
     </BrowserRouter>
   );

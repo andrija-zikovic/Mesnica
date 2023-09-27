@@ -1,6 +1,9 @@
-import React from 'react'
+
+import './orderForm.css'
 
 const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
+    const buyer = {};
+
     const handleOrderSend = async (products) => {
         try {
             console.log(cartItems);
@@ -14,7 +17,6 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
             });
             if (res.ok) {
                 clearCart()
-                setOrderSent(true);
             }
         } catch (err) {
             console.error('Error giving order:', err)
@@ -31,6 +33,11 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
         return totalPrice.toFixed(2); // Rounds to two decimal places
     };
 
+    if (cartItems.length < 1) {
+        return (
+            <h2 className='emptyMessage'>Vaša košarica je prazna!</h2>
+        )
+    } else {
 
     return (
         <section className='order'>
@@ -69,15 +76,36 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
                 </tfoot>
             </table>
             <form id='buyerInfo' className='buyerInfo'>
-                <input type='text' id='buyerName' placeholder='Your full name..' className='buyerInfo__fullName'></input>
-                <input type='text' id='buyerEmail' placeholder='Your email adress..' className='buyerInfo__email'></input>
+                <h3 className='buyerInfo_Form'>Vaše informacije:</h3>
+                <label for="fname" className='offscreen'>Name</label>
+                <input type='text' name='fname' id='fname' placeholder='Ime' className='buyerInfo__FirstName' required autoComplete='name'></input>
+
+                <label for="lname" className='offscreen'>Last Name</label>
+                <input type='text' name='lname' id='lname' placeholder='Prezime' className='buyerInfo__SecondName' required autoComplete='family-name'></input>
+
+                <label for="adress" className='offscreen'>Address</label>
+                <input type='text' name='address' id="address" placeholder='Adresa' className='buyerInfo_address' required autoComplete='street-address'></input>
+
+                <label for='zip' className='offscreen'>Zip</label>
+                <input type='text' name='zip' id="zip" placeholder='Poštanski broj' className='buyerInfo_zip' required autoComplete='postal-code'></input>
+
+                <label for='city' className='offscreen'>City</label>
+                <input type='text' name='city' id="city" placeholder='Grad' className='buyerInfo_city' required autoComplete='address-level2'></input>
+
+                <label for='country' className='offscreen'>Country</label>
+                <input type='text' name='country' id="country" placeholder='Država' className='buyerInfo_country' required autoComplete='country'></input>
+
+                <label for='email' className='offscreen'>Email</label>
+                <input type='email' name='email' id='email' placeholder='Email' className='buyerInfo__email' required autoComplete='email'></input>
+
             </form>
-            <div>
+            <div className='orderButtons'>
                 <button className='clear' onClick={() => clearCart()}>CLEAR</button>
-                <button className='send' onClick={() => handleOrderSend()}>SEND</button>
+                <button className='send' onClick={() => handleOrderSend()}>BUY</button>
             </div>
         </section>
     )
+}
 }
 
 export default OrderForm;
