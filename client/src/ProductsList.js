@@ -3,6 +3,7 @@ import './ProductList.css'
 import ProductCard from './ProductCard'
 
 const HomeProducts = ({ handleAmountChange, meatType, setMeatType }) => {
+    const [noProductsCheck, setNoProductsCheck] = useState(false);
     const [products, setProducts] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
@@ -15,9 +16,13 @@ const HomeProducts = ({ handleAmountChange, meatType, setMeatType }) => {
                     throw new Error('Network response was not ok')
                 }
 
-                const productsData = await res.json();
-                setProducts(productsData);
-
+                if (res.status === 204) {
+                    setNoProductsCheck(true);
+                } else {
+                    const productsData = await res.json();
+                    setProducts(productsData);
+                    setNoProductsCheck(false);
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -25,23 +30,28 @@ const HomeProducts = ({ handleAmountChange, meatType, setMeatType }) => {
 
         fetchData();
     }, [meatType]);
-
-    return (
-        <>
-            <section className='products-list'>
-                {products.map((product) => (
-                    <ProductCard
-                        key={product._id}
-                        id={product._id}
-                        src={product.imgSrc}
-                        title={product.title}
-                        price={product.price}
-                        handleAmountChange={handleAmountChange}
-                    />
-                ))}
-            </section>
-        </>
-    )
+    if (noProductsCheck) {
+        return (
+            <h2 style={{ textAlign: 'center', marginTop: '25vh' }}>Nema proizvoda!</h2>
+        )
+    } else {
+        return (
+            <>
+                <section className='products-list'>
+                    {products.map((product) => (
+                        <ProductCard
+                            key={product._id}
+                            id={product._id}
+                            src={product.imgSrc}
+                            title={product.title}
+                            price={product.price}
+                            handleAmountChange={handleAmountChange}
+                        />
+                    ))}
+                </section>
+            </>
+        )
+    }
 };
 
 export default HomeProducts;

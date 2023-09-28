@@ -5,6 +5,8 @@ const QRCode = require('qrcode');
 const invoiceNum = require('./invoiceNumController')
 
 const orderHandler = async (req, res) => {
+    console.log(req.body.products);
+    console.log(req.body.buyer);
     const nextInvoiceNumber = invoiceNum.incrementInvoiceCount();
     const currentDate = new Date();
     const formattedDate = format(currentDate, 'yyyy-MM-dd HH:mm:ss');
@@ -40,20 +42,15 @@ const orderHandler = async (req, res) => {
                 "zip": "1234 AB",
                 "city": "Sampletown",
                 "country": "Samplecountry"
-                //"custom1": "custom value 1",
-                //"custom2": "custom value 2",
-                //"custom3": "custom value 3"
+                
             },
             // Your recipient
             "client": {
                 "company": req.body.buyer.company,
-                "address": req.body.buyer.street,
+                "address": req.body.buyer.address,
                 "zip": req.body.buyer.zip,
                 "city": req.body.buyer.city,
-                "country": req.body.buyer.country
-                // "custom1": "custom value 1",
-                // "custom2": "custom value 2",
-                // "custom3": "custom value 3"
+                
             },
             "information": {
                 // Invoice number

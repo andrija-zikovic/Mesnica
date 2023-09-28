@@ -16,16 +16,16 @@ const getAllProducts = async (req, res) => {
 const getSpecificProducts = async (req, res) => {
     try {
         if (!req?.params?.title) {
-            return res.status(400).json({ message: 'Product Title required' });
+            return res.status(400).json({ 'message': 'Product Title required' });
         }
         const products = await Products.find({ meatType: req.params.title });
         if (products.length === 0) {
-            return res.status(204).json({ message: `No products match ${req.params.title}` });
+            return res.status(204).json({ 'message': 'No products match' });
         }
         res.json(products);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({ 'message': 'Internal Server Error' });
     }
 }
 

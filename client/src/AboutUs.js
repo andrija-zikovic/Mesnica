@@ -83,17 +83,17 @@ const AboutUs = () => {
                         <fieldset className="contact__fieldset">
                             <legend className="offscreen">Send Us A Message</legend>
                             <p className="contact__p">
-                                <label className="contact__lable" for="name">Name:</label>
+                                <label className="contact__lable" htmlFor="name">Name:</label>
                                 <input className="contact__input" type="text" name="name" id="name" placeholder="your name"
                                     required />
                             </p>
                             <p className="contact__p">
-                                <label className="contact__lable" for="email">Email:</label>
+                                <label className="contact__lable" htmlFor="email">Email:</label>
                                 <input className="contact__input" type="email" name="email" id="email" placeholder="your email"
                                     required />
                             </p>
                             <p className="contact__p">
-                                <label className="contact__lable" for="message">Your Message:</label>
+                                <label className="contact__lable" htmlFor="message">Your Message:</label>
                                 <br />
                                 <textarea className="contact__textarea" name="message" id="message" cols="30" rows="10"
                                     placeholder="Type your message here"></textarea>

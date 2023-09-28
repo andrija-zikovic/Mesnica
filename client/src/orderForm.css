@@ -8,8 +8,9 @@
     font-size: 1.5rem;
 }
 
-.order_table {
+.order__table {
     border-spacing: 10px;
+    border-collapse: collapse;
 }
 
 .order button {
@@ -26,6 +27,29 @@
     grid-template-rows: auto auto auto auto;
     column-gap: 10%;
     row-gap: 10px;
+}
+
+tbody td {
+    text-align: center;
+    padding: 5px 0;
+}
+
+tbody tr {
+    border-bottom: 1px solid black;
+}
+
+tfoot td,
+thead th,
+thead tr {
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+tfoot tr,
+thead tr {
+    border-bottom: var(--BORDERS);
 }
 
 .orderButtons {
@@ -50,4 +74,9 @@
 .emptyMessage {
     text-align: center;
     margin-top: 30vh;
+}
+
+.buyResOk {
+    text-align: center;
+    margin-top: 20vh;
 }
