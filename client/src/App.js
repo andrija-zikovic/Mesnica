@@ -10,7 +10,6 @@ import { useState } from 'react';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
   const deleteItem = (itemId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
     setCartItems(updatedCartItems);

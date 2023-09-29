@@ -3,24 +3,21 @@ var easyinvoice = require('easyinvoice');
 const { format } = require('date-fns')
 const QRCode = require('qrcode');
 const invoiceNum = require('./invoiceNumController')
+const emailSander = require('../middleware/emailSander')
+require('dotenv').config();
 
 const orderHandler = async (req, res) => {
-    console.log(req.body.products);
-    console.log(req.body.buyer);
+
     const nextInvoiceNumber = invoiceNum.incrementInvoiceCount();
     const currentDate = new Date();
     const formattedDate = format(currentDate, 'yyyy-MM-dd HH:mm:ss');
-    const paymentData = {
-        accountNumber: '1234567',
-        beneficiaryName: req.body.buyer.company,
-        amount: req.body.products.reduce((accumulator, object) => {
-            return accumulator + (object.price * object.quantity);
-        }, 0),
-        reference: `Plaćanje računa ${nextInvoiceNumber}`,
-    };
+    const bankAcc = process.env.BANK_ACC;
+    const amount = req.body.products.reduce((accumulator, object) => {
+        return accumulator + (object.price * object.quantity);
+    }, 0).toFixed(2).replace('.', '').padStart(15, '0');
 
-    const paymentString = `BANK:${paymentData.accountNumber};NAME:${paymentData.beneficiaryName};AMOUNT:${paymentData.amount};REFERENCE:${paymentData.reference}`;
-
+    const paymentString = `HRVHUB30\nEUR\n${amount}\n${req.body.buyer.company}\n${req.body.buyer.address}\n${req.body.buyer.zip} ${req.body.buyer.city}\nMesnica d.o.o\nŠijanska cesta 5\n52100 Pula\n${bankAcc}\nHR04\n123456879-123456\nCOST\nRAČUN BR ${nextInvoiceNumber}`;
+    console.log(paymentString);
     const qrCodeFilePath = `./qr/${nextInvoiceNumber}.png`;
 
     try {
@@ -42,7 +39,7 @@ const orderHandler = async (req, res) => {
                 "zip": "1234 AB",
                 "city": "Sampletown",
                 "country": "Samplecountry"
-                
+
             },
             // Your recipient
             "client": {
@@ -50,7 +47,7 @@ const orderHandler = async (req, res) => {
                 "address": req.body.buyer.address,
                 "zip": req.body.buyer.zip,
                 "city": req.body.buyer.city,
-                
+
             },
             "information": {
                 // Invoice number
@@ -101,7 +98,9 @@ const orderHandler = async (req, res) => {
             }
         });
 
-        res.status(200).json({ 'message': "pdf created" })
+        await emailSander(req.body.buyer.email, nextInvoiceNumber, req.body.buyer.company);
+
+        res.status(200).json({ 'message': "Invoice sent to email." })
     } catch (err) {
         res.status(500).json({ 'message': 'Internal Server Error' })
     }
