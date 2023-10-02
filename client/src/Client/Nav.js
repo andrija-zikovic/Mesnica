@@ -19,10 +19,10 @@ const Nav = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
                         <Link to="/">Home</Link>
                     </li>
                     <li className='link__nav'>
-                        <Link to="/proizvodi">Proizvodi</Link>
+                        <Link to="/products">Proizvodi</Link>
                     </li>
                     <li className='link__nav'>
-                        <Link to="/o_nama">O nama</Link>
+                        <Link to="/about-us">O nama</Link>
                     </li>
                     <li>
                         <form>

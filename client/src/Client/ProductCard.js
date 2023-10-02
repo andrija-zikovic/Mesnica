@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import './ProductCard.css'
 
 const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
@@ -31,7 +31,7 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
                     <label htmlFor={id + "-dag"}>dag</label>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '5px' }}>
-                    <button onClick={() => handleAmountChange('decrement', id, title, price, selectedUnit ,amount, setAmount)}>−</button>
+                    <button onClick={() => handleAmountChange('decrement', id, title, price, selectedUnit, amount, setAmount)}>−</button>
                     <input
                         type='number'
                         id={id + '-amount'}

@@ -59,7 +59,7 @@ const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart, toggleBucketVi
 
                 <div>
                     <button className='clear' onClick={() => clearCart()}>CLEAR</button>
-                    <Link to="/naruđba"><button className='send' onClick={toggleBucketVisibility}>ORDER</button></Link>
+                    <Link to="/order"><button className='send' onClick={toggleBucketVisibility}>ORDER</button></Link>
                 </div>
             </section>
         )

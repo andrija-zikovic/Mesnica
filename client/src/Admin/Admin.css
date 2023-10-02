@@ -1,0 +1,53 @@
+.adminPro {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.adminPro__table {
+    max-width: 90%;
+    width: 90%;
+    border: 1px solid black;
+    text-align: center;
+    border-spacing: 10px;
+    border-collapse: collapse;
+}
+
+.tdScroll {
+    width: 50px;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.scrollCon {
+    width: 50px;
+}
+
+.adminPro__tbody td {
+    padding: 10px 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.adminPro__thead th {
+    white-space: nowrap;
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    text-align: center;
+}
+
+.adminProImg {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    right: 80px;
+    margin-top: -25px;
+    z-index: 1;
+    border: 1px solid black;
+    border-radius: var(--BORDER-RADIUS);
+}
+
+.show-img {
+    visibility: visible;
+}
