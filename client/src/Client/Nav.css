@@ -26,7 +26,7 @@
     width: 7rem;
 }
 
-.nav li {
+.link__nav {
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     border-bottom: var(--BORDERS);
     border-left: var(--BORDERS);
