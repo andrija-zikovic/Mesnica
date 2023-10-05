@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import ReactCrop from 'react-image-crop';
-import 'react-image-crop/dist/ReactCrop.css';
 
 const AddProducts = () => {
 
@@ -9,19 +7,22 @@ const AddProducts = () => {
         price: '',
         onStorage: '',
         meatType: '',
-        imgSrc: '',
-        croppedImg: null,
+        image: null,
     });
 
     const handleAddSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const url = 'http://localhost:3500/admin/addProduct'
+            const formData = new FormData();
+            formData.append('title', productInfo.title);
+            formData.append('price', productInfo.price);
+            formData.append('onStorage', productInfo.onStorage);
+            formData.append('meatType', productInfo.meatType);
+            /* const url = 'http://localhost:3500/admin/addProduct'; */
+            const url = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/admin/addProduct'
             const req = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(productInfo),
+                method: 'POST',
+                body: formData,
             });
             if (req.ok) {
                 console.log("Product Add")
@@ -33,30 +34,16 @@ const AddProducts = () => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        if (name === "imgSrc") {
-            setProductInfo({
-                ...productInfo,
-                [name]: `img/${value}`,
-            });
-        } else {
             setProductInfo({
                 ...productInfo,
                 [name]: value,
             });
-        };
     }
 
     const handleFileChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
             const selectedImage = e.target.files[0];
-            handleInputChange(e);
-
-            const reader = new FileReader();
-            reader.addEventListener('load', () => {
-                setProductInfo({ ...productInfo, croppedImg: reader.result });
-            });
-            reader.readAsDataURL(selectedImage);
-            console.log(productInfo.croppedImg)
+            setProductInfo({...productInfo, image: selectedImage,});
         }
     }
 

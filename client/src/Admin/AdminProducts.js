@@ -16,7 +16,8 @@ const AdminProducts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch("http://localhost:3500/admin/products")
+                /* const res = await fetch("http://localhost:3500/admin/products") */
+                const res = await fetch("https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/admin/products")
                 if (!res.ok) {
                     throw new Error('Network response was not ok')
                 } else {

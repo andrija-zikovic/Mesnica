@@ -30,8 +30,9 @@ const getSpecificProducts = async (req, res) => {
 }
 
 const createProduct = async (req, res) => {
-    if (!req?.body?.title || !req?.body?.price || !req?.body?.onStorage || !req?.body?.meatType || !req?.body?.imgSrc) {
-        return res.status(400).json({ 'message': 'Info (title, price, onStorage, meatType, imgSrc) is required.' })
+    console.log(req.body);
+    /* if (!req?.body?.title || !req?.body?.price || !req?.body?.onStorage || !req?.body?.meatType || !req?.body?.imgSrc || !req?.bod?.image) {
+        return res.status(400).json({ 'message': 'Info (title, price, onStorage, meatType, imgSrc, image) is required.' })
     }
 
     try {
@@ -46,7 +47,7 @@ const createProduct = async (req, res) => {
         res.status(201).json(result);
     } catch (err) {
         console.error(err);
-    }
+    } */
 }
 
 module.exports = {
