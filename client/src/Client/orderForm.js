@@ -25,13 +25,8 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
 
     const handleOrderSend = async (products, buyerData) => {
         try {
-<<<<<<< HEAD
             const url = process.env.REACT_APP_ORDER_CALL_API;
             /* const url = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/order/' */
-=======
-            /* const url = 'http://localhost:3500/order/' */
-            const url = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/order/'
->>>>>>> 4b1889594d2ae8a994a4f9ad5cdfd95be543a19e
             const res = await fetch(url, {
                 method: 'POST',
                 headers: {

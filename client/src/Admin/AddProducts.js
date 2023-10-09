@@ -13,18 +13,14 @@ const AddProducts = () => {
     const handleAddSubmit = async (e) => {
         e.preventDefault();
         try {
-<<<<<<< HEAD
             const url = process.env.REACT_APP_ADMIN_ADD_PRODUCTS_CALL_API;
             /* const url = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/admin/addProduct' */
-=======
             const formData = new FormData();
             formData.append('title', productInfo.title);
             formData.append('price', productInfo.price);
             formData.append('onStorage', productInfo.onStorage);
             formData.append('meatType', productInfo.meatType);
-            /* const url = 'http://localhost:3500/admin/addProduct'; */
-            const url = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/admin/addProduct'
->>>>>>> 4b1889594d2ae8a994a4f9ad5cdfd95be543a19e
+            formData.append('image', productInfo.image)
             const req = await fetch(url, {
                 method: 'POST',
                 body: formData,
@@ -39,16 +35,16 @@ const AddProducts = () => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-            setProductInfo({
-                ...productInfo,
-                [name]: value,
-            });
+        setProductInfo({
+            ...productInfo,
+            [name]: value,
+        });
     }
 
     const handleFileChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
             const selectedImage = e.target.files[0];
-            setProductInfo({...productInfo, image: selectedImage,});
+            setProductInfo({ ...productInfo, image: selectedImage, });
         }
     }
 
