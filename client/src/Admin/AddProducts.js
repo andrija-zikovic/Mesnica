@@ -15,7 +15,8 @@ const AddProducts = () => {
 
     const handleAddSubmit = async (e) => {
         try {
-            const url = 'http://localhost:3500/admin/addProduct'
+            const url = process.env.REACT_APP_ADMIN_ADD_PRODUCTS_CALL_API;
+            /* const url = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/admin/addProduct' */
             const req = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -84,7 +85,7 @@ const AddProducts = () => {
                     <input type='file' name='imgSrc' id='imgSrc' accept='image/*'
                         onChange={handleFileChange} required />
                 </div>
-                
+
                 <div className='addButton'>
                     <button className='add' type='submit'>DODAJ</button>
                 </div>

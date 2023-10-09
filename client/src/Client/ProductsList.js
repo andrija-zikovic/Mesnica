@@ -8,8 +8,11 @@ const HomeProducts = ({ handleAmountChange, meatType, setMeatType }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const baseUrl = 'http://localhost:3500/products/'
+                const baseUrl = process.env.REACT_APP_PRODUCTS_CALL_API;
+                /* const baseUrl = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/products/' */
+                console.log(baseUrl);
                 const url = baseUrl + meatType;
+                console.log(url);
 
                 const res = await fetch(url);
                 if (!res.ok) {
