@@ -4,3 +4,9 @@
 22.09.2023	10:18:44	0e619062-af2b-4155-a66c-adc0df5080ad	SyntaxError: Unexpected number in JSON at position 1336
 22.09.2023	10:21:23	6ffac642-17cd-40fc-bcef-6397faec40d0	SyntaxError: Unexpected number in JSON at position 1335
 22.09.2023	10:48:37	c7663c46-174a-4d60-a8e0-dce340020a2d	SyntaxError: Expected double-quoted property name in JSON at position 1773
+05.10.2023	07:48:09	95a7b79a-cc33-4e8d-9436-268646acc1a3	Error: Not allowed by CORS
+05.10.2023	07:48:09	3dd337c6-c097-4218-b913-73ba0c0c9e31	Error: Not allowed by CORS
+05.10.2023	07:48:28	e0fda774-d505-455a-bf53-33c576e9e86b	Error: Not allowed by CORS
+05.10.2023	07:48:28	55246c6c-b06a-46b7-8379-646fba82f7e9	Error: Not allowed by CORS
+05.10.2023	07:48:31	ec4264d2-c38a-453f-8a38-5808b25b7431	Error: Not allowed by CORS
+05.10.2023	07:48:31	30aaf07b-b2a5-4e5b-9fa5-35e4c7268d16	Error: Not allowed by CORS
