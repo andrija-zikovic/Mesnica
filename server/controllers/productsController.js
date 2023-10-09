@@ -30,7 +30,7 @@ const getSpecificProducts = async (req, res) => {
 }
 
 const createProduct = async (req, res) => {
-    console.log(req.body);
+    console.log(req.body.title);
     /* if (!req?.body?.title || !req?.body?.price || !req?.body?.onStorage || !req?.body?.meatType || !req?.body?.imgSrc || !req?.bod?.image) {
         return res.status(400).json({ 'message': 'Info (title, price, onStorage, meatType, imgSrc, image) is required.' })
     }

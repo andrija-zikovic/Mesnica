@@ -20,7 +20,11 @@ const AddProducts = () => {
             formData.append('price', productInfo.price);
             formData.append('onStorage', productInfo.onStorage);
             formData.append('meatType', productInfo.meatType);
-            formData.append('image', productInfo.image)
+            formData.append('image', productInfo.image);
+            console.log(productInfo);
+            formData.forEach((value, key) => {
+                console.log(key, value);
+            });
             const req = await fetch(url, {
                 method: 'POST',
                 body: formData,
