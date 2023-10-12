@@ -14,7 +14,6 @@ const AddProducts = () => {
         e.preventDefault();
         try {
             const url = process.env.REACT_APP_ADMIN_ADD_PRODUCTS_CALL_API;
-            /* const url = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/admin/addProduct' */
             const formData = new FormData();
             formData.append('title', productInfo.title);
             formData.append('price', productInfo.price);

@@ -17,7 +17,6 @@ const AdminProducts = () => {
         const fetchData = async () => {
             try {
                 const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API)
-                /* const res = await fetch("https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/admin/products") */
                 if (!res.ok) {
                     throw new Error('Network response was not ok')
                 } else {
