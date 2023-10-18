@@ -34,8 +34,7 @@ const AdminProducts = () => {
     };
 
     const handleProductsChangeSubmit = () => {
-            const url = process.env.REACT_APP_ADMIN_PRODUCTS_CHANGE;
-            fetch(url, {
+            fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CHANGE, {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -62,6 +61,7 @@ const AdminProducts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                console.log(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API);
                 const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API)
                 if (!res.ok) {
                     throw new Error('Network response was not ok')

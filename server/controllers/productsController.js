@@ -1,4 +1,5 @@
 const Products = require('../model/Products');
+const mongoose = require('mongoose');
 const multer = require('multer');
 const sharp = require('sharp');
 const path = require('path');
@@ -103,12 +104,25 @@ const createProduct = async (req, res) => {
 }
 
 const changeProducts = async (req, res) => {
-    if (!req?.body) {
-        return res.status(400).json({ 'message': 'ID parameter is required' });
+    const updates = req.body;
+
+    try {
+        // Iterate through the updates and perform update operations for each item
+        for (const [productId, updateData] of Object.entries(updates)) {
+            const { price, onStorage } = updateData;
+
+            // Update the document based on the productId
+            await Products.updateOne(
+                { _id: mongoose.Types.ObjectId(productId) }, // Convert the string to ObjectId using mongoose
+                { $set: { price, onStorage } }
+            );
+        }
+
+        return res.status(200).json({ message: 'Products updated successfully' });
+    } catch (error) {
+        console.error('Error updating products:', error);
+        return res.status(500).json({ message: 'Internal Server Error' });
     }
-
-    console.log(req.body);
-
 }
 
 module.exports = {
