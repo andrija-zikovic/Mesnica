@@ -10,3 +10,5 @@
 05.10.2023	07:48:28	55246c6c-b06a-46b7-8379-646fba82f7e9	Error: Not allowed by CORS
 05.10.2023	07:48:31	ec4264d2-c38a-453f-8a38-5808b25b7431	Error: Not allowed by CORS
 05.10.2023	07:48:31	30aaf07b-b2a5-4e5b-9fa5-35e4c7268d16	Error: Not allowed by CORS
+17.10.2023	10:22:58	e0bd3faa-0bea-4f4d-8f68-cdeb1e649cdb	SyntaxError: "[object Object]" is not valid JSON
+17.10.2023	10:26:09	5bd01e10-27fa-4f1b-af42-58fd7e421cce	SyntaxError: "[object Object]" is not valid JSON

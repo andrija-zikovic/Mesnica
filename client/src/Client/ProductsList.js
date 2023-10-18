@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './ProductList.css'
 import ProductCard from './ProductCard'
 
-const HomeProducts = ({ handleAmountChange, meatType, setMeatType }) => {
+const HomeProducts = ({ handleAmountChange, meatType, setMeatType, host }) => {
     const [noProductsCheck, setNoProductsCheck] = useState(false);
     const [products, setProducts] = useState([]);
     useEffect(() => {
@@ -38,9 +38,10 @@ const HomeProducts = ({ handleAmountChange, meatType, setMeatType }) => {
         )
     } else {
         return (
-            <>
-                <section className='products-list'>
-                    {products.map((product) => (
+        
+            <section className='products-list'>
+                    {host === 'home' ? (
+                    products.slice(0, 4).map((product) => (
                         <ProductCard
                             key={product._id}
                             id={product._id}
@@ -49,9 +50,21 @@ const HomeProducts = ({ handleAmountChange, meatType, setMeatType }) => {
                             price={product.price}
                             handleAmountChange={handleAmountChange}
                         />
-                    ))}
-                </section>
-            </>
+                    ))
+                ) : (
+                    products.map((product) => (
+                        <ProductCard
+                            key={product._id}
+                            id={product._id}
+                            src={product.imgSrc}
+                            title={product.title}
+                            price={product.price}
+                            handleAmountChange={handleAmountChange}
+                        />
+                    ))
+                )}
+            </section>     
+            
         )
     }
 };

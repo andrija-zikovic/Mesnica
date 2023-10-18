@@ -26,6 +26,7 @@
 }
 
 .aboutUs__article-imgs img {
+    z-index: 0;
     position: absolute;
     max-width: 600px;
     width: auto;
@@ -143,6 +144,10 @@
     /* Repeat the animation infinitely */
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .show {
     visibility: visible;
 }
@@ -150,16 +155,19 @@
 
 @keyframes fade {
     0% {
+        z-index: 1;
         opacity: 0;
         /* Start with full transparency (invisible) */
     }
 
     50% {
+        z-index: 1;
         opacity: 1;
         /* Middle of the animation, fully visible */
     }
 
     100% {
+        z-index: 1;
         opacity: 0;
         /* End with full transparency (invisible) */
     }

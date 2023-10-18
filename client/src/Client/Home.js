@@ -10,7 +10,7 @@ const Home = ({ handleAmountChange }) => {
     <main className='home'>
       <Hero />
       <h2 className='prducts-list__h2'>Top Sellers</h2 >
-      <ProductsList handleAmountChange={handleAmountChange} meatType={''} />
+      <ProductsList handleAmountChange={handleAmountChange} meatType={''} host={'home'} />
       <About />
     </main>
   )

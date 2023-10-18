@@ -35,6 +35,7 @@ app.use('/', require('./routes/root'));
 app.use('/products', require('./routes/api/products'));
 app.use('/order', require('./routes/api/order'))
 app.use('/admin', require('./routes/api/admin'))
+app.use('/form', require('./routes/api/form'))
 
 app.all('*', (req, res) => {
     res.status(404);

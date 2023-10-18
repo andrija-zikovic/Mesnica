@@ -8,4 +8,7 @@ router.route('/products')
 router.route('/addProduct')
     .post(productsController.createProduct);
 
+router.route('/changeProducts')
+    .post(productsController.changeProducts);
+
 module.exports = router;

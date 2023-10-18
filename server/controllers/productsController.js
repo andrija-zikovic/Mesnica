@@ -102,8 +102,18 @@ const createProduct = async (req, res) => {
     }
 }
 
+const changeProducts = async (req, res) => {
+    if (!req?.body) {
+        return res.status(400).json({ 'message': 'ID parameter is required' });
+    }
+
+    console.log(req.body);
+
+}
+
 module.exports = {
     createProduct,
     getAllProducts,
-    getSpecificProducts
+    getSpecificProducts,
+    changeProducts
 }

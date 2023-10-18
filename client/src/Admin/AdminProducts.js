@@ -3,6 +3,26 @@ import React, { useEffect, useState } from 'react'
 const AdminProducts = () => {
     const [adminPro, setAdminPro] = useState([]);
     const [showImage, setShowImage] = useState([]); // Use an array to track image visibility for each row
+    const [produtsChange, setProductsChange] = useState({});
+
+    const handleProductChange = (id, key, value) => {
+        if (produtsChange[id]) {
+            setProductsChange(prevState => ({
+                ...prevState,
+                [id]: {
+                    ...prevState[id],
+                    [key]: value
+                }
+            }));
+        } else {
+            setProductsChange(prevState => ({
+                ...prevState,
+                [id]: {
+                    [key]: value
+                }
+            }));
+        }
+    };
 
     const handleClick = (index) => {
         const initialShowImage = Array(adminPro.length).fill(false);
@@ -12,6 +32,32 @@ const AdminProducts = () => {
         newShowImage[index] = !newShowImage[index]; // Toggle the value for the clicked row
         setShowImage(newShowImage); // Update the state
     };
+
+    const handleProductsChangeSubmit = () => {
+            const url = process.env.REACT_APP_ADMIN_PRODUCTS_CHANGE;
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                  },
+                body: JSON.stringify(produtsChange),
+            })
+            .then((response) => {
+                if (response.ok) {
+                  // Reset the form inputs after successful submission
+                  setProductsChange({});
+                  return response.json();
+                }
+                throw new Error("Network response was not ok.");
+              })
+              .then((data) => {
+                console.log("API response:", data);
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+                // Handle errors if any
+              });
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,15 +75,15 @@ const AdminProducts = () => {
         };
 
         fetchData();
-    }, [adminPro]);
+    }, []);
 
     return (
         <div className="adminPro">
+            <h1 style={{'padding': '1rem'}}>Products</h1>
             <table className="adminPro__table">
                 <thead className="adminPro__thead">
                     <tr>
-                        <th>Num</th>
-                        <th>Id</th>
+                        <th></th>
                         <th>Name</th>
                         <th>Meat</th>
                         <th>Price/kg</th>
@@ -49,13 +95,10 @@ const AdminProducts = () => {
                     {adminPro.map((product, index) => (
                         <tr key={product._id}>
                             <td>{index + 1}</td>
-                            <td className='tdScroll'>
-                                <div className='scrollCon'>{product._id}</div>
-                            </td>
                             <td>{product.title}</td>
                             <td>{product.meatType}</td>
-                            <td>{product.price}</td>
-                            <td>{product.onStorage}</td>
+                            <td><input type='number' name='price' id='price' placeholder={product.price} className='adminPro__input' onChange={(e) => handleProductChange(product._id, 'price', parseFloat(e.target.value))}></input> €</td>
+                            <td><input type='number' name='onStorage' id='onStorage' placeholder={product.onStorage} className='adminPro__input' onChange={(e) => handleProductChange(product._id, 'onStorage', parseInt(e.target.value))}></input> kg</td>
                             <td><button onClick={() => handleClick(index)}>Toggle Img</button>
                                 {showImage[index] && (
                                     <img
@@ -69,7 +112,7 @@ const AdminProducts = () => {
                 </tbody>
                 <tfoot className="adminPro__tfoot">
                     <tr>
-                        <td colSpan={7}>Data</td>
+                        <td colSpan={7}><button onClick={handleProductsChangeSubmit}>SUBMIT CHANGES</button></td>
                     </tr>
                 </tfoot>
             </table>
