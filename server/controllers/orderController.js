@@ -4,6 +4,7 @@ const { format } = require('date-fns')
 const QRCode = require('qrcode');
 const invoiceNum = require('./invoiceNumController')
 const emailSander = require('../middleware/emailSander')
+const orders = require('../model/Orders');
 require('dotenv').config();
 
 const orderHandler = async (req, res) => {
@@ -17,7 +18,7 @@ const orderHandler = async (req, res) => {
     }, 0).toFixed(2).replace('.', '').padStart(15, '0');
 
     const paymentString = `HRVHUB30\nEUR\n${amount}\n${req.body.buyer.company}\n${req.body.buyer.address}\n${req.body.buyer.zip} ${req.body.buyer.city}\nMesnica d.o.o\nŠijanska cesta 5\n52100 Pula\n${bankAcc}\nHR04\n123456879-123456\nCOST\nRAČUN BR ${nextInvoiceNumber}`;
-    console.log(paymentString);
+    
     const qrCodeFilePath = `./qr/${nextInvoiceNumber}.png`;
 
     try {
@@ -99,6 +100,7 @@ const orderHandler = async (req, res) => {
         });
 
         await emailSander(req.body.buyer.email, nextInvoiceNumber, req.body.buyer.company);
+        await orderSave(req.body, formattedDate, nextInvoiceNumber);
 
         res.status(200).json({ 'message': "Invoice sent to email." })
     } catch (err) {
@@ -119,6 +121,34 @@ async function generateQRCodeAsPNG(filePath, data) {
             }
         });
     });
+};
+
+async function orderSave(data, date, invNum) {
+
+    const orderData = {
+                    buyer: {
+                        name: data.buyer.company, 
+                        address: data.buyer.address + '\n' + data.buyer.city + '\n' + data.buyer.zip,
+                        email: data.buyer.email,
+                    },
+                    products: data.products,
+                    date: date,
+                    num: invNum};
+    const order = await orders.create(orderData);
+    return 1;
+};
+
+const getOrders = async (req, res) => {
+    try {
+        const orders = await orders.find();
+        if (orders < 1) {
+            return res.status(204).json({ 'message': 'No orders found.' });
+        }
+        res.json(orders);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ 'message': 'Internal Server Error' });
+    }
 }
 
-module.exports = { orderHandler };
+module.exports = { orderHandler, getOrders };
