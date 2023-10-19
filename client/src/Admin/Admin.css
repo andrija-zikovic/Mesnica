@@ -39,6 +39,38 @@
     font-size: 1.1rem;
 }
 
+.message {
+    background-color: hsla(125, 61%, 32%, 0.585);
+    position: absolute;
+    width: 70vw;
+    left: 15vw;
+    top: 20vh;
+    padding: 1rem 1rem;
+    font-size: 3rem;
+    text-align: center;
+    border-radius: var(--BORDER-RADIUS);
+    border: 1px solid black;
+}
+
+.messageButton {
+    position: absolute;
+    border-radius: 50%;
+    padding: 0.4rem 0.9rem;
+    font-size: 2rem;
+    right: 3px;
+    top: -40px;
+    background-color: red;
+    border: 1px solid black;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 .adminPro__table {
     max-width: 90%;
     width: 90%;

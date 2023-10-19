@@ -4,6 +4,7 @@ const AdminProducts = () => {
     const [adminPro, setAdminPro] = useState([]);
     const [showImage, setShowImage] = useState([]); // Use an array to track image visibility for each row
     const [produtsChange, setProductsChange] = useState({});
+    const [message, setMessage] = useState('');
 
     const handleProductChange = (id, key, value) => {
         if (produtsChange[id]) {
@@ -47,13 +48,16 @@ const AdminProducts = () => {
                   setProductsChange({});
                   return response.json();
                 }
+                setMessage('Error while updating data!')
                 throw new Error("Network response was not ok.");
               })
               .then((data) => {
                 console.log("API response:", data);
+                setMessage(data.message);
               })
               .catch((error) => {
                 console.error("Error:", error);
+                setMessage(error);
                 // Handle errors if any
               });
     }
@@ -79,6 +83,7 @@ const AdminProducts = () => {
 
     return (
         <div className="adminPro">
+            <div className={`message ${message ? 'visible' : 'hidden'}`}><button className='messageButton' onClick={() => setMessage('')}>X</button><p>{message}</p></div>
             <h1 style={{'padding': '1rem'}}>Products</h1>
             <table className="adminPro__table">
                 <thead className="adminPro__thead">

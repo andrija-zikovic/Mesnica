@@ -113,7 +113,7 @@ const changeProducts = async (req, res) => {
 
             // Update the document based on the productId
             await Products.updateOne(
-                { _id: mongoose.Types.ObjectId(productId) }, // Convert the string to ObjectId using mongoose
+                { _id: productId }, // Convert the string to ObjectId using mongoose
                 { $set: { price, onStorage } }
             );
         }
