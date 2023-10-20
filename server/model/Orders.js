@@ -16,7 +16,8 @@ const ordersSchema = new Schema({
         }
     ],
     date: String,
-    num: Number
+    num: Number,
+    status: Boolean,
 });
 
 module.exports = mongoose.model('Orders', ordersSchema);

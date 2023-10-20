@@ -133,18 +133,20 @@ async function orderSave(data, date, invNum) {
                     },
                     products: data.products,
                     date: date,
-                    num: invNum};
+                    num: invNum,
+                    status: false
+                };
     const order = await orders.create(orderData);
     return 1;
 };
 
 const getOrders = async (req, res) => {
     try {
-        const orders = await orders.find();
+        const ordersData = await orders.find();
         if (orders < 1) {
             return res.status(204).json({ 'message': 'No orders found.' });
         }
-        res.json(orders);
+        res.json(ordersData);
     } catch (error) {
         console.error(error);
         res.status(500).json({ 'message': 'Internal Server Error' });

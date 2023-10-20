@@ -210,3 +210,110 @@
     width: 90vw;
     font-size: 3rem;
 }
+
+.adminOrd {
+    max-width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.adminOrd__table {
+    max-width: 90%;
+    width: 90%;
+    border: 1px solid black;
+    text-align: center;
+    border-spacing: 10px;
+    border-collapse: collapse;
+}
+
+.adminOrd__input {
+    max-width: 3rem;
+    text-align: center;
+}
+
+.adminOrd__tbody td {
+    padding: 10px 5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.adminOrd__thead th {
+    white-space: nowrap;
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    text-align: center;
+}
+
+.adminOrdDis {
+    position: absolute;
+    border: 1px solid black;
+    left: 0;
+    right: 0;
+    top: 10vh;
+    background-color: aliceblue;
+    min-height: 30vh;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.adminOrdDis__ButtonTop {
+    display: flex;
+    justify-content: end;
+}
+
+.adminOrdDis__ButtonTop button {
+    margin-top: 5px;
+    margin-right: 5px;
+    min-width: 1.5rem;
+}
+
+.adminOrdDis__head {
+    display: flex;
+    flex-flow: row;
+    gap: 1rem;
+    justify-content: space-evenly;
+    padding: 1rem 1rem;
+    font-size: 1.7rem;
+}
+
+.adminOrdDis__products {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.product {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+
+.adminOrdDis__ButtonBottom {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    margin: 20px 20vw 20px 20vw;    
+}
+
+.adminOrdDis__ButtonBottom button {
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.adminOrdDis__ButtonBottom :first-child {
+    background-color: green;
+}
+
+.adminOrdDis__ButtonBottom :last-child {
+    background-color: red;
+}
