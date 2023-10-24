@@ -42,8 +42,8 @@
 .message {
     background-color: hsla(125, 61%, 32%, 0.585);
     position: absolute;
-    width: 70vw;
-    left: 15vw;
+    width: 90vw;
+    left: 5vw;
     top: 20vh;
     padding: 1rem 1rem;
     font-size: 3rem;
@@ -262,7 +262,7 @@
 
 .adminOrdDis__ButtonTop {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .adminOrdDis__ButtonTop button {

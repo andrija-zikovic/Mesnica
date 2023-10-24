@@ -15,4 +15,10 @@ router.route('/changeProducts')
 router.route('/orders')
     .get(orderController.getOrders);
 
+router.route('/orderConfirm')
+    .post(orderController.orderConfirm);
+
+router.route('/orderReject')
+    .post(orderController.orderReject);
+
 module.exports = router;

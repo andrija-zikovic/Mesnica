@@ -12,3 +12,7 @@
 05.10.2023	07:48:31	30aaf07b-b2a5-4e5b-9fa5-35e4c7268d16	Error: Not allowed by CORS
 17.10.2023	10:22:58	e0bd3faa-0bea-4f4d-8f68-cdeb1e649cdb	SyntaxError: "[object Object]" is not valid JSON
 17.10.2023	10:26:09	5bd01e10-27fa-4f1b-af42-58fd7e421cce	SyntaxError: "[object Object]" is not valid JSON
+24.10.2023	10:23:18	34cc78bb-8d56-40be-b69c-7803e1b09e72	SyntaxError: Unexpected token '"', "#" is not valid JSON
+24.10.2023	10:25:31	816d9178-6b5a-4ed8-b0ae-b05d86c576b0	SyntaxError: Unexpected token '"', "#" is not valid JSON
+24.10.2023	10:26:13	7d4e9ea2-2d83-461b-b213-17e56e64cecc	SyntaxError: Unexpected token '"', "#" is not valid JSON
+24.10.2023	10:41:36	2b4cb2c7-3ff3-4f4a-bb32-b34e9fd5aca8	SyntaxError: Unexpected token '"', "#" is not valid JSON
