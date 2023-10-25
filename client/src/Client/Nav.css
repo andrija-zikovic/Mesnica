@@ -7,13 +7,16 @@
     font-weight: bold;
     position: sticky;
     z-index: 2;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .nav ul {
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     list-style-type: none;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     gap: 1rem;
 }
 

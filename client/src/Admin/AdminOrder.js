@@ -21,19 +21,20 @@ const AdminOrder = ({
       });
 
       if (response.ok) {
-        // Update the state after a successful response
         setOrderStatus(true);
         setBackgroundColor("Green");
         setMessage(`Order ${num} Confirmed!`);
         toggleVisibility();
+      } else if (response.status === 400) {
+        const errorResponse = await response.json();
+        setMessage(errorResponse.error);
       } else {
-        setMessage("Error while updating data!");
+        setMessage("Network response was not ok.");
         throw new Error("Network response was not ok.");
       }
     } catch (error) {
       console.error("Error:", error);
-      setMessage(error.message); // Display the error message from the caught error
-      // Handle other errors if any
+      setMessage(error.message);
     }
   };
 
@@ -48,19 +49,20 @@ const AdminOrder = ({
       });
 
       if (response.ok) {
-        // Update the state after a successful response
         setOrderStatus(false);
         setBackgroundColor("Red");
         setMessage(`Order ${num} Rejected!`);
         toggleVisibility();
+      } else if (response.status === 400) {
+        const errorResponse = await response.json();
+        setMessage(errorResponse.error);
       } else {
-        setMessage("Error while updating data!");
+        setMessage("Network response was not ok.");
         throw new Error("Network response was not ok.");
       }
     } catch (error) {
       console.error("Error:", error);
-      setMessage(error.message); // Display the error message from the caught error
-      // Handle other errors if any
+      setMessage(error.message);
     }
   };
 

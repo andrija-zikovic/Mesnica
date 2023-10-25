@@ -17,20 +17,17 @@ const AboutUs = () => {
     e.preventDefault();
     const url = process.env.REACT_APP_FORM_SEND;
     // Send a request to the API with the form data
-    fetch(
-      url,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }),
-      }
-    )
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      }),
+    })
       .then((response) => {
         if (response.ok) {
           // Reset the form inputs after successful submission
@@ -57,6 +54,7 @@ const AboutUs = () => {
 
   // Get an array of all image file paths
   const images = imageContext.keys().map(imageContext);
+  console.log(images);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -77,13 +75,15 @@ const AboutUs = () => {
               key={index}
               src={process.env.PUBLIC_URL + image}
               alt="img"
-              className={`hidden ${index === currentIndex ? "fade show" : ""}`}
+              width="600"
+              height="400"
+              className={`${index === currentIndex ? "fade show" : ""}`}
             />
           ))}
         </article>
       </section>
       <section className="aboutUs__section_o-nama">
-        <h2>O nama</h2>
+        <h2 style={{ whiteSpace: "nowrap" }}>O nama</h2>
         <article className="aboutUs__article_o-nama">
           <h3>Dobrodošli u Mesnicu sa Stoljetnom Tradicijom</h3>
           <p>
@@ -149,7 +149,7 @@ const AboutUs = () => {
         <h2>LOKACIJA</h2>
         <article className="aboutUs__article_lokacija">
           <img
-            src={process.env.PUBLIC_URL + "img/libero-pula897x487.jpg"}
+            src={process.env.PUBLIC_URL + "libero-pula897x487.jpg"}
             alt="mesnica"
             width="600"
             height="400"

@@ -162,26 +162,37 @@ const getOrders = async (req, res) => {
 };
 
 const orderConfirm = async (req, res) => {
-    const id = req.body._id;
-    console.log(id);
+  const id = req.body._id;
 
-    try {
-        const updatedOrder = await orders.findByIdAndUpdate(id, { status: true }, { new: true });
-        res.json(updatedOrder);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
+  try {
+      const existingOrder = await orders.findById(id);
+
+      if (existingOrder.status === true) {
+          return res.status(400).json({ error: 'Order is already confirmed' });
+      }
+
+      await orders.findByIdAndUpdate(id, { status: true }, { new: true });
+      res.status(200).json({ message: 'Order confirm!'});
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
 };
+
 
 const orderReject = async (req, res) => {
     const id = req.body._id;
 
     try {
-        const updatedOrder = await orders.findByIdAndUpdate(id, { status: false }, { new: true });
-        res.json(updatedOrder);
+      const existingOrder = await orders.findById(id);
+
+      if (existingOrder.status === true) {
+          return res.status(400).json({ error: 'Order is already rejected' });
+      }
+
+      await orders.findByIdAndUpdate(id, { status: true }, { new: true });
+      res.status(200).json({ message: 'Order rejected!'});
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
