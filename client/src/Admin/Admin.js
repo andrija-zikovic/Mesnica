@@ -30,7 +30,7 @@ const Admin = () => {
     }, []);
 
     return (
-        <main>
+        <main className='adminMain'>
             <nav className='nav__admin'>
                 <ul className='nav__ul'>
                     <li className='link__nav__dropdown' onClick={toggleDropdown} ref={dropdownRef}>
