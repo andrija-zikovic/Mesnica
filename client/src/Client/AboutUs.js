@@ -54,7 +54,6 @@ const AboutUs = () => {
 
   // Get an array of all image file paths
   const images = imageContext.keys().map(imageContext);
-  console.log(images);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
