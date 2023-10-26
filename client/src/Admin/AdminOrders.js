@@ -69,7 +69,7 @@ const AdminOrders = () => {
                 </tr>
                 {visibleOrders.includes(orderData._id) && (
                   <tr>
-                    <td colSpan="4">
+                    <td colSpan="4" className="adminOrd_td">
                       <AdminOrder
                         orderData={orderData}
                         toggleVisibility={() => toggleVisibility(orderData._id)}

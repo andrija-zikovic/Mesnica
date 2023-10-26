@@ -86,9 +86,19 @@ const AdminOrder = ({
         ))}
       </div>
       {orderStatus === true ? (
-        <p style={{ fontWeight: "bold" }}>Order Confirmed</p>
+        <p
+          style={{ fontWeight: "bold", backgroundColor: "var(--HERO-BGCOLOR)" }}
+          className="adminOrdDis_message"
+        >
+          Order Confirmed!
+        </p>
       ) : orderStatus === false ? (
-        <p style={{ fontWeight: "bold" }}>Order Rejected</p>
+        <p
+          style={{ fontWeight: "bold", backgroundColor: "var(--BGCOLOR-FADE)" }}
+          className="adminOrdDis_message"
+        >
+          Order Rejected!
+        </p>
       ) : (
         <div className="adminOrdDis__ButtonBottom">
           <button onClick={handleConfirme}>Confirm</button>

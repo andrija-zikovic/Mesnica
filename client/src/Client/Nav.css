@@ -44,6 +44,9 @@
 
 .nav_bucket {
     padding: 0;
+    border-radius: 10%;
+    padding: 0.1rem 0.1rem;
+    border: 1px solid aliceblue;
 }
 
 .nav_bucket button {
@@ -51,10 +54,14 @@
     background-color: rgba(255, 255, 255, 0);
     width: 100%;
     height: auto;
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0.2rem;
 }
 
 .nav_bucket:hover {
     background-color: var(--LINK-ACTIVE);
+    border: 1px solid black;
 }
 
 .bucket {
@@ -165,6 +172,12 @@
 
     .nav {
         font-size: 0.7rem;
+        padding-top: 0.1rem;
+        padding-bottom: 0.1rem;
+    }
+
+    .nav ul {
+        justify-content: flex-end;
     }
 }
 
@@ -174,7 +187,12 @@
 
     .nav {
         font-size: 40%;
+        padding-top: 0.1rem;
+        padding-bottom: 0.1rem;
     }
 
+    .nav ul {
+        justify-content: flex-end;
+    }
 
 }
