@@ -278,8 +278,9 @@
   flex-flow: row;
   gap: 1rem;
   justify-content: space-evenly;
-  padding: 1rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.4rem;
+  border-bottom: 1px solid black;
 }
 
 .adminOrdDis__products {
@@ -287,7 +288,12 @@
   flex-flow: column;
   justify-content: space-evenly;
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  padding: 1rem 1rem;
+}
+
+.adminOrdDis__products h2 {
+  padding: 0 1rem 1rem 1rem;
+  margin-bottom: 0;
 }
 
 .product {
@@ -333,6 +339,14 @@
 @media screen and (min-width: 992px) {
   .adminPro {
     font-size: 0.5rem;
+  }
+
+  .adminPro__tbody {
+    position: relative;
+  }
+
+  .adminProImg {
+    left: 10%;
   }
 
   .nav__admin a,
