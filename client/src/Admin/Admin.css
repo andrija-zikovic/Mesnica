@@ -39,6 +39,22 @@
   font-size: 1.1rem;
 }
 
+.adminProSearch {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  margin-bottom: 1rem;
+  gap: 1;
+  font-size: 1.5rem;
+}
+
+.adminProSearch_Input {
+  width: 70%;
+  
+}
+
 .message {
   background-color: hsla(125, 61%, 32%, 0.585);
   position: absolute;
@@ -416,6 +432,17 @@
   .addProForm input {
     font-size: 1rem;
     width: auto;
+  }
+
+  .adminProSearch {
+    font-size: 0.5rem;
+    flex-flow: row;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .adminProSearch_Input {
+    width: 30%;
   }
 
   .imgForm {
