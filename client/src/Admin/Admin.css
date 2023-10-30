@@ -352,6 +352,16 @@
   background-color: red;
 }
 
+.adminStats {
+  height: 90vh;
+  width: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 @media screen and (min-width: 992px) {
   .adminPro {
     font-size: 0.5rem;
