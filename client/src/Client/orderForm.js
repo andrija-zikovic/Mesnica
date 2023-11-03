@@ -52,7 +52,7 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
         return totalPrice.toFixed(2); // Rounds to two decimal places
     };
 
-    if (buyStatus) {
+    /* if (buyStatus) {
         return (
             <section className='buyResOk'>
                 <h2>Račun je poslan na vašu email adresu!</h2>
@@ -68,7 +68,7 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
         return (
             <h2 className='emptyMessage'>Vaša košarica je prazna!</h2>
         )
-    } else {
+    } else { */
 
         return (
             <section className='order'>
@@ -138,8 +138,8 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
                     </div>
                 </form>
             </section>
-        )
-    }
+         ) 
+    /* } */
 }
 
 export default OrderForm;

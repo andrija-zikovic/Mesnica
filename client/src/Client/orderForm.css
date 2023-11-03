@@ -80,3 +80,20 @@ thead tr {
     text-align: center;
     margin-top: 20vh;
 }
+
+@media screen and (min-width: 992px) {
+    .order {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+        font-size: 0.5rem;
+    }
+
+    .buyerInfo {
+        width: 45%;
+    }
+
+    .order__table {
+        width: 45%;
+    }
+}
