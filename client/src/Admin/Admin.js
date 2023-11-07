@@ -13,8 +13,27 @@ const Admin = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
 
-    const handleLogin = (username, password) => {
+    const handleLogin = async (username, password) => {
+        try {
+            const url = process.env.REACT_APP_LOGIN;
+            const response = await fetch(url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ username, password }),
+            });
         
+            if (response.ok) {
+              setIsLoggedIn(true); // Set isLoggedIn to true if the response is positive
+            } else {
+              // Handle authentication failure, show error message, etc.
+              console.error('Authentication failed');
+            }
+          } catch (error) {
+            // Handle network errors, server errors, etc.
+            console.error('Error occurred during login:', error);
+          }
     };
 
     const logOut = () => {
@@ -42,9 +61,13 @@ const Admin = () => {
     return (
         <main className='adminMain'>
       {!isLoggedIn ? (
-        <AdminLogIn onLogin={handleLogin} />
+        <section className='adminLogInSection'>
+            <h3 style={{marginBottom: 0}}>Log in:</h3>
+            <AdminLogIn handleLogin={handleLogin} />
+            <p>username: admin | password: admin</p>
+        </section>
       ) : (
-        <main className='adminMain'>
+        <>
             <nav className='nav__admin'>
                 <ul className='nav__ul'>
                     <li className='link__nav__dropdown' onClick={toggleDropdown} onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown} ref={dropdownRef}>
@@ -78,7 +101,7 @@ const Admin = () => {
                 <Route path='/addproduct' element={<AddProducts />} />
             </Routes>
             <Outlet />
-        </main>
+        </>
       )}
     </main>
     )

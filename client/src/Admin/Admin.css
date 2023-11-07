@@ -1,3 +1,26 @@
+.adminLogInSection {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100vh;
+  font-size: 1.7rem;
+}
+
+.adminLogIn {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.adminLogIn_submit {
+  padding: 0 1rem;
+}
+
 .nav__admin {
   top: 0;
   background-color: aliceblue;
@@ -370,7 +393,13 @@
   text-align: center;
 }
 
+
+
 @media screen and (min-width: 992px) {
+  .adminLogInSection {
+    font-size: 0.5rem;
+  }
+
   .adminPro {
     font-size: 0.5rem;
   }

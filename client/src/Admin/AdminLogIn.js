@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const AdminLogIn = (handleLogin) => {
+const AdminLogIn = ({handleLogin}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -10,12 +10,13 @@ const AdminLogIn = (handleLogin) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='adminLogIn'>
       <input
         type="text"
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
+        className='adminLogIn_username'
       />
       <input
         type="password"
@@ -23,9 +24,9 @@ const AdminLogIn = (handleLogin) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Login</button>
+      <button type="submit" className='adminLogIn_submit'>Login</button>
     </form>
   );
 }
 
-export default AdminLogIn
+export default AdminLogIn;

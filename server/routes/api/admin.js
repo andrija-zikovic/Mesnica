@@ -23,6 +23,7 @@ router.route('/orderReject')
     .post(orderController.orderReject);
 
 router.route('/logIn')
-    .get(logInController.auth);
+    .get(logInController.auth)
+    .post(logInController.userCreate);
     
 module.exports = router;
