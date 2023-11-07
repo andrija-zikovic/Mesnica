@@ -11,9 +11,22 @@
     font-size: 1rem;
 }
 
-.sideNav h3 {
+.sideNav_h3 {
     border-bottom: var(--BORDERS);
+}
+
+.sideNav_h3:hover {
+    cursor: pointer;
+}
+
+.sideNav_h3 h3 {
+    padding: var(--PADDING-TB);
     margin-bottom: 0;
+}
+
+.sideNav h3:hover {
+    color: var(--LINK-HOVER);
+    cursor: pointer;
 }
 
 .sideNav__ul {
@@ -32,6 +45,8 @@
 .sideNav__p:active,
 .sideNav__p:hover {
     background-color: var(--LINK-HOVER);
+    cursor: pointer;
+    box-shadow: 2px 2px 10px var(--LINK-HOVER);
 }
 
 @media screen and (min-width: 576px) {}

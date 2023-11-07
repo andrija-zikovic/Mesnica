@@ -36,6 +36,8 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
             if (res.ok) {
                 setBuyStatus(true);
                 clearCart();
+                const data = await res.json();
+                console.log(data.message);
             }
         } catch (err) {
             console.error('Error giving order:', err)
@@ -75,7 +77,9 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
                 <table className='order__table'>
                     <thead className='order__thead'>
                         <tr>
-                            <th colSpan={4}>Košarica</th>
+                            <th colSpan={4}>
+                                <h3 style={{marginBottom: 0,}}>Košarica</h3>
+                            </th>
                         </tr>
                         <tr>
                             <th>Proizvod</th>

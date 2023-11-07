@@ -40,6 +40,7 @@
 .link__nav:focus,
 .link__nav:active {
     background-color: var(--LINK-ACTIVE);
+    box-shadow: 2px 2px 10px var(--LINK-HOVER);
 }
 
 .nav_bucket {
@@ -62,6 +63,7 @@
 .nav_bucket:hover {
     background-color: var(--LINK-ACTIVE);
     border: 1px solid black;
+    box-shadow: 2px 2px 10px var(--LINK-HOVER);
 }
 
 .bucket {
@@ -75,7 +77,7 @@
     border: 2px solid var(--HEADER-BGCOLOR);
     border-radius: 2px;
     z-index: 1;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .bucket div {

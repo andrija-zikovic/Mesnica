@@ -12,14 +12,16 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const emailSander = async (email, invNum, buyName) => {
+const emailSander = async (email, invNum, buyName, pdfBuffer) => {
     const info = {
         from: '"Mesnica" bigblondeandrew@gmail.com',
         to: email,
         subject: `Račun broj ${invNum}`,
         text: `${buyName} hvala vam na kupovini, u privitku je vaš račun.`,
         attachments: [{
-            path: `./pdf/${invNum}.pdf`
+          filename: `Račun_br_${invNum}.pdf`,
+          encoding: 'base64',
+          content: pdfBuffer,
         }]
     };
 

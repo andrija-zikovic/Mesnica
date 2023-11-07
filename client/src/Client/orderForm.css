@@ -96,4 +96,8 @@ thead tr {
     .order__table {
         width: 45%;
     }
+
+    .emptyMessage {
+        font-size: 1rem;
+    }
 }

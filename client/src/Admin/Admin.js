@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import AdminLogIn from './AdminLogIn'
 import AdminOrders from './AdminOrders'
 import AdminProducts from './AdminProducts'
 import AdminStats from './AdminStats'
@@ -8,8 +9,17 @@ import { Link, Outlet, Route, Routes } from 'react-router-dom'
 
 const Admin = () => {
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+
+    const handleLogin = (username, password) => {
+        
+    };
+
+    const logOut = () => {
+        setIsLoggedIn(false);
+    }
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -31,9 +41,13 @@ const Admin = () => {
 
     return (
         <main className='adminMain'>
+      {!isLoggedIn ? (
+        <AdminLogIn onLogin={handleLogin} />
+      ) : (
+        <main className='adminMain'>
             <nav className='nav__admin'>
                 <ul className='nav__ul'>
-                    <li className='link__nav__dropdown' onClick={toggleDropdown} ref={dropdownRef}>
+                    <li className='link__nav__dropdown' onClick={toggleDropdown} onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown} ref={dropdownRef}>
                         Proizvodi
                         {isDropdownOpen && (
                             <ul className='dropdown'>
@@ -52,8 +66,8 @@ const Admin = () => {
                     <li className='link__nav'>
                         <Link to="adminstats">Statistika</Link>
                     </li>
-                    <li className='link__nav'>
-                        <Link to="">Log out</Link>
+                    <li className='link__nav' onClick={logOut}>
+                        Log out
                     </li>
                 </ul>
             </nav>
@@ -65,6 +79,8 @@ const Admin = () => {
             </Routes>
             <Outlet />
         </main>
+      )}
+    </main>
     )
 }
 

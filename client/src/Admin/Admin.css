@@ -23,6 +23,13 @@
   background-color: var(--LINK-ACTIVE);
 }
 
+.link__nav__dropdown:active,
+.link__nav__dropdown:focus,
+.link__nav__dropdown:hover {
+  box-shadow: 2px 2px 5px var(--LINK-ACTIVE);
+  cursor: pointer;
+}
+
 .nav__admin a,
 .nav__admin li {
   text-decoration: none;
@@ -155,6 +162,7 @@
   list-style-type: none;
   background-color: var(--LINK-ACTIVE);
   border: var(--BORDERS);
+  box-shadow: 2px 2px 5px var(--LINK-ACTIVE);
   top: 2.8rem;
   min-width: 100%;
   text-align: center;
@@ -428,6 +436,9 @@
   .addProducts {
     width: 100%;
     padding: 0.5rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
   }
 
   .addProducts h2 {
@@ -436,11 +447,11 @@
 
   .addProForm {
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
+    width: 80%;
   }
 
   .addProForm input {
-    font-size: 1rem;
+    font-size: 0.7rem;
     width: auto;
   }
 
@@ -458,6 +469,7 @@
   .imgForm {
     grid-column: 1 / 3;
     align-items: center;
+    white-space: nowrap;
   }
 
   .imgForm label {
@@ -467,15 +479,15 @@
   .imgForm input[type="file"] {
     font-size: 0.5rem;
     padding: 0.2rem;
-    width: 50%;
+    width: auto;
   }
 
   .addButton {
-    font-size: 1rem;
+    font-size: 0.6rem;
     grid-column: 1 / 3;
   }
 
   .addButton button {
-    padding: 0.3rem;
+    padding: 0.2rem 1rem;
   }
 }

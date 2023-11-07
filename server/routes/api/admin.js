@@ -21,4 +21,7 @@ router.route('/orderConfirm')
 router.route('/orderReject')
     .post(orderController.orderReject);
 
+router.route('/logIn')
+    .get(logInController.auth);
+    
 module.exports = router;

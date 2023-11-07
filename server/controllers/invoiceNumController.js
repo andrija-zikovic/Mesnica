@@ -1,33 +1,18 @@
-const fs = require("fs");
+const Orders = require("../model/Orders");
 
-// Function to read the invoice number from the file
-function readInvoiceNumber() {
+async function nextInvoiceNumber() {
   try {
-    const data = fs.readFileSync("./config/invoiceNum.txt", "utf8");
-    return parseInt(data);
-  } catch (err) {
-    console.error(err)
+    // Find the last item in the database and sort by 'num' in descending order
+    const lastOrder = await Orders.findOne().sort({ num: -1 });
+
+    // If there are no orders in the database, start with 1, else increment the last order's num by 1
+    const newInvoiceNumber = lastOrder ? lastOrder.num + 1 : 1;
+
+    return newInvoiceNumber;
+  } catch (error) {
+    console.error("Error fetching invoice number: ", error);
+    throw error;
   }
 }
 
-// Function to increment and update the invoice number in the file
-function incrementAndSaveInvoiceNumber(invoiceNum) {
-  invoiceNum++;
-  try {
-    fs.writeFileSync("./config/invoiceNum.txt", invoiceNum.toString(), "utf8");
-  } catch (err) {
-    console.error(err)
-  }
-  return invoiceNum;
-}
-
-let invoiceCount = readInvoiceNumber();
-module.exports = {
-  getInvoiceCount: () => invoiceCount,
-  incrementInvoiceCount: () => {
-    invoiceCount = incrementAndSaveInvoiceNumber(invoiceCount);
-    return invoiceCount;
-  },
-};
-
-
+module.exports = {nextInvoiceNumber};

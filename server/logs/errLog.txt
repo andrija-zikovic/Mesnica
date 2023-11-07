@@ -16,3 +16,15 @@
 24.10.2023	10:25:31	816d9178-6b5a-4ed8-b0ae-b05d86c576b0	SyntaxError: Unexpected token '"', "#" is not valid JSON
 24.10.2023	10:26:13	7d4e9ea2-2d83-461b-b213-17e56e64cecc	SyntaxError: Unexpected token '"', "#" is not valid JSON
 24.10.2023	10:41:36	2b4cb2c7-3ff3-4f4a-bb32-b34e9fd5aca8	SyntaxError: Unexpected token '"', "#" is not valid JSON
+06.11.2023	11:29:43	e221b9d6-20b1-4bc0-a4d0-0e041c0d8de8	Error: Not allowed by CORS
+06.11.2023	11:29:43	0fb3adbd-7a46-41a2-8f22-a5d6fe4e426f	Error: Not allowed by CORS
+06.11.2023	11:29:46	d35ea2ee-9037-4de5-a383-492af9b6b0c9	Error: Not allowed by CORS
+06.11.2023	11:29:46	44e5998a-7eae-4aa9-9507-67e9529873db	Error: Not allowed by CORS
+06.11.2023	11:30:38	cde22bdb-1051-4e8e-b1ca-805d86b9805a	Error: Not allowed by CORS
+06.11.2023	11:30:38	92198ae8-8a54-4ff7-bb87-1f9490bed6ea	Error: Not allowed by CORS
+06.11.2023	11:30:45	ee57a807-6f36-4a02-83c7-2ffccb68d12d	Error: Not allowed by CORS
+06.11.2023	11:30:46	48d96e72-80d3-48ad-acb3-ebcca89c258a	Error: Not allowed by CORS
+06.11.2023	11:30:48	cddbc26b-bd66-48bd-b771-e64e3dbfb3f1	Error: Not allowed by CORS
+06.11.2023	11:30:48	5b022fa8-3055-4020-85be-83b4a563f9ac	Error: Not allowed by CORS
+06.11.2023	11:31:10	b9d7f88c-f3ae-49f6-a55c-9ca9103b31ec	Error: Not allowed by CORS
+06.11.2023	11:31:10	bde6b636-6ce4-4535-847c-a3c1759d79c3	Error: Not allowed by CORS

@@ -8,24 +8,23 @@ const orders = require("../model/Orders");
 require("dotenv").config();
 
 const orderHandler = async (req, res) => {
-  const nextInvoiceNumber = invoiceNum.incrementInvoiceCount();
-  const currentDate = new Date();
-  const formattedDate = format(currentDate, "yyyy-MM-dd HH:mm:ss");
-  const bankAcc = process.env.BANK_ACC;
-  const amount = req.body.products
-    .reduce((accumulator, object) => {
-      return accumulator + object.price * object.quantity;
-    }, 0)
-    .toFixed(2)
-    .replace(".", "")
-    .padStart(15, "0");
-
-  const paymentString = `HRVHUB30\nEUR\n${amount}\n${req.body.buyer.company}\n${req.body.buyer.address}\n${req.body.buyer.zip} ${req.body.buyer.city}\nMesnica d.o.o\nŠijanska cesta 5\n52100 Pula\n${bankAcc}\nHR04\n123456879-123456\nCOST\nRAČUN BR ${nextInvoiceNumber}`;
-
-  const qrCodeFilePath = `./qr/${nextInvoiceNumber}.png`;
-
+ 
   try {
-    await generateQRCodeAsPNG(qrCodeFilePath, paymentString);
+    const nextInvoiceNumber = await invoiceNum.nextInvoiceNumber();
+    const currentDate = new Date();
+    const formattedDate = format(currentDate, "yyyy-MM-dd HH:mm:ss");
+    const bankAcc = process.env.BANK_ACC;
+    const amount = req.body.products
+      .reduce((accumulator, object) => {
+        return accumulator + object.price * object.quantity;
+      }, 0)
+      .toFixed(2)
+      .replace(".", "")
+      .padStart(15, "0");
+
+    const paymentString = `HRVHUB30\nEUR\n${amount}\n${req.body.buyer.company}\n${req.body.buyer.address}\n${req.body.buyer.zip} ${req.body.buyer.city}\nMesnica d.o.o\nŠijanska cesta 5\n52100 Pula\n${bankAcc}\nHR04\n123456879-123456\nCOST\nRAČUN BR ${nextInvoiceNumber}`;
+
+    const generateQRCode = await generateQRCodeBase64(paymentString);
     var data = {
       // Customize enables you to provide your own templates
       // Please review the documentation for instructions and examples
@@ -34,7 +33,7 @@ const orderHandler = async (req, res) => {
       },
       images: {
         // The logo on top of your invoice
-        logo: fs.readFileSync(`./qr/${nextInvoiceNumber}.png`, "base64"),
+        logo: `${generateQRCode}`,
       },
       // Your own data
       sender: {
@@ -90,25 +89,16 @@ const orderHandler = async (req, res) => {
     };
 
     const result = await easyinvoice.createInvoice(data);
-    await fs.writeFileSync(
-      `./pdf/${nextInvoiceNumber}.pdf`,
-      result.pdf,
-      "base64"
-    );
-
-    fs.unlink(`./qr/${nextInvoiceNumber}.png`, (err) => {
-      if (err) {
-        console.error("Error deleting QR code file:", err);
-      } else {
-        console.log("QR code file deleted successfully.");
-      }
-    });
+    
+    const pdfBuffer = Buffer.from(result.pdf, 'base64');
 
     await emailSander(
       req.body.buyer.email,
       nextInvoiceNumber,
-      req.body.buyer.company
+      req.body.buyer.company,
+      pdfBuffer,
     );
+
     await orderSave(req.body, formattedDate, nextInvoiceNumber);
 
     res.status(200).json({ message: "Invoice sent to email." });
@@ -117,18 +107,16 @@ const orderHandler = async (req, res) => {
   }
 };
 
-async function generateQRCodeAsPNG(filePath, data) {
-  return new Promise((resolve, reject) => {
-    QRCode.toFile(filePath, data, (error) => {
-      if (error) {
+async function generateQRCodeBase64(data) {
+    try {
+        const qrCodeBuffer = await QRCode.toBuffer(data);
+        const qrCodeBase64 = qrCodeBuffer.toString("base64");
+        console.log("QR code generated and saved as qrcode.png");
+        return qrCodeBase64;
+    } catch (error) {
         console.error("Error generating QR code:", error);
-        reject(error);
-      } else {
-        console.log("QR code generated successfully.");
-        resolve();
-      }
-    });
-  });
+        throw error;
+    }
 }
 
 async function orderSave(data, date, invNum) {
