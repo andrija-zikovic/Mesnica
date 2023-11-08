@@ -10,7 +10,7 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
         <form id={id} onSubmit={(e) => e.preventDefault()}>
             <article className='product-card' id={id}>
                 <p className='product-card__title'>{title}</p>
-                <img src={process.env.PUBLIC_URL + '/' + src} alt={title} />
+                <img src={src} alt={title} />
                 <p className='product-card__price'>{price} € / kg</p>
                 <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '5px' }}>
                     <input

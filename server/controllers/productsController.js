@@ -47,6 +47,14 @@ const getSpecificProducts = async (req, res) => {
 
 const createProduct = async (req, res) => {
     try {
+        const { Storage } = require('@google-cloud/storage');
+
+        const storage = new Storage({
+        projectId: 'mesnica02',
+        keyFilename: '/workspaces/react-mini-project/server/config/mesnica02-f5b8d956119e.json'
+        });
+
+        const bucketName = 'mesnica02.appspot.com';
         // Use Multer middleware to handle file uploads
         upload.single('image')(req, res, async function (err) {
             if (err instanceof multer.MulterError) {
@@ -57,33 +65,36 @@ const createProduct = async (req, res) => {
                 return res.status(500).json({ 'message': 'Unknown error occurred.' });
             }
 
-            console.log(req.file);
-            // At this point, the file is successfully uploaded.
             const imagePath = req.file.path;
-            const clientImageFileName = `600x400_${req.file.filename}`;
-            const clientImagePath = path.join(__dirname, '..', '..', 'client', 'public', 'img', clientImageFileName);
-
+            
             try {
-                await sharp(imagePath)
+
+                const resizedImageBuffer = await sharp(imagePath)
                     .resize(600, 400)
-                    .toFile(clientImagePath);
-            } catch (error) {
-                console.error('Error resizing image:', error);
-                return res.status(500).json({ 'message': 'Error resizing image.' });
-            }
-            
-            try {   
-                await fs.unlinkSync(imagePath);
-                console.log('File deleted successfully!');
-            } catch (error) {
-                console.error('Error deleting image:', error)
-                return res.status(500).json({'message': 'Error deleting image.'})
-            }
+                    .toBuffer();
 
-            // Handle other form data or business logic here
-            
-            try {
-                const imgSrc = `img/600x400_${req.file.filename}`
+                // Set the ACL to make the object publicly readable
+                const uploadOptions = {
+                    destination: `products/600x400_${req.file.filename}`,
+                    predefinedAcl: 'publicRead',
+                    metadata: {
+                        contentType: req.file.mimetype,
+                    },
+                };
+
+                // Upload the resized image directly to Google Cloud Storage with public read ACL
+                await storage.bucket(bucketName).file(uploadOptions.destination).save(resizedImageBuffer, {
+                    metadata: uploadOptions.metadata,
+                    predefinedAcl: uploadOptions.predefinedAcl,
+                });
+
+                const imgSrc = `https://storage.googleapis.com/${bucketName}/${uploadOptions.destination}`;
+
+                // Delete the local resized image file
+                await fs.unlinkSync(imagePath);
+                console.log('Local file deleted successfully!');
+
+                // Handle other form data or business logic here
                 const product = await Products.create({
                     title: req.body.title,
                     price: req.body.price,
@@ -91,11 +102,12 @@ const createProduct = async (req, res) => {
                     meatType: req.body.meatType,
                     imgSrc: imgSrc
                 });
-                return res.status(201).json({'message': 'Product is added to products list!'});
+
+                return res.status(201).json({ 'message': 'Product is added to products list!' });
             } catch (error) {
-                console.error('Error adding a product:', error)
-                return res.status(500).json({'message': 'Error adding product to database'})
-            } 
+                console.error('Error uploading image to Google Cloud Storage:', error);
+                return res.status(500).json({ 'message': 'Error uploading image.' });
+            }
         });
     } catch (error) {
         console.error(error);
