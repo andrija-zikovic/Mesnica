@@ -9,7 +9,7 @@ const Home = ({ handleAmountChange }) => {
   return (
     <main className='home'>
       <Hero />
-      <h2 className='prducts-list__h2'>Top Sellers</h2 >
+      <h2 className='prducts-list__h2'>TOP SELLERS</h2 >
       <ProductsList handleAmountChange={handleAmountChange} meatType={''} host={'home'} />
       <About />
     </main>

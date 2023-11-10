@@ -154,27 +154,28 @@ const AboutUs = () => {
             height="400"
           />
           <address>
-            Šijanska cesta 5 <br />
-            52100 Pula
+            <p>Šijanska cesta 5</p>
+            <p>52100 Pula</p>
+            <p>Hrvtaska</p>
           </address>
         </article>
       </section>
       <section className="aboutUs__section_contact">
         <article className="aboutUs__article_contact">
-          <h2 style={{ textAlign: "center" }}>Our Contact Form</h2>
+          <h2 style={{ textAlign: "center" }}>Kontaktirajte nas</h2>
           <form method="post" className="contact__form" onSubmit={handleSubmit}>
             <fieldset className="contact__fieldset">
-              <legend className="offscreen">Send Us A Message</legend>
+              <legend className="offscreen">Pošaljite poruku</legend>
               <p className="contact__p">
                 <label className="contact__lable" htmlFor="name">
-                  Name:
+                  Ime:
                 </label>
                 <input
                   className="contact__input"
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="your name"
+                  placeholder="Vaše ime.."
                   onChange={handleInputChange}
                   required
                 />
@@ -188,14 +189,14 @@ const AboutUs = () => {
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="your email"
+                  placeholder="Vaš email.."
                   onChange={handleInputChange}
                   required
                 />
               </p>
               <p className="contact__p">
                 <label className="contact__lable" htmlFor="message">
-                  Your Message:
+                  Poruka:
                 </label>
                 <br />
                 <textarea
@@ -204,17 +205,17 @@ const AboutUs = () => {
                   id="message"
                   cols="30"
                   rows="10"
-                  placeholder="Type your message here"
+                  placeholder="Upišite poruku..."
                   onChange={handleInputChange}
                 ></textarea>
               </p>
             </fieldset>
             <div>
               <button className="contact__button" type="submit">
-                Send
+                Pošalji
               </button>
               <button className="contact__button" type="reset">
-                Reset
+                Očisti
               </button>
             </div>
           </form>

@@ -6,6 +6,7 @@ import Home from './Home';
 import AboutUs from './AboutUs';
 import OrderForm from './orderForm';
 import Products from './Products';
+import Footer from './Footer';
 import { useState } from 'react';
 
 const Client = () => {
@@ -64,7 +65,7 @@ const Client = () => {
     };
 
     return (
-        <div>
+        <div className='client'>
             <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />
             <Header title={'Mesnica'} />
             <Routes>
@@ -73,6 +74,7 @@ const Client = () => {
                 <Route path='/about-us' element={<AboutUs />} />
                 <Route path='/order' element={<OrderForm cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />} />
             </Routes>
+            <Footer />
         </div>
     )
 }

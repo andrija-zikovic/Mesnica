@@ -4,13 +4,14 @@
     height: auto;
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    align-items: flex-start;
     font-size: 1.5rem;
 }
 
 .order__table {
     border-spacing: 10px;
     border-collapse: collapse;
+    width: 100%;
 }
 
 .order button {
@@ -73,12 +74,25 @@ thead tr {
 
 .emptyMessage {
     text-align: center;
-    margin-top: 30vh;
 }
 
 .buyResOk {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
     text-align: center;
-    margin-top: 20vh;
+}
+
+@media screen and (min-width: 576px) {
+    .buyResOk {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .buyResOk {
+        font-size: 0.7rem;
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -99,5 +113,9 @@ thead tr {
 
     .emptyMessage {
         font-size: 1rem;
+    }
+
+    .buyResOk {
+        font-size: 0.5rem;
     }
 }

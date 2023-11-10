@@ -77,6 +77,8 @@
 }
 
 .aboutUs__section_contact {
+    margin-top: 1rem;
+    border-top: 1px solid #333;
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     width: 100%;
 }

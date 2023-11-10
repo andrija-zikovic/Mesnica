@@ -3,3 +3,9 @@
 .home {
   text-align: center;
 }
+
+.prducts-list__h2 {
+  color: var(--LINK-ACTIVE);
+  text-shadow: 1px 1px 5px #7f1a1a;
+  letter-spacing: 0.3rem;
+}

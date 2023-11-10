@@ -56,7 +56,7 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
 
     if (buyStatus) {
         return (
-            <section className='buyResOk'>
+            <main className='buyResOk'>
                 <h2>Račun je poslan na vašu email adresu!</h2>
                 <br />
                 <h2>Možete platiti odmah ili u poslovnici!</h2>
@@ -64,16 +64,18 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
                 <h2>Dobiti će te potvrud na email kad vaša naruđba bude spremna!</h2>
                 <br />
                 <h2>Hvala!</h2>
-            </section>
+            </main>
         )
     } else if (cartItems.length < 1) {
         return (
-            <h2 className='emptyMessage'>Vaša košarica je prazna!</h2>
+            <main className='order' style={{alignItems: 'center', justifyContent: 'center'}}>
+                <h2 className='emptyMessage'>Vaša košarica je prazna!</h2>
+            </main>
         )
     } else {
 
         return (
-            <section className='order'>
+            <main className='order'>
                 <table className='order__table'>
                     <thead className='order__thead'>
                         <tr>
@@ -137,11 +139,11 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
 
 
                     <div className='orderButtons'>
-                        <button className='clear' onClick={() => clearCart()}>CLEAR</button>
-                        <button className='send' type='submit'>BUY</button>
+                        <button className='clear' onClick={() => clearCart()}>Očisti</button>
+                        <button className='send' type='submit'>Naruči</button>
                     </div>
                 </form>
-            </section>
+            </main>
         )
     }
 }

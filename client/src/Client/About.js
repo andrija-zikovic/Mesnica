@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import './About.css'
+import Mesnica1987 from '../img/1987_mesnica.jpg';
 
 const About = () => {
   const art1 = useRef(null)
@@ -11,7 +12,7 @@ const About = () => {
     const observerOptions = {
       root: null, // Use the viewport as the root
       rootMargin: '0px', // No margin
-      threshold: 1, // When 50% of the element is in the viewport
+      threshold: 0.3, // When 50% of the element is in the viewport
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -42,7 +43,8 @@ const About = () => {
     <section className='about'>
       <article className='about_article' ref={art1}>
         <h2>Stogodisnja tradicija!</h2>
-        <p>Kod nas, kvaliteta je naša strast i naša predanost. Naša tradicija i stručnost u mesarstvu jamče da ćete uvijek dobiti najbolje što tržnica može ponuditi.</p>
+        <img src={Mesnica1987} width='736px' height='486px' alt='1987' className='about_article01_img'/> 
+        <h2>Od 1923.!</h2>
       </article>
       <article className='about_article' ref={art2}>
         <h2>Sve vrste mesa!</h2>
@@ -55,8 +57,9 @@ const About = () => {
       <article className='about_location' ref={art4}>
         <h2>Lokacija</h2>
         <address>
-          Šijanska cesta 5<br />
-          52100 Pula
+          <p>Šijanska cesta 5</p>
+          <p>52100 Pula</p>
+          <p>Hrvatska</p>
         </address>
       </article>
     </section>

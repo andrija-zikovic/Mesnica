@@ -37,6 +37,22 @@ textarea {
   text-align: center;
 }
 
+#root {
+  min-height: 100vh;
+}
+
+.client {
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 /* || VARIABLES */
 
 :root {
@@ -59,7 +75,7 @@ textarea {
   --HERO-BGCOLOR: rgba(51, 178, 51, 0.75);
   --HERO-COLOR: rgba(228, 50, 50, 0.801);
   --HIGHLIGHT-COLOR: rgba(0, 0, 0, 0.668);
-  --LINK-ACTIVE: rgba(228, 50, 50, 0.801);
+  --LINK-ACTIVE: #e43232cc;
   --LINK-COLOR: black;
   --LINK-HOVER: rgba(228, 50, 50, 0.801);
   --NAV-BGCOLOR: white;
@@ -84,6 +100,7 @@ html {
   font-family: var(--FF);
   background-color: var(--BGCOLOR);
   background-image: var(--BGIMAGE);
+  min-height: 100%;
 }
 
 body {
