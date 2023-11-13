@@ -159,7 +159,7 @@ const orderConfirm = async (req, res) => {
           return res.status(400).json({ error: 'Order is already confirmed' });
       }
 
-      await orders.findByIdAndUpdate(id, { status: true }, { new: true });
+      await orders.findByIdAndUpdate(id, { $set: { status: true } }, { new: true });
       res.status(200).json({ message: 'Order confirm!'});
   } catch (error) {
       console.error(error);
@@ -178,7 +178,7 @@ const orderReject = async (req, res) => {
           return res.status(400).json({ error: 'Order is already rejected' });
       }
 
-      await orders.findByIdAndUpdate(id, { status: true }, { new: true });
+      await orders.findByIdAndUpdate(id, { $set: { status: false } }, { new: true });
       res.status(200).json({ message: 'Order rejected!'});
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });

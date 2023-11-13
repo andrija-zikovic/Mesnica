@@ -5,7 +5,7 @@
   justify-content: center;
   gap: 1rem;
   width: 100%;
-  height: 100vh;
+  height: 50vh;
   font-size: 1.7rem;
 }
 
@@ -66,7 +66,41 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
+}
+
+.adminPro_delete {
+  align-self: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  width: 70%;
+  top: 33vh;
+  height: auto;
+  background-color: rgba(240, 248, 255, 0.800);
+  border: 1px solid black;
+  padding: 0.5rem 0.5rem;
+  z-index: 1;
+  font-size: 2rem;
+}
+
+.adminPro_delete p {
+  padding: 0.5rem 0.5rem;
+}
+
+.adminPro_delete_buttons {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 50%;
+  padding: 0.5rem 0.5rem;
+}
+
+.adminPro_delete_buttons button {
+  padding: 0.2rem 1rem;
 }
 
 .adminProSearch {
@@ -86,7 +120,7 @@
 }
 
 .message {
-  background-color: hsla(125, 61%, 32%, 0.585);
+  background-color: aliceblue;
   position: absolute;
   width: 90vw;
   left: 5vw;
@@ -104,9 +138,13 @@
   padding: 0.4rem 0.9rem;
   font-size: 2rem;
   right: 3px;
-  top: -40px;
+  top: -5rem;
   background-color: red;
   border: 1px solid black;
+}
+
+.messageButton svg {
+  margin-bottom: -0.3rem;
 }
 
 .visible {
@@ -393,11 +431,47 @@
   text-align: center;
 }
 
+@media screen and (min-width: 576px) {
+  .message {
+    font-size: 1.5rem;
+  }
 
+  .messageButton {
+    font-size: 1.5rem;
+    top: -3.5rem;
+  }
+
+  .adminPro_delete {
+    font-size: 1.5rem;
+  }
+  
+}
+
+@media screen and (min-width: 768px) {
+  .message {
+    font-size: 1rem;
+    top: 30vh;
+  }
+
+  .messageButton {
+    font-size: 1rem;
+    padding: 0.2rem 0.5rem;
+    top: -2.5rem
+  }
+
+  .messageButton svg {
+    margin-bottom: -0.2rem;
+  }
+
+  .adminPro_delete {
+    font-size: 1.5rem;
+  }
+}
 
 @media screen and (min-width: 992px) {
   .adminLogInSection {
     font-size: 0.5rem;
+    height: 100vh;
   }
 
   .adminPro {
@@ -518,5 +592,32 @@
 
   .addButton button {
     padding: 0.2rem 1rem;
+  }
+
+  .message {
+    font-size: 0.7rem;
+    top: 30vh;
+    width: 50vw;
+    z-index: 1;
+    left: 25vw;
+  }
+
+  .messageButton {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.3rem;
+    top: -1.5rem
+  }
+
+  .messageButton svg {
+    margin-bottom: -0.1rem;
+  }
+
+  .adminPro_delete {
+    font-size: 0.7rem;
+    width: 50%;
+  }
+
+  .adminPro_delete_buttons button {
+    padding: 0.1rem 0.5rem;
   }
 }

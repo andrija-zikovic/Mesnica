@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const AdminProducts = () => {
+const AdminProducts = (token) => {
   const [adminPro, setAdminPro] = useState([]);
   const [showImage, setShowImage] = useState([]); // Use an array to track image visibility for each row
   const [produtsChange, setProductsChange] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [message, setMessage] = useState("");
+  const [productDeleteInfo, setProductDeleteInfo] = useState();
 
   const filteredProducts = adminPro.filter((product) =>
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -44,9 +45,11 @@ const AdminProducts = () => {
   };
 
   const handleProductsChangeSubmit = () => {
-    fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CHANGE, {
-      method: "POST",
+    console.log(produtsChange);
+    fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
+      method: "PUT",
       headers: {
+        Authorization: `Bearer ${token.token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(produtsChange),
@@ -75,7 +78,11 @@ const AdminProducts = () => {
     const fetchData = async () => {
       try {
         console.log(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API);
-        const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API);
+        const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
+          headers: {
+            Authorization: `Bearer ${token.token}`,
+          },
+        });
         if (!res.ok) {
           throw new Error("Network response was not ok");
         } else {
@@ -88,13 +95,53 @@ const AdminProducts = () => {
     };
 
     fetchData();
-  }, []);
+  }, [token]);
+
+  const handleProductDelete = (id) => {
+    fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token.token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({id: id}),
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const updatedProducts = adminPro.filter((product) => product._id !== id);
+      setAdminPro(updatedProducts);
+      setProductDeleteInfo();
+      setMessage(response.message);
+    })
+    .catch((error) => {
+      console.error("Error deleting product:", error.message);
+      setMessage(error.message);
+    });
+  };
+
+  const handleFileChange = (e, id) => {
+    if (e.target.files && e.target.files.length > 0) {
+        const selectedImage = e.target.files[0];
+        handleProductChange(id, 'image', selectedImage);
+    }
+}
 
   return (
     <div className="adminPro">
+      {productDeleteInfo && (
+        <div className="adminPro_delete">
+          <p>Jeste li sigurni da zelite izbrisati proizvod <span style={{fontWeight: 'bold', whiteSpace: 'nowrap'}}>{productDeleteInfo.title}</span>?</p>
+          <div className="adminPro_delete_buttons">
+            <button onClick={() => handleProductDelete(productDeleteInfo.id)}>DA</button>
+            <button onClick={() => setProductDeleteInfo()}>NE</button>
+          </div>
+        </div>
+      )}
       <div className={`message ${message ? "visible" : "hidden"}`}>
         <button className="messageButton" onClick={() => setMessage("")}>
-          X
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
         </button>
         <p>{message}</p>
       </div>
@@ -119,6 +166,7 @@ const AdminProducts = () => {
             <th>Price/kg</th>
             <th>On Storage</th>
             <th>IMG</th>
+            <th></th>
           </tr>
         </thead>
         <tbody className="adminPro__tbody">
@@ -162,14 +210,22 @@ const AdminProducts = () => {
                 kg
               </td>
               <td>
-                <button onClick={() => handleClick(index)}>Toggle Img</button>
+                <button onClick={() => handleClick(index)}>Slika</button>
                 {showImage[index] && (
-                  <img
-                    className="adminProImg"
-                    src={product.imgSrc}
-                    alt={product.name}
-                  />
+                  <div className="adminProImg">
+                    <img
+                      className="adminProImg"
+                      src={product.imgSrc}
+                      alt={product.name}
+                    />
+                     <label htmlFor='imgSrc'>Dodaj sliku</label>
+                    <input type='file' name='imgSrc' id='imgSrc' accept='image/*'
+                        onChange={(e) => handleFileChange(e, product._id)} required />
+                  </div>
                 )}
+              </td>
+              <td>
+                <button style={{backgroundColor: 'rgba(255, 0, 0, 0.574)', padding: '0.1rem 0.1rem'}} onClick={() => setProductDeleteInfo({id: product._id, title: product.title})}>DELETE</button>
               </td>
             </tr>
           ))}

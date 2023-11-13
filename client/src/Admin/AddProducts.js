@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const AddProducts = () => {
+const AddProducts = (token) => {
 
     const [productInfo, setProductInfo] = useState({
         title: '',
@@ -13,7 +13,7 @@ const AddProducts = () => {
     const handleAddSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = process.env.REACT_APP_ADMIN_ADD_PRODUCTS_CALL_API;
+            const url = process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API;
             const formData = new FormData();
             formData.append('title', productInfo.title);
             formData.append('price', productInfo.price);
@@ -26,6 +26,10 @@ const AddProducts = () => {
             });
             const req = await fetch(url, {
                 method: 'POST',
+                credentials: 'include',
+                headers: {
+                    Authorization: `Bearer ${token.token}`,            
+                },
                 body: formData,
             });
             if (req.ok) {

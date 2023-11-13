@@ -2,16 +2,12 @@ const express = require('express');
 const router = express.Router();
 const productsController = require('../../controllers/productsController');
 const orderController = require('../../controllers/orderController');
-const logInController = require('../../controllers/logInController');
 
 router.route('/products')
-    .get(productsController.getAllProducts);
-
-router.route('/addProduct')
-    .post(productsController.createProduct);
-
-router.route('/changeProducts')
-    .post(productsController.changeProducts);
+    .get(productsController.getAllProducts)
+    .post(productsController.createProduct)
+    .put(productsController.changeProducts)
+    .delete(productsController.deleteProduct);
 
 router.route('/orders')
     .get(orderController.getOrders);
@@ -21,8 +17,5 @@ router.route('/orderConfirm')
 
 router.route('/orderReject')
     .post(orderController.orderReject);
-
-router.route('/logIn')
-    .post(logInController.auth)
     
 module.exports = router;

@@ -11,7 +11,9 @@ const Admin = () => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [token, setToken] = useState('');
     const dropdownRef = useRef(null);
+    const [message, setMessage] = useState("");
 
     const handleLogin = async (username, password) => {
         try {
@@ -25,10 +27,14 @@ const Admin = () => {
             });
         
             if (response.ok) {
-              setIsLoggedIn(true); // Set isLoggedIn to true if the response is positive
+                const { accessToken } = await response.json();
+                setToken(accessToken);
+                setIsLoggedIn(true); // Set isLoggedIn to true if the response is positive
             } else {
-              // Handle authentication failure, show error message, etc.
-              console.error('Authentication failed');
+                // Handle authentication failure, show error message, etc.
+                const errorResponse = await response.json();
+                setMessage(errorResponse.error);
+                console.error('Authentication failed');
             }
           } catch (error) {
             // Handle network errors, server errors, etc.
@@ -36,8 +42,25 @@ const Admin = () => {
           }
     };
 
-    const logOut = () => {
-        setIsLoggedIn(false);
+    const logOut = async () => {
+        try {
+            const response = await fetch('/api/logout', {
+              method: 'POST',
+              credentials: 'include',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            });
+        
+            if (response.ok) {
+                setIsLoggedIn(false);
+                console.log('Logout successful');
+            } else {
+                console.error('Logout failed');
+            }
+          } catch (error) {
+            console.error('Error during logout:', error);
+          }
     }
 
     const toggleDropdown = () => {
@@ -58,12 +81,40 @@ const Admin = () => {
         };
     }, []);
 
+   /*  const refreshTokens = async () => {
+        try {
+          const refreshResponse = await fetch(process.env.REACT_APP_REFRESH, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+      
+          if (refreshResponse.ok) {
+            setIsLoggedIn(true);
+            console.log('Tokens refreshed successfully');
+          } else {
+            // Handle refresh failure
+            setIsLoggedIn(false);
+            console.error('Token refresh failed');
+          }
+        } catch (error) {
+          // Handle network errors, server errors, etc.
+          console.error('Error occurred during token refresh:', error);
+        }
+      }; */
+
+    
     return (
         <main className='adminMain'>
       {!isLoggedIn ? (
         <section className='adminLogInSection'>
             <h3 style={{marginBottom: 0}}>Log in:</h3>
             <AdminLogIn handleLogin={handleLogin} />
+            {message && (
+              <p style={{ color: 'red' }}>{message}</p>
+            )}
             <p>username: admin | password: admin</p>
         </section>
       ) : (
@@ -95,10 +146,10 @@ const Admin = () => {
                 </ul>
             </nav>
             <Routes>
-                <Route path='/' element={<AdminProducts />} />
-                <Route path='/adminorders' element={<AdminOrders />} />
-                <Route path='/adminstats' element={<AdminStats />} />
-                <Route path='/addproduct' element={<AddProducts />} />
+                <Route path='/' element={<AdminProducts token={token}/>} />
+                <Route path='/adminorders' element={<AdminOrders token={token}/>} />
+                <Route path='/adminstats' element={<AdminStats token={token}/>} />
+                <Route path='/addproduct' element={<AddProducts token={token}/>} />
             </Routes>
             <Outlet />
         </>

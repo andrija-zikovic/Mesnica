@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import AdminOrder from "./AdminOrder";
 
-const AdminOrders = () => {
+const AdminOrders = (token) => {
   const [adminOrd, setAdminOrd] = useState([]);
-  const [backgroundColor, setBackgroundColor] = useState('defaultColor');
+  const [shouldRefetch, setShouldRefetch] = useState(true);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(process.env.REACT_APP_ADMIN_GET_ORDERS);
+        const res = await fetch(process.env.REACT_APP_ADMIN_GET_ORDERS, {
+          method: 'GET', 
+          headers: {
+            Authorization: `Bearer ${token.token}`,
+          }});
         if (!res.ok) {
           throw new Error("Network response was not ok");
         } else {
@@ -21,8 +25,11 @@ const AdminOrders = () => {
       }
     };
 
-    fetchData();
-  }, []);
+    if (shouldRefetch) {
+      fetchData();
+      setShouldRefetch(false); // Reset the flag after refetching
+    }
+  }, [token, shouldRefetch]);
 
   const [visibleOrders, setVisibleOrders] = useState([]);
 
@@ -56,10 +63,10 @@ const AdminOrders = () => {
                   onClick={() => toggleVisibility(orderData._id)}
                   style={{
                     backgroundColor: orderData.status
-                      ? "green"
+                      ? "rgba(0, 128, 0, 0.574)"
                       : orderData.status === false
-                      ? "red"
-                      : backgroundColor,
+                      ? "rgba(255, 0, 0, 0.574)"
+                      : "",
                   }}
                 >
                   <td>{orderData.num}</td>
@@ -74,7 +81,8 @@ const AdminOrders = () => {
                         orderData={orderData}
                         toggleVisibility={() => toggleVisibility(orderData._id)}
                         setMessage={setMessage}
-                        setBackgroundColor={setBackgroundColor}
+                        setShouldRefetch={setShouldRefetch}
+                        token={token}
                       />
                     </td>
                   </tr>

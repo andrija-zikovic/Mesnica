@@ -135,11 +135,32 @@ const changeProducts = async (req, res) => {
         console.error('Error updating products:', error);
         return res.status(500).json({ message: 'Internal Server Error' });
     }
-}
+};
+
+const deleteProduct = async (req, res) => {
+    const id = req.body.id;
+    console.log(id);
+    try {
+        
+        const deletedProduct = await Products.deleteOne({ _id: id });
+    
+        if (!deletedProduct) {
+          
+          return res.status(404).json({ error: 'Product not found' });
+        }
+    
+        res.status(200).json({ message: 'Product deleted successfully' });
+      } catch (error) {
+        console.error('Error deleting product:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+
+};
 
 module.exports = {
     createProduct,
     getAllProducts,
     getSpecificProducts,
-    changeProducts
+    changeProducts,
+    deleteProduct
 }

@@ -4,7 +4,8 @@ const AdminOrder = ({
   orderData,
   toggleVisibility,
   setMessage,
-  setBackgroundColor,
+  setShouldRefetch,
+  token
 }) => {
   const { _id, buyer, date, num, products, status } = orderData;
 
@@ -15,6 +16,7 @@ const AdminOrder = ({
       const response = await fetch(process.env.REACT_APP_ADMIN_ORDER_CONFIRM, {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${token.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ _id: _id }),
@@ -22,7 +24,7 @@ const AdminOrder = ({
 
       if (response.ok) {
         setOrderStatus(true);
-        setBackgroundColor("Green");
+        setShouldRefetch(true);
         setMessage(`Order ${num} Confirmed!`);
         toggleVisibility();
       } else if (response.status === 400) {
@@ -43,6 +45,7 @@ const AdminOrder = ({
       const response = await fetch(process.env.REACT_APP_ADMIN_ORDER_REJECT, {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${token.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ _id: _id }),
@@ -50,7 +53,7 @@ const AdminOrder = ({
 
       if (response.ok) {
         setOrderStatus(false);
-        setBackgroundColor("Red");
+        setShouldRefetch(true);
         setMessage(`Order ${num} Rejected!`);
         toggleVisibility();
       } else if (response.status === 400) {
