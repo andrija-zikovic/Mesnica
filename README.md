@@ -146,7 +146,7 @@ Ako se podudaraju. logInController s "jesonwebtoken" kreira accessToken i refres
     res.json({ accessToken });
 ```
 
-## server/routes/logout.js 
+[## server/routes/logout.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) 
 
 Routa ( url/logout ) obrađuje logoutController 
 
