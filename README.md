@@ -48,7 +48,7 @@ rješenje bilo pozabaviti se s nekakvim backendom. Potražio sam koji je dobar j
 Tad sam se upoznao s node.js-om. Odlučio sam se opet kroz tuturila naučiti osnove Node.js-a kako bi mogao zadovoljiti potrebe
 web trgovine. 
 
-# **SERVER**
+# [SERVER](https://github.com/andrija-zikovic/react-mini-project/blob/main/server)
 
 Prvi framework za Node.js s kojim sam se upoznao je "express", u ovom projektu koristim ga za definiranje URL ruta. 
 
@@ -58,11 +58,11 @@ imati pristup, a drugi je middleware koji provjerava dal je URL s kojeg dolazi r
 i daje dopuštenje za slanje kredencijala. Nakon toga koristim "cors" koji isto provjerava dal URL ima 
 dopuštenje za slanje requesta.
 
-## server/routes/products.js 
+## [server/routes/products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) 
 
 Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). 
 
-## server/controllers/productsContorller.js
+## [server/controllers/productsContorller.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsContorller.js)
 
 Kad se pristupi ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka izvlači listu proizvoda
 
@@ -81,11 +81,11 @@ i vraća kao response.
 Za izvlačenje podataka s mongoDB koristim "mongoose" s kojim se spajam na bazu 
 podataka, i izrađivanje Schema pomoću kojih definiram šta želim izvući iz baze podataka.
 
-## server/routes/order.js  
+## [server/routes/order.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/order.js)  
 
 Sljedeće ruta ( url/order ) obrađuje naruđbu. Kad se pristupi ruti server obrađuje orderController.
 
-## server/controllers/orderController.js
+## [server/controllers/orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)
 
 orderController s podacima koje dobiva kroz request, izrađuje QR kod koji prenosi informacije :
 ```javascript
@@ -114,19 +114,19 @@ emailSander fukciju koja koristi "nodemailer" za slanje emaila kupcu s PDF fileo
 
 Kad je email poslan orderController sprema naruđbu u mongoDB bazu podataka.
 
-## server/routes/form.js 
+## [server/routes/form.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/form.js) 
 
 Ruta ( url/form ) obrađuje formController 
 
-## server/controllers/formController.js
+## [server/controllers/formController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/formController.js)
 
 koji kroz request dobiva (name, email, message), zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
 
-## server/routes/login.js 
+## [server/routes/login.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/login.js) 
 
 Ruta ( url/login ) obrađuje logInController 
 
-## server/controllers/logInController.js
+## [server/controllers/logInController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logInController.js)
 
 koji kroz request dobiva ( username, password ). logInController u mongoDB bazi podataka traži username 
 ```javascript 
@@ -150,7 +150,7 @@ Ako se podudaraju. logInController s "jesonwebtoken" kreira accessToken i refres
 
 Routa ( url/logout ) obrađuje logoutController 
 
-## [server/controller/logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controller/logoutController.js)
+## [server/controllers/logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logoutController.js)
 
 koji provjerava dal je kroz cookie poslan JWT.
 ```javascript
