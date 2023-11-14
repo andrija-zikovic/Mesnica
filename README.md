@@ -117,11 +117,43 @@ zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
 Ruta ( url/login ) obrađuje logInController koji kroz request dobiva ( username, password ).
 logInController u mongoDB bazi podataka traži username 
 ```javascript 
-const foundUser = await User.findOne({ username });
+    const foundUser = await User.findOne({ username });
 ```
 ako ne nađe username koji je isti kao dobiven username vraća negativni response.
 
 Ako pronađe username koji je isti kao dobiven username, provjerava dal se passwordi podudaraju, za to koristi "bycrypt"
 ```javascript
- const isPasswordMatch = await bcrypt.compare(password, foundUser.password);
+    const isPasswordMatch = await bcrypt.compare(password, foundUser.password);
+```
+ako se ne podudaraju vraća negativan response.
+
+Ako se podudaraju. logInController s "jesonwebtoken" kreira accessToken i refreshToken, refreshToken sprema u bazu podataka i vraca ga kroz cookie, a accesToken vraca kao json.
+```javascript
+    res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+    res.json({ accessToken });
+```
+
+## server/routes/logout.js server/controller/logoutController.js
+
+Routa ( url/logout ) obrađuje logoutController koji provjerava dal je kroz cookie poslan JWT.
+```javascript
+    const cookies = req.cookies;
+    if (!cookies?.jwt) return res.sendStatus(204); 
+    const refreshToken = cookies.jwt;
+```
+Ako je JWT poslan, u bazi podataka traži Usera s tim JWT. Kad ga nađe, briše JWT iz baze podataka tog usera.
+```javascript
+    const foundUser = await User.findOne({ refreshToken }).exec();
+    if (!foundUser) {
+        res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+        return res.sendStatus(204);
+    }
+
+    foundUser.refreshToken = '';
+    const result = await foundUser.save();
+``` 
+Zatim vraća prazan cookie i pozitivan response.
+```javascript
+    res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+    res.sendStatus(204);
 ```
