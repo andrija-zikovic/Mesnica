@@ -1,4 +1,4 @@
-Mesnica Web Trgovina
+# Mesnica Web Trgovina
 
 Ovo je moji prvi samostalni projekt
 
