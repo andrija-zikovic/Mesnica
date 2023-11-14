@@ -58,7 +58,8 @@ imati pristup, a drugi je middleware koji provjerava dal je URL s kojeg dolazi r
 i daje dopuštenje za slanje kredencijala. Nakon toga koristim "cors" koji isto provjerava dal URL ima 
 dopuštenje za slanje requesta.
 
-## server/routes/products.js server/controllers/productsContorller.js
+## server/routes/products.js 
+## server/controllers/productsContorller.js
 
 Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). Kad se pristupi 
 ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka izvlači listu proizvoda
@@ -77,7 +78,8 @@ ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka iz
 i vraća kao response. Za izvlačenje podataka s mongoDB koristim "mongoose" s kojim se spajam na bazu 
 podataka, i izrađivanje Schema pomoću kojih definiram šta želim izvući iz baze podataka.
 
-## server/routes/order.js server/controllers/orderController.js 
+## server/routes/order.js 
+## server/controllers/orderController.js 
 
 Sljedeće ruta ( url/order ) obrađuje naruđbu. Kad se pristupi ruti server obrađuje orderController koji s podacima 
 koje dobiva kroz request, izrađuje QR kod koji prenosi informacije :
@@ -89,7 +91,7 @@ ${amount}
 ${req.body.buyer.company}
 ${req.body.buyer.address}
 ${req.body.buyer.zip} ${req.body.buyer.city}
-Sample name d.o.o
+Sample name 
 Sample Street
 Sample Zipcode City
 ${bankAcc}
@@ -107,12 +109,14 @@ emailSander fukciju koja koristi "nodemailer" za slanje emaila kupcu s PDF fileo
 
 Kad je email poslan orderController sprema naruđbu u mongoDB bazu podataka.
 
-## server/routes/form.js server/controllers/formController.js
+## server/routes/form.js 
+## server/controllers/formController.js
 
 Ruta ( url/form ) obrađuje formController koji kroz request dobiva (name, email, message), 
 zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
 
-## server/routes/login.js server/controllers/logInController.js
+## server/routes/login.js 
+## server/controllers/logInController.js
 
 Ruta ( url/login ) obrađuje logInController koji kroz request dobiva ( username, password ).
 logInController u mongoDB bazi podataka traži username 
@@ -133,7 +137,8 @@ Ako se podudaraju. logInController s "jesonwebtoken" kreira accessToken i refres
     res.json({ accessToken });
 ```
 
-## server/routes/logout.js server/controller/logoutController.js
+## server/routes/logout.js 
+## server/controller/logoutController.js
 
 Routa ( url/logout ) obrađuje logoutController koji provjerava dal je kroz cookie poslan JWT.
 ```javascript
