@@ -139,7 +139,6 @@ const changeProducts = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
     const id = req.body.id;
-    console.log(id);
     try {
         
         const deletedProduct = await Products.deleteOne({ _id: id });

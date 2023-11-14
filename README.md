@@ -148,7 +148,7 @@ Ako se podudaraju. logInController s **"jesonwebtoken"** kreira accessToken i re
 
 ## [server/routes/logout.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) 
 
-Routa ( url/logout ) obrađuje logoutController 
+Ruta **url/logout** obrađuje logoutController 
 
 ## [server/controllers/logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logoutController.js)
 
@@ -174,3 +174,102 @@ Zatim vraća prazan cookie i pozitivan response.
     res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
     res.sendStatus(204);
 ```
+
+## [server/routes/api/admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/api/admin.js)
+
+Preko **url/admin**  rutw obrađuju se svi zatjevi vezani za admina. CRUD operacije vezane za proizvode, prihvacanje i odbijanje naruđbi.
+
+Ruta **url/admin/products** prihvaca četiri vrste zahtjeva, GET, POST, PUT, DELETE.
+
+```javascript
+    router.route('/products')
+    .get(productsController.getAllProducts)
+    .post(productsController.createProduct)
+    .put(productsController.changeProducts)
+    .delete(productsController.deleteProduct);
+```
+
+Sve vrste zahtjeva obrađuju productsController.
+
+## [server/controllers/productsController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsController.js)
+
+Preko **GET** zahtjeva productsController izvršuje getAllProducts funkciju koja preko [server/model/Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/model/Products.js) 
+iz mongoDB baze podataka izvlači informacije o svim proizvodima, i vraća listu proizvoda kao response.
+```javascript
+    try {
+        const products = await Products.find();
+        if (products < 1) {
+            return res.status(204).json({ 'message': 'No products found.' });
+        }
+        res.json(products);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ 'message': 'Internal Server Error' });
+    }
+```
+
+Preko **POST** zahtjeva productsController izvršuje createProduct funkciju koja s **@google-cloud/storage** configurira cloud storage.
+```javascript
+    const { Storage } = require('@google-cloud/storage');
+
+        const storage = new Storage({
+            projectId: 'mesnica02',
+            keyFilename: '/workspaces/react-mini-project/server/config/mesnica02-f5b8d956119e.json'
+        });
+```
+Zatim iz zahtjeva uploada sliku, pomoću **sharp** mjenja velićinu slike na 600x400px, i sprema ju kao buffer. 
+```javascript
+    const resizedImageBuffer = await sharp(imagePath)
+        .resize(600, 400)
+        .toBuffer();
+```
+Potom sprema sliku u definirani cloud storage,
+```javascript
+    await storage.bucket(bucketName).file(uploadOptions.destination).save(resizedImageBuffer, {
+            metadata: uploadOptions.metadata,
+            predefinedAcl: uploadOptions.predefinedAcl,
+        });
+```
+i sprema ostale podatke is zahtjeva skupa s URL-om spremljene slike u bazu podataka.
+```javascript
+    const product = await Products.create({
+            title: req.body.title,
+            price: req.body.price,
+            onStorage: req.body.onStorage,
+            meatType: req.body.meatType,
+            imgSrc: imgSrc
+        });
+```
+
+Preko **PUT** zahtjeva productsController izvršuje changeProducts funkciju koja iterira kroz zahtjev, 
+i azurira proizvode iz baze podataka sa stavkama iz zahtjeva.
+```javascript
+     for (const [productId, updateData] of Object.entries(updates)) {
+            const { price, onStorage } = updateData;
+
+            // Update the document based on the productId
+            await Products.updateOne(
+                { _id: productId }, // Convert the string to ObjectId using mongoose
+                { $set: { price, onStorage } }
+            );
+        }
+```
+
+Preko **DELETE** zahtjeva productsController izvršuje deleteProduct funkciju
+koja kroz zahtjev dobiva ID proizvoda, i zatim iz baze podataka briše proizvod sa dobivenim ID-om.
+```javascript
+    const deletedProduct = await Products.deleteOne({ _id: id });
+    
+        if (!deletedProduct) {
+          
+          return res.status(404).json({ error: 'Product not found' });
+        }
+```
+
+
+
+
+
+
+
+
