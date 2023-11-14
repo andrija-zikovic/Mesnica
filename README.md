@@ -59,10 +59,12 @@ i daje dopuštenje za slanje kredencijala. Nakon toga koristim "cors" koji isto 
 dopuštenje za slanje requesta.
 
 ## server/routes/products.js 
+
+Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). 
+
 ## server/controllers/productsContorller.js
 
-Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). Kad se pristupi 
-ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka izvlači listu proizvoda
+Kad se pristupi ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka izvlači listu proizvoda
 
 ```javascript
 [ {
@@ -75,14 +77,17 @@ ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka iz
 }]
 ```
 
-i vraća kao response. Za izvlačenje podataka s mongoDB koristim "mongoose" s kojim se spajam na bazu 
+i vraća kao response. 
+Za izvlačenje podataka s mongoDB koristim "mongoose" s kojim se spajam na bazu 
 podataka, i izrađivanje Schema pomoću kojih definiram šta želim izvući iz baze podataka.
 
-## server/routes/order.js 
-## server/controllers/orderController.js 
+## server/routes/order.js  
 
-Sljedeće ruta ( url/order ) obrađuje naruđbu. Kad se pristupi ruti server obrađuje orderController koji s podacima 
-koje dobiva kroz request, izrađuje QR kod koji prenosi informacije :
+Sljedeće ruta ( url/order ) obrađuje naruđbu. Kad se pristupi ruti server obrađuje orderController.
+
+## server/controllers/orderController.js
+
+orderController s podacima koje dobiva kroz request, izrađuje QR kod koji prenosi informacije :
 ```javascript
 {
 HRVHUB30
@@ -110,16 +115,20 @@ emailSander fukciju koja koristi "nodemailer" za slanje emaila kupcu s PDF fileo
 Kad je email poslan orderController sprema naruđbu u mongoDB bazu podataka.
 
 ## server/routes/form.js 
+
+Ruta ( url/form ) obrađuje formController 
+
 ## server/controllers/formController.js
 
-Ruta ( url/form ) obrađuje formController koji kroz request dobiva (name, email, message), 
-zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
+koji kroz request dobiva (name, email, message), zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
 
 ## server/routes/login.js 
+
+Ruta ( url/login ) obrađuje logInController 
+
 ## server/controllers/logInController.js
 
-Ruta ( url/login ) obrađuje logInController koji kroz request dobiva ( username, password ).
-logInController u mongoDB bazi podataka traži username 
+koji kroz request dobiva ( username, password ). logInController u mongoDB bazi podataka traži username 
 ```javascript 
     const foundUser = await User.findOne({ username });
 ```
@@ -138,9 +147,12 @@ Ako se podudaraju. logInController s "jesonwebtoken" kreira accessToken i refres
 ```
 
 ## server/routes/logout.js 
+
+Routa ( url/logout ) obrađuje logoutController 
+
 ## server/controller/logoutController.js
 
-Routa ( url/logout ) obrađuje logoutController koji provjerava dal je kroz cookie poslan JWT.
+koji provjerava dal je kroz cookie poslan JWT.
 ```javascript
     const cookies = req.cookies;
     if (!cookies?.jwt) return res.sendStatus(204); 
