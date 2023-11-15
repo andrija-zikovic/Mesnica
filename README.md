@@ -81,7 +81,7 @@ i vraća kao response.
 Za izvlačenje podataka s **mongoDB** koristim **"mongoose"** s kojim se spajam na bazu 
 podataka, i izrađivanje **Schema** pomoću kojih definiram šta želim izvući iz baze podataka.
 
-## [order.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/order.js) ## [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)  
+## [order.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/order.js) / [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)  
 
 Sljedeće ruta ( url/order ) obrađuje naruđbu. Kad se pristupi ruti server obrađuje orderController.
 
@@ -118,7 +118,7 @@ Ruta ( url/form ) obrađuje formController
 
 koji kroz request dobiva (name, email, message), zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
 
-## [login.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/login.js) ## [logInController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logInController.js) 
+## [login.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/login.js) / [logInController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logInController.js) 
 
 Ruta ( url/login ) obrađuje logInController 
 
@@ -176,7 +176,9 @@ Preko **url/admin**  rute obrađuju se svi zatjevi vezani za admina. CRUD operac
 - **url/admin/orderReject**
 - **url/admin/orderConfirme**
 
-## Ruta **url/admin/products** prihvaca četiri vrste zahtjeva, GET, POST, PUT, DELETE.
+## url/admin/products
+
+Ruta url/admin/products prihvaca četiri vrste zahtjeva, GET, POST, PUT, DELETE.
 
 ```javascript
     router.route('/products')
@@ -263,4 +265,75 @@ koja kroz zahtjev dobiva ID proizvoda, i zatim iz baze podataka briše proizvod 
         }
 ```
 
-## Ruta **url/admin/order** 
+## [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)
+
+Ovaj kontroler se izvršava preko tri rute:
+
+- url/admin/orders
+- url/admin/orderReject
+- url/admin/orderConfirme
+
+```javascript
+    router.route('/orders')
+        .get(orderController.getOrders);
+
+    router.route('/orderConfirm')
+        .post(orderController.orderConfirm);
+
+    router.route('/orderReject')
+        .post(orderController.orderReject);
+```
+
+### url/admin/orders
+
+url/admin/orders ruta izvršava **getOrders** funkciju unutar [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)
+
+**getOrders** funkcija koristi [Orders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/model/Orders.js) **mongoose.Schema** model za izvlačenje informacija iz mongoDB baze podataka.
+Zatim ih vraća kroz response kao json.
+
+```javascript
+    const ordersData = await orders.find();
+    if (orders < 1) {
+        return res.status(204).json({ message: "No orders found." });
+    }
+    res.json(ordersData);
+```
+
+### url/admin/orderConfirme
+
+url/admin/orderConfirme ruta izvršava **orderConfirm** funkciju unutar [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)
+
+**orderConfirme** funkcija kroz zahtjev dobiva ID naruđbe u bazi podataka.
+
+Pomoću dobiveno ID-a funkcija traži određenu naruđbu unutar baze podataka i ažurira njezin status u **{ status: true }**.
+
+```javascript
+    const existingOrder = await orders.findById(id);
+
+    if (existingOrder.status === true) {
+        return res.status(400).json({ error: 'Order is already confirmed' });
+    }
+
+    await orders.findByIdAndUpdate(id, { $set: { status: true } }, { new: true });
+    res.status(200).json({ message: 'Order confirm!'});
+```
+
+### url/admin/orderReject
+
+url/admin/orderReject ruta izvršava **orderConfirme** funkciju unutar [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)
+
+**orderReject** funkcija funkcionira isto kao **orderConfirme** samo što umjestio { status: true } ona ažurira status u **{ status: false }**.
+
+```javascript
+    const existingOrder = await orders.findById(id);
+
+    if (existingOrder.status === true) {
+        return res.status(400).json({ error: 'Order is already rejected' });
+    }
+
+    await orders.findByIdAndUpdate(id, { $set: { status: false } }, { new: true });
+    res.status(200).json({ message: 'Order rejected!'});
+```
+
+# Frontend Razvoj s Reactom
+
