@@ -173,10 +173,11 @@ Zatim vraća prazan cookie i pozitivan response.
 
 Preko **url/admin**  rute obrađuju se svi zatjevi vezani za admina. CRUD operacije vezane za proizvode, prihvacanje i odbijanje naruđbi.
 
-- **url/admin/products**
-- **url/admin/order**
-- **url/admin/orderReject**
-- **url/admin/orderConfirme**
+- [**url/admin/products**](#urladminproducts)
+- [**url/admin/orders**](#urladminorders)
+- [**url/admin/orderConfirme**](#urladminorderconfirme)
+- [**url/admin/orderReject**](#urladminorderreject)
+
 
 ## url/admin/products
 
@@ -338,4 +339,28 @@ url/admin/orderReject ruta izvršava **orderConfirme** funkciju unutar [orderCon
 ```
 
 # Frontend Razvoj s Reactom
+
+Glavni ulazni dio React aplikacije je **App.js**.
+
+## [App.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/App.js)
+
+Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#admin.js) te se definiraju rute za svako komponentu.
+
+```javascript
+    function App() {
+        return (
+            <BrowserRouter>
+                <Routes>
+                    <Route path='*' element={<Client />} />
+                    <Route path='admin/*' element={<Admin />} />
+                </Routes>
+            </BrowserRouter>
+        );
+    }
+```
+- **BrowserRouter** omotava cijelu aplikacije kako bi omogućiti korištenje React Router-a.
+- **Routes** definira rute unutar aplikacije.
+- **Route** elementi definiraju koje komponente trebaju biti prikazani ra određenu rutu.
+
+- ### [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/Client/Client.js)
 
