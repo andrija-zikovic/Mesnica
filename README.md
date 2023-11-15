@@ -367,6 +367,10 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
 koje user želi kupiti.
 
+```javascript
+    const [cartItems, setCartItems] = useState([]);
+```
+
 Definiraju se jos četiri funkcije:
 -   deleteItem
 -   clearCart
