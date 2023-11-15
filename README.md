@@ -60,7 +60,7 @@ imati pristup, a drugi je middleware koji provjerava dal je URL s kojeg dolazi r
 i daje dopuštenje za slanje kredencijala. Nakon toga koristim "cors" koji isto provjerava dal URL ima 
 dopuštenje za slanje requesta.
 
-## [products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) ## [productsContorller.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsContorller.js) 
+## [products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) / [productsContorller.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsContorller.js) 
 
 Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). 
 
@@ -112,7 +112,7 @@ emailSander fukciju koja koristi **"nodemailer"** za slanje emaila kupcu s PDF f
 
 Kad je email poslan orderController sprema naruđbu u mongoDB bazu podataka.
 
-## [form.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/form.js) ## [formController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/formController.js) 
+## [form.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/form.js) / [formController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/formController.js) 
 
 Ruta ( url/form ) obrađuje formController 
 
@@ -140,7 +140,7 @@ Ako se podudaraju. logInController s **"jesonwebtoken"** kreira accessToken i re
     res.json({ accessToken });
 ```
 
-## [logout.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) ## [logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logoutController.js)
+## [logout.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) / [logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logoutController.js)
 
 Ruta **url/logout** obrađuje logoutController 
 
@@ -167,11 +167,16 @@ Zatim vraća prazan cookie i pozitivan response.
     res.sendStatus(204);
 ```
 
-## [admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/api/admin.js)
+# [admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/api/admin.js)
 
 Preko **url/admin**  rute obrađuju se svi zatjevi vezani za admina. CRUD operacije vezane za proizvode, prihvacanje i odbijanje naruđbi.
 
-Ruta **url/admin/products** prihvaca četiri vrste zahtjeva, GET, POST, PUT, DELETE.
+- **url/admin/products**
+- **url/admin/order**
+- **url/admin/orderReject**
+- **url/admin/orderConfirme**
+
+## Ruta **url/admin/products** prihvaca četiri vrste zahtjeva, GET, POST, PUT, DELETE.
 
 ```javascript
     router.route('/products')
@@ -183,7 +188,7 @@ Ruta **url/admin/products** prihvaca četiri vrste zahtjeva, GET, POST, PUT, DEL
 
 Sve vrste zahtjeva obrađuju productsController.
 
-## [productsController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsController.js)
+### [productsController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsController.js)
 
 Preko **GET** zahtjeva productsController izvršuje getAllProducts funkciju koja preko [server/model/Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/model/Products.js) 
 iz mongoDB baze podataka izvlači informacije o svim proizvodima, i vraća listu proizvoda kao response.
@@ -257,3 +262,5 @@ koja kroz zahtjev dobiva ID proizvoda, i zatim iz baze podataka briše proizvod 
           return res.status(404).json({ error: 'Product not found' });
         }
 ```
+
+## Ruta **url/admin/order** 
