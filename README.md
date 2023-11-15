@@ -362,5 +362,53 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 - **Routes** definira rute unutar aplikacije.
 - **Route** elementi definiraju koje komponente trebaju biti prikazani ra određenu rutu.
 
-- ### [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/Client/Client.js)
+## [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
+
+Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
+koje user želi kupiti.
+
+Definiraju se jos četiri funkcije:
+-   deleteItem
+-   clearCart
+-   calculateQuantity
+-   handleAmountChange
+
+### deleteItem
+
+**deleteItem** funkcija uzima **itemId** parametar koji koristi kao identfikator, zatim s tim identifikator filtrira kroz **cartItems** i
+stvara novu listu proizvoda bez identificiranog itema unutar **cartItems**.
+Nakon što je izradila novu listu, ažurira **cartItems** s novom listom.
+
+```javascript
+    const deleteItem = (itemId) => {
+        const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
+        setCartItems(updatedCartItems);
+    };
+```
+
+### clearCart
+
+**clearCart** funkcija ažurira **cartItems** s praznom listom.
+
+```javascript
+    const clearCart = () => {
+        setCartItems([]);
+    };
+```
+
+### calculateQuantity
+
+**calculateQuantity** funkcija uzima dva parametra **newAmount** i **selectedUnit**, ako je vrijednost **selectedUnit** "kg" onda 
+funkcija vraća vrijednost **newAmount**. U suprotnom funkcija vraća vrijednos **newAmount** podjeljenu sa 100 što bi u suštini 
+trebalo vratit vrijednost u dekagramima.
+
+```javascript
+    const calculateQuantity = (newAmount, selectedUnit) => {
+        if (selectedUnit === "kg") {
+            return newAmount;
+        } else {
+            return newAmount / 100;
+        }
+    };
+```
 

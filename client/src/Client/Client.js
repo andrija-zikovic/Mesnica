@@ -11,6 +11,7 @@ import { useState } from 'react';
 
 const Client = () => {
     const [cartItems, setCartItems] = useState([]);
+    
     const deleteItem = (itemId) => {
         const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
         setCartItems(updatedCartItems);
