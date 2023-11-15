@@ -60,11 +60,9 @@ imati pristup, a drugi je middleware koji provjerava dal je URL s kojeg dolazi r
 i daje dopuštenje za slanje kredencijala. Nakon toga koristim "cors" koji isto provjerava dal URL ima 
 dopuštenje za slanje requesta.
 
-## [products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) 
+## [products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) ## [productsContorller.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsContorller.js) 
 
 Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). 
-
-## [productsContorller.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsContorller.js)
 
 Kad se pristupi ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka izvlači listu proizvoda
 
@@ -83,11 +81,9 @@ i vraća kao response.
 Za izvlačenje podataka s **mongoDB** koristim **"mongoose"** s kojim se spajam na bazu 
 podataka, i izrađivanje **Schema** pomoću kojih definiram šta želim izvući iz baze podataka.
 
-## [order.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/order.js)  
+## [order.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/order.js) ## [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)  
 
 Sljedeće ruta ( url/order ) obrađuje naruđbu. Kad se pristupi ruti server obrađuje orderController.
-
-## [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)
 
 orderController s podacima koje dobiva kroz request, izrađuje QR kod koji prenosi informacije :
 ```javascript
@@ -116,19 +112,15 @@ emailSander fukciju koja koristi **"nodemailer"** za slanje emaila kupcu s PDF f
 
 Kad je email poslan orderController sprema naruđbu u mongoDB bazu podataka.
 
-## [form.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/form.js) 
+## [form.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/form.js) ## [formController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/formController.js) 
 
 Ruta ( url/form ) obrađuje formController 
 
-## [formController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/formController.js)
-
 koji kroz request dobiva (name, email, message), zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
 
-## [login.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/login.js) 
+## [login.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/login.js) ## [logInController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logInController.js) 
 
 Ruta ( url/login ) obrađuje logInController 
-
-## [logInController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logInController.js)
 
 koji kroz request dobiva ( username, password ). logInController u mongoDB bazi podataka traži username 
 ```javascript 
@@ -148,11 +140,9 @@ Ako se podudaraju. logInController s **"jesonwebtoken"** kreira accessToken i re
     res.json({ accessToken });
 ```
 
-## [logout.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) 
+## [logout.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) ## [logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logoutController.js)
 
 Ruta **url/logout** obrađuje logoutController 
-
-## [logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logoutController.js)
 
 koji provjerava dal je kroz cookie poslan JWT.
 ```javascript
@@ -267,11 +257,3 @@ koja kroz zahtjev dobiva ID proizvoda, i zatim iz baze podataka briše proizvod 
           return res.status(404).json({ error: 'Product not found' });
         }
 ```
-
-
-
-
-
-
-
-
