@@ -511,16 +511,45 @@ Nakon što su definiran funkcije, komponenta vraća strukturu elemenata i ostali
 
 ## [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)
 
-Nav.js komponenta je komponenta u stilu navigacijske trake, zahtjeva četiri parametra koja prosljeđuje u **Bucket** komponent.
+**Nav.js** komponenta je komponenta u stilu navigacijske trake, zahtjeva četiri parametra koja prosljeđuje u **Bucket** komponent.
 
 Nav komponenta prvo definira **useState** pomoću kojeg se definira prikazivanje **Bucket** komponente.
 ```javascript
     const [isBucketVisible, setIsBucketVisible] = useState(false);
 ```
 Zatim se definira **toggleBucketVisibility** funkcija koja ažurira vrijednost **isBucketVisible** u suprotnu vrijednos njegove trenutne
-vrijednosti. **false -> true** | **true -> false**
+vrijednosti. 
+**false -> true** | **true -> false**
 ```javascript
     const toggleBucketVisibility = () => {
         setIsBucketVisible((prevState) => !prevState);
     };
+```
+### return
+**Nav.js** komponenta vraća "unorder list" s linkovima, gumbom za prikazivanje košarice i **Bucket** komponentom
+```javascript
+    return (
+        <>
+            <nav className='nav'>
+                <ul>
+                    <li className='link__nav'>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className='link__nav'>
+                        <Link to="/products">Proizvodi</Link>
+                    </li>
+                    <li className='link__nav'>
+                        <Link to="/about-us">O nama</Link>
+                    </li>
+                    <li className='nav_bucket'>
+                        <button onClick={toggleBucketVisibility} className='nav_bucket_button'>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"></svg>
+                        </button>
+                    </li>
+                </ul>
+                { isBucketVisible && <Bucket cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} toggleBucketVisibility={toggleBucketVisibility} />}
+            </nav>
+            <Outlet />
+        </>
+    )
 ```
