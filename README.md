@@ -508,3 +508,19 @@ Nakon što su definiran funkcije, komponenta vraća strukturu elemenata i ostali
         </div>
     )
 ```
+
+## [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)
+
+Nav.js komponenta je komponenta u stilu navigacijske trake, zahtjeva četiri parametra koja prosljeđuje u **Bucket** komponent.
+
+Nav komponenta prvo definira **useState** pomoću kojeg se definira prikazivanje **Bucket** komponente.
+```javascript
+    const [isBucketVisible, setIsBucketVisible] = useState(false);
+```
+Zatim se definira **toggleBucketVisibility** funkcija koja ažurira vrijednost **isBucketVisible** u suprotnu vrijednos njegove trenutne
+vrijednosti. **false -> true** | **true -> false**
+```javascript
+    const toggleBucketVisibility = () => {
+        setIsBucketVisible((prevState) => !prevState);
+    };
+```
