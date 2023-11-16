@@ -416,3 +416,95 @@ trebalo vratit vrijednost u dekagramima.
     };
 ```
 
+### handleAmountChange
+
+**handleAmountChange** funkcija uzima sedam parametara :
+
+- **operation** : može biti "increment" ili "decrement", funkcija je koristi kako bi znala dal user želi smanjiti ili povećati količinu.
+- **id** : idetifikacijski broj proizvoda
+- **title** : naziv proizvoda.
+- **price** : cijena proizvoda.
+- **selectedUnit** : može biti "kg" ili "dag".
+- **amount** : količina.
+- **setAmount** : funkcija unutar **useState** za ažuriranje količine.
+
+Funkcija prvo definira **incrementValue**, ako je **selectedUnit = "kg"** onda **incrementValue = 1**, u suprotnom **incrementValue = 10**.
+Ova veriabla određuje dal se radi o kilogramima ili dekagramima.
+
+Zatim se definira nova količina **newAmount** tako što se gleda vrijednos **operation** parametra, ako je njegova vrijednost "increment" onda 
+se zbrajaju **amount + incrementValue**, u suprotnom se oduzimaju.
+
+Ako je **newAmount** veći ili jednak broju jedan, izvršava se **setAmount(newAmount)** kako bi se ažurirala nova vrijednost količine **amount**.
+
+Zatim se unutar toga "if statement" definira proizvod u ovom slučaju **item** sa svim dobivenim parametrima
+
+```javascript
+    const item = {
+        "id": id,
+        "description": title,
+        "price": price,
+        "tax-rate": 5,
+        "quantity": calculateQuantity(newAmount, selectedUnit),
+        "unit": selectedUnit,
+    };
+```
+i izvršavam još jedan "if statement" s kojim provjeravamo dal se nešto nalazi unutar **cartItems**.
+
+Ako je **cartItems** prazan, ažuriramo ga s definiranim proizvodom.
+```javascript
+    if (cartItems.length === 0) {
+            setCartItems([item]);
+        }
+```
+U suprotnom unutar **cartItems** tražimo index proizvoda koji ima isti identifikacijski broj kao **id** parametar.
+```javascript
+const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.id === id);
+```
+Ako dobiveni index nije -1, znači da taj proizvod postoji unutar **cartItems**. Zatim se izrađuje nova lista unutar koje se ažurira **item**
+s navedenim indexom i ažurira se cijeli **cartItems**.
+```javascript
+    if (existingItemIndex !== -1) {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems[existingItemIndex] = item;
+        setCartItems(updatedCartItems);
+    }
+```
+U suprotnom dodajemo **item** kao novi proizvod unutar **cartItems**.
+```javascript
+    setCartItems([...cartItems, item]);
+```
+A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu i samim time nam više nije potreban, pa izrađujemo novu
+listu starih proizvoda bez navedenog i ažuriramo **cartItems** s novom listom.
+```javascript
+    const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== id);
+    setCartItems(updatedCartItems);
+    setAmount(0);
+```
+
+### return 
+
+Nakon što su definiran funkcije, komponenta vraća strukturu elemenata i ostalih komponenata.
+
+- **Nav** : navigacijska traka.
+- **Header** : vrh stranice.
+- **Home** : prva stranica.
+- **Products** : stranica proizvoda.
+- **AboutUs** : "O nama" stranica.
+- **OrderForm** : stranica za ispunjavanje obrasca za naruđbu.
+- **Footer** : dno stranice:
+
+```javascript
+    return (
+        <div className='client'>
+            <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />
+            <Header title={'Mesnica'} />
+            <Routes>
+                <Route path='/' element={<Home handleAmountChange={handleAmountChange} />} />
+                <Route path='/products' element={<Products handleAmountChange={handleAmountChange} />} />
+                <Route path='/about-us' element={<AboutUs />} />
+                <Route path='/order' element={<OrderForm cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />} />
+            </Routes>
+            <Footer />
+        </div>
+    )
+```

@@ -62,6 +62,10 @@ const Client = () => {
                     setCartItems([...cartItems, item]);
                 }
             }
+        } else {
+            const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== id);
+            setCartItems(updatedCartItems);
+            setAmount(0);
         }
     };
 

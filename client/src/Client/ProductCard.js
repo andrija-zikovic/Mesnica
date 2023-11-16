@@ -36,7 +36,7 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
                         type='number'
                         id={id + '-amount'}
                         min={0}
-                        max={99}
+                        max={98}
                         placeholder='Amount'
                         value={amount}
                         onChange={(e) => setAmount(parseInt(e.target.value))}
