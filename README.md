@@ -547,9 +547,61 @@ vrijednosti.
                         </button>
                     </li>
                 </ul>
-                { isBucketVisible && <Bucket cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} toggleBucketVisibility={toggleBucketVisibility} />}
+                { isBucketVisible && <Bucket cartItems={cartItems} deleteItem={deleteItem} clearCart={clearCart} toggleBucketVisibility={toggleBucketVisibility} />}
             </nav>
             <Outlet />
         </>
     )
 ```
+## [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)
+
+**Bucket.js** komponeta prikazuje proizvode koje je kupac odabrao kupiti. Zahtjeva četiri parametra:
+
+- **cartItems**
+- **deleteItems**
+- **clearCart**
+- **toggleBucketVisibility**
+
+Prvo se definira se funkcija **calculateTotalPrice**.
+
+### calculateTotalPrice
+
+**calculateTotalPrice** funkcija izračunava ukupnu cijenu svih proizvoda tako što koristi **reduce** funkciju koja iterira kroz
+**cartItems** i za svaki item množi **quantity * price** te ih zbraja u **total**.   
+
+```javascript
+    const calculateTotalPrice = () => {
+        const totalPrice = cartItems.reduce((total, cartItem) => {
+            return total + cartItem.quantity * cartItem.price;
+        }, 0);
+
+        return totalPrice.toFixed(2); // Rounds to two decimal places
+    };
+```
+
+Zatim vraća **totalPrice** tako što ga ograniči na dvije decimale.
+```javascript
+    return totalPrice.toFixed(2);
+```
+
+### return
+
+**Bucket.js** vraća na dva načina :
+
+- 1. Prazna košarica
+
+Provjera stanje **cartItems**, ako dužina **cartItems.length < 1** što bi značilo da je **cartItems** prazan, onda vraća element
+s tekstom koji obavještava kupca da je košarica prazna.
+```javascript
+    return (
+            <section className='bucket'>
+                <p style={{ textAlign: 'center' }}>Vaša košarica je prazna!</p>
+            </section>
+        )
+```
+
+- 2. Košarica s proizvodima
+
+U suprotnom vraća elemente koji prikazuju tablicu s proizvodima, pojedinačnom količinom i cijenom, ukupnom cijenom, i dugmima za 
+naručivanje i čisćenje košarice.
+

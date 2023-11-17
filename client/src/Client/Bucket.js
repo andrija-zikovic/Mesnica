@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 
-const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart, toggleBucketVisibility }) => {
+const Bucket = ({ cartItems, deleteItem, clearCart, toggleBucketVisibility }) => {
 
     // Calculate the total price based on selectedUnit
     const calculateTotalPrice = () => {
@@ -58,8 +58,8 @@ const Bucket = ({ cartItems, setCartItems, deleteItem, clearCart, toggleBucketVi
                 </table>
 
                 <div>
-                    <button className='clear' onClick={() => clearCart()}>CLEAR</button>
-                    <Link to="/order"><button className='send' onClick={toggleBucketVisibility}>ORDER</button></Link>
+                    <button className='clear' onClick={() => clearCart()}>OČISTI</button>
+                    <Link to="/order"><button className='send' onClick={toggleBucketVisibility}>NARUČI</button></Link>
                 </div>
             </section>
         )
