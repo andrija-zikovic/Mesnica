@@ -584,7 +584,7 @@ Zatim vraća **totalPrice** tako što ga ograniči na dvije decimale.
     return totalPrice.toFixed(2);
 ```
 
-### return
+### <span style="color:purple;">return()</span>
 
 **Bucket.js** vraća na dva načina :
 
