@@ -588,7 +588,7 @@ Zatim vraća **totalPrice** tako što ga ograniči na dvije decimale.
 
 **Bucket.js** vraća na dva načina :
 
-- 1. Prazna košarica
+1. **Prazna košarica**
 
 Provjera stanje **cartItems**, ako dužina **cartItems.length < 1** što bi značilo da je **cartItems** prazan, onda vraća element
 s tekstom koji obavještava kupca da je košarica prazna.
@@ -600,7 +600,7 @@ s tekstom koji obavještava kupca da je košarica prazna.
         )
 ```
 
-- 2. Košarica s proizvodima
+2. **Košarica s proizvodima**
 
 U suprotnom vraća elemente koji prikazuju tablicu s proizvodima, pojedinačnom količinom i cijenom, ukupnom cijenom, i dugmima za 
 naručivanje i čisćenje košarice.
