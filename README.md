@@ -481,7 +481,7 @@ listu starih proizvoda bez navedenog i ažuriramo **cartItems** s novom listom.
     setAmount(0);
 ```
 
-### return 
+### return ()
 
 Nakon što su definiran funkcije, komponenta vraća strukturu elemenata i ostalih komponenata.
 
@@ -525,7 +525,7 @@ vrijednosti.
         setIsBucketVisible((prevState) => !prevState);
     };
 ```
-### return
+### return ()
 **Nav.js** komponenta vraća "unorder list" s linkovima, gumbom za prikazivanje košarice i **Bucket** komponentom
 ```javascript
     return (
@@ -584,7 +584,7 @@ Zatim vraća **totalPrice** tako što ga ograniči na dvije decimale.
     return totalPrice.toFixed(2);
 ```
 
-<span style="color:purple; font-wight:bold;">return()</span>
+### return ()
 
 **Bucket.js** vraća na dva načina :
 
@@ -602,6 +602,90 @@ s tekstom koji obavještava kupca da je košarica prazna.
 
 2. **Košarica s proizvodima**
 
-U suprotnom vraća elemente koji prikazuju tablicu s proizvodima, pojedinačnom količinom i cijenom, ukupnom cijenom, i dugmima za 
-naručivanje i čisćenje košarice.
+U suprotnom vraća elemente koji prikazuju tablicu s proizvodima, pojedinačnom količinom, cijenom i dugmom za brisanje proizvoda, 
+te ukupnom cijenom, i dugmima za naručivanje i čisćenje košarice.
 
+Tablica se prikazuje na način da se iterira kroz **cartItems** i za svaki item se prikazuje red u tablici s informacijama toga itema i dugmom za uklanjanje proizvoda iz **cartItems**.
+```javascript
+<tbody className='bucket__tbody'>
+    {cartItems.map((cartItem, index) => (
+        <tr key={index}>
+            <td>{cartItem.description}</td>
+            <td>
+                {cartItem.quantity} {cartItem.unit}
+            </td>
+            <td>
+                {parseFloat(cartItem.quantity * cartItem.price).toFixed(2)}{' '}€
+            </td>
+            <td><button className='delete' onClick={() => deleteItem(cartItem.id)}><svg xmlns="http://www.w3.org/2000/svg" height="0.7em" viewBox="0 0 384 512"></svg></button></td>
+        </tr>
+    ))}
+</tbody>
+```
+
+## [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)
+
+**Products.js** je roditeljska komponenta, dvim komponentima:
+
+- **SideNav** : navigacijska traka.
+- **ProductList** : lista proizvoda.
+
+koja zahtjeva tri parametra :
+
+- **[handleAmountChange](#handleamountchange)**
+- **amount**
+- **setAmount**
+
+koja definira **useStat** za kontroliranje prikaza određene vrste mesa.
+```javascript
+    const [meatType, setMeatType] = useState('');
+```
+
+### return()
+```javascript
+    return (
+        <main className='products'>
+        <SideNav setMeatType={setMeatType}/>
+        <ProductList handleAmountChange={handleAmountChange} amount={amount} setAmount={setAmount} meatType={meatType} host={''} />
+        </main>
+    )
+```
+
+## [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)
+
+**SideNav.js** je komponenta koja zahtjeva jedan parametar:
+
+- **setMeatType** : ažuriranje prikaza vrste mesa.
+
+I definira jednu funkciju **handleMeatTypeChange** koja zahtjeva jedan parametar i koristi **setMeatType** za ažuriranje **meatType** 
+navedenim parametrom.
+```javascript
+    const handleMeatTypeChange = (type) => {
+        setMeatType(type);
+    };
+```
+
+### return()
+**SideNav.js** vraća listu pojmova, koji na odabir izvršavaju **handleMeatTypeChange** dodajući pojam kao parametar.
+Primjer jednog pojma:
+```javascript
+    <li className='sideNav__li' onClick={() => handleMeatTypeChange('piletina')}>
+        <p className='sideNav__p'>Piletina</p>
+    </li>
+```
+
+## [ProductList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductList.js)
+
+**ProductList.js** zahtjeva pet parametara:
+
+- **handleAmountChange**
+- **amount**
+- **setAmount**
+- **meatType**
+- **host**
+
+i definira dva **useState**, jedna za ažuriranje stanja proizvoda, a drugi za ažuriranje lise proizvoda.
+```javascript
+    const [noProductsCheck, setNoProductsCheck] = useState(false);
+    const [products, setProducts] = useState([]);
+```

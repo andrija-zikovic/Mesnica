@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import './ProductList.css'
 import ProductCard from './ProductCard'
 
-const HomeProducts = ({ handleAmountChange, meatType, setMeatType, host }) => {
+const ProductList = ({ handleAmountChange, meatType, host }) => {
     const [noProductsCheck, setNoProductsCheck] = useState(false);
     const [products, setProducts] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const baseUrl = process.env.REACT_APP_PRODUCTS_CALL_API;
-                /* const baseUrl = 'https://expert-fortnight-7v7xpprp4g4fwxr4-3500.app.github.dev/products/' */
 
                 const url = baseUrl + meatType;
 
@@ -69,4 +68,4 @@ const HomeProducts = ({ handleAmountChange, meatType, setMeatType, host }) => {
     }
 };
 
-export default HomeProducts;
+export default ProductList;
