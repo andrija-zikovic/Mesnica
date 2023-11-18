@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './ProductList.css'
+import './ProductsList.css'
 import ProductCard from './ProductCard'
 
 const ProductList = ({ handleAmountChange, meatType, host }) => {

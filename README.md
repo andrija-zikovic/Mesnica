@@ -622,21 +622,174 @@ Tablica se prikazuje na način da se iterira kroz **cartItems** i za svaki item 
     ))}
 </tbody>
 ```
+## [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)
+
+**Header.js** je komponenta koja prikazuje vrh stranice. Zahtjeva jedan parametar, cija se vrijednost prikazuje unutar elementa.
+```javascript
+    const Header = ({ title }) => {
+        return (
+            <header className='header'>
+                <h1 className='header__h1'>{title}</h1>
+                <p>SINCE 1923.</p>
+            </header>
+        )
+    }
+```
+
+## [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)
+
+**Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
+
+### return()
+
+Vraća tri komponente:
+
+- **Hero**
+- **ProductList**
+- **About**
+
+unutar main elementa.
+```javascript
+    return (
+        <main className='home'>
+        <Hero />
+        <h2 className='prducts-list__h2'>TOP SELLERS</h2 >
+        <ProductsList handleAmountChange={handleAmountChange} meatType={''} host={'home'} />
+        <About />
+        </main>
+    )
+```
+
+## [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)
+
+**Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
+Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
+
+### return()
+```javascript
+    const Hero = () => {
+        return (
+            <section className='hero'>
+                <h2 className='hero__h2' loading="lazy">Dobrodošli</h2>
+                <figure>
+                    <img src={myImage} alt='hero.jbg' width="1954" height="644" />
+                    <figcaption className='offscreen'>
+                        Meat on plate
+                    </figcaption>
+                </figure>
+            </section>
+        )
+    }
+```
+
+## [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)
+
+**ProductsList.js** zahtjeva 3 parametara:
+
+- **handleAmountChange**
+- **meatType**
+- **host**
+
+i definira dva **useState**, jedna za ažuriranje stanja proizvoda, a drugi za ažuriranje lise proizvoda.
+```javascript
+    const [noProductsCheck, setNoProductsCheck] = useState(false);
+    const [products, setProducts] = useState([]);
+```
+Zatim s **useEffect** hook-om kroz **fetch** fukciju povlači listu proizvoda s definiranog URL-a.
+Ako je status responsa negativan, ažurira **noProductsCheck** s **true** vrijednosit. 
+A u suprotnom ako je response pozitivan, ažurira **products** s dobivenom listom proizvoda.
+```javascript
+    const baseUrl = process.env.REACT_APP_PRODUCTS_CALL_API;
+
+    const url = baseUrl + meatType;
+
+    const res = await fetch(url);
+    if (!res.ok) {
+        throw new Error('Network response was not ok')
+    }
+
+    if (res.status === 204) {
+        setNoProductsCheck(true);
+    } else {
+        const productsData = await res.json();
+        setProducts(productsData);
+        setNoProductsCheck(false);
+    }
+```
+
+### return()
+
+Ako je **noProductsCheck** pozitiven vrijednosti **true**, šta bi znacilo da nema povucenih proizvoda sa servera.
+
+Vraća se element s tekstom koji informira kupca kako nema proizvoda. To se desava u slučaju ako definirani **meatType**
+nije postojeći u bazi podataka.
+```javascript
+    if (noProductsCheck) {
+        return (
+            <h2 style={{ textAlign: 'center', marginTop: '25vh' }}>Nema proizvoda!</h2>
+        )
+    }
+```
+
+U suprotnom se vraća element koji u sebi iterira kroz dobivenu listu proizvoda na dva načina:
+
+Ako je **host='home'** šta bi značilo da se **ProductsList** prikazuje u **Home** komponenti, lista proizvoda se ograničava
+na 4 proizvoda s **slice** funkcijom i iterira kroz ta četiri proizvoda s **map** funkcijom. Za svaku iteraciju prikazuje se 
+**ProductCard** komponenta kojoj se prosljeđuju parametri iz te iteracije.
+```javascript
+    host === 'home' ? (
+        products.slice(0, 4).map((product) => (
+            <ProductCard
+                key={product._id}
+                id={product._id}
+                src={product.imgSrc}
+                title={product.title}
+                price={product.price}
+                handleAmountChange={handleAmountChange}
+            />
+        ))
+    )
+```
+U suprotnom se iterira se kroz sve proizvode.
+```javascript
+    products.map((product) => (
+        <ProductCard
+            key={product._id}
+            id={product._id}
+            src={product.imgSrc}
+            title={product.title}
+            price={product.price}
+            handleAmountChange={handleAmountChange}
+        />
+    ))
+```
+
+## [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)
+
+**About.js** je komponenta koja vraća **<section>** element unutar kojeg su nekoliko **<article>** elemenata
+koji prikazuju tekst o mesnici.
+```javascript
+    <section className='about'>
+      <article className='about_article'>
+        <h2>Stogodisnja tradicija!</h2>
+        <img src={Mesnica1987} width='736px' height='486px' alt='1987' className='about_article01_img'/> 
+        <h2>Od 1923.!</h2>
+      </article>
+     </section> 
+```
 
 ## [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)
 
 **Products.js** je roditeljska komponenta, dvim komponentima:
 
 - **SideNav** : navigacijska traka.
-- **ProductList** : lista proizvoda.
+- **[ProductsList](#productslistjs)** : lista proizvoda.
 
-koja zahtjeva tri parametra :
+koja zahtjeva jedan parametar :
 
 - **[handleAmountChange](#handleamountchange)**
-- **amount**
-- **setAmount**
 
-koja definira **useStat** za kontroliranje prikaza određene vrste mesa.
+i definira **useState** za kontroliranje prikaza određene vrste mesa.
 ```javascript
     const [meatType, setMeatType] = useState('');
 ```
@@ -646,7 +799,7 @@ koja definira **useStat** za kontroliranje prikaza određene vrste mesa.
     return (
         <main className='products'>
         <SideNav setMeatType={setMeatType}/>
-        <ProductList handleAmountChange={handleAmountChange} amount={amount} setAmount={setAmount} meatType={meatType} host={''} />
+        <ProductsList handleAmountChange={handleAmountChange} meatType={meatType} host={''} />
         </main>
     )
 ```
@@ -674,18 +827,6 @@ Primjer jednog pojma:
     </li>
 ```
 
-## [ProductList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductList.js)
+## [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)
 
-**ProductList.js** zahtjeva pet parametara:
-
-- **handleAmountChange**
-- **amount**
-- **setAmount**
-- **meatType**
-- **host**
-
-i definira dva **useState**, jedna za ažuriranje stanja proizvoda, a drugi za ažuriranje lise proizvoda.
-```javascript
-    const [noProductsCheck, setNoProductsCheck] = useState(false);
-    const [products, setProducts] = useState([]);
-```
+**AboutUs.js**

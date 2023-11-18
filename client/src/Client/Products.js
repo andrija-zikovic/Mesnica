@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import SideNav from './SideNav'
-import ProductList from './ProductsList'
+import ProductsList from './ProductsList'
 import './Products.css'
 
-const Products = ({ handleAmountChange, amount, setAmount }) => {
+const Products = ({ handleAmountChange }) => {
   const [meatType, setMeatType] = useState('');
   return (
     <main className='products'>
       <SideNav setMeatType={setMeatType}/>
-      <ProductList handleAmountChange={handleAmountChange} amount={amount} setAmount={setAmount} meatType={meatType} setMeatType={setMeatType} host={''} />
+      <ProductsList handleAmountChange={handleAmountChange} meatType={meatType} host={''} />
     </main>
   )
 }
