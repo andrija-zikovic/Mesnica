@@ -794,7 +794,7 @@ i definira **useState** za kontroliranje prikaza određene vrste mesa.
     const [meatType, setMeatType] = useState('');
 ```
 
-### return()
+### [return()](**[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/Products.hs.js#L8)**)
 ```javascript
     return (
         <main className='products'>
@@ -810,7 +810,7 @@ i definira **useState** za kontroliranje prikaza određene vrste mesa.
 
 - **setMeatType** : ažuriranje prikaza vrste mesa.
 
-I definira jednu funkciju **handleMeatTypeChange** koja zahtjeva jedan parametar i koristi **setMeatType** za ažuriranje **meatType** 
+I definira jednu funkciju **[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/SideNav.hs.js#L4)** koja zahtjeva jedan parametar i koristi **setMeatType** za ažuriranje **meatType** 
 navedenim parametrom.
 ```javascript
     const handleMeatTypeChange = (type) => {
@@ -818,7 +818,7 @@ navedenim parametrom.
     };
 ```
 
-### return()
+### [return()](**[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/SideNav.hs.js#L8)**)
 **SideNav.js** vraća listu pojmova, koji na odabir izvršavaju **handleMeatTypeChange** dodajući pojam kao parametar.
 Primjer jednog pojma:
 ```javascript
@@ -840,7 +840,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         message: "",
     });
 ```
-Zatim, definira se funkcija **handleInputChange**, koja prima **event** kao parametar. Iz tog eventa izvlači se njegovo **name** i **value**,
+Zatim, definira se funkcija **[handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/AboutUs.js#L11)**, koja prima **event** kao parametar. Iz tog eventa izvlači se njegovo **name** i **value**,
 nakon čega ažurira stanje **formData**, postavljajući novo **value** za odgovarajući **key** unutar trenutnog stanja.
 ```javascript
     const handleInputChange = (e) => {
@@ -848,7 +848,7 @@ nakon čega ažurira stanje **formData**, postavljajući novo **value** za odgov
         setFormData({ ...formData, [name]: value });
     };
 ```
-Nakon toga se definira **handleSubmit** funkcija koja prvo sprječava osnovno ponašanje obrasca (default behavior) pozivom **e.preventDefault()**. 
+Nakon toga se definira **[handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/AboutUs.js#L16)** funkcija koja prvo sprječava osnovno ponašanje obrasca (default behavior) pozivom **e.preventDefault()**. 
 Zatim šalje **POST** zahtjev na **API** s podacima iz **formData**. 
 ```javascript
     fetch(url, {
@@ -1003,7 +1003,7 @@ Na kraju se rezultat zaokružuje na dvije decimale pomoću **toFixed(2)**. Ovo o
 ```javascript
     return totalPrice.toFixed(2);
 ```
-### [return(](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L56)
+### [return()](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L56)
 
 **orderFrom.js** se renderira na dva tri načina. Ovisno o uvjetu.
 
