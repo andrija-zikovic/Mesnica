@@ -30,7 +30,6 @@ const AboutUs = () => {
     })
       .then((response) => {
         if (response.ok) {
-          // Reset the form inputs after successful submission
           e.target.reset();
           return response.json();
         }
@@ -41,7 +40,6 @@ const AboutUs = () => {
       })
       .catch((error) => {
         console.error("Error:", error);
-        // Handle errors if any
       });
   };
 
@@ -52,7 +50,6 @@ const AboutUs = () => {
     /\.(jpg|jpeg|png)$/
   );
 
-  // Get an array of all image file paths
   const images = imageContext.keys().map(imageContext);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,7 +57,7 @@ const AboutUs = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 10000); // Change image every 3 seconds (adjust as needed)
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [images.length]);

@@ -1,8 +1,7 @@
-
 import { useState, useRef } from 'react';
 import './orderForm.css'
 
-const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
+const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
     const [buyStatus, setBuyStatus] = useState(false);
     const formRef = useRef(null);
 
@@ -23,7 +22,7 @@ const OrderForm = ({ cartItems, setCartItems, deleteItem, clearCart }) => {
         handleOrderSend(cartItems, formValues);
     }
 
-    const handleOrderSend = async (products, buyerData) => {
+    const handleOrderSend = async (cartItems, buyerData) => {
         try {
             const url = process.env.REACT_APP_ORDER_CALL_API;
             const res = await fetch(url, {

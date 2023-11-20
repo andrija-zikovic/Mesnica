@@ -829,4 +829,160 @@ Primjer jednog pojma:
 
 ## [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)
 
-**AboutUs.js**
+**AboutUs.js** je komponenta koja istovremeno prikazuje informativni tekst o mesnici, dinamičnu listu slika koje se neprekidno 
+izmjenjuju, i omogućava korisnicima da jednostavno pošalju poruku putem dostupnog obrasca.
+
+Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
+```javascript
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+```
+Zatim, definira se funkcija **handleInputChange**, koja prima **event** kao parametar. Iz tog eventa izvlači se njegovo **name** i **value**,
+nakon čega ažurira stanje **formData**, postavljajući novo **value** za odgovarajući **key** unutar trenutnog stanja.
+```javascript
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+```
+Nakon toga se definira **handleSubmit** funkcija koja prvo sprječava osnovno ponašanje obrasca (default behavior) pozivom **e.preventDefault()**. 
+Zatim šalje **POST** zahtjev na **API** s podacima iz **formData**. 
+```javascript
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      })
+```
+Ako odgovor bude uspješan, resetira obrazac i prikazuje API odgovor u konzoli. Ako odgovor nije uspješan, hvata grešku i prikazuje je u konzoli.
+
+Nakon toga, stvara se kontekst slika koji zahtijeva sve slikovne datoteke unutar **public/img** foldera, a zatim se stvaraju polje slika i stanje za praćenje trenutnog indeksa slike. 
+```javascript
+    const imageContext = require.context(
+        "/public/img",
+        false,
+        /\.(jpg|jpeg|png)$/
+    );
+
+    const images = imageContext.keys().map(imageContext);
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+```
+
+Na kraju, koristi se useEffect da se automatski mijenja indeks slike svakih 10 sekundi.
+```javascript
+    useEffect(() => {
+        const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 10000);
+
+        return () => clearInterval(interval);
+    }, [images.length]);
+```
+### return()
+
+Komponenta **AboutUs.js** implementira ključne elemente za prikaz informacija o Mesnici na web stranici. 
+Struktura komponente uključuje:
+- 1. **Glavni Element (<main>):**
+    - Postavljen s klasom "aboutUs".
+    - Djeluje kao osnovni kontejner za sve informacije vezane uz Mesnicu. 
+- 2. **Sekcije (<section>):**
+    - Različite sekcije unutar glavnog elementa, svaka fokusirana na određeni aspekt mesnice.
+    - Ove sekcije organiziraju informacije na web stranici i olakšavaju korisnicima pronalazak specifičnih podataka.
+- 3. **Članci (<article>):**
+    - Svaka sekcija sadrži članke koji pružaju tekstualne opise.
+    - Tekst unutar članaka opisuje različite aspekte Mesnice, uključujući povijest, kvalitetu, asortiman proizvoda te poziv za posjetu.
+- 4. **Sustav za Izmjenu Slika:**
+    - Unutar određenih članaka postavljen je sustav koji dinamički izmjenjuje slike.
+    - Ovaj vizualni element pridonosi atraktivnosti stranice i pomaže u boljem predstavljanju atmosfere Mesnice.
+- 5. **Sekcija s Formom za Kontakt (<form>):**
+    - Zadnja sekcija sadrži formu za kontaktiranje Mesnice.
+    - Forma ima polja za unos imena, emaila i poruke te gumb za slanje.
+    - Obrada podataka iz forme izvršava se pomoću funkcije handleSubmit.
+
+Ova struktura omogućuje korisnicima da istraže različite aspekte Mesnice, vizualno dožive atmosferu putem dinamičnih slika te jednostavno
+stupe u kontakt s mesnicom putem obrasca. Komponenta pridonosi organiziranom i privlačnom prikazu informacija o Mesnici na web stranici
+
+## [orderForm.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js)
+
+**orderForm.js** je komponenta odgovorna za prikaz obrasca za naručivanje proizvoda. Ova komponenta omogućuje korisnicima
+da ispune obrazac o svojim informacijama i pošalju naruđbu sa prije dodanim proizvodima.
+Zahtjeva tri parametra:
+- **cartItems** 
+- **deleteItem**
+- **clearCart**
+Komponenta koristi useState za praćenje statusa kupnje (da li je narudžba uspješna), a također koristi useRef za referencu na formu.
+```javascript
+    const [buyStatus, setBuyStatus] = useState(false);
+    const formRef = useRef(null);
+```
+### handleSubmit
+Nakon toga se definira funkcija **handleSubmit** koja obrađuje podatke za slanje narudžbe. handleSubmit koristi **event.preventDefault():**
+za spriječavanje osnovnog ponašanja obrasca, čime se spriječava ponovno učitavanje stranice prilikom slanja obrasca.
+Za dohvaćanje podataka iz forme koristi se **FormData** objekt za dohvaćanje podataka iz forme. **formRef.current** predstavlja referencu 
+na HTML formu.
+```javascript
+    event.preventDefault();
+    const formData = new FormData(formRef.current);
+```
+Zatim se popunjavanje se objekt **formValues** na način da se podaci iz forme iteriraju, a polja imena **(fname)**, prezimena **(lname)** 
+se spajaju u jedno polje **company**. Ostali podaci se direktno dodaju u **formValues** objekt.
+```javascript
+    const formValues = {};
+    formData.forEach((value, key) => {
+        if (key === 'fname' || key === 'lname') {
+            formValues['company'] = `${formData.get('fname')} ${formData.get('lname')}`;
+        } else {
+            formValues[key] = value;
+        }
+    });
+```
+
+Na kraju se poziva **handleOrderSend** funkcija s proizvodima iz košarice(**cartItems**) i podacima o kupcu(**formValues**).
+```javascript
+    handleOrderSend(cartItems, formValues);
+```
+### handleOrderSend
+
+**handleOrderSend** funkcija je ključna funkcija za slanje narudžbe na server.
+
+Prvo se definira URL iz environmenta, zatim se koristi **fetch** za slanje **POST** zahtjeva na definirani **URL**.  
+U zaglavljima se postavlja **Content-Type** na **application/json**, a tijelo zahtjeva se postavlja na **JSON** reprezentaciju 
+objekta s proizvodima iz košarice (**cartItems**) i podacima o kupcu (**buyerData**).
+```javascript
+    try {
+        const url = process.env.REACT_APP_ORDER_CALL_API;
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ "products": cartItems, "buyer": buyerData }), // Send cartItems as JSON
+        });
+```
+Zatim se provjerava da li je **HTTP** odgovor uspješan (**status kod 200**). Ako je odgovor uspješan, tada se postavlja 
+**buyStatus** na **true** (označava uspješno slanje narudžbe), brišu se svi proizvodi iz košarice i ispisuje poruka o uspješnom slanju
+narudžbe. 
+```javascript
+    if (res.ok) {
+        setBuyStatus(true);
+        clearCart();
+        const data = await res.json();
+        console.log(data.message);
+    }
+```
+Ako dođe do problema tijekom slanja narudžbe (npr. problemi s mrežom ili odgovor s neuspješnim statusom), 
+uhvaćena je greška i ispisana je u konzoli.
+```javascript
+    catch (err) {
+        console.error('Error giving order:', err)
+    }
+```
