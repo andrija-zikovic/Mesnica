@@ -887,7 +887,7 @@ Na kraju, koristi se useEffect da se automatski mijenja indeks slike svakih 10 s
         return () => clearInterval(interval);
     }, [images.length]);
 ```
-### return()
+### [return()](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/AboutUs.js#L65)
 
 Komponenta **AboutUs.js** implementira ključne elemente za prikaz informacija o Mesnici na web stranici. 
 Struktura komponente uključuje:
@@ -924,7 +924,7 @@ Komponenta koristi useState za praćenje statusa kupnje (da li je narudžba uspj
     const [buyStatus, setBuyStatus] = useState(false);
     const formRef = useRef(null);
 ```
-### handleSubmit
+### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L8)
 Nakon toga se definira funkcija **handleSubmit** koja obrađuje podatke za slanje narudžbe. handleSubmit koristi **event.preventDefault():**
 za spriječavanje osnovnog ponašanja obrasca, čime se spriječava ponovno učitavanje stranice prilikom slanja obrasca.
 Za dohvaćanje podataka iz forme koristi se **FormData** objekt za dohvaćanje podataka iz forme. **formRef.current** predstavlja referencu 
@@ -950,7 +950,7 @@ Na kraju se poziva **handleOrderSend** funkcija s proizvodima iz košarice(**car
 ```javascript
     handleOrderSend(cartItems, formValues);
 ```
-### handleOrderSend
+### [handleOrderSend](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L25)
 
 **handleOrderSend** funkcija je ključna funkcija za slanje narudžbe na server.
 
@@ -986,3 +986,38 @@ uhvaćena je greška i ispisana je u konzoli.
         console.error('Error giving order:', err)
     }
 ```
+### [calucalteTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L48)
+**calculateTotalPrice** funkcija koristi se za izračunavanje ukupne cijene proizvoda u košarici, uzimajući u obzir količinu i cijenu 
+svakog pojedinog proizvoda.
+
+Prvo se definira varijabla totalPrice i postavlja na početnu vrijednost 0. Ova varijabla će se koristiti za akumuliranje ukupne cijene 
+proizvoda u košarici. Zatim se koristi **reduce** metoda kako bi se iteriralo kroz sve proizvode u **cartItems** (košarici) i izračunala 
+ukupna cijena. Za svaki proizvod, količina (**cartItem.quantity**) se množi s cijenom (**cartItem.price**), a rezultat se dodaje na 
+trenutni zbroj (**total**).
+```javascript
+    const totalPrice = cartItems.reduce((total, cartItem) => {
+        return total + cartItem.quantity * cartItem.price;
+    }, 0);
+```
+Na kraju se rezultat zaokružuje na dvije decimale pomoću **toFixed(2)**. Ovo osigurava da ukupna cijena bude prikazana s točno dvije decimale.
+```javascript
+    return totalPrice.toFixed(2);
+```
+### [return(](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L56)
+
+**orderFrom.js** se renderira na dva tri načina. Ovisno o uvjetu.
+
+1. Prvi uvjet (**if (buyStatus) {...}**): 
+
+    - Ako je buyStatus true, to znači da je narudžba uspješno poslana. Prikazuje se određeni dio JSX-a s porukom o uspješnoj narudžbi.
+
+2. Drugi uvjet (**else if (cartItems.length < 1) {...}**): 
+
+    - Ako **buyStatus** nije true i dužina **cartItems** (proizvoda u košarici) je manja od 1, to znači da je košarica prazna. 
+      Prikazuje se određeni dio JSX-a s porukom o praznoj košarici.
+
+3. Treći uvjet (**else {...}**): 
+
+    - Ako ni jedan od prethodnih uvjeta nije ispunjen, to znači da korisnik ima proizvode u košarici i nije poslao narudžbu. 
+      Prikazuje se ostatak JSX-a koji prikazuje popis proizvoda u košarici, ukupnu cijenu, formu za unos podataka i gumbi za čišćenje 
+      košarice i slanje narudžbe.
