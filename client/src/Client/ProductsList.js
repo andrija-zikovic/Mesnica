@@ -31,6 +31,7 @@ const ProductList = ({ handleAmountChange, meatType, host }) => {
 
         fetchData();
     }, [meatType]);
+    
     if (noProductsCheck) {
         return (
             <h2 style={{ textAlign: 'center', marginTop: '25vh' }}>Nema proizvoda!</h2>

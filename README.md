@@ -323,7 +323,7 @@ Pomoću dobiveno ID-a funkcija traži određenu naruđbu unutar baze podataka i 
 
 ### url/admin/orderReject
 
-url/admin/orderReject ruta izvršava **orderConfirme** funkciju unutar [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)
+url/admin/orderReject ruta izvršava **orderConfirme** funkciju unutar **[orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)**
 
 **orderReject** funkcija funkcionira isto kao **orderConfirme** samo što umjestio { status: true } ona ažurira status u **{ status: false }**.
 
@@ -362,6 +362,8 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 - **Routes** definira rute unutar aplikacije.
 - **Route** elementi definiraju koje komponente trebaju biti prikazani ra određenu rutu.
 
+# Korisnička strana
+
 ## [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
 
 Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
@@ -372,12 +374,12 @@ koje user želi kupiti.
 ```
 
 Definiraju se jos četiri funkcije:
--   deleteItem
--   clearCart
--   calculateQuantity
--   handleAmountChange
+-   [deleteItem](#deleteitem)
+-   [clearCart](#clearcart)
+-   [calculateQuantity](#calculatequantity)
+-   [handleAmountChange](#handleamountchange)
 
-### deleteItem
+### [deleteItem](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L15)
 
 **deleteItem** funkcija uzima **itemId** parametar koji koristi kao identfikator, zatim s tim identifikator filtrira kroz **cartItems** i
 stvara novu listu proizvoda bez identificiranog itema unutar **cartItems**.
@@ -390,7 +392,7 @@ Nakon što je izradila novu listu, ažurira **cartItems** s novom listom.
     };
 ```
 
-### clearCart
+### [clearCart](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L20)
 
 **clearCart** funkcija ažurira **cartItems** s praznom listom.
 
@@ -400,7 +402,7 @@ Nakon što je izradila novu listu, ažurira **cartItems** s novom listom.
     };
 ```
 
-### calculateQuantity
+### [calculateQuantity](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L24)
 
 **calculateQuantity** funkcija uzima dva parametra **newAmount** i **selectedUnit**, ako je vrijednost **selectedUnit** "kg" onda 
 funkcija vraća vrijednost **newAmount**. U suprotnom funkcija vraća vrijednos **newAmount** podjeljenu sa 100 što bi u suštini 
@@ -416,7 +418,7 @@ trebalo vratit vrijednost u dekagramima.
     };
 ```
 
-### handleAmountChange
+### [handleAmountChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L32)
 
 **handleAmountChange** funkcija uzima sedam parametara :
 
@@ -481,7 +483,7 @@ listu starih proizvoda bez navedenog i ažuriramo **cartItems** s novom listom.
     setAmount(0);
 ```
 
-### return ()
+### [Client.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L72)
 
 Nakon što su definiran funkcije, komponenta vraća strukturu elemenata i ostalih komponenata.
 
@@ -517,7 +519,7 @@ Nav komponenta prvo definira **useState** pomoću kojeg se definira prikazivanje
 ```javascript
     const [isBucketVisible, setIsBucketVisible] = useState(false);
 ```
-Zatim se definira **toggleBucketVisibility** funkcija koja ažurira vrijednost **isBucketVisible** u suprotnu vrijednos njegove trenutne
+Zatim se definira **[toggleBucketVisibility](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L10)** funkcija koja ažurira vrijednost **isBucketVisible** u suprotnu vrijednos njegove trenutne
 vrijednosti. 
 **false -> true** | **true -> false**
 ```javascript
@@ -525,8 +527,8 @@ vrijednosti.
         setIsBucketVisible((prevState) => !prevState);
     };
 ```
-### return ()
-**Nav.js** komponenta vraća "unorder list" s linkovima, gumbom za prikazivanje košarice i **Bucket** komponentom
+### [Nav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js#L14)
+**Nav.js** komponenta renderira "unorder list" s linkovima, gumbom za prikazivanje košarice i **Bucket** komponentom
 ```javascript
     return (
         <>
@@ -564,7 +566,7 @@ vrijednosti.
 
 Prvo se definira se funkcija **calculateTotalPrice**.
 
-### calculateTotalPrice
+### [calculateTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js#L7)
 
 **calculateTotalPrice** funkcija izračunava ukupnu cijenu svih proizvoda tako što koristi **reduce** funkciju koja iterira kroz
 **cartItems** i za svaki item množi **quantity * price** te ih zbraja u **total**.   
@@ -579,18 +581,18 @@ Prvo se definira se funkcija **calculateTotalPrice**.
     };
 ```
 
-Zatim vraća **totalPrice** tako što ga ograniči na dvije decimale.
+Zatim renderira **totalPrice** tako što ga ograniči na dvije decimale.
 ```javascript
     return totalPrice.toFixed(2);
 ```
 
-### return ()
+### [Bucket.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js#L15)
 
 **Bucket.js** vraća na dva načina :
 
-1. **Prazna košarica**
+1. **Prazna košarica (if (cartItems.length < 1) {..})**
 
-Provjera stanje **cartItems**, ako dužina **cartItems.length < 1** što bi značilo da je **cartItems** prazan, onda vraća element
+Provjera stanje **cartItems**, ako dužina **cartItems.length < 1** što bi značilo da je **cartItems** prazan, onda renderira element
 s tekstom koji obavještava kupca da je košarica prazna.
 ```javascript
     return (
@@ -600,9 +602,9 @@ s tekstom koji obavještava kupca da je košarica prazna.
         )
 ```
 
-2. **Košarica s proizvodima**
+2. **Košarica s proizvodima (else {..})**
 
-U suprotnom vraća elemente koji prikazuju tablicu s proizvodima, pojedinačnom količinom, cijenom i dugmom za brisanje proizvoda, 
+U suprotnom renderira elemente koji prikazuju tablicu s proizvodima, pojedinačnom količinom, cijenom i dugmom za brisanje proizvoda, 
 te ukupnom cijenom, i dugmima za naručivanje i čisćenje košarice.
 
 Tablica se prikazuje na način da se iterira kroz **cartItems** i za svaki item se prikazuje red u tablici s informacijama toga itema i dugmom za uklanjanje proizvoda iz **cartItems**.
@@ -640,9 +642,9 @@ Tablica se prikazuje na način da se iterira kroz **cartItems** i za svaki item 
 
 **Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
 
-### return()
+### [Home.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js#L9)
 
-Vraća tri komponente:
+Renderira tri komponente:
 
 - **Hero**
 - **ProductList**
@@ -665,7 +667,7 @@ unutar main elementa.
 **Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
 Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
 
-### return()
+### [Hero.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js#L6)
 ```javascript
     const Hero = () => {
         return (
@@ -717,7 +719,7 @@ A u suprotnom ako je response pozitivan, ažurira **products** s dobivenom listo
     }
 ```
 
-### return()
+### [ProductsList.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js#L35)
 
 Ako je **noProductsCheck** pozitiven vrijednosti **true**, šta bi znacilo da nema povucenih proizvoda sa servera.
 
@@ -766,7 +768,7 @@ U suprotnom se iterira se kroz sve proizvode.
 
 ## [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)
 
-**About.js** je komponenta koja vraća **<section>** element unutar kojeg su nekoliko **<article>** elemenata
+**About.js** je komponenta koja renderira **<section>** element unutar kojeg su nekoliko **<article>** elemenata
 koji prikazuju tekst o mesnici.
 ```javascript
     <section className='about'>
@@ -794,7 +796,7 @@ i definira **useState** za kontroliranje prikaza određene vrste mesa.
     const [meatType, setMeatType] = useState('');
 ```
 
-### [return()](**[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/Products.hs.js#L8)**)
+### [Products.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.hs.js#L8)
 ```javascript
     return (
         <main className='products'>
@@ -810,7 +812,7 @@ i definira **useState** za kontroliranje prikaza određene vrste mesa.
 
 - **setMeatType** : ažuriranje prikaza vrste mesa.
 
-I definira jednu funkciju **[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/SideNav.hs.js#L4)** koja zahtjeva jedan parametar i koristi **setMeatType** za ažuriranje **meatType** 
+I definira jednu funkciju **[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L4)** koja zahtjeva jedan parametar i koristi **setMeatType** za ažuriranje **meatType** 
 navedenim parametrom.
 ```javascript
     const handleMeatTypeChange = (type) => {
@@ -818,8 +820,8 @@ navedenim parametrom.
     };
 ```
 
-### [return()](**[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/SideNav.hs.js#L8)**)
-**SideNav.js** vraća listu pojmova, koji na odabir izvršavaju **handleMeatTypeChange** dodajući pojam kao parametar.
+### [SideNav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L8)
+**SideNav.js** renderira listu pojmova, koji na odabir izvršavaju **handleMeatTypeChange** dodajući pojam kao parametar.
 Primjer jednog pojma:
 ```javascript
     <li className='sideNav__li' onClick={() => handleMeatTypeChange('piletina')}>
@@ -840,7 +842,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         message: "",
     });
 ```
-Zatim, definira se funkcija **[handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/AboutUs.js#L11)**, koja prima **event** kao parametar. Iz tog eventa izvlači se njegovo **name** i **value**,
+Zatim, definira se funkcija **[handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L11)**, koja prima **event** kao parametar. Iz tog eventa izvlači se njegovo **name** i **value**,
 nakon čega ažurira stanje **formData**, postavljajući novo **value** za odgovarajući **key** unutar trenutnog stanja.
 ```javascript
     const handleInputChange = (e) => {
@@ -848,7 +850,7 @@ nakon čega ažurira stanje **formData**, postavljajući novo **value** za odgov
         setFormData({ ...formData, [name]: value });
     };
 ```
-Nakon toga se definira **[handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/AboutUs.js#L16)** funkcija koja prvo sprječava osnovno ponašanje obrasca (default behavior) pozivom **e.preventDefault()**. 
+Nakon toga se definira **[handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L16)** funkcija koja prvo sprječava osnovno ponašanje obrasca (default behavior) pozivom **e.preventDefault()**. 
 Zatim šalje **POST** zahtjev na **API** s podacima iz **formData**. 
 ```javascript
     fetch(url, {
@@ -887,7 +889,7 @@ Na kraju, koristi se useEffect da se automatski mijenja indeks slike svakih 10 s
         return () => clearInterval(interval);
     }, [images.length]);
 ```
-### [return()](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/AboutUs.js#L65)
+### [AboutUs.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L65)
 
 Komponenta **AboutUs.js** implementira ključne elemente za prikaz informacija o Mesnici na web stranici. 
 Struktura komponente uključuje:
@@ -924,7 +926,7 @@ Komponenta koristi useState za praćenje statusa kupnje (da li je narudžba uspj
     const [buyStatus, setBuyStatus] = useState(false);
     const formRef = useRef(null);
 ```
-### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L8)
+### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L8)
 Nakon toga se definira funkcija **handleSubmit** koja obrađuje podatke za slanje narudžbe. handleSubmit koristi **event.preventDefault():**
 za spriječavanje osnovnog ponašanja obrasca, čime se spriječava ponovno učitavanje stranice prilikom slanja obrasca.
 Za dohvaćanje podataka iz forme koristi se **FormData** objekt za dohvaćanje podataka iz forme. **formRef.current** predstavlja referencu 
@@ -950,7 +952,7 @@ Na kraju se poziva **handleOrderSend** funkcija s proizvodima iz košarice(**car
 ```javascript
     handleOrderSend(cartItems, formValues);
 ```
-### [handleOrderSend](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L25)
+### [handleOrderSend](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L25)
 
 **handleOrderSend** funkcija je ključna funkcija za slanje narudžbe na server.
 
@@ -986,7 +988,7 @@ uhvaćena je greška i ispisana je u konzoli.
         console.error('Error giving order:', err)
     }
 ```
-### [calucalteTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L48)
+### [calucalteTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L48)
 **calculateTotalPrice** funkcija koristi se za izračunavanje ukupne cijene proizvoda u košarici, uzimajući u obzir količinu i cijenu 
 svakog pojedinog proizvoda.
 
@@ -1003,21 +1005,27 @@ Na kraju se rezultat zaokružuje na dvije decimale pomoću **toFixed(2)**. Ovo o
 ```javascript
     return totalPrice.toFixed(2);
 ```
-### [return()](https://github.com/andrija-zikovic/react-mini-project/blob/24db243221ca03a55b72290186cd94c46c24d2e5/client/src/Client/orderForm.js#L56)
+### [orderForm.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L56)
 
 **orderFrom.js** se renderira na dva tri načina. Ovisno o uvjetu.
 
-1. Prvi uvjet (**if (buyStatus) {...}**): 
+1. Prvi uvjet (**[if (buyStatus) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L56)**): 
 
     - Ako je buyStatus true, to znači da je narudžba uspješno poslana. Prikazuje se određeni dio JSX-a s porukom o uspješnoj narudžbi.
 
-2. Drugi uvjet (**else if (cartItems.length < 1) {...}**): 
+2. Drugi uvjet (**[else if (cartItems.length < 1) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L68)**): 
 
     - Ako **buyStatus** nije true i dužina **cartItems** (proizvoda u košarici) je manja od 1, to znači da je košarica prazna. 
       Prikazuje se određeni dio JSX-a s porukom o praznoj košarici.
 
-3. Treći uvjet (**else {...}**): 
+3. Treći uvjet (**[else {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L74)**): 
 
     - Ako ni jedan od prethodnih uvjeta nije ispunjen, to znači da korisnik ima proizvode u košarici i nije poslao narudžbu. 
       Prikazuje se ostatak JSX-a koji prikazuje popis proizvoda u košarici, ukupnu cijenu, formu za unos podataka i gumbi za čišćenje 
       košarice i slanje narudžbe.
+
+## [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)
+
+**Footer.js** je jednostavna komponenta koja renderira kontakt informacije i registrirani znak s nazivom mesnice i tekućom godinom.
+
+# Strana za administratora
