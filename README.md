@@ -1229,3 +1229,16 @@ Koristi **onChange** događaj kako bi ažuriralo stanje svaki put kada korisnik 
 ```javascript
     <button type="submit" className='adminLogIn_submit'>Login</button>
 ```
+
+## [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)
+
+**AdminProducts** je funkcionalna komponenta odgovorna za upravljanje i prikazivanje liste proizvoda u administratorskom sučelju. 
+Komunicira s API-jem kako bi dohvatila, ažurirala i brisala informacije o proizvodima.
+
+Definiranje stanja verijabli:
+- **adminPro**: Sadrži popis proizvoda dohvaćenih iz API-ja.
+- **showImage**: Polje koje prati vidljivost slika za svaki redak.
+- **produtsChange**: Prati promjene u podacima o proizvodu.
+- **searchQuery**: Predstavlja upit korisnika za filtriranje proizvoda.
+- **message**: Sprema poruke koje se prikazuju korisniku.
+- **productDeleteInfo**: Sadrži informacije o proizvodu koji se želi izbrisati.
