@@ -1193,6 +1193,7 @@ Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**,
 administratorskog sučelja.
 
 <div style="background-color: #fff;">
+
 ## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)
 
 **AdminLogIn.js** je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
