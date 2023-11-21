@@ -1175,3 +1175,22 @@ listener se uklanja.
         };
     }, []);
 ``` 
+### [Renderiranje Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L109)
+
+Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na dva načina: 
+1. Ako korisnik nije prijavljen (stanje **isLoggedIn** je **false**): 
+    Prikazuje se odjeljak (`<section>`) za prijavu administratora. To uključuje naslov "Log in:", komponentu za prijavu (**AdminLogIn**), 
+    prikazivanje eventualne poruke o pogrešci (**message**), te informacije o korisničkom imenu i lozinki.
+2. Ako je korisnik prijavljen (stanje **isLoggedIn** je **true**): 
+    Prikazuje se navigacijski izbornik (`<nav>`) s popisom veza (`<ul>`) koji omogućuju pristup različitim dijelovima administratorskog 
+    sučelja, poput proizvoda, narudžbi, statistike i opcije za odjavu. Također, ovisno o stanju **isDropdownOpen**, prikazuje se i dodatni 
+    padajući izbornik s opcijama "Lista" i "Dodaj" za proizvode.
+    U sklopu rutiranja (`<Routes>`), ovisno o trenutnoj ruti, prikazuju se odgovarajući dijelovi sučelja, poput liste proizvoda, narudžbi, 
+    statistike ili dodavanja novog proizvoda.
+    Klikom na vezu "Log out", izaziva se funkcija **logOut** koja obavlja odjavu administratora.
+
+Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
+administratorskog sučelja.
+
+## [AdminLogIn](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)
+
