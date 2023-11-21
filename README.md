@@ -1192,7 +1192,7 @@ Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na d
 Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
 administratorskog sučelja.
 
-<div style="background-color: #fff;">
+<div style="background-color: #fff; padding: 20px;">
 
 ## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)
 
