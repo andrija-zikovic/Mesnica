@@ -1192,9 +1192,7 @@ Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na d
 Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
 administratorskog sučelja.
 
-<div style="background-color: #fff; padding: 20px;">
-
-## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)
+<div style="background-color: #fff;">## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)</div>
 
 **AdminLogIn.js** je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
 administratora.
@@ -1231,4 +1229,3 @@ Koristi **onChange** događaj kako bi ažuriralo stanje svaki put kada korisnik 
 ```javascript
     <button type="submit" className='adminLogIn_submit'>Login</button>
 ```
-</div>
