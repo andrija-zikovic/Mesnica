@@ -1036,3 +1036,142 @@ Na kraju se rezultat zaokružuje na dvije decimale pomoću **toFixed(2)**. Ovo o
 **Footer.js** je jednostavna komponenta koja renderira kontakt informacije i registrirani znak s nazivom mesnice i tekućom godinom.
 
 # Admin
+
+## [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)
+
+**Admin.js** je komponenta koja predstavlja administratorsko sučelje.
+Prvo se definiraju stanja verijabli:
+- **isLoggedIn** prati je li administrator prijavljen ili nije.
+- **isDropdownOpen** koristi se za upravljanje stanjem padajućeg izbornika.
+- **token** sadrži autentikacijski token.
+- **message** se koristi za prikazivanje informativnih poruka.
+- **dropdownRef** je referenca na element padajućeg izbornika.
+```javascript
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [token, setToken] = useState('');
+    const dropdownRef = useRef(null);
+    const [message, setMessage] = useState("");
+```
+
+### [handleLogin](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L18)
+
+**handleLogin** je asinkrona funkcija za obradu prijave administratora. 
+Prvo se definira **URL** iz **env**ironmenta, nakon toga se koristi **fetch** funkcija za slanje asinkronog **HTTP POST** zahtjeva prema 
+definiranom **URL**-u. Postavke zahtjeva uključuju method (POST), te **headers** i **body** koji se postavljaju kako bi se poslali **JSON**
+podaci s korisničkim imenom i lozinkom.
+```javascript
+    const url = process.env.REACT_APP_LOGIN;
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+    });
+```
+Zatim **response.ok** provjerava je li **HTTP** odgovor uspješan (status kod 2xx). Ako jest, izvršava se blok koda unutar if izjave.
+**const { accessToken } = await response.json()** parsira **JSON** odgovor iz servera i dohvaća accessToken.
+**setToken(accessToken)** postavlja token u stanje komponente pomoću **setToken** funkcije.
+**setIsLoggedIn(true)** postavlja **isLoggedIn** na **true** kako bi označio da je administrator uspješno prijavljen.
+```javascript
+    if (response.ok) {
+        const { accessToken } = await response.json();
+        setToken(accessToken);
+        setIsLoggedIn(true); 
+    }
+```
+Ako odgovor nije uspješan, koristi se **await response.json()** za parsiranje **JSON** odgovora s servera koji sadrži podatke o grešci.
+**setMessage(errorResponse.error)** postavlja poruku o grešci u stanje komponente pomoću **setMessage** funkcije.
+**console.error('Authentication failed')** ispisuje poruku o grešci u konzolu.
+```javascript
+    else {
+        const errorResponse = await response.json();
+        setMessage(errorResponse.error);
+        console.error('Authentication failed');
+    }
+```
+Ova funkcija **handleLogin** integrira logiku prijave administratora, obrađujući različite scenarije uspjeha i neuspjeha tijekom 
+asinkronog procesa prijave prema određenom URL-u
+
+### [logOut](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L45)
+
+**logOut** funkcija obavlja logiku odjave administratora.
+
+**await fetch('/api/logout', { method: 'POST', ... })** koristi funkciju **fetch** za slanje 
+**asinkronog HTTP POST zahtjeva prema '/api/logout'** endpointu na serveru. Postavkom method: **'POST'** određuje se metoda zahtjeva za 
+odjavu koristeći **HTTP** metodu **POST**. Ova konfiguracija je bitna jer specifično ukazuje na namjeru izvršavanja odjave. Također, opcija 
+**credentials: 'include'** odabire se kako bi se osiguralo da se kredencijali, u ovom slučaju **kolačići (cookies)**, automatski uključe u 
+zahtjev. Ovo je od krucijalne važnosti pri radu s autentikacijom putem kolačića. Kada je postavljeno na **'include'**, osigurava se 
+automatsko uključivanje kolačića u svaki zahtjev, pružajući potrebne informacije za odjavu. 
+Nadalje, **headers: { 'Content-Type': 'application/json' }** postavlja zaglavlje zahtjeva kako bi se naznačilo da se šalju podaci u 
+**JSON formatu**. Ova konfiguracija osigurava da su podaci o odjavi strukturirani kao JSON, pridržavajući odgovarajuće standarde pri 
+komunikaciji s serverom.
+```javascript
+    try {
+        const response = await fetch('/api/logout', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+        });
+```
+Nakon toga, **response.ok** se koristi za provjeru je li **HTTP** odgovor uspješan, odnosno ima li **status kod 2xx**. Ako jest, slijedi 
+izvršavanje bloka koda unutar **if** izjave. U tom slučaju, **setIsLoggedIn(false)** postavlja vrijednost **isLoggedIn** na *false*, što 
+označava da je administrator uspješno odjavljen. Osim toga, **console.log('Logout successful')** ispisuje poruku o uspješnoj odjavi u 
+konzolu, pružajući potvrdu o nesmetanom procesu odjave.
+```javascript
+    if (response.ok) {
+        setIsLoggedIn(false);
+        console.log('Logout successful');
+    } else {
+        console.error('Logout failed');
+    }
+```
+**catch (error)**: Uhvaćene su sve vrste pogrešaka koje se mogu pojaviti tijekom izvršavanja funkcije. 
+**console.error('Error during logout:', error)**: Ispisuje poruku o grešci u konzolu koristeći console.error
+```javascript
+    } catch (error) {
+        console.error('Error during logout:', error);
+    }
+```
+Ova funkcija **logOut** integrira logiku odjave administratora, obrađujući različite scenarije uspjeha i neuspjeha tijekom asinkronog 
+procesa odjave prema **'/api/logout'** endpointu.
+
+### [toggleDropdown](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L66)
+Ova funkcija mjenja stanje **isDropdownOpen** u njegovu trenutnu suprotnost. Ako je trenutno stanje **false**, nakon ovog izraza stanje se 
+mjenja u **true**.
+```javascript
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+```
+
+### [handleOutsideClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L70)
+Ova funkcija **handleOutsideClick** služi za zatvaranje padajućeg izbornika kada korisnik klikne izvan njega.
+**dropdownRef.current** prati postojanje referenca (**current**) na prethodno postavljeni **DOM element** pomoću **useRef**. Ako ta referenca 
+postoji, slijedi dodatna provjera. **e.target** označava element na koji je korisnik kliknuo, odnosno element koji je pokrenuo događaj klika. 
+Ako je izraz **!dropdownRef.current.contains(e.target)** istinit, to ukazuje da korisnik nije kliknuo unutar elementa koji je bio 
+referenciran. U tom slučaju, stanje varijable **isDropdownOpen** postavlja se na **false**, rezultirajući zatvaranjem padajućeg izbornika. 
+Ova logika omogućuje korisnicima da zatvore padajući izbornik jednostavnim klikom izvan njega, poboljšavajući ukupno korisničko iskustvo
+```javascript
+    const handleOutsideClick = (e) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+            setIsDropdownOpen(false);
+        }
+    };
+```
+### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L76)
+**useEffect** se koristi za postavljanje **event listenera** koji prati klikove na cijelom dokumentu. Kada se komponenta montira, dodaje se
+**event listener** koji poziva funkciju **handleOutsideClick** kad god se klikne izvan komponente. Kada se komponenta odmontira, event 
+listener se uklanja.
+```javascript
+    useEffect(() => {
+        document.addEventListener('click', handleOutsideClick);
+
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
+``` 
