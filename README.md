@@ -1192,5 +1192,40 @@ Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na d
 Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
 administratorskog sučelja.
 
-## [AdminLogIn](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)
+## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)
 
+**AdminLogIn.js** je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
+administratora.
+Koristi se **useState** za praćenje stanja korisničkog imena i lozinke.
+```javascript
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+```
+
+### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js#L7)
+**handleSubmit** je funkcija koja se poziva kada korisnik pošalje obrazac. Sprječava osvježavanje stranice (defaultno ponašanje forme) i
+poziva funkciju **[handleLogin(username, password)](#handlelogin)** s unesenim korisničkim imenom i lozinkom
+```javascript
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleLogin(username, password);
+    };
+```
+
+### [AdminLogIn.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js#L12)
+Renderira se HTML obrazac s `<input>` poljima za unos korisničkog imena i lozinke.
+```javascript
+    <form onSubmit={handleSubmit} className='adminLogIn'></form>
+```
+Svako polje koristi value kako bi bilo kontrolirano prema stanju (username i password) definiranom pomoću **useState**.
+Koristi **onChange** događaj kako bi ažuriralo stanje svaki put kada korisnik unese ili promijeni vrijednost u polju.
+```javascript
+    <input type="text" placeholder="Username" value={username} 
+        onChange={(e) => setUsername(e.target.value)} className='adminLogIn_username'/>
+    <input type="password" placeholder="Password" value={password} 
+        onChange={(e) => setPassword(e.target.value)} className='adminLogIn_password'/>
+```
+`<button>` "Login" pokreće funkciju **handleSubmit** kada je pritisnuto.
+```javascript
+    <button type="submit" className='adminLogIn_submit'>Login</button>
+```

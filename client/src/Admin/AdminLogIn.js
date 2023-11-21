@@ -23,6 +23,7 @@ const AdminLogIn = ({handleLogin}) => {
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        className='adminLogIn_password'
       />
       <button type="submit" className='adminLogIn_submit'>Login</button>
     </form>
