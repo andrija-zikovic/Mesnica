@@ -1,8 +1,8 @@
 # Mesnica Web Trgovina
 
 1. ### [Frontend](#frontend-razvoj-s-reactom)    
-- **[Korisik](#korisnik)**
-- **[Admin](#admin)**
+    - **[Korisik](#korisnik)**
+    - **[Admin](#admin)**
 2. ### [Backend](#backend-razvoj-s-nodejs-i-express)
 
 # O autor
