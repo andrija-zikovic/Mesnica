@@ -1243,7 +1243,7 @@ Definiranje stanja verijabli:
 - **message**: Sprema poruke koje se prikazuju korisniku.
 - **productDeleteInfo**: Sadrži informacije o proizvodu koji se želi izbrisati.
 
-## [filteredProducts](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L11)
+### [filteredProducts](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L11)
 
 **filteredProducts** funkcija koristi metodu **filter** na polju **adminPro** kako bi filtrirala proizvode na temelju unosa korisnika, 
 odnosno **searchQuery**.
@@ -1253,7 +1253,7 @@ odnosno **searchQuery**.
         product.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 ```
-## [handleSearchInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L15)
+### [handleSearchInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L15)
 
 **handleSearchInputChange** je funkcija koja mjenja stanje **searchQuery**-a u vrijednost **event.target.value** iz događaja koji joj je
 proslijeđen.
@@ -1263,7 +1263,7 @@ proslijeđen.
     };
 ```
 
-## [handleProductChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L19)
+### [handleProductChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L19)
 
 **handleProductChange** je funkcija koja se koristi za upravljanje promjenama unutar podataka o proizvodu.
 Zahtjeva tri parametra:
@@ -1300,7 +1300,7 @@ zatim dodaje novi zapis pod ključem **id** koji ima ključ **key** sa vrijedno�
       }));
     }
 ```
-## [handleClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L38)
+### [handleClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L38)
 
 **handleClick** je funkcija koja se koristi za upravljanje prikazom slike određenog proizvoda.
 
@@ -1327,7 +1327,7 @@ kako bi se slika tog reda prikazala ili sakrila. Na kraju, novo stanje za prikaz
 Ova funkcija omogućuje dinamičko prikazivanje ili sakrivanje slika klikom na određeni red u tablici, koristeći stanje **showImage** koje 
 prati trenutno stanje vidljivosti slika za svaki red.
 
-## [handleProductsChangeSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L46)
+### [handleProductsChangeSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L46)
 
 **handleProductsChangeSubmit** je funkcija koja se poziva kada korisnik želi poslati promjene proizvoda prema serveru.
 
@@ -1376,7 +1376,7 @@ greške (**setMessage(error)**).
 Ukratko, ova funkcija obavlja asinkronu komunikaciju s serverpm kako bi poslala promjene proizvoda, a zatim obrađuje odgovor i upravlja 
 stanjem aplikacije prema rezultatima.
 
-## [handleProductDelete](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L73)
+### [handleProductDelete](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L73)
 
 **handleProductDelete** je funkcija koja se poziva kada korisnik želi izbrisati određeni proizvod.
 Koristi funkciju **fetch** za slanje asinkronog **HTTP DELETE** zahtjeva prema određenom API endpointu koji je definiran u environmentu.
@@ -1417,7 +1417,7 @@ Ako se dogodi bilo kakva greška tijekom izvršavanja zahtjeva (npr. mrežna gre
 Ukratko, ova funkcija obavlja asinkronu komunikaciju s poslužiteljem kako bi izbrisala odabrani proizvod, a zatim obrađuje odgovor i upravlja 
 stanjem aplikacije prema rezultatima.
 
-## [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L104)
+### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L104)
 
 **useEffect** se koristi za izvršavanje asinkronog koda, posebno poziva prema serveru kako bi se dohvatili podaci o proizvodima.
 Unutar **useEffect** definira se **fetchData** funkcija koja sadrži logiku dohvaćanja podataka.
