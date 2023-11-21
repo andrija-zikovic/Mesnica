@@ -38,14 +38,12 @@ const AdminProducts = (token) => {
   const handleClick = (index) => {
     const initialShowImage = Array(adminPro.length).fill(false);
     setShowImage(initialShowImage);
-    // Toggle the visibility of the image for the clicked row
-    const newShowImage = [...showImage]; // Create a copy of the array
-    newShowImage[index] = !newShowImage[index]; // Toggle the value for the clicked row
-    setShowImage(newShowImage); // Update the state
+    const newShowImage = [...showImage]; 
+    newShowImage[index] = !newShowImage[index]; 
+    setShowImage(newShowImage); 
   };
 
   const handleProductsChangeSubmit = () => {
-    console.log(produtsChange);
     fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
       method: "PUT",
       headers: {
@@ -56,7 +54,6 @@ const AdminProducts = (token) => {
     })
       .then((response) => {
         if (response.ok) {
-          // Reset the form inputs after successful submission
           setProductsChange({});
           return response.json();
         }
@@ -70,32 +67,8 @@ const AdminProducts = (token) => {
       .catch((error) => {
         console.error("Error:", error);
         setMessage(error);
-        // Handle errors if any
       });
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API);
-        const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
-          headers: {
-            Authorization: `Bearer ${token.token}`,
-          },
-        });
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
-        } else {
-          const productsData = await res.json();
-          setAdminPro(productsData);
-        }
-      } catch (error) {
-        console.error("Error Fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [token]);
 
   const handleProductDelete = (id) => {
     fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
@@ -126,7 +99,29 @@ const AdminProducts = (token) => {
         const selectedImage = e.target.files[0];
         handleProductChange(id, 'image', selectedImage);
     }
-}
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
+          headers: {
+            Authorization: `Bearer ${token.token}`,
+          },
+        });
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        } else {
+          const productsData = await res.json();
+          setAdminPro(productsData);
+        }
+      } catch (error) {
+        console.error("Error Fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="adminPro">

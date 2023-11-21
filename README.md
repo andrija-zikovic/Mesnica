@@ -1192,7 +1192,7 @@ Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na d
 Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
 administratorskog sučelja.
 
-<div style="background-color: #fff;">## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)</div>
+## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)</div>
 
 **AdminLogIn.js** je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
 administratora.
@@ -1242,3 +1242,214 @@ Definiranje stanja verijabli:
 - **searchQuery**: Predstavlja upit korisnika za filtriranje proizvoda.
 - **message**: Sprema poruke koje se prikazuju korisniku.
 - **productDeleteInfo**: Sadrži informacije o proizvodu koji se želi izbrisati.
+
+## [filteredProducts](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L11)
+
+**filteredProducts** funkcija koristi metodu **filter** na polju **adminPro** kako bi filtrirala proizvode na temelju unosa korisnika, 
+odnosno **searchQuery**.
+**filter** funkcija stvara novo polje u koje stavalja sve **product**-te iz **adminPro**-a čiji **product.title** sadrži tekst iz **searchQuery**-a.
+```javascript
+    const filteredProducts = adminPro.filter((product) =>
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+```
+## [handleSearchInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L15)
+
+**handleSearchInputChange** je funkcija koja mjenja stanje **searchQuery**-a u vrijednost **event.target.value** iz događaja koji joj je
+proslijeđen.
+```javascript
+    const handleSearchInputChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+```
+
+## [handleProductChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L19)
+
+**handleProductChange** je funkcija koja se koristi za upravljanje promjenama unutar podataka o proizvodu.
+Zahtjeva tri parametra:
+- **id**: identifikacijski broji.
+- **key**: Ključ (naziv svojstva) podatka o proizvodu koji se mijenja.
+- **value**: nova vrijednost koja se dodaje odabranom svojstvu.
+```javascript
+    const handleProductChange = (id, key, value) => {}
+```
+Prvo se provjerava postoji li već zapis za određeni proizvod u stanju **produtsChange**. Ako je prisutan, koristi se funkcija 
+**setProductsChange** za ažuriranje stanja **produtsChange**. U slučaju da postoji prethodno stanje za taj proizvod, koristi se širenje 
+**(...prevState)** kako bi zadržale prethodne vrijednosti. Nakon toga, dodaje ili ažurira vrijednost pod ključem **id**, a pod ključem 
+**key** postavlja novu vrijednost **value**.
+```javascript
+    if (produtsChange[id]) {
+      setProductsChange((prevState) => ({
+        ...prevState,
+        [id]: {
+          ...prevState[id],
+          [key]: value,
+        },
+      }));
+    }
+```
+Ako ne postoji zapis za odabrani proizvod, stvara novi zapis koristeći **setProductsChange**. Opet se koristi širenje prethodnog stanja, a 
+zatim dodaje novi zapis pod ključem **id** koji ima ključ **key** sa vrijednošću **value**.
+```javascript
+    else {
+      setProductsChange((prevState) => ({
+        ...prevState,
+        [id]: {
+          [key]: value,
+        },
+      }));
+    }
+```
+## [handleClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L38)
+
+**handleClick** je funkcija koja se koristi za upravljanje prikazom slike određenog proizvoda.
+
+Zahtjeva jedan parametar:
+- **index**: Indeks reda na koji je kliknuto.
+```javascript
+    const handleClick = (index) => {}
+```
+Prvo, stvara se nova niz od **false** vrijednosti, gdje je duljina niza jednaka broju redaka u tablici (**adminPro.length**). 
+Zatim se taj niz postavlja kao inicijalno stanje za prikazivanje slika (**setShowImage(initialShowImage)**).
+```javascript
+    const initialShowImage = Array(adminPro.length).fill(false);
+    setShowImage(initialShowImage);
+```
+Nakon toga, stvara se kopija trenutnog stanja za prikazivanje slika (**const newShowImage = [...showImage]**). Vrijednost za kliknuti redak 
+(na indeksu index) toggle-uje  se, što znači da ako je trenutna vrijednost **true**, postaje **false**, i obrnuto. Ova promjena se događa 
+kako bi se slika tog reda prikazala ili sakrila. Na kraju, novo stanje za prikazivanje slika postavlja se na ažuriranu vrijednost 
+(**setShowImage(newShowImage)**)
+```javascript    
+    const newShowImage = [...showImage]; 
+    newShowImage[index] = !newShowImage[index]; 
+    setShowImage(newShowImage);
+```
+Ova funkcija omogućuje dinamičko prikazivanje ili sakrivanje slika klikom na određeni red u tablici, koristeći stanje **showImage** koje 
+prati trenutno stanje vidljivosti slika za svaki red.
+
+## [handleProductsChangeSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L46)
+
+**handleProductsChangeSubmit** je funkcija koja se poziva kada korisnik želi poslati promjene proizvoda prema serveru.
+
+Koristi funkciju **fetch** za slanje asinkronog **HTTP PUT** zahtjeva prema određenom **API** endpointu koji je definiran u environmentu.
+Postavlja potrebne opcije zahtjeva, uključujući metodu, autorizacijski token, i tip sadržaja na JSON.
+```javascript
+    fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer ${token.token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(produtsChange),
+    })
+```
+Nakon što server obradi zahtjev, obradjuje se odgovor. Ako je odgovor uspješan (status kod 2xx), resetira se stanje **produtsChange** na 
+prazan objekt pomoću **setProductsChange({})**. Ako je odgovor neuspješan, postavlja se poruka o grešci 
+(**setMessage("Error while updating data!")**) i izaziva se greška kako bi se prešlo na blok **catch**.
+```javascript
+    .then((response) => {
+        if (response.ok) {
+          setProductsChange({});
+          return response.json();
+        }
+        setMessage("Error while updating data!");
+        throw new Error("Network response was not ok.");
+    })
+```
+Ako je odgovor bio uspješan, obrađuje se JSON podaci dobiveni iz odgovora. Ispisuje se odgovor na API u konzoli 
+(**console.log("API response:", data)**). Postavlja se poruka o uspješnom ažuriranju (**setMessage(data.message)**).
+```javascript
+    .then((data) => {
+        console.log("API response:", data);
+        setMessage(data.message);
+    })
+```
+Ako se dogodi bilo kakva greška tijekom izvršavanja zahtjeva (npr. mrežna greška, neuspješan odgovor servera), hvata se greška u bloku 
+**catch**. Ispisuje se detaljan opis greške u konzoli (**console.error("Error:", error)**). Postavlja se poruka o grešci na vrijednost 
+greške (**setMessage(error)**).
+```javascript
+    .catch((error) => {
+        console.error("Error:", error);
+        setMessage(error);
+    });
+```
+Ukratko, ova funkcija obavlja asinkronu komunikaciju s serverpm kako bi poslala promjene proizvoda, a zatim obrađuje odgovor i upravlja 
+stanjem aplikacije prema rezultatima.
+
+## [handleProductDelete](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L73)
+
+**handleProductDelete** je funkcija koja se poziva kada korisnik želi izbrisati određeni proizvod.
+Koristi funkciju **fetch** za slanje asinkronog **HTTP DELETE** zahtjeva prema određenom API endpointu koji je definiran u environmentu.
+Postavlja potrebne opcije zahtjeva, uključujući metodu, autorizacijski token, tip sadržaja na JSON, i tijelo zahtjeva koje sadrži **ID** 
+proizvoda koji se želi izbrisati.
+```javascript
+    fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token.token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({id: id}),
+    })
+```
+Nakon što server obradi zahtjev, obrađuje se odgovor. Ako je odgovor uspješan (status kod 2xx), ažurira se stanje **adminPro** tako da se 
+izbriše proizvod s odgovarajućim **ID**-om iz niza proizvoda. Resetira stanje **productDeleteInfo** na praznu vrijednost . Postavlja se 
+poruka o uspješnom brisanju proizvoda.
+```javascript
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const updatedProducts = adminPro.filter((product) => product._id !== id);
+        setAdminPro(updatedProducts);
+        setProductDeleteInfo();
+        setMessage(response.message);
+    })
+```
+Ako se dogodi bilo kakva greška tijekom izvršavanja zahtjeva (npr. mrežna greška, neuspješan odgovor servera), hvata se greška u bloku 
+**catch**. Ispisuje se detaljan opis greške u konzoli. Postavlja se poruka o grešci na vrijednost greške.
+```javascript
+    .catch((error) => {
+        console.error("Error deleting product:", error.message);
+        setMessage(error.message);
+    });
+```
+Ukratko, ova funkcija obavlja asinkronu komunikaciju s poslužiteljem kako bi izbrisala odabrani proizvod, a zatim obrađuje odgovor i upravlja 
+stanjem aplikacije prema rezultatima.
+
+## [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L104)
+
+**useEffect** se koristi za izvršavanje asinkronog koda, posebno poziva prema serveru kako bi se dohvatili podaci o proizvodima.
+Unutar **useEffect** definira se **fetchData** funkcija koja sadrži logiku dohvaćanja podataka.
+```javascript
+    useEffect(() => {
+        const fetchData = async () => {}
+    });
+```
+**fetchData** koristi **fetch** funkciju za slanje HTTP zahtjeva prema određenom API endpointu. U zaglavljima zahtjeva postavlja se 
+autorizacijski token kako bi se provjerila autentičnost korisnika. Ako je odgovor uspješan (status kod 2xx), dohvaćeni podaci o proizvodima 
+se pretvaraju u JSON format koristeći await res.json(). Ažurira se stanje **adminPro** s dohvaćenim podacima o proizvodima 
+(**setAdminPro(productsData)**).
+```javascript
+    try {
+        const res = await fetch(
+            process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
+                headers: {
+                    Authorization: `Bearer ${token.token}`,
+                },
+        });
+        if (!res.ok) {
+            throw new Error("Network response was not ok");
+        } else {
+            const productsData = await res.json();
+            setAdminPro(productsData);
+        }
+    }
+```
+Ako dođe do greške prilikom izvršavanja zahtjeva (npr. mrežna greška, neuspješan odgovor servera), hvata se greška u bloku **catch**.
+Ispisuje se detaljan opis greške u konzoli.
+```javascript
+    catch (error) {
+        console.error("Error Fetching data:", error);
+    }
+```
