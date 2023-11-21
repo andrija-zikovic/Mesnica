@@ -900,7 +900,7 @@ Na kraju, koristi se useEffect da se automatski mijenja indeks slike svakih 10 s
 
 Komponenta **AboutUs.js** implementira ključne elemente za prikaz informacija o Mesnici na web stranici. 
 Struktura komponente uključuje:
-1. **Glavni Element ('<main>'):**
+1. **Glavni Element (```markdown<main>```):**
     - Postavljen s klasom "aboutUs".
     - Djeluje kao osnovni kontejner za sve informacije vezane uz Mesnicu. 
 2. **Sekcije ('<section>'):** 
