@@ -900,19 +900,19 @@ Na kraju, koristi se useEffect da se automatski mijenja indeks slike svakih 10 s
 
 Komponenta **AboutUs.js** implementira ključne elemente za prikaz informacija o Mesnici na web stranici. 
 Struktura komponente uključuje:
-1. **Glavni Element ("<main>"):**
+1. **Glavni Element ('<main>'):**
     - Postavljen s klasom "aboutUs".
     - Djeluje kao osnovni kontejner za sve informacije vezane uz Mesnicu. 
-2. **Sekcije ("<section>"):** 
+2. **Sekcije ('<section>'):** 
     - Različite sekcije unutar glavnog elementa, svaka fokusirana na određeni aspekt mesnice.
     - Ove sekcije organiziraju informacije na web stranici i olakšavaju korisnicima pronalazak specifičnih podataka.
-3. **Članci ("<article>"):**
+3. **Članci ('<article>'):**
     - Svaka sekcija sadrži članke koji pružaju tekstualne opise.
     - Tekst unutar članaka opisuje različite aspekte Mesnice, uključujući povijest, kvalitetu, asortiman proizvoda te poziv za posjetu.
 4. **Sustav za Izmjenu Slika:**
     - Unutar određenih članaka postavljen je sustav koji dinamički izmjenjuje slike.
     - Ovaj vizualni element pridonosi atraktivnosti stranice i pomaže u boljem predstavljanju atmosfere Mesnice.
-5. **Sekcija s Formom za Kontakt ("<form>"):**
+5. **Sekcija s Formom za Kontakt ('<form>'):**
     - Zadnja sekcija sadrži formu za kontaktiranje Mesnice.
     - Forma ima polja za unos imena, emaila i poruke te gumb za slanje.
     - Obrada podataka iz forme izvršava se pomoću funkcije handleSubmit.
