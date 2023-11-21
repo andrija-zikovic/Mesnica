@@ -1,9 +1,11 @@
 # Mesnica Web Trgovina
 
-## [Frontend](#frontend-razvoj-s-reactom)    
+1. ### [Frontend](#frontend-razvoj-s-reactom)    
 - **[Korisik](#korisnik)**
 - **[Admin](#admin)**
-## [Backend](#backend-razvoj-s-nodejs-i-express)
+2. ### [Backend](#backend-razvoj-s-nodejs-i-express)
+
+# O autor
 
 Ovo je moji prvi samostalni projekt
 
