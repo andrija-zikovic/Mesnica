@@ -1,6 +1,9 @@
 # Mesnica Web Trgovina
 
-## [Frontend](#frontend-razvoj-s-reactom)       |       [Backend](#backend-razvoj-s-nodejs-i-express)
+## [Frontend](#frontend-razvoj-s-reactom)
+    - **[Korisik](#korisnik)**
+    - **[Admin](#admin)**
+## [Backend](#backend-razvoj-s-nodejs-i-express)
 
 Ovo je moji prvi samostalni projekt
 
@@ -339,6 +342,8 @@ url/admin/orderReject ruta izvršava **orderConfirme** funkciju unutar **[orderC
 ```
 
 # Frontend Razvoj s Reactom
+
+# Korisnik
 
 Glavni ulazni dio React aplikacije je **App.js**.
 
@@ -1028,4 +1033,4 @@ Na kraju se rezultat zaokružuje na dvije decimale pomoću **toFixed(2)**. Ovo o
 
 **Footer.js** je jednostavna komponenta koja renderira kontakt informacije i registrirani znak s nazivom mesnice i tekućom godinom.
 
-# Strana za administratora
+# Admin
