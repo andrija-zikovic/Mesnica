@@ -1552,3 +1552,148 @@ U slučaju greške tijekom slanja zahtjeva, hvata se greška u bloku catch. Deta
 ```
 Sve ove faze čine ključni dio procesa dodavanja novog proizvoda na serveru putem **HTTP POST** zahtjeva, osiguravajući da se postupak 
 odvija glatko i pouzdano.
+
+### [handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L40)
+
+**handleInputChange** je event handler koji se koristi za obradu promjena unosa u formi. 
+
+Prvo se dekonstruira objekta da izvuče **name** i **value** iz **event.target**. **event.target** se odnosi na element koji je pokrenuo 
+događaj, u ovom slučaju input element forme. **name** je ime input elementa, a **value** je trenutna vrijednost unesena u **input** element.
+```javascript
+    const { name, value } = event.target;
+```
+Zatim se koristi funkciju **setProductInfo** da ažurira stanje **productInfo**. **...productInfo** koristi spread operator da kopira sve 
+trenutne vrijednosti **productInfo** u novi objekt. **[name]: value** dodaje ili ažurira vrijednost sa ključem koji je jednak **name** 
+sa novom vrijednošću **value**.
+```javascript
+    setProductInfo({ ...productInfo, [name]: value, });
+```
+Ukupno, ova funkcija ažurira stanje **productInfo** svaki put kada korisnik mijenja vrijednost u input elementu forme, koristeći 
+ime input elementa kao ključ i unesenu vrijednost kao vrijednost.
+
+### [handleFileChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L48)
+
+**handleFileChange** je event handler koji se koristi za obradu promjena unosa datoteke.
+
+Prvo provjerava postoji li datoteka u **event.target.files** i je li duljina veća od 0. Ako je, odabrana slika postavlja se na prvu 
+datoteku u **event.target.files**.
+```javascript
+    if (e.target.files && e.target.files.length > 0) {
+        const selectedImage = e.target.files[0];
+```
+Zatim se koristi funkciju **setProductInfo** da ažurira stanje **productInfo**. **...productInfo** koristi spread operator da kopira 
+sve trenutne vrijednosti productInfo u novi objekt. **image: selectedImage** dodaje ili ažurira vrijednost sa ključem '**image**' sa 
+novom vrijednošću **selectedImage**.
+```javascript
+        setProductInfo({ ...productInfo, image: selectedImage, });
+    }
+```
+Ukupno, ova funkcija ažurira stanje productInfo svaki put kada korisnik mijenja odabranu datoteku u input elementu forme, 
+koristeći '**image**' kao ključ i odabranu datoteku kao vrijednost.
+
+### [AddProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L55)
+
+**AddProducts.js** se renderira na načina da se renderira forma(`<form>`) koja omogućuje korisniku unos informacija o novom proizvodu. 
+Forma uključuje polja(`<input>`) poput naziva proizvoda, cijene, količine na stanju, vrste mesa i mogućnost dodavanja slike proizvoda. 
+
+Prilikom unosa podataka u formu, korisnički unos se prati putem stanja komponente. Funkcija **handleInputChange** ažurira 
+stanje komponente kako bi odražavalo unesene podatke.
+
+Korisnik može odabrati sliku proizvoda putem odgovarajućeg polja(`<input type='file'>`). Funkcija **handleFileChange** prati odabrane 
+datoteke i ažurira stanje komponente s odabranom slikom.
+
+Kada korisnik pritisne gumb "DODAJ"(`<<button type='submit'>`), pokreće se funkcija **handleAddSubmit**.
+
+## [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)
+
+**AdminOrders** je komponenta koja prikazuje listu naruđbu i omogućava pregled istih
+
+Definiranje stanja verijabli:
+- **adminOrd**: Stanje adminOrd koristi se za pohranu podataka o narudžbama. 
+- **shouldRefetch**: Stanje shouldRefetch koristi se kao oznaka za ponovno dohvaćanje podataka s poslužitelja.
+- **message**: Stanje message koristi se za prikazivanje poruka korisnicima.
+- **visibleOrders**: Stanje visibleOrders koristi se za praćenje vidljivosti pojedinih narudžbi.
+
+### [toggleVisibility](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L10)
+
+Funkcija **toggleVisibility** omogućuje prebacivanje vidljivosti narudžbe. Ako je narudžba već vidljiva, uklanja ju iz stanja 
+visibleOrders. Inače, dodaje ju na kraj niza.
+```javascript
+    const toggleVisibility = (orderId) => {
+        if (visibleOrders.includes(orderId)) {
+        setVisibleOrders(visibleOrders.filter((id) => id !== orderId));
+        } else {
+        setVisibleOrders([...visibleOrders, orderId]);
+        }
+    };
+```
+
+### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L18)
+
+**useEffect** koristi se za asinkrono dohvaćanje podataka s poslužitelja kada komponenta **mounta** ili kada se promijeni 
+**shouldRefetch** stanje. Zatim se definira funkcija fetchData koja koristi **fetch API** za dohvaćanje podataka o narudžbama s 
+definiranog **URL**-a. Autorizacija se vrši putem **tokena** koji se šalje u zaglavlju zahtjeva.
+Ako dohvaćanje bude uspješno (status kod 2xx), podaci se pretvaraju u **JSON format** i pohranjuju u stanje **adminOrd**. 
+U suprotnom, hvata se greška i ispisuje u konzoli.
+```javascript
+    const fetchData = async () => {
+      try {
+        const res = await fetch(process.env.REACT_APP_ADMIN_GET_ORDERS, {
+          method: 'GET', 
+          headers: {
+            Authorization: `Bearer ${token.token}`,
+          }});
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        } else {
+          const ordersData = await res.json();
+          setAdminOrd(ordersData);
+        }
+      } catch (error) {
+        console.error("Error Fetching data:", error);
+      }
+    };
+```
+
+### [AdminOrders.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L43)
+
+**AdminOrders.js** komponenta se renderira na sljedeći način:
+
+1. **Naslov i Zaglavlje Tablice:**
+
+    - `<h1 style={{ padding: "1rem" }}>Orders</h1>`: Prikazuje naslov "Orders" s određenim stilom.
+    - `<thead>` element: Definira zaglavlje tablice s nazivima stupaca kao što su "Num", "Buyer", "Date" te prazan stupac.
+
+2. **Tijelo Tablice (Tbody):**
+
+    - `{adminOrd.slice().reverse().map((orderData, index) => (`: Mapira kroz niz narudžbi (**adminOrd**), reverzira ga kako bi najnovije 
+      narudžbe bile na vrhu, te prikazuje informacije o svakoj narudžbi u retcima tablice.
+    - `<tr>` element: Prikazuje redak za svaku narudžbu. Boja retka ovisi o statusu narudžbe. Ako je narudžba u tijeku, boja je zelena. 
+      Ako je narudžba otkazana, boja je crvena. Klikom na redak, poziva se funkcija **toggleVisibility** kako bi se promijenila vidljivost 
+      detalja narudžbe.
+    - Detalji narudžbe: Ako je narudžba označena kao vidljiva (`visibleOrders.includes(orderData._id)`), prikazuju se dodatni redak s 
+      komponentom **AdminOrder** koja prikazuje detalje narudžbe.
+
+3. **Podnožje Tablice (Tfoot):**
+
+    - `<tfoot>` element: Definira podnožje tablice s jednim retkom i praznim poljem.
+
+4. **Poruka:**
+
+    - `<div className={message ${message ? "visible" : "hidden"}}>`: Prikazuje div element s klasama "message", ovisno o tome postoji 
+      li poruka (**message**). Ako postoji, koristi se klasa "**visible**", inače "**hidden**".
+    - `<button className="messageButton" onClick={() => setMessage("")}>`: Gumb za zatvaranje poruke koji poziva funkciju za postavljanje 
+      poruke na prazan string.
+    - `<p>{message}</p>`: Prikazuje sadržaj poruke.
+
+5. **AdminOrder Komponenta:**
+
+    - <AdminOrder>: Ukoliko je detalj narudžbe vidljiv, poziva se **AdminOrder** komponenta s odgovarajućim props-ovima.
+    ```javascript
+        <AdminOrder 
+            orderData={orderData} setMessage={setMessage}
+            toggleVisibility={() => toggleVisibility(orderData._id)} 
+            setShouldRefetch={setShouldRefetch} token={token}
+        />
+    ```
+

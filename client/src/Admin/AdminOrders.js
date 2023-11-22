@@ -5,6 +5,15 @@ const AdminOrders = (token) => {
   const [adminOrd, setAdminOrd] = useState([]);
   const [shouldRefetch, setShouldRefetch] = useState(true);
   const [message, setMessage] = useState("");
+  const [visibleOrders, setVisibleOrders] = useState([]);
+
+  const toggleVisibility = (orderId) => {
+    if (visibleOrders.includes(orderId)) {
+      setVisibleOrders(visibleOrders.filter((id) => id !== orderId));
+    } else {
+      setVisibleOrders([...visibleOrders, orderId]);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,16 +39,6 @@ const AdminOrders = (token) => {
       setShouldRefetch(false); // Reset the flag after refetching
     }
   }, [token, shouldRefetch]);
-
-  const [visibleOrders, setVisibleOrders] = useState([]);
-
-  const toggleVisibility = (orderId) => {
-    if (visibleOrders.includes(orderId)) {
-      setVisibleOrders(visibleOrders.filter((id) => id !== orderId));
-    } else {
-      setVisibleOrders([...visibleOrders, orderId]);
-    }
-  };
 
   return (
     <div className="adminOrd">
