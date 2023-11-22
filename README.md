@@ -1454,7 +1454,7 @@ Ispisuje se detaljan opis greške u konzoli.
     }
 ```
 
-## [AdminProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L126)
+### [AdminProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L126)
 
 **AdminProducts** renderira na način da: 
 
@@ -1482,4 +1482,73 @@ Ispisuje se detaljan opis greške u konzoli.
         - Renderira se podnožje tablice s gumbom za potvrdu promjena. Gumb omogućuje slanje promjena prema poslužitelju putem funkcije 
           **handleProductsChangeSubmit**.
 
-Ukupno, AdminProducts renderira se s nizom funkcionalnosti i elemenata koji omogućuju administratoru učinkovito upravljanje proizvodima putem jednostavnog korisničkog sučelja.
+Ukupno, AdminProducts renderira se s nizom funkcionalnosti i elemenata koji omogućuju administratoru učinkovito upravljanje proizvodima putem 
+jednostavnog korisničkog sučelja.
+
+## [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)
+
+**AddProducts** je funkcionalna komponenta odgovorna za dodavanje novih proizvoda u sustav. Ova komponenta pruža obrazac (formu) za unos 
+podataka o proizvodu, uključujući naziv, cijenu, količinu na stanju, vrstu mesa te sliku proizvoda.
+
+Definiranje stanje veriable:
+- **productInfo** : prati stanje podataka o novom proizvodu. Uključuje naziv, cijenu, količinu na stanju, vrstu mesa i sliku proizvoda.
+```javascript
+    const [productInfo, setProductInfo] = useState({
+        title: '',
+        price: '',
+        onStorage: '',
+        meatType: '',
+        image: null,
+    });
+```
+### [handleAddSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L13)
+
+**handleAddSubmit** funkcija se koristi za proces dodavanja novog proizvoda na server putem HTTP POST zahtjeva.
+
+Obrada događaja podnošenja obrasca započinje sprječavanjem uobičajenog ponašanja obrasca pomoću **e.preventDefault()**, čime se 
+spriječava osvježavanje stranice. Nakon toga, funkcija definira **URL** na koji će se poslati **HTTP** zahtjev. Ovaj **URL** je preuzet 
+iz okoline (environment), pružajući fleksibilnost i omogućujući laku promjenu adrese poslužitelja.
+```javascript
+    const handleAddSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const url = process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API;
+```
+Sljedeći korak u procesu je stvaranje novog objekta **FormData** koji će se koristiti za prijenos podataka s obrasca u obliku 
+ključ-vrijednost. **FormData** omogućuje strukturiranje podataka na način prikladan za slanje prema serveru.
+```javascript
+            const formData = new FormData();
+            formData.append('title', productInfo.title);
+            formData.append('price', productInfo.price);
+            formData.append('onStorage', productInfo.onStorage);
+            formData.append('meatType', productInfo.meatType);
+            formData.append('image', productInfo.image);
+```
+Zatim slijedi slanje **HTTP POST** zahtjeva korištenjem funkcije **fetch**. Postavke zahtjeva uključuju određivanje metode (**POST**), 
+uključivanje informacija o autentikaciji (**credentials: 'include'**), postavljanje autorizacijskog tokena u zaglavlje (**headers**), te 
+definiranje tijela zahtjeva koje sadrži **FormData** objekt s podacima o proizvodu.
+```javascript
+            const req = await fetch(url, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    Authorization: `Bearer ${token.token}`,            
+                },
+                body: formData,
+            });
+```
+Nakon slanja zahtjeva, funkcija provjerava je li odgovor servera uspješan (status kod 2xx). Ako jest, ispisuje se poruka u konzoli 
+potvrđujući uspješno dodavanje proizvoda.
+```javascript
+            if (req.ok) {
+                console.log("Product Add")
+            }
+```
+U slučaju greške tijekom slanja zahtjeva, hvata se greška u bloku catch. Detaljan opis greške ispisuje se u konzoli. 
+```javascript
+        } catch (err) {
+            console.error('Error giving product:', err)
+        }
+```
+Sve ove faze čine ključni dio procesa dodavanja novog proizvoda na serveru putem **HTTP POST** zahtjeva, osiguravajući da se postupak 
+odvija glatko i pouzdano.
