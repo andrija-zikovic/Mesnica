@@ -1456,27 +1456,30 @@ Ispisuje se detaljan opis greške u konzoli.
 
 ## [AdminProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L126)
 
-**AdminProducts** renderira na način da : 
+**AdminProducts** renderira na način da: 
 
-1.  Potvrda brisanja proizvoda: 
-    - Ako postoji informacija o proizvodu za brisanje (**productDeleteInfo**), renderira se dijalog koji potvrđuje brisanje određenog 
-      proizvoda. U dijalogu se prikazuje naziv proizvoda, a korisnik može odabrati "DA" za potvrdu brisanja ili "NE" za odustajanje. Brisanje 
-      proizvoda izvršava se putem funkcije **handleProductDelete**.
+1. **Brisanje proizvoda**: 
+   - Potvrda brisanja proizvoda: 
+        - Ako postoji informacija o proizvodu za brisanje (**productDeleteInfo**), renderira se dijalog koji potvrđuje brisanje određenog 
+          proizvoda. U dijalogu se prikazuje naziv proizvoda, a korisnik može odabrati "DA" za potvrdu brisanja ili "NE" za odustajanje. 
+          Brisanje proizvoda izvršava se putem funkcije **handleProductDelete**.
 
-    Prikaz poruke: 
-    - Ako postoji poruka (**message**), renderira se dijalog s porukom i gumbom za zatvaranje. Poruka se postavlja i kontrolira stanjem komponente.
+   - Prikaz poruke: 
+        - Ako postoji poruka (**message**), renderira se dijalog s porukom i gumbom za zatvaranje. Poruka se postavlja i kontrolira stanjem 
+          komponente.
 
-2.  Zaglavlje tablice: 
-    - Renderira se zaglavlje tablice s nazivima stupaca: "Redni broj", "Ime", "Vrsta mesa", "Cijena/kg", "Na stanju", "IMG" te prazan stupac 
-      za gumbe i akcije.
+2.  **Tablica**:
+    - Zaglavlje tablice: 
+        - Renderira se zaglavlje tablice s nazivima stupaca: "Redni broj", "Ime", "Vrsta mesa", "Cijena/kg", "Na stanju", "IMG" te prazan 
+          stupac za gumbe i akcije.
 
-    Tijelo tablice: 
-    - Renderira se tijelo tablice koje mapira kroz filtrirane proizvode i prikazuje ih u redovima tablice. Svaki red tablice sadrži 
-    informacije o proizvodu kao što su redni broj, ime, vrsta mesa, cijena po kilogramu, dostupna količina, gumb za prikazivanje slike, opcija 
-    dodavanja slike, gumb za brisanje proizvoda i slično.
+    - Tijelo tablice: 
+        - Renderira se tijelo tablice koje mapira kroz filtrirane proizvode i prikazuje ih u redovima tablice. Svaki red tablice sadrži 
+          informacije o proizvodu kao što su redni broj, ime, vrsta mesa, cijena po kilogramu, dostupna količina, gumb za prikazivanje slike, 
+          opcija dodavanja slike, gumb za brisanje proizvoda i slično.
 
-    Podnožje tablice: 
-    - Renderira se podnožje tablice s gumbom za potvrdu promjena. Gumb omogućuje slanje promjena prema poslužitelju putem funkcije 
-      **handleProductsChangeSubmit**.
+    - Podnožje tablice: 
+        - Renderira se podnožje tablice s gumbom za potvrdu promjena. Gumb omogućuje slanje promjena prema poslužitelju putem funkcije 
+          **handleProductsChangeSubmit**.
 
 Ukupno, AdminProducts renderira se s nizom funkcionalnosti i elemenata koji omogućuju administratoru učinkovito upravljanje proizvodima putem jednostavnog korisničkog sučelja.
