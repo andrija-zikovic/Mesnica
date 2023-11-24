@@ -400,7 +400,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 # Korisnička strana
 
-## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)     [Top](#frontend){style="text-align: right;"}
 
 Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
 koje user želi kupiti.
@@ -540,7 +540,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
         )
     ```
 
-## 2. [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 2. [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)     [Top](#frontend){style="text-align: right;"}
 
 - **Nav.js** komponenta je komponenta u stilu navigacijske trake, zahtjeva četiri parametra koja prosljeđuje u **Bucket** komponent.
 
@@ -582,7 +582,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
             </>
         )
     ```
-## 3. [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 3. [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)     [Top](#frontend){style="text-align: right;"}
 
 - **Bucket.js** komponeta prikazuje proizvode koje je kupac odabrao kupiti. Zahtjeva četiri parametra:
 
@@ -652,7 +652,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
     </tbody>
     ```
 
-## 4. [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 4. [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)     [Top](#frontend){style="text-align: right;"}
 
 - **Header.js** je komponenta koja prikazuje vrh stranice. 
     Zahtjeva jedan parametar, cija se vrijednost prikazuje unutar elementa.
@@ -667,7 +667,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
         }
     ```
 
-## 5. [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 5. [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)     [Top](#frontend){style="text-align: right;"}
 
 **Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
 
@@ -691,7 +691,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
         )
     ```
 
-## 6. [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 6. [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)     [Top](#frontend){style="text-align: right;"}
 
 **Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
 Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
@@ -713,7 +713,7 @@ Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
         }
     ```
 
-## 7. [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 7. [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)     [Top](#frontend){style="text-align: right;"}
 
 - **ProductsList.js** zahtjeva 3 parametara:
 
@@ -748,7 +748,7 @@ Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
         }
     ```
 
-- ### [ProductsList.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js#L35)     <span style="text-align: right;">[Top](#frontend)</span>
+- ### [ProductsList.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js#L35)     [Top](#frontend){style="text-align: right;"}
 
     Ako je **noProductsCheck** pozitiven vrijednosti **true**, šta bi znacilo da nema povucenih proizvoda sa servera.
 
@@ -795,7 +795,7 @@ Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
         ))
     ```
 
-## 8. [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 8. [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)     [Top](#frontend){style="text-align: right;"}
 
 **About.js** je komponenta koja renderira **<section>** element unutar kojeg su nekoliko **<article>** elemenata
 koji prikazuju tekst o mesnici.
@@ -809,7 +809,7 @@ koji prikazuju tekst o mesnici.
         </section> 
 ```
 
-## 9. [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 9. [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)     [Top](#frontend){style="text-align: right;"}
 
 - **Products.js** je roditeljska komponenta, dvim komponentima:
 
@@ -835,7 +835,7 @@ koji prikazuju tekst o mesnici.
         )
     ```
 
-## 10. [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 10. [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)     [Top](#frontend){style="text-align: right;"}
 
 **SideNav.js** je komponenta koja zahtjeva jedan parametar:
 
@@ -856,7 +856,7 @@ i koristi **setMeatType** za ažuriranje **meatType** navedenim parametrom.
         </li>
     ```
 
-## 11. [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 11. [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)     [Top](#frontend){style="text-align: right;"}
 
 **AboutUs.js** je komponenta koja istovremeno prikazuje informativni tekst o mesnici, dinamičnu listu slika koje se neprekidno 
 izmjenjuju, i omogućava korisnicima da jednostavno pošalju poruku putem dostupnog obrasca.
@@ -944,7 +944,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
     Ova struktura omogućuje korisnicima da istraže različite aspekte Mesnice, vizualno dožive atmosferu putem dinamičnih slika te jednostavno
     stupe u kontakt s mesnicom putem obrasca. Komponenta pridonosi organiziranom i privlačnom prikazu informacija o Mesnici na web stranici
 
-## 12. [orderForm.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 12. [orderForm.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js)     [Top](#frontend){style="text-align: right;"}
 
 - **orderForm.js** je komponenta odgovorna za prikaz obrasca za naručivanje proizvoda. 
     Ova komponenta omogućuje korisnicima
@@ -1058,13 +1058,13 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         Prikazuje se ostatak JSX-a koji prikazuje popis proizvoda u košarici, ukupnu cijenu, formu za unos podataka i gumbi za čišćenje 
         košarice i slanje narudžbe.
 
-## 13. [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 13. [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)     [Top](#frontend){style="text-align: right;"}
 
 **Footer.js** je jednostavna komponenta koja renderira kontakt informacije i registrirani znak s nazivom mesnice i tekućom godinom.
 
 # Admin
 
-## 1. [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 1. [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)     [Top](#frontend){style="text-align: right;"}
 
 - **Admin.js** je komponenta koja predstavlja administratorsko sučelje.
         Prvo se definiraju stanja verijabli:
@@ -1228,7 +1228,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
     Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
     administratorskog sučelja.
 
-## 2. [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 2. [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)     [Top](#frontend){style="text-align: right;"}
 
 - **AdminLogIn.js** 
     je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
@@ -1267,7 +1267,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         <button type="submit" className='adminLogIn_submit'>Login</button>
     ```
 
-## 3. [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 3. [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)     [Top](#frontend){style="text-align: right;"}
 
 - **AdminProducts** 
     je funkcionalna komponenta odgovorna za upravljanje i prikazivanje liste proizvoda u administratorskom sučelju. 
@@ -1527,7 +1527,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
     Ukupno, AdminProducts renderira se s nizom funkcionalnosti i elemenata koji omogućuju administratoru učinkovito upravljanje 
     proizvodima putem jednostavnog korisničkog sučelja.
 
-## 4. [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 4. [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)     [Top](#frontend){style="text-align: right;"}
 
 - **AddProducts** je funkcionalna komponenta odgovorna za dodavanje novih proizvoda u sustav. 
     Ova komponenta pruža obrazac (formu) za unos 
@@ -1650,7 +1650,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 
     Kada korisnik pritisne gumb "DODAJ"(`<<button type='submit'>`), pokreće se funkcija **handleAddSubmit**.
 
-## 5. [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 5. [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)     [Top](#frontend){style="text-align: right;"}
 
 - **AdminOrders** je komponenta koja prikazuje listu naruđbu i omogućava pregled istih
 
@@ -1743,7 +1743,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
             />
         ```
 
-## 6. [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)     <span style="text-align: right;">[Top](#frontend)</span>
+## 6. [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)     [Top](#frontend){style="text-align: right;"}
 
 - **AdminOrder.js** je komponenta koja prikazuje detalje o narudžbi, i omogućava odbijanje ili prihvaćanje iste.
 
