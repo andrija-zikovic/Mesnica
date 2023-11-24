@@ -400,7 +400,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 # Korisnička strana
 
-1. ## [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
+## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
 
     Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
     koje user želi kupiti.
@@ -547,7 +547,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         )
     ```
 
-2. ## [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)
+## 2. [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)
 
     **Nav.js** komponenta je komponenta u stilu navigacijske trake, zahtjeva četiri parametra koja prosljeđuje u **Bucket** komponent.
 
@@ -591,7 +591,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             </>
         )
     ```
-3. ## [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)
+## 3. [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)
 
     **Bucket.js** komponeta prikazuje proizvode koje je kupac odabrao kupiti. Zahtjeva četiri parametra:
 
@@ -661,7 +661,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     </tbody>
     ```
 
-4. ## [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)
+## 4. [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)
 
     **Header.js** je komponenta koja prikazuje vrh stranice. Zahtjeva jedan parametar, cija se vrijednost prikazuje unutar elementa.
     ```javascript
@@ -675,7 +675,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         }
     ```
 
-5. ## [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)
+## 5. [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)
 
     **Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
 
@@ -699,7 +699,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         )
     ```
 
-6. ## [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)
+## 6. [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)
 
     **Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
     Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
@@ -721,7 +721,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         }
     ```
 
-7. ## [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)
+## 7. [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)
 
     **ProductsList.js** zahtjeva 3 parametara:
 
@@ -803,7 +803,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         ))
     ```
 
-8. ## [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)
+## 8. [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)
 
     **About.js** je komponenta koja renderira **<section>** element unutar kojeg su nekoliko **<article>** elemenata
     koji prikazuju tekst o mesnici.
@@ -817,7 +817,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         </section> 
     ```
 
-9. ## [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)
+## 9. [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)
 
 - **Products.js** je roditeljska komponenta, dvim komponentima:
 
@@ -843,7 +843,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         )
     ```
 
-9. ## [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)
+## 10. [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)
 
 -**SideNav.js** je komponenta koja zahtjeva jedan parametar:
 
@@ -866,7 +866,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         </li>
     ```
 
-10. ## [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)
+## 11. [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)
 
     **AboutUs.js** je komponenta koja istovremeno prikazuje informativni tekst o mesnici, dinamičnu listu slika koje se neprekidno 
     izmjenjuju, i omogućava korisnicima da jednostavno pošalju poruku putem dostupnog obrasca.
@@ -952,7 +952,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     Ova struktura omogućuje korisnicima da istraže različite aspekte Mesnice, vizualno dožive atmosferu putem dinamičnih slika te jednostavno
     stupe u kontakt s mesnicom putem obrasca. Komponenta pridonosi organiziranom i privlačnom prikazu informacija o Mesnici na web stranici
 
-11. ## [orderForm.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js)
+## 12. [orderForm.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js)
 
 - **orderForm.js** je komponenta odgovorna za prikaz obrasca za naručivanje proizvoda. 
     Ova komponenta omogućuje korisnicima
@@ -1065,13 +1065,13 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     Prikazuje se ostatak JSX-a koji prikazuje popis proizvoda u košarici, ukupnu cijenu, formu za unos podataka i gumbi za čišćenje 
     košarice i slanje narudžbe.
 
-11. ## [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)
+## 13. [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)
 
     **Footer.js** je jednostavna komponenta koja renderira kontakt informacije i registrirani znak s nazivom mesnice i tekućom godinom.
 
 # Admin
 
-1. ## [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)
+## 1. [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)
 
     **Admin.js** je komponenta koja predstavlja administratorsko sučelje.
     Prvo se definiraju stanja verijabli:
@@ -1226,7 +1226,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
     administratorskog sučelja.
 
-2. ## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)</div>
+## 2. [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)</div>
 
     **AdminLogIn.js** je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
     administratora.
@@ -1264,7 +1264,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         <button type="submit" className='adminLogIn_submit'>Login</button>
     ```
 
-3. ## [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)
+## 3. [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)
 
     **AdminProducts** je funkcionalna komponenta odgovorna za upravljanje i prikazivanje liste proizvoda u administratorskom sučelju. 
     Komunicira s API-jem kako bi dohvatila, ažurirala i brisala informacije o proizvodima.
@@ -1519,7 +1519,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     Ukupno, AdminProducts renderira se s nizom funkcionalnosti i elemenata koji omogućuju administratoru učinkovito upravljanje proizvodima putem 
     jednostavnog korisničkog sučelja.
 
-4. ## [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)
+## 4. [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)
 
     **AddProducts** je funkcionalna komponenta odgovorna za dodavanje novih proizvoda u sustav. Ova komponenta pruža obrazac (formu) za unos 
     podataka o proizvodu, uključujući naziv, cijenu, količinu na stanju, vrstu mesa te sliku proizvoda.
@@ -1638,7 +1638,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
     Kada korisnik pritisne gumb "DODAJ"(`<<button type='submit'>`), pokreće se funkcija **handleAddSubmit**.
 
-5. ## [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)
+## 5. [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)
 
     **AdminOrders** je komponenta koja prikazuje listu naruđbu i omogućava pregled istih
 
@@ -1731,7 +1731,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             />
         ```
 
-6. ## [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)
+## 6. [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)
 
     **AdminOrder.js** je komponenta koja prikazuje detalje o narudžbi, i omogućava odbijanje ili prihvaćanje iste.
 
