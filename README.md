@@ -409,7 +409,7 @@ koje user želi kupiti.
     const [cartItems, setCartItems] = useState([]);
 ```
 
-Definiraju se jos četiri funkcije:
+- Definiraju se jos četiri funkcije:
     -   [deleteItem](#deleteitem)
     -   [clearCart](#clearcart)
     -   [calculateQuantity](#calculatequantity)
@@ -433,9 +433,7 @@ Nakon što je izradila novu listu, ažurira **cartItems** s novom listom.
 **clearCart** funkcija ažurira **cartItems** s praznom listom.
 
 ```javascript
-    const clearCart = () => {
-        setCartItems([]);
-    };
+    const clearCart = () => { setCartItems([]); };
 ```
 
 - ### [calculateQuantity](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L24)
@@ -488,9 +486,7 @@ i izvršavam još jedan "if statement" s kojim provjeravamo dal se nešto nalazi
 
 Ako je **cartItems** prazan, ažuriramo ga s definiranim proizvodom.
 ```javascript
-    if (cartItems.length === 0) {
-            setCartItems([item]);
-        }
+    if (cartItems.length === 0) { setCartItems([item]); }
 ```
 U suprotnom unutar **cartItems** tražimo index proizvoda koji ima isti identifikacijski broj kao **id** parametar.
 ```javascript
@@ -556,9 +552,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
     funkcija koja ažurira vrijednost **isBucketVisible** u suprotnu vrijednos njegove trenutnevrijednosti. 
     **false -> true** | **true -> false**
 ```javascript
-        const toggleBucketVisibility = () => {
-            setIsBucketVisible((prevState) => !prevState);
-        };
+        const toggleBucketVisibility = () => { setIsBucketVisible((prevState) => !prevState); };
 ```
 - ### [Nav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js#L14)
     **Nav.js** komponenta renderira "unorder list" s linkovima, gumbom za prikazivanje košarice i **Bucket** komponentom
@@ -623,7 +617,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
 
     **Bucket.js** vraća na dva načina :
 
-    1. **Prazna košarica (if (cartItems.length < 1) {..})**
+    - **Prazna košarica (if (cartItems.length < 1) {..})**
 
     Provjera stanje **cartItems**, ako dužina **cartItems.length < 1** što bi značilo da je **cartItems** prazan, onda renderira element
     s tekstom koji obavještava kupca da je košarica prazna.
@@ -635,7 +629,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
             )
     ```
 
-    2. **Košarica s proizvodima (else {..})**
+    - **Košarica s proizvodima (else {..})**
 
     U suprotnom renderira elemente koji prikazuju tablicu s proizvodima, pojedinačnom količinom, cijenom i dugmom za brisanje proizvoda, 
     te ukupnom cijenom, i dugmima za naručivanje i čisćenje košarice.
@@ -675,9 +669,9 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
 
 ## 5. [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)
 
-- **Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
+**Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
 
-    - ### [Home.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js#L9)
+- ### [Home.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js#L9)
 
     Renderira tri komponente:
 
@@ -699,8 +693,8 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
 
 ## 6. [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)
 
-- **Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
-    Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
+**Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
+Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
 
 - ### [Hero.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js#L6)
     ```javascript
@@ -805,7 +799,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
 
 **About.js** je komponenta koja renderira **<section>** element unutar kojeg su nekoliko **<article>** elemenata
 koji prikazuju tekst o mesnici.
-    ```javascript
+```javascript
         <section className='about'>
         <article className='about_article'>
             <h2>Stogodisnja tradicija!</h2>
@@ -813,14 +807,14 @@ koji prikazuju tekst o mesnici.
             <h2>Od 1923.!</h2>
         </article>
         </section> 
-    ```
+```
 
 ## 9. [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)
 
 - **Products.js** je roditeljska komponenta, dvim komponentima:
 
-    - **SideNav** : navigacijska traka.
-    - **[ProductsList](#productslistjs)** : lista proizvoda.
+    - **[SideNav](#10-sidenavjs)** : navigacijska traka.
+    - **[ProductsList](#7-productslistjs)** : lista proizvoda.
 
     koja zahtjeva jedan parametar :
 
@@ -843,17 +837,15 @@ koji prikazuju tekst o mesnici.
 
 ## 10. [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)
 
--**SideNav.js** je komponenta koja zahtjeva jedan parametar:
+**SideNav.js** je komponenta koja zahtjeva jedan parametar:
 
-    - **setMeatType** : ažuriranje prikaza vrste mesa.
+- **setMeatType** : ažuriranje prikaza vrste mesa.
 
 I definira jednu funkciju **[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L4)** koja zahtjeva jedan parametar 
 i koristi **setMeatType** za ažuriranje **meatType** navedenim parametrom.
-    ```javascript
-        const handleMeatTypeChange = (type) => {
-            setMeatType(type);
-        };
-    ```
+```javascript
+    const handleMeatTypeChange = (type) => { setMeatType(type); };
+```
 
 - ### [SideNav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L8)
     **SideNav.js** renderira listu pojmova, koji na odabir izvršavaju **handleMeatTypeChange** dodajući pojam kao parametar.
@@ -866,17 +858,17 @@ i koristi **setMeatType** za ažuriranje **meatType** navedenim parametrom.
 
 ## 11. [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)
 
-    **AboutUs.js** je komponenta koja istovremeno prikazuje informativni tekst o mesnici, dinamičnu listu slika koje se neprekidno 
-    izmjenjuju, i omogućava korisnicima da jednostavno pošalju poruku putem dostupnog obrasca.
+**AboutUs.js** je komponenta koja istovremeno prikazuje informativni tekst o mesnici, dinamičnu listu slika koje se neprekidno 
+izmjenjuju, i omogućava korisnicima da jednostavno pošalju poruku putem dostupnog obrasca.
 
-    Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
-    ```javascript
-        const [formData, setFormData] = useState({
-            name: "",
-            email: "",
-            message: "",
-        });
-    ```
+Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
+```javascript
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+```
 - Zatim, definira se funkcija **[handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L11)** 
     Koja prima **event** kao parametar. Iz tog eventa izvlači se njegovo **name** i **value**,
     nakon čega ažurira stanje **formData**, postavljajući novo **value** za odgovarajući **key** unutar trenutnog stanja.
