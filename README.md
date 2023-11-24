@@ -1,27 +1,27 @@
 # Mesnica Web Trgovina
 
-1. ### [Frontend](#frontend-razvoj-s-reactom)   |   2. ### [Backend](#backend-razvoj-s-nodejs-i-express)   
-    - **[Korisik](#korisnik)**                  |       - [products.js / productsContorller.js](#productsjs--productscontorllerjs)
-        - [Client.js](#clientjs)                |       - [order.js / orderController.js](#orderjs--ordercontrollerjs)
-        - [Nav.js](#navjs)                      |       - [form.js / formController.js](#formjs--formcontrollerjs)
-        - [Bucket.js](#bucketjs)                |       - [login.js / logInController.js](#loginjs--logincontrollerjs)
-        - [Header.js](#headerjs)                |       - [logout.js / logoutController.js](#logoutjs--logoutcontrollerjs)
-        - [Home.js](#homejs)                    |       - [admin.js](#adminjs)
-        - [Hero.js](#herojs)                    |
-        - [ProductsList.js](#productslistjs)    |
-        - [About.js](#aboutjs)                  |
-        - [Products.js](#productsjs)            |
-        - [SideNav.js](#sidenavjs)              |
-        - [AboutUs.js](#aboutusjs)              |
-        - [orderForm.js](#orderformjs)          |
-        - [Footer.js](#footerjs)                |
-    - **[Admin](#admin)**                       |
-        - [Admin.js](#adminjs-1)                |
-        - [AdminLogIn.js](#adminloginjs)        |
-        - [AdminProducts.js](#adminproductsjs)  |
-        - [AddProducts.js](#addproductsjs)      |
-        - [AdminOrders.js](#adminorderjs)       |
-        - [AdminOrder.js](#adminorderjs)        |
+1. ### [Frontend](#frontend-razvoj-s-reactom)---|---2. [Backend](#backend-razvoj-s-nodejs-i-express)   
+    - **[Korisik](#korisnik)**:----------------:|:----:- [products.js / productsContorller.js](#productsjs--productscontorllerjs)
+        - [Client.js](#clientjs):--------------:|:----:- [order.js / orderController.js](#orderjs--ordercontrollerjs)
+        - [Nav.js](#navjs):--------------------:|:----:- [form.js / formController.js](#formjs--formcontrollerjs)
+        - [Bucket.js](#bucketjs):--------------:|:----:- [login.js / logInController.js](#loginjs--logincontrollerjs)
+        - [Header.js](#headerjs):--------------:|:----:- [logout.js / logoutController.js](#logoutjs--logoutcontrollerjs)
+        - [Home.js](#homejs):------------------:|:----:- [admin.js](#adminjs)
+        - [Hero.js](#herojs):------------------:|
+        - [ProductsList.js](#productslistjs):--:|
+        - [About.js](#aboutjs):----------------:|
+        - [Products.js](#productsjs):----------:|
+        - [SideNav.js](#sidenavjs):------------:|
+        - [AboutUs.js](#aboutusjs):------------:|
+        - [orderForm.js](#orderformjs):--------:|
+        - [Footer.js](#footerjs):--------------:|
+    - **[Admin](#admin)**:---------------------:|
+        - [Admin.js](#adminjs-1):--------------:|
+        - [AdminLogIn.js](#adminloginjs):------:|
+        - [AdminProducts.js](#adminproductsjs)::|
+        - [AddProducts.js](#addproductsjs):----:|
+        - [AdminOrders.js](#adminorderjs):-----:|
+        - [AdminOrder.js](#adminorderjs):------:|
 
 # O autor
 
