@@ -2,28 +2,28 @@
 
 1. ## [Frontend](#frontend-razvoj-s-reactom)          
      
-    - ### [Korisik](#korisnik)                          
-        - [Client.js](#clientjs)                        
-        - [Nav.js](#navjs)                              
-        - [Bucket.js](#bucketjs)                        
-        - [Header.js](#headerjs)                        
-        - [Home.js](#homejs)                            
-        - [Hero.js](#herojs)                    
-        - [ProductsList.js](#productslistjs)    
-        - [About.js](#aboutjs)                  
-        - [Products.js](#productsjs)            
-        - [SideNav.js](#sidenavjs)              
-        - [AboutUs.js](#aboutusjs)              
-        - [orderForm.js](#orderformjs)          
-        - [Footer.js](#footerjs)                
+    1. ### [Korisik](#korisnik)                          
+        1. [Client.js](#clientjs)                        
+        2. [Nav.js](#navjs)                              
+        3. [Bucket.js](#bucketjs)                        
+        4. [Header.js](#headerjs)                        
+        5. [Home.js](#homejs)                            
+        6. [Hero.js](#herojs)                    
+        7. [ProductsList.js](#productslistjs)    
+        8. [About.js](#aboutjs)                  
+        9. [Products.js](#productsjs)            
+        10. [SideNav.js](#sidenavjs)              
+        11. [AboutUs.js](#aboutusjs)              
+        12. [orderForm.js](#orderformjs)          
+        13. [Footer.js](#footerjs)                
     
-    - ### [Admin](#admin)                       
-        - [Admin.js](#adminjs)                  
-        - [AdminLogIn.js](#adminloginjs)        
-        - [AdminProducts.js](#adminproductsjs)  
-        - [AddProducts.js](#addproductsjs)      
-        - [AdminOrders.js](#adminorderjs)       
-        - [AdminOrder.js](#adminorderjs)        
+    2. ### [Admin](#admin)                       
+        1. [Admin.js](#adminjs)                  
+        2. [AdminLogIn.js](#adminloginjs)        
+        3. [AdminProducts.js](#adminproductsjs)  
+        4. [AddProducts.js](#addproductsjs)      
+        5. [AdminOrders.js](#adminorderjs)       
+        6. [AdminOrder.js](#adminorderjs)        
 
 2. ## [Backend](#backend-razvoj-s-nodejs-i-express)
     
@@ -1780,7 +1780,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         - postavlja se stanje **orderStatus** u **true**, te se s time potvrđuje da je narudžba potvrđena.
     - `toggleVisibility(_id);`
         - zatvara se prikaz otovorene naruđbe
-    - `setMessage(`Narudžba br:${num} je potvrđena!`);`
+    - `setMessage(Narudžba br:${num} je potvrđena!);`
         - prikazuje se poruka
     - `setShouldRefetch(true);`
         - postavlja se stanje **shuldeRefetch** u **true**, s čime se daje znak za ponovno povlačenje podataka.
@@ -1788,7 +1788,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
     U suprotnom, se provjerava `else if (response.status === 400) {}`, ako je ovaj **if statment** pozitivan izvršava se sljedeće:
     - `const errorResponse = await response.json();`
         - definira se pogreška.
-    - `setMessage(`Greška: ${errorResponse.error}`);`
+    - `setMessage(Greška: ${errorResponse.error});`
         - pogreša se prikazuje kao poruka.
     Ako je i **else if** negativan onda se izvršuje posljedni statment, odnosno **else {}**:
     - `setMessage("Došlo je do problema, molim pokušajte ponovno.");`
