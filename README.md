@@ -549,21 +549,21 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 2. [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)
 
-    **Nav.js** komponenta je komponenta u stilu navigacijske trake, zahtjeva četiri parametra koja prosljeđuje u **Bucket** komponent.
+- **Nav.js** komponenta je komponenta u stilu navigacijske trake, zahtjeva četiri parametra koja prosljeđuje u **Bucket** komponent.
 
     Nav komponenta prvo definira **useState** pomoću kojeg se definira prikazivanje **Bucket** komponente.
     ```javascript
-        const [isBucketVisible, setIsBucketVisible] = useState(false);
+            const [isBucketVisible, setIsBucketVisible] = useState(false);
     ```
-    Zatim se definira **[toggleBucketVisibility](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L10)** funkcija koja ažurira vrijednost **isBucketVisible** u suprotnu vrijednos njegove trenutne
-    vrijednosti. 
+- Zatim se definira **[toggleBucketVisibility](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L10)** 
+    funkcija koja ažurira vrijednost **isBucketVisible** u suprotnu vrijednos njegove trenutnevrijednosti. 
     **false -> true** | **true -> false**
-    ```javascript
+```javascript
         const toggleBucketVisibility = () => {
             setIsBucketVisible((prevState) => !prevState);
         };
-    ```
-    - ### [Nav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js#L14)
+```
+- ### [Nav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js#L14)
     **Nav.js** komponenta renderira "unorder list" s linkovima, gumbom za prikazivanje košarice i **Bucket** komponentom
     ```javascript
         return (
@@ -593,7 +593,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     ```
 ## 3. [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)
 
-    **Bucket.js** komponeta prikazuje proizvode koje je kupac odabrao kupiti. Zahtjeva četiri parametra:
+- **Bucket.js** komponeta prikazuje proizvode koje je kupac odabrao kupiti. Zahtjeva četiri parametra:
 
     - **cartItems**
     - **deleteItems**
@@ -602,7 +602,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
     Prvo se definira se funkcija **calculateTotalPrice**.
 
-    - ### [calculateTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js#L7)
+- ### [calculateTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js#L7)
 
     **calculateTotalPrice** funkcija izračunava ukupnu cijenu svih proizvoda tako što koristi **reduce** funkciju koja iterira kroz
     **cartItems** i za svaki item množi **quantity * price** te ih zbraja u **total**.   
@@ -663,7 +663,8 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 4. [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)
 
-    **Header.js** je komponenta koja prikazuje vrh stranice. Zahtjeva jedan parametar, cija se vrijednost prikazuje unutar elementa.
+- **Header.js** je komponenta koja prikazuje vrh stranice. 
+    Zahtjeva jedan parametar, cija se vrijednost prikazuje unutar elementa.
     ```javascript
         const Header = ({ title }) => {
             return (
@@ -677,7 +678,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 5. [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)
 
-    **Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
+- **Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
 
     - ### [Home.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js#L9)
 
@@ -701,10 +702,10 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 6. [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)
 
-    **Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
+- **Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
     Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
 
-    - ### [Hero.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js#L6)
+- ### [Hero.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js#L6)
     ```javascript
         const Hero = () => {
             return (
@@ -723,7 +724,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 7. [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)
 
-    **ProductsList.js** zahtjeva 3 parametara:
+- **ProductsList.js** zahtjeva 3 parametara:
 
     - **handleAmountChange**
     - **meatType**
@@ -805,8 +806,8 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 8. [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)
 
-    **About.js** je komponenta koja renderira **<section>** element unutar kojeg su nekoliko **<article>** elemenata
-    koji prikazuju tekst o mesnici.
+**About.js** je komponenta koja renderira **<section>** element unutar kojeg su nekoliko **<article>** elemenata
+koji prikazuju tekst o mesnici.
     ```javascript
         <section className='about'>
         <article className='about_article'>
@@ -849,8 +850,8 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
     - **setMeatType** : ažuriranje prikaza vrste mesa.
 
-    I definira jednu funkciju **[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L4)** koja zahtjeva jedan parametar i koristi **setMeatType** za ažuriranje **meatType** 
-    navedenim parametrom.
+I definira jednu funkciju **[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L4)** koja zahtjeva jedan parametar 
+i koristi **setMeatType** za ažuriranje **meatType** navedenim parametrom.
     ```javascript
         const handleMeatTypeChange = (type) => {
             setMeatType(type);
@@ -903,9 +904,11 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             message: formData.message,
         })
     ```
-    Ako odgovor bude uspješan, resetira obrazac i prikazuje API odgovor u konzoli. Ako odgovor nije uspješan, hvata grešku i prikazuje je u konzoli.
+    Ako odgovor bude uspješan, resetira obrazac i prikazuje API odgovor u konzoli. Ako odgovor nije uspješan, hvata grešku i 
+    prikazuje je u konzoli.
 
-    Nakon toga, stvara se kontekst slika koji zahtijeva sve slikovne datoteke unutar **public/img** foldera, a zatim se stvaraju polje slika i stanje za praćenje trenutnog indeksa slike. 
+    Nakon toga, stvara se kontekst slika koji zahtijeva sve slikovne datoteke unutar **public/img** foldera, a zatim se stvaraju 
+    polje slika i stanje za praćenje trenutnog indeksa slike. 
     ```javascript
         const imageContext = require.context(
             "/public/img",
