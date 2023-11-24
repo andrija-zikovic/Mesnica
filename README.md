@@ -97,7 +97,11 @@ i daje dopuštenje za slanje kredencijala. Nakon toga koristim "cors" koji isto 
 dopuštenje za slanje requesta.
 
 ## [products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) / [productsContorller.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsContorller.js) 
+<div align="right">
 
+[Top](#backend)
+
+</div>
 Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). 
 
 Kad se pristupi ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka izvlači listu proizvoda
@@ -118,7 +122,11 @@ Za izvlačenje podataka s **mongoDB** koristim **"mongoose"** s kojim se spajam 
 podataka, i izrađivanje **Schema** pomoću kojih definiram šta želim izvući iz baze podataka.
 
 ## [order.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/order.js) / [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)  
+<div align="right">
 
+[Top](#backend)
+
+</div>
 Sljedeće ruta ( url/order ) obrađuje naruđbu. Kad se pristupi ruti server obrađuje orderController.
 
 orderController s podacima koje dobiva kroz request, izrađuje QR kod koji prenosi informacije :
@@ -149,13 +157,21 @@ emailSander fukciju koja koristi **"nodemailer"** za slanje emaila kupcu s PDF f
 Kad je email poslan orderController sprema naruđbu u mongoDB bazu podataka.
 
 ## [form.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/form.js) / [formController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/formController.js) 
+<div align="right">
 
+[Top](#backend)
+
+</div>
 Ruta ( url/form ) obrađuje formController 
 
 koji kroz request dobiva (name, email, message), zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
 
 ## [login.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/login.js) / [logInController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logInController.js) 
+<div align="right">
 
+[Top](#backend)
+
+</div>
 Ruta ( url/login ) obrađuje logInController 
 
 koji kroz request dobiva ( username, password ). logInController u mongoDB bazi podataka traži username 
@@ -177,7 +193,11 @@ Ako se podudaraju. logInController s **"jesonwebtoken"** kreira accessToken i re
 ```
 
 ## [logout.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) / [logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logoutController.js)
+<div align="right">
 
+[Top](#backend)
+
+</div>
 Ruta **url/logout** obrađuje logoutController 
 
 koji provjerava dal je kroz cookie poslan JWT.
@@ -204,7 +224,11 @@ Zatim vraća prazan cookie i pozitivan response.
 ```
 
 # [admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/api/admin.js)
+<div align="right">
 
+[Top](#backend)
+
+</div>
 Preko **url/admin**  rute obrađuju se svi zatjevi vezani za admina. CRUD operacije vezane za proizvode, prihvacanje i odbijanje naruđbi.
 
 - [**url/admin/products**](#urladminproducts)
