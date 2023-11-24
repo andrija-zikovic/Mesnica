@@ -1705,12 +1705,12 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 
     **AdminOrders.js** komponenta se renderira na sljedeći način:
 
-    1. **Naslov i Zaglavlje Tablice:**
+    - **Naslov i Zaglavlje Tablice:**
 
         - `<h1 style={{ padding: "1rem" }}>Orders</h1>`: Prikazuje naslov "Orders" s određenim stilom.
         - `<thead>` element: Definira zaglavlje tablice s nazivima stupaca kao što su "Num", "Buyer", "Date" te prazan stupac.
 
-    2. **Tijelo Tablice (Tbody):**
+    - **Tijelo Tablice (Tbody):**
 
         - `{adminOrd.slice().reverse().map((orderData, index) => (`: Mapira kroz niz narudžbi (**adminOrd**), reverzira ga kako bi 
         najnovije narudžbe bile na vrhu, te prikazuje informacije o svakoj narudžbi u retcima tablice.
@@ -1720,11 +1720,11 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         - Detalji narudžbe: Ako je narudžba označena kao vidljiva (`visibleOrders.includes(orderData._id)`), prikazuju se dodatni 
         redak s komponentom **AdminOrder** koja prikazuje detalje narudžbe.
 
-    3. **Podnožje Tablice (Tfoot):**
+    - **Podnožje Tablice (Tfoot):**
 
         - `<tfoot>` element: Definira podnožje tablice s jednim retkom i praznim poljem.
 
-    4. **Poruka:**
+    - **Poruka:**
 
         - `<div className={message ${message ? "visible" : "hidden"}}>`: Prikazuje div element s klasama "message", ovisno o 
         tome postoji li poruka (**message**). Ako postoji, koristi se klasa "**visible**", inače "**hidden**".
@@ -1732,7 +1732,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         postavljanje poruke na prazan string.
         - `<p>{message}</p>`: Prikazuje sadržaj poruke.
 
-    5. **AdminOrder Komponenta:**
+    - **AdminOrder Komponenta:**
 
         - <AdminOrder>: Ukoliko je detalj narudžbe vidljiv, poziva se **AdminOrder** komponenta s odgovarajućim props-ovima.
         ```javascript
