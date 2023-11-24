@@ -1769,9 +1769,9 @@ Količina proizvoda prikazuje se unutar `<p>{product.quantity} kg</p>`.
 
 Ovisno o statusu narudžbe **(true, false ili null)**, prikazuju se odgovarajuće poruke.
 - Ako je narudžba potvrđena (orderStatus === true), prikazuje se poruka 
-  "Order Confirmed!" s pozadinskom zelenom bojom `#000000`.
+  "Order Confirmed!" s pozadinskom zelenom bojom `rgba(51, 178, 51, 0.75)`.
 - Ako je narudžba odbijena **(orderStatus === false)**, prikazuje se poruka 
-  "Order Rejected!" s pozadinskom crvenom bojom `rgb(227, 53, 53)`.
+  "Order Rejected!" s pozadinskom crvenom bojom `rgba(227, 53, 53, 0.801)`.
 - Ako status nije definiran **(orderStatus === null)**, prikazuju se gumbi za potvrdu i odbijanje narudžbe unutar 
   "adminOrdDis__ButtonBottom" div elementa, a klikom na njih pozivaju se funkcije **handleConfirme** i **handleReject**.
 
