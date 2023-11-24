@@ -402,14 +402,14 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
 
-    Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
-    koje user želi kupiti.
+Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
+koje user želi kupiti.
 
-    ```javascript
-        const [cartItems, setCartItems] = useState([]);
-    ```
+```javascript
+    const [cartItems, setCartItems] = useState([]);
+```
 
-    Definiraju se jos četiri funkcije:
+Definiraju se jos četiri funkcije:
     -   [deleteItem](#deleteitem)
     -   [clearCart](#clearcart)
     -   [calculateQuantity](#calculatequantity)
@@ -417,107 +417,104 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 - ### [deleteItem](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L15)
 
-    **deleteItem** funkcija uzima **itemId** parametar koji koristi kao identfikator, zatim s tim identifikator filtrira kroz **cartItems** i
-    stvara novu listu proizvoda bez identificiranog itema unutar **cartItems**.
-    Nakon što je izradila novu listu, ažurira **cartItems** s novom listom.
+**deleteItem** funkcija uzima **itemId** parametar koji koristi kao identfikator, zatim s tim identifikator filtrira kroz **cartItems** i
+stvara novu listu proizvoda bez identificiranog itema unutar **cartItems**.
+Nakon što je izradila novu listu, ažurira **cartItems** s novom listom.
 
-    ```javascript
-        const deleteItem = (itemId) => {
-            const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
-            setCartItems(updatedCartItems);
-        };
-    ```
+```javascript
+    const deleteItem = (itemId) => {
+        const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
+        setCartItems(updatedCartItems);
+    };
+```
 
 - ### [clearCart](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L20)
 
-    **clearCart** funkcija ažurira **cartItems** s praznom listom.
+**clearCart** funkcija ažurira **cartItems** s praznom listom.
 
-    ```javascript
-        const clearCart = () => {
-            setCartItems([]);
-        };
-    ```
+```javascript
+    const clearCart = () => {
+        setCartItems([]);
+    };
+```
 
 - ### [calculateQuantity](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L24)
 
-    **calculateQuantity** funkcija uzima dva parametra **newAmount** i **selectedUnit**, ako je vrijednost **selectedUnit** "kg" onda 
-    funkcija vraća vrijednost **newAmount**. U suprotnom funkcija vraća vrijednos **newAmount** podjeljenu sa 100 što bi u suštini 
-    trebalo vratit vrijednost u dekagramima.
+**calculateQuantity** funkcija uzima dva parametra **newAmount** i **selectedUnit**, ako je vrijednost **selectedUnit** "kg" onda 
+funkcija vraća vrijednost **newAmount**. U suprotnom funkcija vraća vrijednos **newAmount** podjeljenu sa 100 što bi u suštini 
+trebalo vratit vrijednost u dekagramima.
 
-    ```javascript
-        const calculateQuantity = (newAmount, selectedUnit) => {
-            if (selectedUnit === "kg") {
-                return newAmount;
-            } else {
-                return newAmount / 100;
-            }
-        };
-    ```
+```javascript
+    const calculateQuantity = (newAmount, selectedUnit) => {
+        if (selectedUnit === "kg") {
+            return newAmount;
+        } else {
+            return newAmount / 100;
+        }
+    };
+```
 
 - ### [handleAmountChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L32)
 
-    **handleAmountChange** funkcija uzima sedam parametara :
+**handleAmountChange** funkcija uzima sedam parametara :
 
-    - **operation** : može biti "increment" ili "decrement", funkcija je koristi kako bi znala dal user želi smanjiti ili povećati količinu.
-    - **id** : idetifikacijski broj proizvoda
-    - **title** : naziv proizvoda.
-    - **price** : cijena proizvoda.
-    - **selectedUnit** : može biti "kg" ili "dag".
-    - **amount** : količina.
-    - **setAmount** : funkcija unutar **useState** za ažuriranje količine.
+- **operation** : može biti "increment" ili "decrement", funkcija je koristi kako bi znala dal user želi smanjiti ili povećati količinu.
+- **id** : idetifikacijski broj proizvoda
+- **title** : naziv proizvoda.
+- **price** : cijena proizvoda.
+- **selectedUnit** : može biti "kg" ili "dag".
+- **amount** : količina.
+- **setAmount** : funkcija unutar **useState** za ažuriranje količine.
 
-    Funkcija prvo definira **incrementValue**, ako je **selectedUnit = "kg"** onda **incrementValue = 1**, u suprotnom **incrementValue = 10**.
-    Ova veriabla određuje dal se radi o kilogramima ili dekagramima.
+Funkcija prvo definira **incrementValue**, ako je **selectedUnit = "kg"** onda **incrementValue = 1**, u suprotnom **incrementValue = 10**. Ova veriabla određuje dal se radi o kilogramima ili dekagramima.
 
-    Zatim se definira nova količina **newAmount** tako što se gleda vrijednos **operation** parametra, ako je njegova vrijednost "increment" onda 
-    se zbrajaju **amount + incrementValue**, u suprotnom se oduzimaju.
+Zatim se definira nova količina **newAmount** tako što se gleda vrijednos **operation** parametra, ako je njegova vrijednost "increment" onda se zbrajaju **amount + incrementValue**, u suprotnom se oduzimaju.
 
-    Ako je **newAmount** veći ili jednak broju jedan, izvršava se **setAmount(newAmount)** kako bi se ažurirala nova vrijednost količine **amount**.
+Ako je **newAmount** veći ili jednak broju jedan, izvršava se **setAmount(newAmount)** kako bi se ažurirala nova vrijednost količine **amount**.
 
-    Zatim se unutar toga "if statement" definira proizvod u ovom slučaju **item** sa svim dobivenim parametrima
+Zatim se unutar toga "if statement" definira proizvod u ovom slučaju **item** sa svim dobivenim parametrima
 
-    ```javascript
-        const item = {
-            "id": id,
-            "description": title,
-            "price": price,
-            "tax-rate": 5,
-            "quantity": calculateQuantity(newAmount, selectedUnit),
-            "unit": selectedUnit,
-        };
-    ```
-    i izvršavam još jedan "if statement" s kojim provjeravamo dal se nešto nalazi unutar **cartItems**.
+```javascript
+    const item = {
+        "id": id,
+        "description": title,
+        "price": price,
+        "tax-rate": 5,
+        "quantity": calculateQuantity(newAmount, selectedUnit),
+        "unit": selectedUnit,
+    };
+```
+i izvršavam još jedan "if statement" s kojim provjeravamo dal se nešto nalazi unutar **cartItems**.
 
-    Ako je **cartItems** prazan, ažuriramo ga s definiranim proizvodom.
-    ```javascript
-        if (cartItems.length === 0) {
-                setCartItems([item]);
-            }
-    ```
-    U suprotnom unutar **cartItems** tražimo index proizvoda koji ima isti identifikacijski broj kao **id** parametar.
-    ```javascript
-    const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.id === id);
-    ```
-    Ako dobiveni index nije -1, znači da taj proizvod postoji unutar **cartItems**. Zatim se izrađuje nova lista unutar koje se ažurira **item**
-    s navedenim indexom i ažurira se cijeli **cartItems**.
-    ```javascript
-        if (existingItemIndex !== -1) {
-            const updatedCartItems = [...cartItems];
-            updatedCartItems[existingItemIndex] = item;
-            setCartItems(updatedCartItems);
+Ako je **cartItems** prazan, ažuriramo ga s definiranim proizvodom.
+```javascript
+    if (cartItems.length === 0) {
+            setCartItems([item]);
         }
-    ```
-    U suprotnom dodajemo **item** kao novi proizvod unutar **cartItems**.
-    ```javascript
-        setCartItems([...cartItems, item]);
-    ```
-    A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu i samim time nam više nije potreban, pa izrađujemo novu
-    listu starih proizvoda bez navedenog i ažuriramo **cartItems** s novom listom.
-    ```javascript
-        const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== id);
+```
+U suprotnom unutar **cartItems** tražimo index proizvoda koji ima isti identifikacijski broj kao **id** parametar.
+```javascript
+const existingItemIndex = cartItems.findIndex((cartItem) => cartItem.id === id);
+```
+Ako dobiveni index nije -1, znači da taj proizvod postoji unutar **cartItems**. Zatim se izrađuje nova lista unutar koje se ažurira **item**
+s navedenim indexom i ažurira se cijeli **cartItems**.
+```javascript
+    if (existingItemIndex !== -1) {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems[existingItemIndex] = item;
         setCartItems(updatedCartItems);
-        setAmount(0);
-    ```
+    }
+```
+U suprotnom dodajemo **item** kao novi proizvod unutar **cartItems**.
+```javascript
+    setCartItems([...cartItems, item]);
+```
+A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu i samim time nam više nije potreban, pa izrađujemo novu listu starih proizvoda bez navedenog i ažuriramo **cartItems** s novom listom.
+```javascript
+    const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== id);
+    setCartItems(updatedCartItems);
+    setAmount(0);
+```
 
 - ### [Client.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L72)
 
