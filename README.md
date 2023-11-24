@@ -1504,7 +1504,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
     **AdminProducts** renderira na način da: 
 
-    1. **Brisanje proizvoda**: 
+    - **Brisanje proizvoda**: 
         - Potvrda brisanja proizvoda: 
             - Ako postoji informacija o proizvodu za brisanje (**productDeleteInfo**), renderira se dijalog koji potvrđuje brisanje 
             određenog proizvoda. U dijalogu se prikazuje naziv proizvoda, a korisnik može odabrati "DA" za potvrdu brisanja ili "NE" za
@@ -1514,7 +1514,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             - Ako postoji poruka (**message**), renderira se dijalog s porukom i gumbom za zatvaranje. Poruka se postavlja i kontrolira
             stanjem komponente.
 
-    2.  **Tablica**:
+    - **Tablica**:
         - Zaglavlje tablice: 
             - Renderira se zaglavlje tablice s nazivima stupaca: "Redni broj", "Ime", "Vrsta mesa", "Cijena/kg", "Na stanju", "IMG" te
             prazan stupac za gumbe i akcije.
