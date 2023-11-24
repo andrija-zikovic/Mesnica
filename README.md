@@ -1775,24 +1775,25 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         },
         body: JSON.stringify({ _id: _id }),
     ```
-    Zatim se provjerava **if (resonse.ok) {}**, ako je **if statment** pozitivan onda se izvršava sljedeće:
-    - **setOrderStatus(true);**
+    Zatim se provjerava `if (resonse.ok) {}`, ako je **if statment** pozitivan onda se izvršava sljedeće:
+    - `setOrderStatus(true);`
         - postavlja se stanje **orderStatus** u **true**, te se s time potvrđuje da je narudžba potvrđena.
-    - **toggleVisibility(_id);**
+    - `toggleVisibility(_id);`
         - zatvara se prikaz otovorene naruđbe
-    - **setMessage(`Narudžba br:${num} je potvrđena!`);**
+    - `setMessage(`Narudžba br:${num} je potvrđena!`);`
         - prikazuje se poruka
-    - **setShouldRefetch(true);**
+    - `setShouldRefetch(true);`
         - postavlja se stanje **shuldeRefetch** u **true**, s čime se daje znak za ponovno povlačenje podataka.
-    U suprotnom, se provjerava **else if (response.status === 400) {}**, ako je ovaj **if statment** pozitivan izvršava se sljedeće:
-    - **const errorResponse = await response.json();**
+    
+    U suprotnom, se provjerava `else if (response.status === 400) {}`, ako je ovaj **if statment** pozitivan izvršava se sljedeće:
+    - `const errorResponse = await response.json();`
         - definira se pogreška.
-    - **setMessage(`Greška: ${errorResponse.error}`);**
+    - `setMessage(`Greška: ${errorResponse.error}`);`
         - pogreša se prikazuje kao poruka.
     Ako je i **else if** negativan onda se izvršuje posljedni statment, odnosno **else {}**:
-    - **setMessage("Došlo je do problema, molim pokušajte ponovno.");**
+    - `setMessage("Došlo je do problema, molim pokušajte ponovno.");`
         - postavlja se poruka.        
-    - **throw new Error("Network response was not ok.");**
+    - `throw new Error("Network response was not ok.");`
         - definira se nova greška kako bi ju **catch** block uhvatio.
     Na kraju se izvršava **catch (error)** koji prikazuje **error** u konzoli.
 
