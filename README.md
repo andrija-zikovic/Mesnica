@@ -399,7 +399,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 - **Route** elementi definiraju koje komponente trebaju biti prikazani ra određenu rutu.
 
 # Korisnička strana
-[Top](#frontend){style="text-align: right;"}
+<p align=right>[Top](#frontend)</p>
 ## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
 
 Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
