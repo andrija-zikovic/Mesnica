@@ -41,9 +41,9 @@
 Prvi framework za **Node.js** s kojim sam se upoznao je **express**, u ovom projektu koristim ga za definiranje URL ruta. 
 
 Nakon izrade prvih ruta morao sam definirati credentials middleware kako mi mogao definirati koji url
-ima pristup ovom serveru. Za to sam izradio dva filea, jedan u kojem definiram listu URLova koji će
-imati pristup, a drugi je middleware koji provjerava dal je URL s kojeg dolazi request u listi URLova 
-i daje dopuštenje za slanje kredencijala. Nakon toga koristim "cors" koji isto provjerava dal URL ima 
+ima pristup ovom serveru. Za to sam izradio dva filea, jedan u kojem definiram listu URL-ova koji će
+imati pristup, a drugi je middleware koji provjerava dal je URL s kojeg dolazi request u listi URL-ova 
+i daje dopuštenje za slanje kredencijala. Nakon toga koristim "**cors**" koji isto provjerava dal URL ima 
 dopuštenje za slanje requesta.
 
 ## [products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) / [productsContorller.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsContorller.js) 
@@ -54,7 +54,7 @@ dopuštenje za slanje requesta.
 </div>
 Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). 
 
-Kad se pristupi ruti, server obrađuje productsController koji iz mongoDB NoSQL baze podataka izvlači listu proizvoda
+Kad se pristupi ruti, server obrađuje **productsController** koji iz mongoDB NoSQL baze podataka izvlači listu proizvoda
 
 ```javascript
 [ {
@@ -112,7 +112,8 @@ Kad je email poslan orderController sprema naruđbu u mongoDB bazu podataka.
 [Top](#backend)
 
 </div>
-Ruta ( url/form ) obrađuje formController 
+
+Ruta ( url/form ) obrađuje **formController** 
 
 koji kroz request dobiva (name, email, message), zatim s "nodemailer" šalje email s dobivenim informacija na email trgovine.
 
@@ -122,7 +123,8 @@ koji kroz request dobiva (name, email, message), zatim s "nodemailer" šalje ema
 [Top](#backend)
 
 </div>
-Ruta ( url/login ) obrađuje logInController 
+
+Ruta ( url/login ) obrađuje **logInController** 
 
 koji kroz request dobiva ( username, password ). logInController u mongoDB bazi podataka traži username 
 ```javascript 
