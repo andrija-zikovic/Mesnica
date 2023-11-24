@@ -55,17 +55,16 @@ const AdminOrder = ({
         setOrderStatus(false);
         setShouldRefetch(true);
         setMessage(`Order ${num} Rejected!`);
-        toggleVisibility();
+        toggleVisibility(_id);
       } else if (response.status === 400) {
         const errorResponse = await response.json();
         setMessage(errorResponse.error);
       } else {
-        setMessage("Network response was not ok.");
+        setMessage("Došlo je do problema, pokušaje te ponovo.");
         throw new Error("Network response was not ok.");
       }
     } catch (error) {
       console.error("Error:", error);
-      setMessage(error.message);
     }
   };
 

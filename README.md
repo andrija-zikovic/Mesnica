@@ -1697,3 +1697,88 @@ U suprotnom, hvata se greška i ispisuje u konzoli.
         />
     ```
 
+## [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)
+
+**AdminOrder.js** je komponenta koja prikazuje detalje o narudžbi, i omogućava odbijanje ili prihvaćanje iste.
+
+Zahtjeva pet svojstava(**props**):
+- **orderData**: sadržava informacije id narudžbi.
+- **toggleVisibility**: kontrolira prikaz narudžbe.
+- **setMessage**: postavlja stanje poruke.
+- **setShuldeRefetch**: postavlja stanje verijable za ponovno povlačenje narudžbi s servera.
+- **token**: sadržava AccessToken.
+
+Prvo se rekonstruira **orderData** u pojedinačne vrijednosti.
+```javascript
+    const { _id, buyer, date, num, products, status } = orderData;
+```
+Zatim definiramo **orderStatus** stanje, i postavljamo ga u vrijednost **status**.
+```javascript
+    const [orderStatus, setOrderStatus] = useState(status);
+```
+
+### [handleConfirme](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js#L14)
+**handleConfirme** je funkcija koja potvrđuje narudžbu.
+Definira se **response** unutar **try** block-a koji poziva **fetch** funckiju sa **POST** metodom, u **headers** se 
+postavlja **token** za provjeru autentikacije, a u **body** se postavlja **_id** kao identifikacijiski broji narudžbe.
+```javascript
+    method: "POST",
+    headers: {
+        Authorization: `Bearer ${token.token}`,
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ _id: _id }),
+```
+Zatim se provjerava **if (resonse.ok) {}**, ako je **if statment** pozitivan onda se izvršava sljedeće:
+- **setOrderStatus(true);**
+    - postavlja se stanje **orderStatus** u **true**, te se s time potvrđuje da je narudžba potvrđena.
+- **toggleVisibility(_id);**
+    - zatvara se prikaz otovorene naruđbe
+- **setMessage(`Narudžba br:${num} je potvrđena!`);**
+    - prikazuje se poruka
+- **setShouldRefetch(true);**
+    - postavlja se stanje **shuldeRefetch** u **true**, s čime se daje znak za ponovno povlačenje podataka.
+U suprotnom, se provjerava **else if (response.status === 400) {}**, ako je ovaj **if statment** pozitivan izvršava se sljedeće:
+- **const errorResponse = await response.json();**
+    - definira se pogreška.
+- **setMessage(`Greška: ${errorResponse.error}`);**
+    - pogreša se prikazuje kao poruka.
+Ako je i **else if** negativan onda se izvršuje posljedni statment, odnosno **else {}**:
+- **setMessage("Došlo je do problema, molim pokušajte ponovno.");**
+    - postavlja se poruka.        
+- **throw new Error("Network response was not ok.");**
+    - definira se nova greška kako bi ju **catch** block uhvatio.
+Na kraju se izvršava **catch (error)** koji prikazuje **error** u konzoli.
+
+### [Renderiranje AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js#L71)
+
+**AdminOrder.js** se renderira na način da prikazuje detalje narudžbe unutar div elementa s klasom "adminOrdDis". 
+
+Renderira se gumb za zatvaranje narudžbe, a klikom na njega poziva se funkcija toggleVisibility.
+
+U "adminOrdDis__head" div elementu, prikazuju se podaci o kupcu, datumu i broju narudžbe.
+- Ime kupca se prikazuje unutar `<p>{buyer.name}</p>`.
+- Datum narudžbe se prikazuje unutar `<p>{date}</p>`.
+- Broj narudžbe se prikazuje unutar `<p>{num}</p>`.
+
+U "adminOrdDis__products" div elementu, prikazuju se detalji o proizvodima u narudžbi.
+Naslov "Products" prikazuje se kao `<h2>`.
+Za svaki proizvod u narudžbi, stvara se div element s klasom "product".
+Opis proizvoda prikazuje se unutar `<p>{product.description}</p>`.
+Količina proizvoda prikazuje se unutar `<p>{product.quantity} kg</p>`.
+
+Ovisno o statusu narudžbe **(true, false ili null)**, prikazuju se odgovarajuće poruke.
+- Ako je narudžba potvrđena (orderStatus === true), prikazuje se poruka 
+  "Order Confirmed!" s pozadinskom zelenom bojom `rgba(51, 178, 51, 0.75)`.
+- Ako je narudžba odbijena **(orderStatus === false)**, prikazuje se poruka 
+  "Order Rejected!" s pozadinskom crvenom bojom `rgba(227, 53, 53, 0.801)`.
+- Ako status nije definiran **(orderStatus === null)**, prikazuju se gumbi za potvrdu i odbijanje narudžbe unutar 
+  "adminOrdDis__ButtonBottom" div elementa, a klikom na njih pozivaju se funkcije **handleConfirme** i **handleReject**.
+
+
+
+
+
+
+
+

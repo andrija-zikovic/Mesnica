@@ -15,7 +15,6 @@
     align-items: center;
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     margin: 30px 0;
-    visibility: hidden;
 }
 
 .about_article01_img {
@@ -40,36 +39,15 @@
     font-family: var(--FF-HEADINGS);
 }
 
-.slidein {
-    animation: 1s ease-in-out normal forwards slideIn;
-}
-
 .about_location {
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     margin-bottom: 40px;
-    visibility: hidden;
     width: 70%;
 }
 
 .about_location address {
     margin-top: 10px;
     font-size: 1rem;
-}
-
-
-
-@keyframes slideIn {
-    0% {
-        transform: translateX(-3000px);
-        visibility: visible;
-    }
-
-    100% {
-        transform: translateX(0);
-        visibility: visible;
-
-    }
-
 }
 
 @media screen and (min-width: 576px) {
