@@ -782,13 +782,13 @@ Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
             setNoProductsCheck(false);
         }
     ```
-
-- ### [Produ<div align="right">
+<div align="right">
 
 [Top](#frontend)
 
 </div>
-ctsList.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js#L35)     
+
+- ### [ProductsList.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js#L35)     
 
     Ako je **noProductsCheck** pozitiven vrijednosti **true**, šta bi znacilo da nema povucenih proizvoda sa servera.
 
