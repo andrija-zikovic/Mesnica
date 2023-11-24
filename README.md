@@ -400,7 +400,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 # Korisnička strana
 
-## [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
+1. ## [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
 
 Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
 koje user želi kupiti.
@@ -415,7 +415,7 @@ Definiraju se jos četiri funkcije:
 -   [calculateQuantity](#calculatequantity)
 -   [handleAmountChange](#handleamountchange)
 
-### [deleteItem](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L15)
+- ### [deleteItem](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L15)
 
 **deleteItem** funkcija uzima **itemId** parametar koji koristi kao identfikator, zatim s tim identifikator filtrira kroz **cartItems** i
 stvara novu listu proizvoda bez identificiranog itema unutar **cartItems**.
@@ -428,7 +428,7 @@ Nakon što je izradila novu listu, ažurira **cartItems** s novom listom.
     };
 ```
 
-### [clearCart](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L20)
+- ### [clearCart](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L20)
 
 **clearCart** funkcija ažurira **cartItems** s praznom listom.
 
@@ -438,7 +438,7 @@ Nakon što je izradila novu listu, ažurira **cartItems** s novom listom.
     };
 ```
 
-### [calculateQuantity](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L24)
+- ### [calculateQuantity](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L24)
 
 **calculateQuantity** funkcija uzima dva parametra **newAmount** i **selectedUnit**, ako je vrijednost **selectedUnit** "kg" onda 
 funkcija vraća vrijednost **newAmount**. U suprotnom funkcija vraća vrijednos **newAmount** podjeljenu sa 100 što bi u suštini 
@@ -454,7 +454,7 @@ trebalo vratit vrijednost u dekagramima.
     };
 ```
 
-### [handleAmountChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L32)
+- ### [handleAmountChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L32)
 
 **handleAmountChange** funkcija uzima sedam parametara :
 
@@ -519,7 +519,7 @@ listu starih proizvoda bez navedenog i ažuriramo **cartItems** s novom listom.
     setAmount(0);
 ```
 
-### [Client.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L72)
+- ### [Client.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js#L72)
 
 Nakon što su definiran funkcije, komponenta vraća strukturu elemenata i ostalih komponenata.
 
@@ -547,7 +547,7 @@ Nakon što su definiran funkcije, komponenta vraća strukturu elemenata i ostali
     )
 ```
 
-## [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)
+2. ## [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)
 
 **Nav.js** komponenta je komponenta u stilu navigacijske trake, zahtjeva četiri parametra koja prosljeđuje u **Bucket** komponent.
 
@@ -563,7 +563,7 @@ vrijednosti.
         setIsBucketVisible((prevState) => !prevState);
     };
 ```
-### [Nav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js#L14)
+- ### [Nav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js#L14)
 **Nav.js** komponenta renderira "unorder list" s linkovima, gumbom za prikazivanje košarice i **Bucket** komponentom
 ```javascript
     return (
@@ -591,7 +591,7 @@ vrijednosti.
         </>
     )
 ```
-## [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)
+3. ## [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)
 
 **Bucket.js** komponeta prikazuje proizvode koje je kupac odabrao kupiti. Zahtjeva četiri parametra:
 
@@ -602,7 +602,7 @@ vrijednosti.
 
 Prvo se definira se funkcija **calculateTotalPrice**.
 
-### [calculateTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js#L7)
+- ### [calculateTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js#L7)
 
 **calculateTotalPrice** funkcija izračunava ukupnu cijenu svih proizvoda tako što koristi **reduce** funkciju koja iterira kroz
 **cartItems** i za svaki item množi **quantity * price** te ih zbraja u **total**.   
@@ -622,7 +622,7 @@ Zatim renderira **totalPrice** tako što ga ograniči na dvije decimale.
     return totalPrice.toFixed(2);
 ```
 
-### [Bucket.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js#L15)
+- ### [Bucket.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js#L15)
 
 **Bucket.js** vraća na dva načina :
 
@@ -660,7 +660,7 @@ Tablica se prikazuje na način da se iterira kroz **cartItems** i za svaki item 
     ))}
 </tbody>
 ```
-## [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)
+4. ## [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)
 
 **Header.js** je komponenta koja prikazuje vrh stranice. Zahtjeva jedan parametar, cija se vrijednost prikazuje unutar elementa.
 ```javascript
@@ -674,11 +674,11 @@ Tablica se prikazuje na način da se iterira kroz **cartItems** i za svaki item 
     }
 ```
 
-## [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)
+5. ## [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)
 
 **Home.js** je komponenta koja prikazuje prvu stranicu. Zhatjeva jedan parametar koji prosljeđuje drugom elementu.
 
-### [Home.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js#L9)
+- ### [Home.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js#L9)
 
 Renderira tri komponente:
 
@@ -698,12 +698,12 @@ unutar main elementa.
     )
 ```
 
-## [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)
+6. ## [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)
 
 **Hero.js** je komponenta koja se na početnoj stranici prikazuje ispod **Header.js** komponente.
 Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
 
-### [Hero.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js#L6)
+- ### [Hero.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js#L6)
 ```javascript
     const Hero = () => {
         return (
@@ -720,7 +720,7 @@ Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
     }
 ```
 
-## [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)
+7. ## [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)
 
 **ProductsList.js** zahtjeva 3 parametara:
 
@@ -755,7 +755,7 @@ A u suprotnom ako je response pozitivan, ažurira **products** s dobivenom listo
     }
 ```
 
-### [ProductsList.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js#L35)
+- ### [ProductsList.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js#L35)
 
 Ako je **noProductsCheck** pozitiven vrijednosti **true**, šta bi znacilo da nema povucenih proizvoda sa servera.
 
@@ -802,7 +802,7 @@ U suprotnom se iterira se kroz sve proizvode.
     ))
 ```
 
-## [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)
+8. ## [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)
 
 **About.js** je komponenta koja renderira **<section>** element unutar kojeg su nekoliko **<article>** elemenata
 koji prikazuju tekst o mesnici.
@@ -816,23 +816,23 @@ koji prikazuju tekst o mesnici.
      </section> 
 ```
 
-## [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)
+9. ## [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)
 
-**Products.js** je roditeljska komponenta, dvim komponentima:
+- **Products.js** je roditeljska komponenta, dvim komponentima:
 
-- **SideNav** : navigacijska traka.
-- **[ProductsList](#productslistjs)** : lista proizvoda.
+    - **SideNav** : navigacijska traka.
+    - **[ProductsList](#productslistjs)** : lista proizvoda.
 
-koja zahtjeva jedan parametar :
+    koja zahtjeva jedan parametar :
 
-- **[handleAmountChange](#handleamountchange)**
+    - **[handleAmountChange](#handleamountchange)**
 
-i definira **useState** za kontroliranje prikaza određene vrste mesa.
-```javascript
-    const [meatType, setMeatType] = useState('');
-```
+    i definira **useState** za kontroliranje prikaza određene vrste mesa.
+    ```javascript
+        const [meatType, setMeatType] = useState('');
+    ```
 
-### [Products.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.hs.js#L8)
+- ### [Products.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.hs.js#L8)
 ```javascript
     return (
         <main className='products'>
@@ -842,21 +842,21 @@ i definira **useState** za kontroliranje prikaza određene vrste mesa.
     )
 ```
 
-## [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)
+9. ## [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)
 
-**SideNav.js** je komponenta koja zahtjeva jedan parametar:
+-**SideNav.js** je komponenta koja zahtjeva jedan parametar:
 
-- **setMeatType** : ažuriranje prikaza vrste mesa.
+    - **setMeatType** : ažuriranje prikaza vrste mesa.
 
-I definira jednu funkciju **[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L4)** koja zahtjeva jedan parametar i koristi **setMeatType** za ažuriranje **meatType** 
-navedenim parametrom.
-```javascript
-    const handleMeatTypeChange = (type) => {
-        setMeatType(type);
-    };
-```
+    I definira jednu funkciju **[handleMeatTypeChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L4)** koja zahtjeva jedan parametar i koristi **setMeatType** za ažuriranje **meatType** 
+    navedenim parametrom.
+    ```javascript
+        const handleMeatTypeChange = (type) => {
+            setMeatType(type);
+        };
+    ```
 
-### [SideNav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L8)
+- ### [SideNav.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.hs.js#L8)
 **SideNav.js** renderira listu pojmova, koji na odabir izvršavaju **handleMeatTypeChange** dodajući pojam kao parametar.
 Primjer jednog pojma:
 ```javascript
@@ -865,7 +865,7 @@ Primjer jednog pojma:
     </li>
 ```
 
-## [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)
+10. ## [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)
 
 **AboutUs.js** je komponenta koja istovremeno prikazuje informativni tekst o mesnici, dinamičnu listu slika koje se neprekidno 
 izmjenjuju, i omogućava korisnicima da jednostavno pošalju poruku putem dostupnog obrasca.
@@ -878,7 +878,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
         message: "",
     });
 ```
-Zatim, definira se funkcija **[handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L11)**, koja prima **event** kao parametar. Iz tog eventa izvlači se njegovo **name** i **value**,
+- Zatim, definira se funkcija **[handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L11)**, koja prima **event** kao parametar. Iz tog eventa izvlači se njegovo **name** i **value**,
 nakon čega ažurira stanje **formData**, postavljajući novo **value** za odgovarajući **key** unutar trenutnog stanja.
 ```javascript
     const handleInputChange = (e) => {
@@ -886,7 +886,7 @@ nakon čega ažurira stanje **formData**, postavljajući novo **value** za odgov
         setFormData({ ...formData, [name]: value });
     };
 ```
-Nakon toga se definira **[handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L16)** funkcija koja prvo sprječava osnovno ponašanje obrasca (default behavior) pozivom **e.preventDefault()**. 
+- Nakon toga se definira **[handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L16)** funkcija koja prvo sprječava osnovno ponašanje obrasca (default behavior) pozivom **e.preventDefault()**. 
 Zatim šalje **POST** zahtjev na **API** s podacima iz **formData**. 
 ```javascript
     fetch(url, {
@@ -915,7 +915,7 @@ Nakon toga, stvara se kontekst slika koji zahtijeva sve slikovne datoteke unutar
     const [currentIndex, setCurrentIndex] = useState(0);
 ```
 
-Na kraju, koristi se useEffect da se automatski mijenja indeks slike svakih 10 sekundi.
+- Na kraju, koristi se useEffect da se automatski mijenja indeks slike svakih 10 sekundi.
 ```javascript
     useEffect(() => {
         const interval = setInterval(() => {
@@ -925,7 +925,7 @@ Na kraju, koristi se useEffect da se automatski mijenja indeks slike svakih 10 s
         return () => clearInterval(interval);
     }, [images.length]);
 ```
-### [AboutUs.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L65)
+- ### [AboutUs.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js#L65)
 
 Komponenta **AboutUs.js** implementira ključne elemente za prikaz informacija o Mesnici na web stranici. 
 Struktura komponente uključuje:
@@ -949,24 +949,26 @@ Struktura komponente uključuje:
 Ova struktura omogućuje korisnicima da istraže različite aspekte Mesnice, vizualno dožive atmosferu putem dinamičnih slika te jednostavno
 stupe u kontakt s mesnicom putem obrasca. Komponenta pridonosi organiziranom i privlačnom prikazu informacija o Mesnici na web stranici
 
-## [orderForm.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js)
+11. ## [orderForm.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js)
 
-**orderForm.js** je komponenta odgovorna za prikaz obrasca za naručivanje proizvoda. Ova komponenta omogućuje korisnicima
-da ispune obrazac o svojim informacijama i pošalju naruđbu sa prije dodanim proizvodima.
-Zahtjeva tri parametra:
-- **cartItems** 
-- **deleteItem**
-- **clearCart**
-Komponenta koristi useState za praćenje statusa kupnje (da li je narudžba uspješna), a također koristi useRef za referencu na formu.
-```javascript
-    const [buyStatus, setBuyStatus] = useState(false);
-    const formRef = useRef(null);
-```
-### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L8)
-Nakon toga se definira funkcija **handleSubmit** koja obrađuje podatke za slanje narudžbe. handleSubmit koristi **event.preventDefault():**
-za spriječavanje osnovnog ponašanja obrasca, čime se spriječava ponovno učitavanje stranice prilikom slanja obrasca.
-Za dohvaćanje podataka iz forme koristi se **FormData** objekt za dohvaćanje podataka iz forme. **formRef.current** predstavlja referencu 
-na HTML formu.
+- **orderForm.js** je komponenta odgovorna za prikaz obrasca za naručivanje proizvoda. 
+    Ova komponenta omogućuje korisnicima
+    da ispune obrazac o svojim informacijama i pošalju naruđbu sa prije dodanim proizvodima.
+    Zahtjeva tri parametra:
+    - **cartItems** 
+    - **deleteItem**
+    - **clearCart**
+    Komponenta koristi useState za praćenje statusa kupnje (da li je narudžba uspješna), a također koristi useRef za referencu na formu.
+    ```javascript
+        const [buyStatus, setBuyStatus] = useState(false);
+        const formRef = useRef(null);
+    ```
+- ### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L8)
+Nakon toga se definira funkcija **handleSubmit** koja obrađuje podatke za slanje narudžbe. handleSubmit 
+koristi **event.preventDefault():** za spriječavanje osnovnog ponašanja obrasca, čime se spriječava ponovno učitavanje 
+stranice prilikom slanja obrasca. 
+Za dohvaćanje podataka iz forme koristi se **FormData** objekt za dohvaćanje podataka iz forme. **formRef.current** 
+predstavlja referencu  na HTML formu.
 ```javascript
     event.preventDefault();
     const formData = new FormData(formRef.current);
@@ -988,7 +990,7 @@ Na kraju se poziva **handleOrderSend** funkcija s proizvodima iz košarice(**car
 ```javascript
     handleOrderSend(cartItems, formValues);
 ```
-### [handleOrderSend](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L25)
+- ### [handleOrderSend](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L25)
 
 **handleOrderSend** funkcija je ključna funkcija za slanje narudžbe na server.
 
@@ -1024,7 +1026,7 @@ uhvaćena je greška i ispisana je u konzoli.
         console.error('Error giving order:', err)
     }
 ```
-### [calucalteTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L48)
+- ### [calucalteTotalPrice](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L48)
 **calculateTotalPrice** funkcija koristi se za izračunavanje ukupne cijene proizvoda u košarici, uzimajući u obzir količinu i cijenu 
 svakog pojedinog proizvoda.
 
@@ -1060,13 +1062,13 @@ Na kraju se rezultat zaokružuje na dvije decimale pomoću **toFixed(2)**. Ovo o
       Prikazuje se ostatak JSX-a koji prikazuje popis proizvoda u košarici, ukupnu cijenu, formu za unos podataka i gumbi za čišćenje 
       košarice i slanje narudžbe.
 
-## [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)
+11. ## [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)
 
 **Footer.js** je jednostavna komponenta koja renderira kontakt informacije i registrirani znak s nazivom mesnice i tekućom godinom.
 
 # Admin
 
-## [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)
+1. ## [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)
 
 **Admin.js** je komponenta koja predstavlja administratorsko sučelje.
 Prvo se definiraju stanja verijabli:
@@ -1083,7 +1085,7 @@ Prvo se definiraju stanja verijabli:
     const [message, setMessage] = useState("");
 ```
 
-### [handleLogin](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L18)
+- ### [handleLogin](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L18)
 
 **handleLogin** je asinkrona funkcija za obradu prijave administratora. 
 Prvo se definira **URL** iz **env**ironmenta, nakon toga se koristi **fetch** funkcija za slanje asinkronog **HTTP POST** zahtjeva prema 
@@ -1123,7 +1125,7 @@ Ako odgovor nije uspješan, koristi se **await response.json()** za parsiranje *
 Ova funkcija **handleLogin** integrira logiku prijave administratora, obrađujući različite scenarije uspjeha i neuspjeha tijekom 
 asinkronog procesa prijave prema određenom URL-u
 
-### [logOut](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L45)
+- ### [logOut](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L45)
 
 **logOut** funkcija obavlja logiku odjave administratora.
 
@@ -1168,7 +1170,7 @@ konzolu, pružajući potvrdu o nesmetanom procesu odjave.
 Ova funkcija **logOut** integrira logiku odjave administratora, obrađujući različite scenarije uspjeha i neuspjeha tijekom asinkronog 
 procesa odjave prema **'/api/logout'** endpointu.
 
-### [toggleDropdown](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L66)
+- ### [toggleDropdown](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L66)
 Ova funkcija mjenja stanje **isDropdownOpen** u njegovu trenutnu suprotnost. Ako je trenutno stanje **false**, nakon ovog izraza stanje se 
 mjenja u **true**.
 ```javascript
@@ -1177,7 +1179,7 @@ mjenja u **true**.
     };
 ```
 
-### [handleOutsideClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L70)
+- ### [handleOutsideClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L70)
 Ova funkcija **handleOutsideClick** služi za zatvaranje padajućeg izbornika kada korisnik klikne izvan njega.
 **dropdownRef.current** prati postojanje referenca (**current**) na prethodno postavljeni **DOM element** pomoću **useRef**. Ako ta referenca 
 postoji, slijedi dodatna provjera. **e.target** označava element na koji je korisnik kliknuo, odnosno element koji je pokrenuo događaj klika. 
@@ -1191,7 +1193,7 @@ Ova logika omogućuje korisnicima da zatvore padajući izbornik jednostavnim kli
         }
     };
 ```
-### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L76)
+- ### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L76)
 **useEffect** se koristi za postavljanje **event listenera** koji prati klikove na cijelom dokumentu. Kada se komponenta montira, dodaje se
 **event listener** koji poziva funkciju **handleOutsideClick** kad god se klikne izvan komponente. Kada se komponenta odmontira, event 
 listener se uklanja.
@@ -1204,7 +1206,7 @@ listener se uklanja.
         };
     }, []);
 ``` 
-### [Renderiranje Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L109)
+- ### [Renderiranje Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L109)
 
 Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na dva načina: 
 1. Ako korisnik nije prijavljen (stanje **isLoggedIn** je **false**): 
@@ -1221,7 +1223,7 @@ Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na d
 Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
 administratorskog sučelja.
 
-## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)</div>
+2. ## [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)</div>
 
 **AdminLogIn.js** je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
 administratora.
@@ -1231,7 +1233,7 @@ Koristi se **useState** za praćenje stanja korisničkog imena i lozinke.
     const [password, setPassword] = useState('');
 ```
 
-### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js#L7)
+- ### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js#L7)
 **handleSubmit** je funkcija koja se poziva kada korisnik pošalje obrazac. Sprječava osvježavanje stranice (defaultno ponašanje forme) i
 poziva funkciju **[handleLogin(username, password)](#handlelogin)** s unesenim korisničkim imenom i lozinkom
 ```javascript
@@ -1241,7 +1243,7 @@ poziva funkciju **[handleLogin(username, password)](#handlelogin)** s unesenim k
     };
 ```
 
-### [AdminLogIn.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js#L12)
+- ### [AdminLogIn.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js#L12)
 Renderira se HTML obrazac s `<input>` poljima za unos korisničkog imena i lozinke.
 ```javascript
     <form onSubmit={handleSubmit} className='adminLogIn'></form>
@@ -1259,7 +1261,7 @@ Koristi **onChange** događaj kako bi ažuriralo stanje svaki put kada korisnik 
     <button type="submit" className='adminLogIn_submit'>Login</button>
 ```
 
-## [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)
+3. ## [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)
 
 **AdminProducts** je funkcionalna komponenta odgovorna za upravljanje i prikazivanje liste proizvoda u administratorskom sučelju. 
 Komunicira s API-jem kako bi dohvatila, ažurirala i brisala informacije o proizvodima.
@@ -1272,7 +1274,7 @@ Definiranje stanja verijabli:
 - **message**: Sprema poruke koje se prikazuju korisniku.
 - **productDeleteInfo**: Sadrži informacije o proizvodu koji se želi izbrisati.
 
-### [filteredProducts](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L11)
+- ### [filteredProducts](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L11)
 
 **filteredProducts** funkcija koristi metodu **filter** na polju **adminPro** kako bi filtrirala proizvode na temelju unosa korisnika, 
 odnosno **searchQuery**.
@@ -1282,7 +1284,7 @@ odnosno **searchQuery**.
         product.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 ```
-### [handleSearchInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L15)
+- ### [handleSearchInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L15)
 
 **handleSearchInputChange** je funkcija koja mjenja stanje **searchQuery**-a u vrijednost **event.target.value** iz događaja koji joj je
 proslijeđen.
@@ -1292,7 +1294,7 @@ proslijeđen.
     };
 ```
 
-### [handleProductChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L19)
+- ### [handleProductChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L19)
 
 **handleProductChange** je funkcija koja se koristi za upravljanje promjenama unutar podataka o proizvodu.
 Zahtjeva tri parametra:
@@ -1329,7 +1331,7 @@ zatim dodaje novi zapis pod ključem **id** koji ima ključ **key** sa vrijedno�
       }));
     }
 ```
-### [handleClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L38)
+- ### [handleClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L38)
 
 **handleClick** je funkcija koja se koristi za upravljanje prikazom slike određenog proizvoda.
 
@@ -1356,7 +1358,7 @@ kako bi se slika tog reda prikazala ili sakrila. Na kraju, novo stanje za prikaz
 Ova funkcija omogućuje dinamičko prikazivanje ili sakrivanje slika klikom na određeni red u tablici, koristeći stanje **showImage** koje 
 prati trenutno stanje vidljivosti slika za svaki red.
 
-### [handleProductsChangeSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L46)
+- ### [handleProductsChangeSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L46)
 
 **handleProductsChangeSubmit** je funkcija koja se poziva kada korisnik želi poslati promjene proizvoda prema serveru.
 
@@ -1405,7 +1407,7 @@ greške (**setMessage(error)**).
 Ukratko, ova funkcija obavlja asinkronu komunikaciju s serverpm kako bi poslala promjene proizvoda, a zatim obrađuje odgovor i upravlja 
 stanjem aplikacije prema rezultatima.
 
-### [handleProductDelete](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L73)
+- ### [handleProductDelete](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L73)
 
 **handleProductDelete** je funkcija koja se poziva kada korisnik želi izbrisati određeni proizvod.
 Koristi funkciju **fetch** za slanje asinkronog **HTTP DELETE** zahtjeva prema određenom API endpointu koji je definiran u environmentu.
@@ -1446,7 +1448,7 @@ Ako se dogodi bilo kakva greška tijekom izvršavanja zahtjeva (npr. mrežna gre
 Ukratko, ova funkcija obavlja asinkronu komunikaciju s poslužiteljem kako bi izbrisala odabrani proizvod, a zatim obrađuje odgovor i upravlja 
 stanjem aplikacije prema rezultatima.
 
-### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L104)
+- ### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L104)
 
 **useEffect** se koristi za izvršavanje asinkronog koda, posebno poziva prema serveru kako bi se dohvatili podaci o proizvodima.
 Unutar **useEffect** definira se **fetchData** funkcija koja sadrži logiku dohvaćanja podataka.
@@ -1483,7 +1485,7 @@ Ispisuje se detaljan opis greške u konzoli.
     }
 ```
 
-### [AdminProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L126)
+- ### [AdminProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L126)
 
 **AdminProducts** renderira na način da: 
 
@@ -1514,7 +1516,7 @@ Ispisuje se detaljan opis greške u konzoli.
 Ukupno, AdminProducts renderira se s nizom funkcionalnosti i elemenata koji omogućuju administratoru učinkovito upravljanje proizvodima putem 
 jednostavnog korisničkog sučelja.
 
-## [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)
+4. ## [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)
 
 **AddProducts** je funkcionalna komponenta odgovorna za dodavanje novih proizvoda u sustav. Ova komponenta pruža obrazac (formu) za unos 
 podataka o proizvodu, uključujući naziv, cijenu, količinu na stanju, vrstu mesa te sliku proizvoda.
@@ -1530,7 +1532,7 @@ Definiranje stanje veriable:
         image: null,
     });
 ```
-### [handleAddSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L13)
+- ### [handleAddSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L13)
 
 **handleAddSubmit** funkcija se koristi za proces dodavanja novog proizvoda na server putem HTTP POST zahtjeva.
 
@@ -1582,7 +1584,7 @@ U slučaju greške tijekom slanja zahtjeva, hvata se greška u bloku catch. Deta
 Sve ove faze čine ključni dio procesa dodavanja novog proizvoda na serveru putem **HTTP POST** zahtjeva, osiguravajući da se postupak 
 odvija glatko i pouzdano.
 
-### [handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L40)
+- ### [handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L40)
 
 **handleInputChange** je event handler koji se koristi za obradu promjena unosa u formi. 
 
@@ -1600,7 +1602,7 @@ sa novom vrijednošću **value**.
 Ukupno, ova funkcija ažurira stanje **productInfo** svaki put kada korisnik mijenja vrijednost u input elementu forme, koristeći 
 ime input elementa kao ključ i unesenu vrijednost kao vrijednost.
 
-### [handleFileChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L48)
+- ### [handleFileChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L48)
 
 **handleFileChange** je event handler koji se koristi za obradu promjena unosa datoteke.
 
@@ -1620,7 +1622,7 @@ novom vrijednošću **selectedImage**.
 Ukupno, ova funkcija ažurira stanje productInfo svaki put kada korisnik mijenja odabranu datoteku u input elementu forme, 
 koristeći '**image**' kao ključ i odabranu datoteku kao vrijednost.
 
-### [AddProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L55)
+- ### [AddProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L55)
 
 **AddProducts.js** se renderira na načina da se renderira forma(`<form>`) koja omogućuje korisniku unos informacija o novom proizvodu. 
 Forma uključuje polja(`<input>`) poput naziva proizvoda, cijene, količine na stanju, vrste mesa i mogućnost dodavanja slike proizvoda. 
@@ -1633,7 +1635,7 @@ datoteke i ažurira stanje komponente s odabranom slikom.
 
 Kada korisnik pritisne gumb "DODAJ"(`<<button type='submit'>`), pokreće se funkcija **handleAddSubmit**.
 
-## [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)
+5. ## [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)
 
 **AdminOrders** je komponenta koja prikazuje listu naruđbu i omogućava pregled istih
 
@@ -1643,7 +1645,7 @@ Definiranje stanja verijabli:
 - **message**: Stanje message koristi se za prikazivanje poruka korisnicima.
 - **visibleOrders**: Stanje visibleOrders koristi se za praćenje vidljivosti pojedinih narudžbi.
 
-### [toggleVisibility](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L10)
+- ### [toggleVisibility](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L10)
 
 Funkcija **toggleVisibility** omogućuje prebacivanje vidljivosti narudžbe. Ako je narudžba već vidljiva, uklanja ju iz stanja 
 visibleOrders. Inače, dodaje ju na kraj niza.
@@ -1657,7 +1659,7 @@ visibleOrders. Inače, dodaje ju na kraj niza.
     };
 ```
 
-### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L18)
+- ### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L18)
 
 **useEffect** koristi se za asinkrono dohvaćanje podataka s poslužitelja kada komponenta **mounta** ili kada se promijeni 
 **shouldRefetch** stanje. Zatim se definira funkcija fetchData koja koristi **fetch API** za dohvaćanje podataka o narudžbama s 
@@ -1684,7 +1686,7 @@ U suprotnom, hvata se greška i ispisuje u konzoli.
     };
 ```
 
-### [AdminOrders.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L43)
+- ### [AdminOrders.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js#L43)
 
 **AdminOrders.js** komponenta se renderira na sljedeći način:
 
@@ -1726,7 +1728,7 @@ U suprotnom, hvata se greška i ispisuje u konzoli.
         />
     ```
 
-## [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)
+6. ## [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)
 
 **AdminOrder.js** je komponenta koja prikazuje detalje o narudžbi, i omogućava odbijanje ili prihvaćanje iste.
 
@@ -1746,7 +1748,7 @@ Zatim definiramo **orderStatus** stanje, i postavljamo ga u vrijednost **status*
     const [orderStatus, setOrderStatus] = useState(status);
 ```
 
-### [handleConfirme](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js#L14)
+- ### [handleConfirme](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js#L14)
 **handleConfirme** je funkcija koja potvrđuje narudžbu.
 Definira se **response** unutar **try** block-a koji poziva **fetch** funckiju sa **POST** metodom, u **headers** se 
 postavlja **token** za provjeru autentikacije, a u **body** se postavlja **_id** kao identifikacijiski broji narudžbe.
@@ -1779,7 +1781,7 @@ Ako je i **else if** negativan onda se izvršuje posljedni statment, odnosno **e
     - definira se nova greška kako bi ju **catch** block uhvatio.
 Na kraju se izvršava **catch (error)** koji prikazuje **error** u konzoli.
 
-### [Renderiranje AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js#L71)
+- ### [Renderiranje AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js#L71)
 
 **AdminOrder.js** se renderira na način da prikazuje detalje narudžbe unutar div elementa s klasom "adminOrdDis". 
 
