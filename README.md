@@ -400,11 +400,9 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 # Korisnička strana
 
-<div dir=rtl>
-## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
+<p align="right">[Top](#frontend)</p>
 
-<div dir=ltr>
-[Top](#frontend)
+## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
 
 Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
 koje user želi kupiti.
