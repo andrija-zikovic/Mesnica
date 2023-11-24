@@ -400,7 +400,11 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 # Korisnička strana
 
-<span align="right">[Top](#frontend)</span>
+<div align="right">
+
+[Top](#frontend)
+
+</div>
 
 ## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
 
