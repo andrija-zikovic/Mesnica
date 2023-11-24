@@ -1,9 +1,27 @@
 # Mesnica Web Trgovina
 
-1. ### [Frontend](#frontend-razvoj-s-reactom)    
-    - **[Korisik](#korisnik)**
-    - **[Admin](#admin)**
-2. ### [Backend](#backend-razvoj-s-nodejs-i-express)
+1. ### [Frontend](#frontend-razvoj-s-reactom)   |   2. ### [Backend](#backend-razvoj-s-nodejs-i-express)   
+    - **[Korisik](#korisnik)**                  |       - [products.js / productsContorller.js](#productsjs--productscontorllerjs)
+        - [Client.js](#clientjs)                |       - [order.js / orderController.js](#orderjs--ordercontrollerjs)
+        - [Nav.js](#navjs)                      |       - [form.js / formController.js](#formjs--formcontrollerjs)
+        - [Bucket.js](#bucketjs)                |       - [login.js / logInController.js](#loginjs--logincontrollerjs)
+        - [Header.js](#headerjs)                |       - [logout.js / logoutController.js](#logoutjs--logoutcontrollerjs)
+        - [Home.js](#homejs)                    |       - [admin.js](#adminjs)
+        - [Hero.js](#herojs)                    |
+        - [ProductsList.js](#productslistjs)    |
+        - [About.js](#aboutjs)                  |
+        - [Products.js](#productsjs)            |
+        - [SideNav.js](#sidenavjs)              |
+        - [AboutUs.js](#aboutusjs)              |
+        - [orderForm.js](#orderformjs)          |
+        - [Footer.js](#footerjs)                |
+    - **[Admin](#admin)**                       |
+        - [Admin.js](#adminjs-1)                |
+        - [AdminLogIn.js](#adminloginjs)        |
+        - [AdminProducts.js](#adminproductsjs)  |
+        - [AddProducts.js](#addproductsjs)      |
+        - [AdminOrders.js](#adminorderjs)       |
+        - [AdminOrder.js](#adminorderjs)        |
 
 # O autor
 
@@ -1768,17 +1786,9 @@ Opis proizvoda prikazuje se unutar `<p>{product.description}</p>`.
 Količina proizvoda prikazuje se unutar `<p>{product.quantity} kg</p>`.
 
 Ovisno o statusu narudžbe **(true, false ili null)**, prikazuju se odgovarajuće poruke.
-- Ako je narudžba potvrđena (orderStatus === true), prikazuje se poruka 
+- Ako je narudžba potvrđena **(orderStatus === true)**, prikazuje se poruka 
   "Order Confirmed!" s pozadinskom zelenom bojom `rgba(51, 178, 51, 0.75)`.
 - Ako je narudžba odbijena **(orderStatus === false)**, prikazuje se poruka 
   "Order Rejected!" s pozadinskom crvenom bojom `rgba(227, 53, 53, 0.801)`.
 - Ako status nije definiran **(orderStatus === null)**, prikazuju se gumbi za potvrdu i odbijanje narudžbe unutar 
   "adminOrdDis__ButtonBottom" div elementa, a klikom na njih pozivaju se funkcije **handleConfirme** i **handleReject**.
-
-
-
-
-
-
-
-
