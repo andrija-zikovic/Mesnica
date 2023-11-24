@@ -1,8 +1,8 @@
 # Mesnica Web Trgovina
 
-1. ## [Frontend](#frontend-razvoj-s-reactom)          
+- ## [Frontend](#frontend-razvoj-s-reactom)          
      
-    1. ### [Korisik](#korisnik)                          
+    - ### [Korisik](#korisnik)                          
         1. [Client.js](#clientjs)                        
         2. [Nav.js](#navjs)                              
         3. [Bucket.js](#bucketjs)                        
@@ -17,7 +17,7 @@
         12. [orderForm.js](#orderformjs)          
         13. [Footer.js](#footerjs)                
     
-    2. ### [Admin](#admin)                       
+    - ### [Admin](#admin)                       
         1. [Admin.js](#adminjs)                  
         2. [AdminLogIn.js](#adminloginjs)        
         3. [AdminProducts.js](#adminproductsjs)  
@@ -25,7 +25,7 @@
         5. [AdminOrders.js](#adminorderjs)       
         6. [AdminOrder.js](#adminorderjs)        
 
-2. ## [Backend](#backend-razvoj-s-nodejs-i-express)
+- ## [Backend](#backend-razvoj-s-nodejs-i-express)
     
     - [products.js / productsContorller.js](#productsjs--productscontorllerjs)
     - [order.js / orderController.js](#orderjs--ordercontrollerjs)
