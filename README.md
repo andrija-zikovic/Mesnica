@@ -1046,46 +1046,47 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     ```javascript
         return totalPrice.toFixed(2);
     ```
-### [orderForm.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L56)
+- ### [orderForm.js Renderiranja](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L56)
 
-**orderFrom.js** se renderira na dva tri načina. Ovisno o uvjetu.
+    **orderFrom.js** se renderira na dva tri načina. Ovisno o uvjetu.
 
-1. Prvi uvjet (**[if (buyStatus) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L56)**): 
+    1. Prvi uvjet (**[if (buyStatus) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L56)**): 
 
-    - Ako je buyStatus true, to znači da je narudžba uspješno poslana. Prikazuje se određeni dio JSX-a s porukom o uspješnoj narudžbi.
+        - Ako je buyStatus true, to znači da je narudžba uspješno poslana. Prikazuje se određeni dio JSX-a s porukom o 
+        uspješnoj narudžbi.
 
-2. Drugi uvjet (**[else if (cartItems.length < 1) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L68)**): 
+    2. Drugi uvjet (**[else if (cartItems.length < 1) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L68)**): 
 
-    - Ako **buyStatus** nije true i dužina **cartItems** (proizvoda u košarici) je manja od 1, to znači da je košarica prazna. 
-    Prikazuje se određeni dio JSX-a s porukom o praznoj košarici.
+        - Ako **buyStatus** nije true i dužina **cartItems** (proizvoda u košarici) je manja od 1, to znači da je košarica prazna. 
+        Prikazuje se određeni dio JSX-a s porukom o praznoj košarici.
 
-3. Treći uvjet (**[else {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L74)**): 
+    3. Treći uvjet (**[else {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L74)**): 
 
-    - Ako ni jedan od prethodnih uvjeta nije ispunjen, to znači da korisnik ima proizvode u košarici i nije poslao narudžbu. 
-    Prikazuje se ostatak JSX-a koji prikazuje popis proizvoda u košarici, ukupnu cijenu, formu za unos podataka i gumbi za čišćenje 
-    košarice i slanje narudžbe.
+        - Ako ni jedan od prethodnih uvjeta nije ispunjen, to znači da korisnik ima proizvode u košarici i nije poslao narudžbu. 
+        Prikazuje se ostatak JSX-a koji prikazuje popis proizvoda u košarici, ukupnu cijenu, formu za unos podataka i gumbi za čišćenje 
+        košarice i slanje narudžbe.
 
 ## 13. [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)
 
-    **Footer.js** je jednostavna komponenta koja renderira kontakt informacije i registrirani znak s nazivom mesnice i tekućom godinom.
+**Footer.js** je jednostavna komponenta koja renderira kontakt informacije i registrirani znak s nazivom mesnice i tekućom godinom.
 
 # Admin
 
 ## 1. [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)
 
-    **Admin.js** je komponenta koja predstavlja administratorsko sučelje.
-    Prvo se definiraju stanja verijabli:
-    - **isLoggedIn** prati je li administrator prijavljen ili nije.
-    - **isDropdownOpen** koristi se za upravljanje stanjem padajućeg izbornika.
-    - **token** sadrži autentikacijski token.
-    - **message** se koristi za prikazivanje informativnih poruka.
-    - **dropdownRef** je referenca na element padajućeg izbornika.
+- **Admin.js** je komponenta koja predstavlja administratorsko sučelje.
+        Prvo se definiraju stanja verijabli:
+        - **isLoggedIn** prati je li administrator prijavljen ili nije.
+        - **isDropdownOpen** koristi se za upravljanje stanjem padajućeg izbornika.
+        - **token** sadrži autentikacijski token.
+        - **message** se koristi za prikazivanje informativnih poruka.
+        - **dropdownRef** je referenca na element padajućeg izbornika.
     ```javascript
-        const [isLoggedIn, setIsLoggedIn] = useState(false);
-        const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-        const [token, setToken] = useState('');
-        const dropdownRef = useRef(null);
-        const [message, setMessage] = useState("");
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
+            const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+            const [token, setToken] = useState('');
+            const dropdownRef = useRef(null);
+            const [message, setMessage] = useState("");
     ```
 
 - ### [handleLogin](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L18)
@@ -1133,11 +1134,13 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     **logOut** funkcija obavlja logiku odjave administratora.
 
     **await fetch('/api/logout', { method: 'POST', ... })** koristi funkciju **fetch** za slanje 
-    **asinkronog HTTP POST zahtjeva prema '/api/logout'** endpointu na serveru. Postavkom method: **'POST'** određuje se metoda zahtjeva za 
-    odjavu koristeći **HTTP** metodu **POST**. Ova konfiguracija je bitna jer specifično ukazuje na namjeru izvršavanja odjave. Također, opcija 
-    **credentials: 'include'** odabire se kako bi se osiguralo da se kredencijali, u ovom slučaju **kolačići (cookies)**, automatski uključe u 
-    zahtjev. Ovo je od krucijalne važnosti pri radu s autentikacijom putem kolačića. Kada je postavljeno na **'include'**, osigurava se 
-    automatsko uključivanje kolačića u svaki zahtjev, pružajući potrebne informacije za odjavu. 
+    **asinkronog HTTP POST zahtjeva prema '/api/logout'** endpointu na serveru. 
+    Postavkom method: **'POST'** određuje se metoda zahtjeva za odjavu koristeći **HTTP** metodu **POST**. 
+    Ova konfiguracija je bitna jer specifično ukazuje na namjeru izvršavanja odjave. Također, opcija 
+    **credentials: 'include'** odabire se kako bi se osiguralo da se kredencijali, u ovom slučaju 
+    **kolačići (cookies)**, automatski uključe u zahtjev. Ovo je od krucijalne važnosti pri radu s autentikacijom putem kolačića. 
+    Kada je postavljeno na **'include'**, osigurava se automatsko uključivanje kolačića u svaki zahtjev, 
+    pružajući potrebne informacije za odjavu. 
     Nadalje, **headers: { 'Content-Type': 'application/json' }** postavlja zaglavlje zahtjeva kako bi se naznačilo da se šalju podaci u 
     **JSON formatu**. Ova konfiguracija osigurava da su podaci o odjavi strukturirani kao JSON, pridržavajući odgovarajuće standarde pri 
     komunikaciji s serverom.
@@ -1151,9 +1154,10 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
                 },
             });
     ```
-    Nakon toga, **response.ok** se koristi za provjeru je li **HTTP** odgovor uspješan, odnosno ima li **status kod 2xx**. Ako jest, slijedi 
-    izvršavanje bloka koda unutar **if** izjave. U tom slučaju, **setIsLoggedIn(false)** postavlja vrijednost **isLoggedIn** na *false*, što 
-    označava da je administrator uspješno odjavljen. Osim toga, **console.log('Logout successful')** ispisuje poruku o uspješnoj odjavi u 
+    Nakon toga, **response.ok** se koristi za provjeru je li **HTTP** odgovor uspješan, odnosno ima li **status kod 2xx**. 
+    Ako jest, slijedi izvršavanje bloka koda unutar **if** izjave. 
+    U tom slučaju, **setIsLoggedIn(false)** postavlja vrijednost **isLoggedIn** na *false*, što označava da je administrator 
+    uspješno odjavljen. Osim toga, **console.log('Logout successful')** ispisuje poruku o uspješnoj odjavi u 
     konzolu, pružajući potvrdu o nesmetanom procesu odjave.
     ```javascript
         if (response.ok) {
@@ -1184,8 +1188,9 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 - ### [handleOutsideClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L70)
     Ova funkcija **handleOutsideClick** služi za zatvaranje padajućeg izbornika kada korisnik klikne izvan njega.
-    **dropdownRef.current** prati postojanje referenca (**current**) na prethodno postavljeni **DOM element** pomoću **useRef**. Ako ta referenca 
-    postoji, slijedi dodatna provjera. **e.target** označava element na koji je korisnik kliknuo, odnosno element koji je pokrenuo događaj klika. 
+    **dropdownRef.current** prati postojanje referenca (**current**) na prethodno postavljeni **DOM element** pomoću **useRef**. 
+    Ako ta referenca postoji, slijedi dodatna provjera. **e.target** označava element na koji je korisnik kliknuo, 
+    odnosno element koji je pokrenuo događaj klika. 
     Ako je izraz **!dropdownRef.current.contains(e.target)** istinit, to ukazuje da korisnik nije kliknuo unutar elementa koji je bio 
     referenciran. U tom slučaju, stanje varijable **isDropdownOpen** postavlja se na **false**, rezultirajući zatvaranjem padajućeg izbornika. 
     Ova logika omogućuje korisnicima da zatvore padajući izbornik jednostavnim klikom izvan njega, poboljšavajući ukupno korisničko iskustvo
@@ -1197,9 +1202,9 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         };
     ```
 - ### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L76)
-    **useEffect** se koristi za postavljanje **event listenera** koji prati klikove na cijelom dokumentu. Kada se komponenta montira, dodaje se
-    **event listener** koji poziva funkciju **handleOutsideClick** kad god se klikne izvan komponente. Kada se komponenta odmontira, event 
-    listener se uklanja.
+    **useEffect** se koristi za postavljanje **event listenera** koji prati klikove na cijelom dokumentu. 
+    Kada se komponenta montira, dodaje se **event listener** koji poziva funkciju **handleOutsideClick** kad god se klikne 
+    izvan komponente. Kada se komponenta odmontira, event listener se uklanja.
     ```javascript
         useEffect(() => {
             document.addEventListener('click', handleOutsideClick);
@@ -1213,14 +1218,15 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
     Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na dva načina: 
     1. Ako korisnik nije prijavljen (stanje **isLoggedIn** je **false**): 
-        Prikazuje se odjeljak (`<section>`) za prijavu administratora. To uključuje naslov "Log in:", komponentu za prijavu (**AdminLogIn**), 
+        Prikazuje se odjeljak (`<section>`) za prijavu administratora. 
+        To uključuje naslov "Log in:", komponentu za prijavu (**AdminLogIn**), 
         prikazivanje eventualne poruke o pogrešci (**message**), te informacije o korisničkom imenu i lozinki.
     2. Ako je korisnik prijavljen (stanje **isLoggedIn** je **true**): 
-        Prikazuje se navigacijski izbornik (`<nav>`) s popisom veza (`<ul>`) koji omogućuju pristup različitim dijelovima administratorskog 
-        sučelja, poput proizvoda, narudžbi, statistike i opcije za odjavu. Također, ovisno o stanju **isDropdownOpen**, prikazuje se i dodatni 
-        padajući izbornik s opcijama "Lista" i "Dodaj" za proizvode.
-        U sklopu rutiranja (`<Routes>`), ovisno o trenutnoj ruti, prikazuju se odgovarajući dijelovi sučelja, poput liste proizvoda, narudžbi, 
-        statistike ili dodavanja novog proizvoda.
+        Prikazuje se navigacijski izbornik (`<nav>`) s popisom veza (`<ul>`) koji omogućuju pristup različitim dijelovima
+        administratorskog sučelja, poput proizvoda, narudžbi, statistike i opcije za odjavu. 
+        Također, ovisno o stanju **isDropdownOpen**, prikazuje se i dodatni padajući izbornik s opcijama "Lista" i "Dodaj" za proizvode.
+        U sklopu rutiranja (`<Routes>`), ovisno o trenutnoj ruti, prikazuju se odgovarajući dijelovi sučelja, poput liste proizvoda,
+        narudžbi, statistike ili dodavanja novog proizvoda.
         Klikom na vezu "Log out", izaziva se funkcija **logOut** koja obavlja odjavu administratora.
 
     Korišteni su **React Router** komponente poput **Link**, **Route**, **Routes**, **Outlet** za upravljanje rutama i navigacijom unutar 
@@ -1228,16 +1234,17 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 2. [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)</div>
 
-    **AdminLogIn.js** je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
-    administratora.
-    Koristi se **useState** za praćenje stanja korisničkog imena i lozinke.
+- **AdminLogIn.js** 
+    je komponenta koja prima **[handleLogin](#handlelogin)** kao parametar, te služi za prikaz i rukovanje obrascem za prijavu 
+    administratora. Koristi se **useState** za praćenje stanja korisničkog imena i lozinke.
     ```javascript
         const [username, setUsername] = useState('');
         const [password, setPassword] = useState('');
     ```
 
 - ### [handleSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js#L7)
-    **handleSubmit** je funkcija koja se poziva kada korisnik pošalje obrazac. Sprječava osvježavanje stranice (defaultno ponašanje forme) i
+    **handleSubmit** je funkcija koja se poziva kada korisnik pošalje obrazac. 
+    Sprječava osvježavanje stranice (defaultno ponašanje forme) i
     poziva funkciju **[handleLogin(username, password)](#handlelogin)** s unesenim korisničkim imenom i lozinkom
     ```javascript
         const handleSubmit = (e) => {
@@ -1266,7 +1273,8 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 3. [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)
 
-    **AdminProducts** je funkcionalna komponenta odgovorna za upravljanje i prikazivanje liste proizvoda u administratorskom sučelju. 
+- **AdminProducts** 
+    je funkcionalna komponenta odgovorna za upravljanje i prikazivanje liste proizvoda u administratorskom sučelju. 
     Komunicira s API-jem kako bi dohvatila, ažurirala i brisala informacije o proizvodima.
 
     Definiranje stanja verijabli:
@@ -1279,9 +1287,10 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 - ### [filteredProducts](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L11)
 
-    **filteredProducts** funkcija koristi metodu **filter** na polju **adminPro** kako bi filtrirala proizvode na temelju unosa korisnika, 
-    odnosno **searchQuery**.
-    **filter** funkcija stvara novo polje u koje stavalja sve **product**-te iz **adminPro**-a čiji **product.title** sadrži tekst iz **searchQuery**-a.
+    **filteredProducts** funkcija koristi metodu **filter** na polju **adminPro** kako bi filtrirala proizvode na 
+    temelju unosa korisnika, odnosno **searchQuery**.
+    **filter** funkcija stvara novo polje u koje stavalja sve **product**-te iz **adminPro**-a čiji **product.title** 
+    sadrži tekst iz **searchQuery**-a.
     ```javascript
         const filteredProducts = adminPro.filter((product) =>
             product.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -1289,8 +1298,8 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
     ```
 - ### [handleSearchInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L15)
 
-    **handleSearchInputChange** je funkcija koja mjenja stanje **searchQuery**-a u vrijednost **event.target.value** iz događaja koji joj je
-    proslijeđen.
+    **handleSearchInputChange** je funkcija koja mjenja stanje **searchQuery**-a u vrijednost **event.target.value** iz 
+    događaja koji joj je proslijeđen.
     ```javascript
         const handleSearchInputChange = (e) => {
             setSearchQuery(e.target.value);
@@ -1308,9 +1317,9 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         const handleProductChange = (id, key, value) => {}
     ```
     Prvo se provjerava postoji li već zapis za određeni proizvod u stanju **produtsChange**. Ako je prisutan, koristi se funkcija 
-    **setProductsChange** za ažuriranje stanja **produtsChange**. U slučaju da postoji prethodno stanje za taj proizvod, koristi se širenje 
-    **(...prevState)** kako bi zadržale prethodne vrijednosti. Nakon toga, dodaje ili ažurira vrijednost pod ključem **id**, a pod ključem 
-    **key** postavlja novu vrijednost **value**.
+    **setProductsChange** za ažuriranje stanja **produtsChange**. U slučaju da postoji prethodno stanje za taj proizvod, koristi se
+    širenje **(...prevState)** kako bi zadržale prethodne vrijednosti. Nakon toga, dodaje ili ažurira vrijednost pod ključem **id**,
+    a pod ključem **key** postavlja novu vrijednost **value**.
     ```javascript
         if (produtsChange[id]) {
         setProductsChange((prevState) => ({
@@ -1322,8 +1331,8 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         }));
         }
     ```
-    Ako ne postoji zapis za odabrani proizvod, stvara novi zapis koristeći **setProductsChange**. Opet se koristi širenje prethodnog stanja, a 
-    zatim dodaje novi zapis pod ključem **id** koji ima ključ **key** sa vrijednošću **value**.
+    Ako ne postoji zapis za odabrani proizvod, stvara novi zapis koristeći **setProductsChange**. Opet se koristi širenje prethodnog
+    stanja, a zatim dodaje novi zapis pod ključem **id** koji ima ključ **key** sa vrijednošću **value**.
     ```javascript
         else {
         setProductsChange((prevState) => ({
@@ -1349,24 +1358,25 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         const initialShowImage = Array(adminPro.length).fill(false);
         setShowImage(initialShowImage);
     ```
-    Nakon toga, stvara se kopija trenutnog stanja za prikazivanje slika (**const newShowImage = [...showImage]**). Vrijednost za kliknuti redak 
-    (na indeksu index) toggle-uje  se, što znači da ako je trenutna vrijednost **true**, postaje **false**, i obrnuto. Ova promjena se događa 
-    kako bi se slika tog reda prikazala ili sakrila. Na kraju, novo stanje za prikazivanje slika postavlja se na ažuriranu vrijednost 
+    Nakon toga, stvara se kopija trenutnog stanja za prikazivanje slika (**const newShowImage = [...showImage]**). 
+    Vrijednost za kliknuti redak (na indeksu index) toggle-uje  se, što znači da ako je trenutna vrijednost **true**, 
+    postaje **false**, i obrnuto. Ova promjena se događa kako bi se slika tog reda prikazala ili sakrila. Na kraju, 
+    novo stanje za prikazivanje slika postavlja se na ažuriranu vrijednost 
     (**setShowImage(newShowImage)**)
     ```javascript    
         const newShowImage = [...showImage]; 
         newShowImage[index] = !newShowImage[index]; 
         setShowImage(newShowImage);
     ```
-    Ova funkcija omogućuje dinamičko prikazivanje ili sakrivanje slika klikom na određeni red u tablici, koristeći stanje **showImage** koje 
-    prati trenutno stanje vidljivosti slika za svaki red.
+    Ova funkcija omogućuje dinamičko prikazivanje ili sakrivanje slika klikom na određeni red u tablici, 
+    koristeći stanje **showImage** koje prati trenutno stanje vidljivosti slika za svaki red.
 
 - ### [handleProductsChangeSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L46)
 
     **handleProductsChangeSubmit** je funkcija koja se poziva kada korisnik želi poslati promjene proizvoda prema serveru.
 
-    Koristi funkciju **fetch** za slanje asinkronog **HTTP PUT** zahtjeva prema određenom **API** endpointu koji je definiran u environmentu.
-    Postavlja potrebne opcije zahtjeva, uključujući metodu, autorizacijski token, i tip sadržaja na JSON.
+    Koristi funkciju **fetch** za slanje asinkronog **HTTP PUT** zahtjeva prema određenom **API** endpointu koji je definiran u
+    environmentu. Postavlja potrebne opcije zahtjeva, uključujući metodu, autorizacijski token, i tip sadržaja na JSON.
     ```javascript
         fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
             method: "PUT",
@@ -1377,8 +1387,8 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             body: JSON.stringify(produtsChange),
         })
     ```
-    Nakon što server obradi zahtjev, obradjuje se odgovor. Ako je odgovor uspješan (status kod 2xx), resetira se stanje **produtsChange** na 
-    prazan objekt pomoću **setProductsChange({})**. Ako je odgovor neuspješan, postavlja se poruka o grešci 
+    Nakon što server obradi zahtjev, obradjuje se odgovor. Ako je odgovor uspješan (status kod 2xx), resetira se stanje
+    **produtsChange** na prazan objekt pomoću **setProductsChange({})**. Ako je odgovor neuspješan, postavlja se poruka o grešci 
     (**setMessage("Error while updating data!")**) i izaziva se greška kako bi se prešlo na blok **catch**.
     ```javascript
         .then((response) => {
@@ -1398,8 +1408,9 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             setMessage(data.message);
         })
     ```
-    Ako se dogodi bilo kakva greška tijekom izvršavanja zahtjeva (npr. mrežna greška, neuspješan odgovor servera), hvata se greška u bloku 
-    **catch**. Ispisuje se detaljan opis greške u konzoli (**console.error("Error:", error)**). Postavlja se poruka o grešci na vrijednost 
+    Ako se dogodi bilo kakva greška tijekom izvršavanja zahtjeva (npr. mrežna greška, neuspješan odgovor servera), 
+    hvata se greška u bloku **catch**. Ispisuje se detaljan opis greške u konzoli (**console.error("Error:", error)**). 
+    Postavlja se poruka o grešci na vrijednost 
     greške (**setMessage(error)**).
     ```javascript
         .catch((error) => {
@@ -1407,15 +1418,15 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             setMessage(error);
         });
     ```
-    Ukratko, ova funkcija obavlja asinkronu komunikaciju s serverpm kako bi poslala promjene proizvoda, a zatim obrađuje odgovor i upravlja 
-    stanjem aplikacije prema rezultatima.
+    Ukratko, ova funkcija obavlja asinkronu komunikaciju s serverpm kako bi poslala promjene proizvoda, a zatim obrađuje 
+    odgovor i upravlja stanjem aplikacije prema rezultatima.
 
 - ### [handleProductDelete](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L73)
 
     **handleProductDelete** je funkcija koja se poziva kada korisnik želi izbrisati određeni proizvod.
-    Koristi funkciju **fetch** za slanje asinkronog **HTTP DELETE** zahtjeva prema određenom API endpointu koji je definiran u environmentu.
-    Postavlja potrebne opcije zahtjeva, uključujući metodu, autorizacijski token, tip sadržaja na JSON, i tijelo zahtjeva koje sadrži **ID** 
-    proizvoda koji se želi izbrisati.
+    Koristi funkciju **fetch** za slanje asinkronog **HTTP DELETE** zahtjeva prema određenom API endpointu koji je definiran 
+    u environmentu. Postavlja potrebne opcije zahtjeva, uključujući metodu, autorizacijski token, tip sadržaja na JSON, 
+    i tijelo zahtjeva koje sadrži **ID** proizvoda koji se želi izbrisati.
     ```javascript
         fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
             method: "DELETE",
@@ -1426,9 +1437,9 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             body: JSON.stringify({id: id}),
         })
     ```
-    Nakon što server obradi zahtjev, obrađuje se odgovor. Ako je odgovor uspješan (status kod 2xx), ažurira se stanje **adminPro** tako da se 
-    izbriše proizvod s odgovarajućim **ID**-om iz niza proizvoda. Resetira stanje **productDeleteInfo** na praznu vrijednost . Postavlja se 
-    poruka o uspješnom brisanju proizvoda.
+    Nakon što server obradi zahtjev, obrađuje se odgovor. Ako je odgovor uspješan (status kod 2xx), ažurira se stanje **adminPro** 
+    tako da se izbriše proizvod s odgovarajućim **ID**-om iz niza proizvoda. Resetira stanje **productDeleteInfo** na praznu
+    vrijednost. Postavlja se poruka o uspješnom brisanju proizvoda.
     ```javascript
         .then((response) => {
             if (!response.ok) {
@@ -1440,16 +1451,16 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
             setMessage(response.message);
         })
     ```
-    Ako se dogodi bilo kakva greška tijekom izvršavanja zahtjeva (npr. mrežna greška, neuspješan odgovor servera), hvata se greška u bloku 
-    **catch**. Ispisuje se detaljan opis greške u konzoli. Postavlja se poruka o grešci na vrijednost greške.
+    Ako se dogodi bilo kakva greška tijekom izvršavanja zahtjeva (npr. mrežna greška, neuspješan odgovor servera), 
+    hvata se greška u bloku **catch**. Ispisuje se detaljan opis greške u konzoli. Postavlja se poruka o grešci na vrijednost greške.
     ```javascript
         .catch((error) => {
             console.error("Error deleting product:", error.message);
             setMessage(error.message);
         });
     ```
-    Ukratko, ova funkcija obavlja asinkronu komunikaciju s poslužiteljem kako bi izbrisala odabrani proizvod, a zatim obrađuje odgovor i upravlja 
-    stanjem aplikacije prema rezultatima.
+    Ukratko, ova funkcija obavlja asinkronu komunikaciju s poslužiteljem kako bi izbrisala odabrani proizvod, a zatim obrađuje odgovor 
+    i upravlja stanjem aplikacije prema rezultatima.
 
 - ### [useEffect implementacija](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js#L104)
 
@@ -1461,8 +1472,9 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
         });
     ```
     **fetchData** koristi **fetch** funkciju za slanje HTTP zahtjeva prema određenom API endpointu. U zaglavljima zahtjeva postavlja se 
-    autorizacijski token kako bi se provjerila autentičnost korisnika. Ako je odgovor uspješan (status kod 2xx), dohvaćeni podaci o proizvodima 
-    se pretvaraju u JSON format koristeći await res.json(). Ažurira se stanje **adminPro** s dohvaćenim podacima o proizvodima 
+    autorizacijski token kako bi se provjerila autentičnost korisnika. Ako je odgovor uspješan (status kod 2xx), dohvaćeni podaci 
+    o proizvodima se pretvaraju u JSON format koristeći await res.json(). 
+    Ažurira se stanje **adminPro** s dohvaćenim podacima o proizvodima 
     (**setAdminPro(productsData)**).
     ```javascript
         try {
@@ -1494,54 +1506,56 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
     1. **Brisanje proizvoda**: 
         - Potvrda brisanja proizvoda: 
-            - Ako postoji informacija o proizvodu za brisanje (**productDeleteInfo**), renderira se dijalog koji potvrđuje brisanje određenog 
-            proizvoda. U dijalogu se prikazuje naziv proizvoda, a korisnik može odabrati "DA" za potvrdu brisanja ili "NE" za odustajanje. 
-            Brisanje proizvoda izvršava se putem funkcije **handleProductDelete**.
+            - Ako postoji informacija o proizvodu za brisanje (**productDeleteInfo**), renderira se dijalog koji potvrđuje brisanje 
+            određenog proizvoda. U dijalogu se prikazuje naziv proizvoda, a korisnik može odabrati "DA" za potvrdu brisanja ili "NE" za
+            odustajanje. Brisanje proizvoda izvršava se putem funkcije **handleProductDelete**.
 
         - Prikaz poruke: 
-            - Ako postoji poruka (**message**), renderira se dijalog s porukom i gumbom za zatvaranje. Poruka se postavlja i kontrolira stanjem 
-            komponente.
+            - Ako postoji poruka (**message**), renderira se dijalog s porukom i gumbom za zatvaranje. Poruka se postavlja i kontrolira
+            stanjem komponente.
 
     2.  **Tablica**:
         - Zaglavlje tablice: 
-            - Renderira se zaglavlje tablice s nazivima stupaca: "Redni broj", "Ime", "Vrsta mesa", "Cijena/kg", "Na stanju", "IMG" te prazan 
-            stupac za gumbe i akcije.
+            - Renderira se zaglavlje tablice s nazivima stupaca: "Redni broj", "Ime", "Vrsta mesa", "Cijena/kg", "Na stanju", "IMG" te
+            prazan stupac za gumbe i akcije.
 
         - Tijelo tablice: 
-            - Renderira se tijelo tablice koje mapira kroz filtrirane proizvode i prikazuje ih u redovima tablice. Svaki red tablice sadrži 
-            informacije o proizvodu kao što su redni broj, ime, vrsta mesa, cijena po kilogramu, dostupna količina, gumb za prikazivanje slike, 
-            opcija dodavanja slike, gumb za brisanje proizvoda i slično.
+            - Renderira se tijelo tablice koje mapira kroz filtrirane proizvode i prikazuje ih u redovima tablice. 
+            Svaki red tablice sadrži informacije o proizvodu kao što su redni broj, ime, vrsta mesa, cijena po kilogramu, dostupna 
+            količina, gumb za prikazivanje slike, opcija dodavanja slike, gumb za brisanje proizvoda i slično.
 
         - Podnožje tablice: 
-            - Renderira se podnožje tablice s gumbom za potvrdu promjena. Gumb omogućuje slanje promjena prema poslužitelju putem funkcije 
-            **handleProductsChangeSubmit**.
+            - Renderira se podnožje tablice s gumbom za potvrdu promjena. Gumb omogućuje slanje promjena prema poslužitelju putem 
+            funkcije **handleProductsChangeSubmit**.
 
-    Ukupno, AdminProducts renderira se s nizom funkcionalnosti i elemenata koji omogućuju administratoru učinkovito upravljanje proizvodima putem 
-    jednostavnog korisničkog sučelja.
+    Ukupno, AdminProducts renderira se s nizom funkcionalnosti i elemenata koji omogućuju administratoru učinkovito upravljanje 
+    proizvodima putem jednostavnog korisničkog sučelja.
 
 ## 4. [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)
 
-    **AddProducts** je funkcionalna komponenta odgovorna za dodavanje novih proizvoda u sustav. Ova komponenta pruža obrazac (formu) za unos 
+- **AddProducts** je funkcionalna komponenta odgovorna za dodavanje novih proizvoda u sustav. 
+    Ova komponenta pruža obrazac (formu) za unos 
     podataka o proizvodu, uključujući naziv, cijenu, količinu na stanju, vrstu mesa te sliku proizvoda.
 
     Definiranje stanje veriable:
-    - **productInfo** : prati stanje podataka o novom proizvodu. Uključuje naziv, cijenu, količinu na stanju, vrstu mesa i sliku proizvoda.
+        - **productInfo** : prati stanje podataka o novom proizvodu. Uključuje naziv, cijenu, količinu na stanju, vrstu mesa i 
+        sliku proizvoda.
     ```javascript
-        const [productInfo, setProductInfo] = useState({
-            title: '',
-            price: '',
-            onStorage: '',
-            meatType: '',
-            image: null,
-        });
+            const [productInfo, setProductInfo] = useState({
+                title: '',
+                price: '',
+                onStorage: '',
+                meatType: '',
+                image: null,
+            });
     ```
 - ### [handleAddSubmit](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L13)
 
     **handleAddSubmit** funkcija se koristi za proces dodavanja novog proizvoda na server putem HTTP POST zahtjeva.
 
     Obrada događaja podnošenja obrasca započinje sprječavanjem uobičajenog ponašanja obrasca pomoću **e.preventDefault()**, čime se 
-    spriječava osvježavanje stranice. Nakon toga, funkcija definira **URL** na koji će se poslati **HTTP** zahtjev. Ovaj **URL** je preuzet 
-    iz okoline (environment), pružajući fleksibilnost i omogućujući laku promjenu adrese poslužitelja.
+    spriječava osvježavanje stranice. Nakon toga, funkcija definira **URL** na koji će se poslati **HTTP** zahtjev. 
+    Ovaj **URL** je preuzet iz okoline (environment), pružajući fleksibilnost i omogućujući laku promjenu adrese poslužitelja.
     ```javascript
         const handleAddSubmit = async (e) => {
             e.preventDefault();
@@ -1558,9 +1572,9 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
                 formData.append('meatType', productInfo.meatType);
                 formData.append('image', productInfo.image);
     ```
-    Zatim slijedi slanje **HTTP POST** zahtjeva korištenjem funkcije **fetch**. Postavke zahtjeva uključuju određivanje metode (**POST**), 
-    uključivanje informacija o autentikaciji (**credentials: 'include'**), postavljanje autorizacijskog tokena u zaglavlje (**headers**), te 
-    definiranje tijela zahtjeva koje sadrži **FormData** objekt s podacima o proizvodu.
+    Zatim slijedi slanje **HTTP POST** zahtjeva korištenjem funkcije **fetch**. Postavke zahtjeva uključuju određivanje 
+    metode (**POST**), uključivanje informacija o autentikaciji (**credentials: 'include'**), postavljanje autorizacijskog tokena 
+    u zaglavlje (**headers**), te definiranje tijela zahtjeva koje sadrži **FormData** objekt s podacima o proizvodu.
     ```javascript
                 const req = await fetch(url, {
                     method: 'POST',
@@ -1584,21 +1598,22 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
                 console.error('Error giving product:', err)
             }
     ```
-    Sve ove faze čine ključni dio procesa dodavanja novog proizvoda na serveru putem **HTTP POST** zahtjeva, osiguravajući da se postupak 
-    odvija glatko i pouzdano.
+    Sve ove faze čine ključni dio procesa dodavanja novog proizvoda na serveru putem **HTTP POST** zahtjeva, osiguravajući da se
+    postupak odvija glatko i pouzdano.
 
 - ### [handleInputChange](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L40)
 
     **handleInputChange** je event handler koji se koristi za obradu promjena unosa u formi. 
 
-    Prvo se dekonstruira objekta da izvuče **name** i **value** iz **event.target**. **event.target** se odnosi na element koji je pokrenuo 
-    događaj, u ovom slučaju input element forme. **name** je ime input elementa, a **value** je trenutna vrijednost unesena u **input** element.
+    Prvo se dekonstruira objekta da izvuče **name** i **value** iz **event.target**. **event.target** se odnosi na element koji je
+    pokrenuo događaj, u ovom slučaju input element forme. **name** je ime input elementa, a **value** je trenutna vrijednost unesena 
+    u **input** element.
     ```javascript
         const { name, value } = event.target;
     ```
-    Zatim se koristi funkciju **setProductInfo** da ažurira stanje **productInfo**. **...productInfo** koristi spread operator da kopira sve 
-    trenutne vrijednosti **productInfo** u novi objekt. **[name]: value** dodaje ili ažurira vrijednost sa ključem koji je jednak **name** 
-    sa novom vrijednošću **value**.
+    Zatim se koristi funkciju **setProductInfo** da ažurira stanje **productInfo**. **...productInfo** koristi spread operator da 
+    kopira sve trenutne vrijednosti **productInfo** u novi objekt. **[name]: value** dodaje ili ažurira vrijednost sa ključem koji 
+    je jednak **name** sa novom vrijednošću **value**.
     ```javascript
         setProductInfo({ ...productInfo, [name]: value, });
     ```
@@ -1627,22 +1642,23 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 - ### [AddProducts.js Renderiranje](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js#L55)
 
-    **AddProducts.js** se renderira na načina da se renderira forma(`<form>`) koja omogućuje korisniku unos informacija o novom proizvodu. 
-    Forma uključuje polja(`<input>`) poput naziva proizvoda, cijene, količine na stanju, vrste mesa i mogućnost dodavanja slike proizvoda. 
+    **AddProducts.js** se renderira na načina da se renderira forma(`<form>`) koja omogućuje korisniku unos informacija o novom 
+    proizvodu. Forma uključuje polja(`<input>`) poput naziva proizvoda, cijene, količine na stanju, vrste mesa i mogućnost dodavanja 
+    slike proizvoda. 
 
     Prilikom unosa podataka u formu, korisnički unos se prati putem stanja komponente. Funkcija **handleInputChange** ažurira 
     stanje komponente kako bi odražavalo unesene podatke.
 
-    Korisnik može odabrati sliku proizvoda putem odgovarajućeg polja(`<input type='file'>`). Funkcija **handleFileChange** prati odabrane 
-    datoteke i ažurira stanje komponente s odabranom slikom.
+    Korisnik može odabrati sliku proizvoda putem odgovarajućeg polja(`<input type='file'>`). Funkcija **handleFileChange** prati 
+    odabrane datoteke i ažurira stanje komponente s odabranom slikom.
 
     Kada korisnik pritisne gumb "DODAJ"(`<<button type='submit'>`), pokreće se funkcija **handleAddSubmit**.
 
 ## 5. [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)
 
-    **AdminOrders** je komponenta koja prikazuje listu naruđbu i omogućava pregled istih
+- **AdminOrders** je komponenta koja prikazuje listu naruđbu i omogućava pregled istih
 
-    Definiranje stanja verijabli:
+- Definiranje stanja verijabli:
     - **adminOrd**: Stanje adminOrd koristi se za pohranu podataka o narudžbama. 
     - **shouldRefetch**: Stanje shouldRefetch koristi se kao oznaka za ponovno dohvaćanje podataka s poslužitelja.
     - **message**: Stanje message koristi se za prikazivanje poruka korisnicima.
@@ -1700,13 +1716,13 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
     2. **Tijelo Tablice (Tbody):**
 
-        - `{adminOrd.slice().reverse().map((orderData, index) => (`: Mapira kroz niz narudžbi (**adminOrd**), reverzira ga kako bi najnovije 
-        narudžbe bile na vrhu, te prikazuje informacije o svakoj narudžbi u retcima tablice.
-        - `<tr>` element: Prikazuje redak za svaku narudžbu. Boja retka ovisi o statusu narudžbe. Ako je narudžba u tijeku, boja je zelena. 
-        Ako je narudžba otkazana, boja je crvena. Klikom na redak, poziva se funkcija **toggleVisibility** kako bi se promijenila vidljivost 
-        detalja narudžbe.
-        - Detalji narudžbe: Ako je narudžba označena kao vidljiva (`visibleOrders.includes(orderData._id)`), prikazuju se dodatni redak s 
-        komponentom **AdminOrder** koja prikazuje detalje narudžbe.
+        - `{adminOrd.slice().reverse().map((orderData, index) => (`: Mapira kroz niz narudžbi (**adminOrd**), reverzira ga kako bi 
+        najnovije narudžbe bile na vrhu, te prikazuje informacije o svakoj narudžbi u retcima tablice.
+        - `<tr>` element: Prikazuje redak za svaku narudžbu. Boja retka ovisi o statusu narudžbe. Ako je narudžba u tijeku, boja je 
+        zelena. Ako je narudžba otkazana, boja je crvena. Klikom na redak, poziva se funkcija **toggleVisibility** kako bi se 
+        promijenila vidljivost detalja narudžbe.
+        - Detalji narudžbe: Ako je narudžba označena kao vidljiva (`visibleOrders.includes(orderData._id)`), prikazuju se dodatni 
+        redak s komponentom **AdminOrder** koja prikazuje detalje narudžbe.
 
     3. **Podnožje Tablice (Tfoot):**
 
@@ -1714,10 +1730,10 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
     4. **Poruka:**
 
-        - `<div className={message ${message ? "visible" : "hidden"}}>`: Prikazuje div element s klasama "message", ovisno o tome postoji 
-        li poruka (**message**). Ako postoji, koristi se klasa "**visible**", inače "**hidden**".
-        - `<button className="messageButton" onClick={() => setMessage("")}>`: Gumb za zatvaranje poruke koji poziva funkciju za postavljanje 
-        poruke na prazan string.
+        - `<div className={message ${message ? "visible" : "hidden"}}>`: Prikazuje div element s klasama "message", ovisno o 
+        tome postoji li poruka (**message**). Ako postoji, koristi se klasa "**visible**", inače "**hidden**".
+        - `<button className="messageButton" onClick={() => setMessage("")}>`: Gumb za zatvaranje poruke koji poziva funkciju za 
+        postavljanje poruke na prazan string.
         - `<p>{message}</p>`: Prikazuje sadržaj poruke.
 
     5. **AdminOrder Komponenta:**
@@ -1733,7 +1749,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 
 ## 6. [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)
 
-    **AdminOrder.js** je komponenta koja prikazuje detalje o narudžbi, i omogućava odbijanje ili prihvaćanje iste.
+- **AdminOrder.js** je komponenta koja prikazuje detalje o narudžbi, i omogućava odbijanje ili prihvaćanje iste.
 
     Zahtjeva pet svojstava(**props**):
     - **orderData**: sadržava informacije id narudžbi.
