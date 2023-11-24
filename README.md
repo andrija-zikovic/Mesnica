@@ -924,19 +924,19 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 
     Komponenta **AboutUs.js** implementira ključne elemente za prikaz informacija o Mesnici na web stranici. 
     Struktura komponente uključuje:
-    1. **Glavni Element (`<main>`):**
+    - **Glavni Element (`<main>`):**
         - Postavljen s klasom "aboutUs".
         - Djeluje kao osnovni kontejner za sve informacije vezane uz Mesnicu. 
-    2. **Sekcije (`<section>`):** 
+    - **Sekcije (`<section>`):** 
         - Različite sekcije unutar glavnog elementa, svaka fokusirana na određeni aspekt mesnice.
         - Ove sekcije organiziraju informacije na web stranici i olakšavaju korisnicima pronalazak specifičnih podataka.
-    3. **Članci (`<article>`):**
+    - **Članci (`<article>`):**
         - Svaka sekcija sadrži članke koji pružaju tekstualne opise.
         - Tekst unutar članaka opisuje različite aspekte Mesnice, uključujući povijest, kvalitetu, asortiman proizvoda te poziv za posjetu.
-    4. **Sustav za Izmjenu Slika:**
+    - **Sustav za Izmjenu Slika:**
         - Unutar određenih članaka postavljen je sustav koji dinamički izmjenjuje slike.
         - Ovaj vizualni element pridonosi atraktivnosti stranice i pomaže u boljem predstavljanju atmosfere Mesnice.
-    5. **Sekcija s Formom za Kontakt (`<form>`):**
+    - **Sekcija s Formom za Kontakt (`<form>`):**
         - Zadnja sekcija sadrži formu za kontaktiranje Mesnice.
         - Forma ima polja za unos imena, emaila i poruke te gumb za slanje.
         - Obrada podataka iz forme izvršava se pomoću funkcije handleSubmit.
@@ -1042,17 +1042,17 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 
     **orderFrom.js** se renderira na dva tri načina. Ovisno o uvjetu.
 
-    1. Prvi uvjet (**[if (buyStatus) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L56)**): 
+    - Prvi uvjet (**[if (buyStatus) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L56)**): 
 
         - Ako je buyStatus true, to znači da je narudžba uspješno poslana. Prikazuje se određeni dio JSX-a s porukom o 
         uspješnoj narudžbi.
 
-    2. Drugi uvjet (**[else if (cartItems.length < 1) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L68)**): 
+    - Drugi uvjet (**[else if (cartItems.length < 1) {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L68)**): 
 
         - Ako **buyStatus** nije true i dužina **cartItems** (proizvoda u košarici) je manja od 1, to znači da je košarica prazna. 
         Prikazuje se određeni dio JSX-a s porukom o praznoj košarici.
 
-    3. Treći uvjet (**[else {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L74)**): 
+    - Treći uvjet (**[else {...}](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js#L74)**): 
 
         - Ako ni jedan od prethodnih uvjeta nije ispunjen, to znači da korisnik ima proizvode u košarici i nije poslao narudžbu. 
         Prikazuje se ostatak JSX-a koji prikazuje popis proizvoda u košarici, ukupnu cijenu, formu za unos podataka i gumbi za čišćenje 
@@ -1125,12 +1125,13 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 
     **logOut** funkcija obavlja logiku odjave administratora.
 
-    **await fetch('/api/logout', { method: 'POST', ... })** koristi funkciju **fetch** za slanje 
-    **asinkronog HTTP POST zahtjeva prema '/api/logout'** endpointu na serveru. 
+    **await fetch('/api/logout', { method: 'POST', ... })** koristi funkciju **fetch** za slanje **asinkronog HTTP POST zahtjeva prema '/api/logout'** endpointu na serveru. 
+    
     Postavkom method: **'POST'** određuje se metoda zahtjeva za odjavu koristeći **HTTP** metodu **POST**. 
     Ova konfiguracija je bitna jer specifično ukazuje na namjeru izvršavanja odjave. Također, opcija 
     **credentials: 'include'** odabire se kako bi se osiguralo da se kredencijali, u ovom slučaju 
     **kolačići (cookies)**, automatski uključe u zahtjev. Ovo je od krucijalne važnosti pri radu s autentikacijom putem kolačića. 
+    
     Kada je postavljeno na **'include'**, osigurava se automatsko uključivanje kolačića u svaki zahtjev, 
     pružajući potrebne informacije za odjavu. 
     Nadalje, **headers: { 'Content-Type': 'application/json' }** postavlja zaglavlje zahtjeva kako bi se naznačilo da se šalju podaci u 
@@ -1181,10 +1182,13 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 - ### [handleOutsideClick](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L70)
     Ova funkcija **handleOutsideClick** služi za zatvaranje padajućeg izbornika kada korisnik klikne izvan njega.
     **dropdownRef.current** prati postojanje referenca (**current**) na prethodno postavljeni **DOM element** pomoću **useRef**. 
+    
     Ako ta referenca postoji, slijedi dodatna provjera. **e.target** označava element na koji je korisnik kliknuo, 
     odnosno element koji je pokrenuo događaj klika. 
+    
     Ako je izraz **!dropdownRef.current.contains(e.target)** istinit, to ukazuje da korisnik nije kliknuo unutar elementa koji je bio 
     referenciran. U tom slučaju, stanje varijable **isDropdownOpen** postavlja se na **false**, rezultirajući zatvaranjem padajućeg izbornika. 
+    
     Ova logika omogućuje korisnicima da zatvore padajući izbornik jednostavnim klikom izvan njega, poboljšavajući ukupno korisničko iskustvo
     ```javascript
         const handleOutsideClick = (e) => {
@@ -1209,11 +1213,11 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 - ### [Renderiranje Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js#L109)
 
     Prvo se stvara `<main>` element unutar kojeg se ostali elementi renderiraju na dva načina: 
-    1. Ako korisnik nije prijavljen (stanje **isLoggedIn** je **false**): 
+    - Ako korisnik nije prijavljen (stanje **isLoggedIn** je **false**): 
         Prikazuje se odjeljak (`<section>`) za prijavu administratora. 
         To uključuje naslov "Log in:", komponentu za prijavu (**AdminLogIn**), 
         prikazivanje eventualne poruke o pogrešci (**message**), te informacije o korisničkom imenu i lozinki.
-    2. Ako je korisnik prijavljen (stanje **isLoggedIn** je **true**): 
+    - Ako je korisnik prijavljen (stanje **isLoggedIn** je **true**): 
         Prikazuje se navigacijski izbornik (`<nav>`) s popisom veza (`<ul>`) koji omogućuju pristup različitim dijelovima
         administratorskog sučelja, poput proizvoda, narudžbi, statistike i opcije za odjavu. 
         Također, ovisno o stanju **isDropdownOpen**, prikazuje se i dodatni padajući izbornik s opcijama "Lista" i "Dodaj" za proizvode.
