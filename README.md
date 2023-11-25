@@ -49,7 +49,7 @@ dopuštenje za slanje requesta.
 ## [products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) / [productsContorller.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsContorller.js) 
 <div align="right">
 
-[Top](#backend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 Izradio sam nekoliko ruta, prva je bila za slanje podataka o proizvodima ( url/products ). 
@@ -74,7 +74,7 @@ podataka, i izrađivanje **Schema** pomoću kojih definiram šta želim izvući 
 ## [order.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/order.js) / [orderController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/orderController.js)  
 <div align="right">
 
-[Top](#backend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 Sljedeće ruta ( url/order ) obrađuje naruđbu. Kad se pristupi ruti server obrađuje orderController.
@@ -109,7 +109,7 @@ Kad je email poslan orderController sprema naruđbu u mongoDB bazu podataka.
 ## [form.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/form.js) / [formController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/formController.js) 
 <div align="right">
 
-[Top](#backend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -120,7 +120,7 @@ koji kroz request dobiva (name, email, message), zatim s "nodemailer" šalje ema
 ## [login.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/login.js) / [logInController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logInController.js) 
 <div align="right">
 
-[Top](#backend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -147,7 +147,7 @@ Ako se podudaraju. logInController s **"jesonwebtoken"** kreira accessToken i re
 ## [logout.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/products.js) / [logoutController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/logoutController.js)
 <div align="right">
 
-[Top](#backend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 Ruta **url/logout** obrađuje logoutController 
@@ -178,7 +178,7 @@ Zatim vraća prazan cookie i pozitivan response.
 # [admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/routes/api/admin.js)
 <div align="right">
 
-[Top](#backend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 Preko **url/admin**  rute obrađuju se svi zatjevi vezani za admina. CRUD operacije vezane za proizvode, prihvacanje i odbijanje naruđbi.
@@ -379,7 +379,7 @@ Unutar App.js uvoze se dvoje komponente [Client.js](#client.js) i [Admin.js](#ad
 ## 1. [Client.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Client.js)
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 Unutar **Client.js** komponente, definira se **cartItems** sa **useState()** hookom u koji ćemo dodavati informacije o proizvodima,
@@ -523,7 +523,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
 ## 2. [Nav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Nav.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -568,7 +568,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
         )
     ```<div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 ## 3. [Bucket.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Bucket.js)     
@@ -643,7 +643,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
 ## 4. [Header.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Header.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -663,7 +663,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
 ## 5. [Home.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Home.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -692,7 +692,7 @@ A ako je **newAmount** manji od 1, znači da taj proizvod nema nikakvu količinu
 ## 6. [Hero.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Hero.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -719,7 +719,7 @@ Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
 ## 7. [ProductsList.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/ProductsList.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -806,7 +806,7 @@ Prikazuje sliku s dodatnom animiranom naljepnicom "Dobrodošli".
 ## 8. [About.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/About.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -825,7 +825,7 @@ koji prikazuju tekst o mesnici.
 ## 9. [Products.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Products.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -856,7 +856,7 @@ koji prikazuju tekst o mesnici.
 ## 10. [SideNav.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/SideNav.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -882,7 +882,7 @@ i koristi **setMeatType** za ažuriranje **meatType** navedenim parametrom.
 ## 11. [AboutUs.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/AboutUs.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -975,7 +975,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 ## 12. [orderForm.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/orderForm.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -1094,7 +1094,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 ## 13. [Footer.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Client/Footer.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -1105,7 +1105,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 ## 1. [Admin.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/Admin.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -1274,7 +1274,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 ## 2. [AdminLogIn.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminLogIn.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -1318,7 +1318,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 ## 3. [AdminProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminProducts.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -1583,7 +1583,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 ## 4. [AddProducts.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AddProducts.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -1711,7 +1711,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 ## 5. [AdminOrders.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrders.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
@@ -1809,7 +1809,7 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
 ## 6. [AdminOrder.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/client/src/Admin/AdminOrder.js)     
 <div align="right">
 
-[Top](#frontend)
+[Top](#mesnica-web-trgovina)
 
 </div>
 
