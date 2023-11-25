@@ -34,6 +34,8 @@
     5. [logout.js / logoutController.js](#logoutjs--logoutcontrollerjs)
     6. [admin.js](#adminjs)
 
+- ## [Deployment](#google-cloud-deployment)
+
 # Backend Razvoj s Node.js i Express
 
 ## [SERVER](https://github.com/andrija-zikovic/react-mini-project/blob/main/server)
@@ -1889,3 +1891,23 @@ Prvo, definira **useState** varijablu koja sadrži tri **key: value** para.
     "Order Rejected!" s pozadinskom crvenom bojom `rgba(227, 53, 53, 0.801)`.
     - Ako status nije definiran **(orderStatus === null)**, prikazuju se gumbi za potvrdu i odbijanje narudžbe unutar 
     "adminOrdDis__ButtonBottom" div elementa, a klikom na njih pozivaju se funkcije **handleConfirme** i **handleReject**.
+
+# Google Cloud deployment
+<div align="right">
+
+[Top](#mesnica-web-trgovina)
+
+</div>
+
+1. **New Project**
+    
+     Prvo sam napravio My Project u **google cloud** konzoli, i definira **ID** tog projekta.
+
+2. **Cloud Storage**
+
+    Nakon toga sam napravio novi **bucket** i zatim sam kreirao **.json** file koji koristim u **[productsController.js](https://github.com/andrija-zikovic/react-mini-project/blob/main/server/controllers/productsController.js#L54)** za definiranje **Storage**-a.
+
+2. **gcloud deploy**
+
+    Na kraju sam preko terminala pokrenuo naredbu za deploy.
+    `gcloud app deploy client/clientAppEngine.yaml server/serverAppEngine.yaml`
