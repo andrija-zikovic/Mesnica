@@ -147,6 +147,18 @@
     margin-top: 0.2rem;
 }
 
+.cartItemsCount {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: var(--LINK-ACTIVE);
+    color: var(--HEADER-COLOR);
+    border-radius: 50%;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.7em;
+    border: 1px solid black;
+}
+
 @media screen and (min-width: 576px) {
     .bucket {
         right: 2px;
@@ -181,6 +193,12 @@
     .nav ul {
         justify-content: flex-end;
     }
+    .cartItemsCount {
+        padding: 0.1rem 0.3rem;
+        font-size: 0.4rem;
+        top: 0.2rem;
+        right: 0.7rem;
+    }
 }
 
 
@@ -195,6 +213,13 @@
 
     .nav ul {
         justify-content: flex-end;
+    }
+
+    .cartItemsCount {
+        padding: 0.1rem 0.3rem;
+        font-size: 0.4rem;
+        top: 0.2rem;
+        right: 0.4rem;
     }
 
 }

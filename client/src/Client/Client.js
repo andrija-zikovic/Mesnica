@@ -71,8 +71,8 @@ const Client = () => {
 
     return (
         <div className='client'>
-            <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />
             <Header title={'Mesnica'} />
+            <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />
             <Routes>
                 <Route path='/' element={<Home handleAmountChange={handleAmountChange} />} />
                 <Route path='/products' element={<Products handleAmountChange={handleAmountChange} />} />

@@ -63,7 +63,7 @@ main {
   --FS-CARD: clamp(1.5rem, 2.5vw, 2rem);
 
   /* COLORS */
-  --BGCOLOR-FADE: rgba(227, 53, 53, 0.801);
+  --BGCOLOR-FADE: #e33535cc;
   --BGCOLOR: rgba(255, 255, 255, 0.801);
   --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE));
   --BODY-BGCOLOR: #FFF;

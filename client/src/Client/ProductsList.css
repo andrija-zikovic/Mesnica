@@ -7,7 +7,7 @@
     grid-template-columns: repeat(1, 1fr 1fr);
     gap: 3rem;
     max-width: 1200px;
-    overflow: scroll;
+    overflow: auto;
     height: auto;
     width: auto;
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
@@ -22,6 +22,14 @@
     margin: 5px auto;
     white-space: nowrap;
     text-shadow: 2px 2px 5px var(--BGCOLOR-FADE);
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / -1;
+    padding: 1rem;
 }
 
 @media screen and (min-width: 768px) {
