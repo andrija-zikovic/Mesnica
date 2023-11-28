@@ -121,7 +121,7 @@ const AdminProducts = (token) => {
     };
 
     fetchData();
-  }, []);
+  }, [token.token]);
 
   return (
     <>
