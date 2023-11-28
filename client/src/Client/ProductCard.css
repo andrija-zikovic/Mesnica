@@ -1,6 +1,9 @@
 /* || PRODUCT CARD */
 
 .product-card {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     max-width: 205px;
     background-color: var(--BGCOLOR);
     width: 100%;
@@ -8,9 +11,7 @@
     border: var(--BORDERS);
     border-radius: var(--BORDER-RADIUS);
     box-shadow: 2px 2px 10px var(--LINK-HOVER);
-    display: inline-block;
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
-    font-size: var(--FS-CARD);
     margin-top: 0;
     white-space: nowrap;
 }
@@ -27,8 +28,63 @@
     letter-spacing: 0.1rem;
     border-bottom: var(--BORDERS);
     width: 100%;
+    font-size: clamp(0.8rem, 1.5rem, 2rem);
 }
 
+.product-card__price {
+    font-weight: bolder;
+    letter-spacing: 0.1rem;
+    margin-top: var(--MARGIN);
+    width: 100%;
+    font-size: var(--FS-CARD);
+}
+
+.productCard_unit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--MARGIN);
+    width: 80%;
+    font-size: var(--FS-CARD);
+}
+
+.productCard_plusMinus {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--MARGIN);
+    margin-bottom: var(--MARGIN);
+    width: 90%;
+    align-self: center;
+}
+
+.productCard_plusMinus button {
+    background-color: var(--BGCOLOR);
+    border: var(--BORDERS);
+    border-radius: var(--BORDER-RADIUS);
+    font-size: 1.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.productCard_plusMinus input {
+    background-color: var(--BGCOLOR);
+    border: var(--BORDERS);
+    border-radius: 25%;
+    font-size: 1.5rem;
+    height: 2.5rem;
+    width: 3.5rem;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.productCard_plusMinus button:hover {
+    background-color: var(--LINK-HOVER);
+    color: var(--BGCOLOR);
+}
+ 
 @media screen and (min-width: 576px) {
 
     .product-card {
@@ -40,20 +96,46 @@
 
 @media screen and (min-width: 768px) {
 
-    .product-card {
+    .product-card__title,
+    .product-card__price,
+    .productCard_unit {
         white-space: nowrap;
-        max-width: none;
         font-size: 70%;
+    }
+
+    .productCard_plusMinus button {
+        font-size: 0.7rem;
+        height: 1.2rem;
+        width: 1.2rem;
+    }
+
+    .productCard_plusMinus input {
+        font-size: 0.7rem;
+        height: 1.2rem;
+        width: 2rem;
     }
 
 }
 
 @media screen and (min-width: 992px) {
 
-    .product-card {
+    .product-card__title,
+    .product-card__price,
+    .productCard_unit {
         white-space: nowrap;
-        max-width: none;
         font-size: 90%;
     }
+
+    .productCard_plusMinus button {
+        font-size: 0.7rem;
+        height: 1rem;
+        width: 1rem;
+    }
+
+    .productCard_plusMinus input {
+        font-size: 0.5rem;
+        height: 0.8rem;
+        width: 1.5rem;
+    }   
 
 }

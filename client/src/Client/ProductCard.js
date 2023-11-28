@@ -12,7 +12,7 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
                 <p className='product-card__title'>{title}</p>
                 <img src={src} alt={title} />
                 <p className='product-card__price'>{price} € / kg</p>
-                <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '5px' }}>
+                <div className='productCard_unit'>
                     <input
                         type='radio'
                         name='kg'
@@ -30,15 +30,16 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
                     />
                     <label htmlFor={id + "-dag"}>dag</label>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-evenly', marginTop: '5px' }}>
+                <div className='productCard_plusMinus'>
                     <button onClick={() => handleAmountChange('decrement', id, title, price, selectedUnit, amount, setAmount)}>−</button>
                     <input
                         type='number'
                         id={id + '-amount'}
                         min={0}
                         max={98}
-                        placeholder='Amount'
+                        placeholder='0'
                         value={amount}
+                        readOnly
                         onChange={(e) => setAmount(parseInt(e.target.value))}
                     />
                     <button onClick={() => handleAmountChange('increment', id, title, price, selectedUnit, amount, setAmount)}>+</button>

@@ -140,7 +140,7 @@ const Admin = () => {
                     <li className='link__nav'>
                         <Link to="adminstats">Statistika</Link>
                     </li>
-                    <li className='link__nav' onClick={logOut}>
+                    <li className='link__nav_logOut' onClick={logOut}>
                         Log out
                     </li>
                 </ul>

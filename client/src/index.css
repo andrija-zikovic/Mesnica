@@ -89,7 +89,7 @@ main {
   --PADDING-SIDE: 2.5%;
 
   /* STANDARD MARGINE */
-  --MARGIN: clamp(1rem, 2.2vh, 1.5rem);
+  --MARGIN: clamp(0.2rem, 0.5rem, 1rem);
 }
 
 /* || GENERAL STYLES */

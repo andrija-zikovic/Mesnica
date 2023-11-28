@@ -40,6 +40,11 @@
   gap: 1rem;
 }
 
+.link__nav a {
+  display: block;
+  padding: 0.2rem 0.5rem;
+}
+
 .link__nav:hover,
 .link__nav:focus,
 .link__nav:active {
@@ -58,6 +63,13 @@
   text-decoration: none;
   color: black;
   font-size: 1.7rem;
+}
+
+.link__nav_logOut {
+  padding: 0.2rem 0.5rem;
+  border-bottom: var(--BORDERS);
+  border-left: var(--BORDERS);
+  border-right: var(--BORDERS);
 }
 
 .adminPro {
@@ -183,13 +195,50 @@
 
 .adminProImg {
   position: absolute;
-  width: 200px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 80vw;
   height: auto;
-  margin-top: -25px;
+  top: 20vh;
+  left: 10vw;
+  font-size: 1.5rem;
   z-index: 1;
   border: 1px solid black;
   border-radius: var(--BORDER-RADIUS);
-  left: 25px;
+  background-color: aliceblue;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+}
+
+.adminProImg input,
+.adminProImg label {
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  white-space: normal;
+  text-align: center;
+}
+
+.adminProImg label {
+  font-weight: bold;
+}
+
+.adminProImg img {
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  border: 1px solid black;
+}
+
+.adminProImg_close {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  align-items: right;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.5rem;
+}
+
+.adminProImg_close button {
+  padding: 0.2rem 0.5rem;
+  background-color: red;
+  color: black;
 }
 
 .show-img {

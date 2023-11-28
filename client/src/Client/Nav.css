@@ -22,7 +22,7 @@
 
 .nav a {
     display: block;
-    padding: 0.3rem 0.5rem;
+    padding: 0.4rem 0.5rem;
     margin-bottom: 0;
     text-decoration: none;
     color: black;
@@ -131,7 +131,7 @@ table {
 
 .clear {
     border-radius: var(--BORDER-RADIUS);
-    padding: 0.25rem;
+    padding: '0.5rem 1rem';
     background-color: rgba(255, 0, 0, 0.918);
 }
 
@@ -142,7 +142,7 @@ table {
 
 .send {
     border-radius: var(--BORDER-RADIUS);
-    padding: 0.25rem;
+    padding: '0.5rem 1rem';
     background-color: rgba(0, 128, 0, 0.918);
 }
 
@@ -208,6 +208,11 @@ table {
     .bucket {
         width: 15rem;
         font-size: 0.5rem;
+    }
+
+    .clear, 
+    .send {
+        padding: 0.1rem 0.4rem; 
     }
 
     .delete {

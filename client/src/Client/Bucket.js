@@ -59,8 +59,8 @@ const Bucket = ({ cartItems, deleteItem, clearCart, toggleBucketVisibility }) =>
                 </table>
 
                 <div>
-                    <button className='clear' onClick={() => clearCart()} style={{padding: '0.5rem 1rem'}}>OČISTI</button>
-                    <Link to="/order"><button className='send' onClick={toggleBucketVisibility} style={{padding: '0.5rem 1rem'}}>NARUČI</button></Link>
+                    <button className='clear' onClick={() => clearCart()}>OČISTI</button>
+                    <Link to="/order"><button className='send' onClick={toggleBucketVisibility}>NARUČI</button></Link>
                 </div>
             </section>
         )
