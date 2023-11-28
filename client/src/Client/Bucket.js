@@ -22,12 +22,11 @@ const Bucket = ({ cartItems, deleteItem, clearCart, toggleBucketVisibility }) =>
 
         return (
             <section className='bucket'>
+                <h1>Košarica</h1>
                 <table className='bucket__table'>
                     <thead className='bucket__thead'>
                         <tr>
-                            <th colSpan={3}>Košarica</th>
-                        </tr>
-                        <tr>
+                            <th></th>
                             <th>Proizvod</th>
                             <th>Količina</th>
                             <th>Cijena</th>
@@ -37,6 +36,7 @@ const Bucket = ({ cartItems, deleteItem, clearCart, toggleBucketVisibility }) =>
                     <tbody className='bucket__tbody'>
                         {cartItems.map((cartItem, index) => (
                             <tr key={index}>
+                                <td></td>
                                 <td>{cartItem.description}</td>
                                 <td>
                                     {cartItem.quantity} {cartItem.unit}
@@ -50,16 +50,17 @@ const Bucket = ({ cartItems, deleteItem, clearCart, toggleBucketVisibility }) =>
                     </tbody>
                     <tfoot className='bucket__tfoot'>
                         <tr>
-                            <td colSpan={2}>UKUPNO</td>
-                            <td>{calculateTotalPrice()} €</td>
+                            <td></td>     
+                            <td colSpan={2}>UKUPNO:</td>
+                            <td style={{fontWeight: 'bolder', borderBottom: '2px solid aliceblue'}}>{calculateTotalPrice()} €</td>
                             <td></td>
                         </tr>
                     </tfoot>
                 </table>
 
                 <div>
-                    <button className='clear' onClick={() => clearCart()}>OČISTI</button>
-                    <Link to="/order"><button className='send' onClick={toggleBucketVisibility}>NARUČI</button></Link>
+                    <button className='clear' onClick={() => clearCart()} style={{padding: '0.5rem 1rem'}}>OČISTI</button>
+                    <Link to="/order"><button className='send' onClick={toggleBucketVisibility} style={{padding: '0.5rem 1rem'}}>NARUČI</button></Link>
                 </div>
             </section>
         )

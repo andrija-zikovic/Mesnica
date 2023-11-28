@@ -21,6 +21,9 @@
 }
 
 .nav a {
+    display: block;
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0;
     text-decoration: none;
     color: black;
 }
@@ -30,7 +33,6 @@
 }
 
 .link__nav {
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
     border-bottom: var(--BORDERS);
     border-left: var(--BORDERS);
     border-right: var(--BORDERS);
@@ -43,10 +45,14 @@
     box-shadow: 2px 2px 10px var(--LINK-HOVER);
 }
 
+table {
+    border-collapse: collapse;
+}
+
 .nav_bucket {
     padding: 0;
     border-radius: 10%;
-    padding: 0.1rem 0.1rem;
+    padding: 0.2rem 0.2rem;
     border: 1px solid aliceblue;
 }
 
@@ -64,13 +70,16 @@
     background-color: var(--LINK-ACTIVE);
     border: 1px solid black;
     box-shadow: 2px 2px 10px var(--LINK-HOVER);
+    cursor: pointer;
 }
 
 .bucket {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     background-color: #333333f7;
     color: aliceblue;
     position: absolute;
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
     bottom: -1;
     width: 100vw;
     height: auto;
@@ -80,16 +89,30 @@
     font-size: 1.2em;
 }
 
+.bucket thead tr th:nth-child(1),
+.bucket thead tr th:nth-child(2),
+.bucket thead tr th:nth-child(3),
+.bucket thead tr th:nth-child(4), 
+.bucket thead tr th:nth-child(5) {
+    border-bottom: 2px solid aliceblue;
+}
+
 .bucket div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 60%;
 }
 
 .bucket__table {
-    padding: var(--PADDING-SIDE) var(--PADDING-TB);
-    border-spacing: 10px;
+    padding: 0 1rem;
     width: 100%;
+}
+
+.bucket__thead {
+    font-weight: bold;
+    border-bottom: 1px solid aliceblue;
+    padding: auto;
 }
 
 .bucket button {
@@ -145,6 +168,14 @@
 
 .bucket__button svg {
     margin-top: 0.2rem;
+}
+
+.bucket tfoot tr td:nth-child(1),
+.bucket tfoot tr td:nth-child(2),
+.bucket tfoot tr td:nth-child(3),
+.bucket tfoot tr td:nth-child(4), 
+.bucket tfoot tr td:nth-child(5) {
+    border-top: 2px solid aliceblue;
 }
 
 .cartItemsCount {
