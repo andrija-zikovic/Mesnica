@@ -57,4 +57,12 @@
     }
 }
 
-@media screen and (min-width: 992px) {}
+@media screen and (min-width: 992px) {
+    .products {
+        grid-auto-rows: 85vh auto 75px;
+    }
+
+    .sideNav {
+        font-size: 0.7rem;
+    }
+}

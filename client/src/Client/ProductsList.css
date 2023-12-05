@@ -55,4 +55,8 @@
         font-size: 1.5rem;
     }
 
+    .products-list form {
+        display: flex;  
+        justify-content: center;
+    }
 }

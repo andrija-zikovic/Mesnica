@@ -46,5 +46,7 @@
         font-size: 0.5rem;
         flex-flow: row-reverse;
         justify-content: space-between;
+        width: 100%;
+        padding: 0.2rem;
     }
 }

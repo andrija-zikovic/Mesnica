@@ -10,7 +10,24 @@ import Footer from './Footer';
 import { useState } from 'react';
 
 const Client = () => {
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState([
+        {
+        "id": "650ab10d30663028f708db34",
+        "description": "Svinjska lopatica",
+        "price": 4.19,
+        "tax-rate": 5,
+        "quantity": 0.70,
+        "unit": "dag"
+        },
+        {
+        "id": "650ab19d30663028f708db36",
+        "description": "Čevapčići",
+        "price": 7.69,
+        "tax-rate": 5,
+        "quantity": 1.20,
+        "unit": "kg"
+        }
+        ]);
     
     const deleteItem = (itemId) => {
         const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
@@ -21,17 +38,14 @@ const Client = () => {
         setCartItems([]);
     };
 
-    const calculateQuantity = (newAmount, selectedUnit) => {
-        if (selectedUnit === "kg") {
-            return newAmount;
-        } else {
-            return newAmount / 100;
-        }
+    const calculateQuantity = (newAmount, newUnite) => {
+        return newAmount / 100;
     };
 
     const handleAmountChange = (operation, id, title, price, selectedUnit, amount, setAmount) => {
-        const incrementValue = selectedUnit === 'kg' ? 1 : 10;
+        const incrementValue = selectedUnit === 'plusOne' ? 1 : 10;
         const newAmount = operation === 'increment' ? amount + incrementValue : amount - incrementValue;
+        const newUnite = 'kg';
 
         if (newAmount >= 1) {
             setAmount(newAmount);
@@ -42,8 +56,8 @@ const Client = () => {
                 "description": title,
                 "price": price,
                 "tax-rate": 5,
-                "quantity": calculateQuantity(newAmount, selectedUnit),
-                "unit": selectedUnit,
+                "quantity": calculateQuantity(newAmount, newUnite),
+                "unit": newUnite,
             };
 
             if (cartItems.length === 0) {
@@ -71,8 +85,10 @@ const Client = () => {
 
     return (
         <div className='client'>
-            <Header title={'Mesnica'} />
-            <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />
+            <div className='client_top'>
+                <Header title={'Mesnica'} />
+                <Nav cartItems={cartItems} setCartItems={setCartItems} deleteItem={deleteItem} clearCart={clearCart} />
+            </div>
             <Routes>
                 <Route path='/' element={<Home handleAmountChange={handleAmountChange} />} />
                 <Route path='/products' element={<Products handleAmountChange={handleAmountChange} />} />

@@ -2,8 +2,17 @@ import { useState, useRef } from 'react';
 import './orderForm.css'
 
 const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
+    console.log(cartItems);
     const [buyStatus, setBuyStatus] = useState(false);
     const formRef = useRef(null);
+
+    const handlePriceCaluclation = (cartItem) => {
+        if (cartItem.unit === 'dag') {
+            return cartItem.quantity * cartItem.price;
+        } else  {
+            return cartItem.quantity * cartItem.price;
+        }
+    };
 
     const handleFormSubmit = (event) => {
 
@@ -47,7 +56,7 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
     // Calculate the total price based on selectedUnit
     const calculateTotalPrice = () => {
         const totalPrice = cartItems.reduce((total, cartItem) => {
-            return total + cartItem.quantity * cartItem.price;
+            return total + handlePriceCaluclation(cartItem);
         }, 0);
 
         return totalPrice.toFixed(2); // Rounds to two decimal places
@@ -84,8 +93,9 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
                         </tr>
                         <tr>
                             <th>Proizvod</th>
-                            <th>Količina</th>
                             <th>Cijena</th>
+                            <th>Količina</th>
+                            <th>Ukupno</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -94,20 +104,28 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
                             <tr key={index}>
                                 <td>{cartItem.description}</td>
                                 <td>
-                                    {cartItem.quantity} {cartItem.unit}
+                                    {cartItem.price}€{' /kg'}
                                 </td>
                                 <td>
-                                    {parseFloat(cartItem.quantity * cartItem.price).toFixed(2)}{' '}€
+                                    {cartItem.quantity.toFixed(2)} kg   
+                                </td>
+                                <td>
+                                    {parseFloat(handlePriceCaluclation(cartItem)).toFixed(2)}{' '}€
                                 </td>
                                 <td><button className='delete' onClick={() => deleteItem(cartItem.id)}><svg xmlns="http://www.w3.org/2000/svg" height="0.7em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" /></svg></button></td>
                             </tr>
                         ))}
                     </tbody>
                     <tfoot className='order__tfoot'>
-                        <tr>
-                            <td colSpan={2}>UKUPNO</td>
-                            <td>{calculateTotalPrice()} €</td>
-                            <td></td>
+                        <tr style={{borderBottom: 'none'}}>
+                            <td colSpan={3} style={{textAlign: 'right', paddingBottom: '0'}}>UKUPNO:</td>
+                            <td style={{paddingBottom: '0'}}>{calculateTotalPrice()} €</td>
+                            <td style={{paddingBottom: '0'}}></td>
+                        </tr>
+                        <tr style={{fontSize: '0.3rem', fontWeight: 'normal', borderTop: 'none'}}>
+                            <td colSpan={3} style={{textAlign: 'right', paddingTop: '0', fontWeight: 'normal'}}>(1 € = 7.5345 HRK)</td>
+                            <td style={{paddingTop: '0', fontWeight: 'normal'}}>{(calculateTotalPrice() * 7.5345).toFixed(2)} kn</td>
+                            <td style={{paddingTop: '0',}}></td>
                         </tr>
                     </tfoot>
                 </table>
@@ -121,25 +139,24 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
                     <label htmlFor="fname" className='offscreen'>Name</label>
                     <input type='text' name='fname' id='fname' placeholder='Ime' className='buyerInfo__FirstName' required autoComplete='name'></input>
 
-                    <label htmlFor="lname" className='offscreen'>Last Name</label>
-                    <input type='text' name='lname' id='lname' placeholder='Prezime' className='buyerInfo__SecondName' required autoComplete='family-name'></input>
-
                     <label htmlFor="address" className='offscreen'>Address</label>
                     <input type='text' name='address' id="address" placeholder='Adresa' className='buyerInfo_address' required autoComplete='street-address'></input>
+
+                    <label htmlFor="lname" className='offscreen'>Last Name</label>
+                    <input type='text' name='lname' id='lname' placeholder='Prezime' className='buyerInfo__SecondName' required autoComplete='family-name'></input>
 
                     <label htmlFor='zip' className='offscreen'>Zip</label>
                     <input type='text' name='zip' id="zip" placeholder='Poštanski broj' className='buyerInfo_zip' required autoComplete='postal-code'></input>
 
-                    <label htmlFor='city' className='offscreen'>City</label>
-                    <input type='text' name='city' id="city" placeholder='Grad' className='buyerInfo_city' required autoComplete='address-level2'></input>
-
                     <label htmlFor='email' className='offscreen'>Email</label>
                     <input type='email' name='email' id='email' placeholder='Email' className='buyerInfo__email' required autoComplete='email'></input>
 
+                    <label htmlFor='city' className='offscreen'>City</label>
+                    <input type='text' name='city' id="city" placeholder='Grad' className='buyerInfo_city' required autoComplete='address-level2'></input>
 
                     <div className='orderButtons'>
                         <button className='clear' onClick={() => clearCart()}>Očisti</button>
-                        <button className='send' type='submit'>Naruči</button>
+                        <button className='send' type='submit'>Pošalji naruđbu</button>
                     </div>
                 </form>
             </main>

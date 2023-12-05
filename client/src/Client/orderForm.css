@@ -56,8 +56,11 @@ thead tr {
 .orderButtons {
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 1rem;
     margin: 10px 0;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
 
 .buyerInfo_Form {
@@ -69,7 +72,7 @@ thead tr {
 
 .buyerInfo__email {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 2;
 }
 
 .emptyMessage {
@@ -104,7 +107,13 @@ thead tr {
     }
 
     .buyerInfo {
+        margin-top: 0;
         width: 45%;
+        font-size: 0.6rem;
+    }
+
+    .buyerInfo h3 {
+        padding: 10px 0;
     }
 
     .order__table {

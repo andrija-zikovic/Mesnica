@@ -7,6 +7,18 @@
     position: relative;
 }
 
+.header__logo {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__logo a {
+    text-decoration: none;
+    color: black;
+}
+
 .header__h1 {
     text-shadow: 1px 1px 1px white;
 }
@@ -22,7 +34,15 @@
 
 @media screen and (min-width: 992px) {
     .header {
+        display: flex;
+        flex-flow: row;
         font-size: 0.5rem;
+        width: 50%;
+        align-items: flex-start
+    }
+
+    .header__logo {
+        padding: var(--PADDING-TB) var(--PADDING-SIDE);
     }
     
 }

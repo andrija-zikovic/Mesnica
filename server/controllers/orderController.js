@@ -16,7 +16,7 @@ const orderHandler = async (req, res) => {
     const bankAcc = process.env.BANK_ACC;
     const amount = req.body.products
       .reduce((accumulator, object) => {
-        return accumulator + object.price * object.quantity;
+        return accumulator + priceCalculation(object);
       }, 0)
       .toFixed(2)
       .replace(".", "")
@@ -183,6 +183,14 @@ const orderReject = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
+};
+
+const priceCalculation = (object) => {
+  if (object.unit === "dag") {
+    return (object.quantity * object.price) / 100;
+  } else {
+    return object.quantity * object.price;
+  }
 };
 
 module.exports = { orderHandler, getOrders, orderConfirm, orderReject };

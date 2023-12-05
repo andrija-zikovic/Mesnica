@@ -15,20 +15,20 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
                 <div className='productCard_unit'>
                     <input
                         type='radio'
-                        name='kg'
-                        id={id + '-kg'}
-                        checked={selectedUnit === 'kg'}
-                        onChange={() => setSelectedUnit('kg')}
+                        name='plusOne'
+                        id={id + '-plusOne'}
+                        checked={selectedUnit === 'plusOne'}
+                        onChange={() => setSelectedUnit('plusOne')}
                     />
-                    <label htmlFor={id + "-kg"}>kg</label>
+                    <label htmlFor={id + "-plusOne"}>+ 1</label>
                     <input
                         type='radio'
-                        name='dag'
-                        id={id + '-dag'}
-                        checked={selectedUnit === 'dag'}
-                        onChange={() => setSelectedUnit('dag')}
+                        name='plusTen'
+                        id={id + '-plusTen'}
+                        checked={selectedUnit === 'plusTen'}
+                        onChange={() => setSelectedUnit('plusTen')}
                     />
-                    <label htmlFor={id + "-dag"}>dag</label>
+                    <label htmlFor={id + "-plusTen"}>+ 10</label>
                 </div>
                 <div className='productCard_plusMinus'>
                     <button onClick={() => handleAmountChange('decrement', id, title, price, selectedUnit, amount, setAmount)}>−</button>

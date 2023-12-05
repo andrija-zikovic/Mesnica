@@ -46,22 +46,23 @@
     margin-top: var(--MARGIN);
     width: 80%;
     font-size: var(--FS-CARD);
+    font-weight: bold;
 }
 
 .productCard_plusMinus {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: var(--MARGIN);
     margin-bottom: var(--MARGIN);
     width: 90%;
     align-self: center;
+    gap: 0;
 }
 
 .productCard_plusMinus button {
     background-color: var(--BGCOLOR);
     border: var(--BORDERS);
-    border-radius: var(--BORDER-RADIUS);
     font-size: 1.5rem;
     height: 2.5rem;
     width: 2.5rem;
@@ -69,10 +70,17 @@
     text-align: center;
 }
 
+.productCard_plusMinus button:first-child {
+    border-radius: var(--BORDER-RADIUS) 0 0 var(--BORDER-RADIUS);
+}
+
+.productCard_plusMinus button:last-child {
+    border-radius: 0 var(--BORDER-RADIUS) var(--BORDER-RADIUS) 0;
+}
+
 .productCard_plusMinus input {
     background-color: var(--BGCOLOR);
     border: var(--BORDERS);
-    border-radius: 25%;
     font-size: 1.5rem;
     height: 2.5rem;
     width: 3.5rem;
@@ -119,11 +127,15 @@
 
 @media screen and (min-width: 992px) {
 
+    .product-card {
+        max-width: 250px;
+    }
+
     .product-card__title,
     .product-card__price,
     .productCard_unit {
         white-space: nowrap;
-        font-size: 90%;
+        font-size: 110%;
     }
 
     .productCard_plusMinus button {
@@ -133,9 +145,27 @@
     }
 
     .productCard_plusMinus input {
-        font-size: 0.5rem;
-        height: 0.8rem;
-        width: 1.5rem;
+        font-size: 0.6rem;
+        height: 1rem;
+        width: auto;
+        text-align: center;
     }   
+
+    .productCard_unit input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 20px; /* Set the desired width */
+        height: 20px; /* Set the desired height */
+        border-radius: 50%; /* Make it circular */
+        border: 2px solid #333; /* Add a border */
+    }
+    
+    .productCard_unit input[type="radio"]:checked,
+    .productCard_unit input[type="radio"]:hover {
+        background-color: var(--LINK-HOVER);
+        border-color: white;
+        outline: var(--LINK-HOVER) solid 1px;
+    }
 
 }
