@@ -165,7 +165,7 @@ table {
 
 .delete:hover,
 .delete:focus {
-    background-color: rgba(255, 0, 0, 0.918);
+    background-color: var(--LINK-ACTIVE);
 }
 
 .bucket__button svg {

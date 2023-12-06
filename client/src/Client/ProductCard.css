@@ -16,6 +16,14 @@
     white-space: nowrap;
 }
 
+.product-card form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
 .product-card img {
     margin-top: var(--MARGIN);
     border: var(--BORDERS);
@@ -161,11 +169,15 @@
         border: 2px solid #333; /* Add a border */
     }
     
-    .productCard_unit input[type="radio"]:checked,
-    .productCard_unit input[type="radio"]:hover {
+    .productCard_unit input[type="radio"]:checked {
         background-color: var(--LINK-HOVER);
         border-color: white;
         outline: var(--LINK-HOVER) solid 1px;
     }
+
+    .productCard_unit input[type="radio"]:hover {
+        background-color: var(--LINK-HOVER);
+        border-color: white;
+        outline: black solid 1px;}
 
 }

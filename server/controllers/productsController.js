@@ -46,6 +46,7 @@ const getSpecificProducts = async (req, res) => {
 }
 
 const createProduct = async (req, res) => {
+    console.log("Creating product...");
     try {
         const { Storage } = require('@google-cloud/storage');
 
@@ -53,15 +54,17 @@ const createProduct = async (req, res) => {
         projectId: 'mesnica02',
         keyFilename: '/workspaces/react-mini-project/server/config/mesnica02-f5b8d956119e.json'
         });
-
+        console.log("Storage created");
         const bucketName = 'mesnica02.appspot.com';
         // Use Multer middleware to handle file uploads
         upload.single('image')(req, res, async function (err) {
             if (err instanceof multer.MulterError) {
                 // A Multer error occurred when uploading.
+                console.error(err);
                 return res.status(500).json({ 'message': 'Multer error occurred.' });
             } else if (err) {
                 // An unknown error occurred when uploading.
+                console.error(err);
                 return res.status(500).json({ 'message': 'Unknown error occurred.' });
             }
 
@@ -72,7 +75,7 @@ const createProduct = async (req, res) => {
                 const resizedImageBuffer = await sharp(imagePath)
                     .resize(600, 400)
                     .toBuffer();
-
+                console.log('Image resized successfully!');
                 // Set the ACL to make the object publicly readable
                 const uploadOptions = {
                     destination: `products/600x400_${req.file.filename}`,
@@ -81,13 +84,13 @@ const createProduct = async (req, res) => {
                         contentType: req.file.mimetype,
                     },
                 };
-
+                console.log('Upload options set successfully!');
                 // Upload the resized image directly to Google Cloud Storage with public read ACL
                 await storage.bucket(bucketName).file(uploadOptions.destination).save(resizedImageBuffer, {
                     metadata: uploadOptions.metadata,
                     predefinedAcl: uploadOptions.predefinedAcl,
                 });
-
+                console.log('Image uploaded to Google Cloud Storage successfully!');
                 const imgSrc = `https://storage.googleapis.com/${bucketName}/${uploadOptions.destination}`;
 
                 // Delete the local resized image file
@@ -102,7 +105,7 @@ const createProduct = async (req, res) => {
                     meatType: req.body.meatType,
                     imgSrc: imgSrc
                 });
-
+                console.log('Product created successfully!');
                 return res.status(201).json({ 'message': 'Product is added to products list!' });
             } catch (error) {
                 console.error('Error uploading image to Google Cloud Storage:', error);

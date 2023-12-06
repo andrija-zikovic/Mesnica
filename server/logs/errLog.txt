@@ -30,3 +30,11 @@
 06.11.2023	11:31:10	bde6b636-6ce4-4535-847c-a3c1759d79c3	Error: Not allowed by CORS
 13.11.2023	11:37:11	a2f2f7ac-e773-4d7b-80cf-7d10052e828b	TypeError: Cannot read properties of undefined (reading 'username')
 13.11.2023	11:37:11	263bc644-0e2f-477c-853d-a05865df4b51	TypeError: Cannot read properties of undefined (reading 'username')
+06.12.2023	12:08:17	ee062b55-31e3-4d75-895f-01eef0fbeeba	PayloadTooLargeError: request entity too large
+06.12.2023	12:11:08	945b72fb-1b8c-4664-bd26-141dcd70a416	PayloadTooLargeError: request entity too large
+06.12.2023	12:14:31	c85d7d77-bbc7-49f3-a4bc-4e4379ace175	PayloadTooLargeError: request entity too large
+06.12.2023	12:19:55	8043837e-2ca8-4c52-b75f-45d2b4494374	PayloadTooLargeError: request entity too large
+06.12.2023	12:23:03	69d18c3c-a1dd-4091-8b47-74070f152fe8	PayloadTooLargeError: request entity too large
+06.12.2023	12:24:32	6feebe01-dae1-45bd-948a-3448e22d8e35	PayloadTooLargeError: request entity too large
+06.12.2023	12:25:14	40a00030-4f6f-4904-81db-1f1223968a51	PayloadTooLargeError: request entity too large
+06.12.2023	12:27:55	ff7fe40b-d73b-4d98-bf11-28a87db84dd2	PayloadTooLargeError: request entity too large

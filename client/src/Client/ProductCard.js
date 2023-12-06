@@ -7,8 +7,8 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
     const [amount, setAmount] = useState(0);
 
     return (
-        <form id={id} onSubmit={(e) => e.preventDefault()}>
-            <article className='product-card' id={id}>
+        <article className='product-card' id={id}>
+             <form id={id} onSubmit={(e) => e.preventDefault()}>    
                 <p className='product-card__title'>{title}</p>
                 <img src={src} alt={title} />
                 <p className='product-card__price'>{price} € / kg</p>
@@ -44,8 +44,8 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
                     />
                     <button onClick={() => handleAmountChange('increment', id, title, price, selectedUnit, amount, setAmount)}>+</button>
                 </div>
-            </article>
-        </form>
+            </form>
+        </article>
     );
 };
 

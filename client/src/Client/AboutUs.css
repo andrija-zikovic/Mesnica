@@ -222,4 +222,38 @@
     .contact__form div {
         justify-content: left;
     }
+
+    .aboutUs__article_contact {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+    }
+
+    .contact__form {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact__fieldset {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contact__p {
+        width: 50%;
+    }
+
+    .contact__input,
+    .contact__textarea {
+        width: 100%;
+    }
+
 }

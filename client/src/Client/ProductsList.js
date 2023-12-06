@@ -7,25 +7,31 @@ const ProductList = ({ handleAmountChange, meatType, host }) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const baseUrl = process.env.REACT_APP_PRODUCTS_CALL_API;
+      let success = false;
+      while (!success) {
+        try {
+          const baseUrl = process.env.REACT_APP_PRODUCTS_CALL_API;
+          const url = `${baseUrl}/${meatType}`;
 
-        const url = baseUrl + "/" + meatType;
+          const res = await fetch(url);
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
 
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
+          if (res.status === 204) {
+            setNoProductsCheck(true);
+          } else {
+            const productsData = await res.json();
+            setProducts(productsData);
+            setNoProductsCheck(false);
+          }
+
+          success = true;
+        } catch (error) {
+          console.error("Error fetching data:", error);
+          
+          await new Promise(resolve => setTimeout(resolve, 1000));
         }
-
-        if (res.status === 204) {
-          setNoProductsCheck(true);
-        } else {
-          const productsData = await res.json();
-          setProducts(productsData);
-          setNoProductsCheck(false);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
       }
     };
 

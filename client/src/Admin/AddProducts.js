@@ -23,15 +23,16 @@ const AddProducts = (token) => {
     
             const req = await fetch(url, {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
-                    Authorization: `Bearer ${token.token}`,            
+                    Authorization: `Bearer ${token.token}`,          
                 },
                 body: formData,
             });
             if (req.ok) {
-                console.log("Product Add")
-            }
+                console.log('Product Added');
+            } else {
+              console.error('Failed to add product:', req.status, req.statusText);
+              }
         } catch (err) {
             console.error('Error giving product:', err)
         }
