@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Hero from './Hero'
 import ProductsList from './ProductsList'
 import About from './About'
 import './Home.css'
 
 const Home = ({ handleAmountChange }) => {
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <main className='home'>
       <Hero />
+      {loaded && (
       <h2 className='prducts-list__h2'>TOP SELLERS</h2 >
-      <ProductsList handleAmountChange={handleAmountChange} meatType={''} host={'home'} />
+      )}
+      <ProductsList handleAmountChange={handleAmountChange} meatType={''} host={'home'} setLoaded={setLoaded}/>
       <About />
     </main>
   )

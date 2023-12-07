@@ -14,6 +14,12 @@
     padding: var(--PADDING-TB) var(--PADDING-SIDE);
     margin-top: 0;
     white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.product-card.loaded {
+    opacity: 1;
 }
 
 .product-card form {
@@ -31,12 +37,19 @@
     max-width: 100%;
 }
 
+
+
 .product-card__title {
     font-weight: bolder;
     letter-spacing: 0.1rem;
     border-bottom: var(--BORDERS);
     width: 100%;
-    font-size: clamp(0.8rem, 1.5rem, 2rem);
+    font-size: 1.4rem;
+}
+
+.resizeCard { 
+    font-size: 0.8rem;
+    white-space: wrap;
 }
 
 .product-card__price {
@@ -44,7 +57,6 @@
     letter-spacing: 0.1rem;
     margin-top: var(--MARGIN);
     width: 100%;
-    font-size: var(--FS-CARD);
 }
 
 .productCard_unit {
@@ -53,7 +65,6 @@
     align-items: center;
     margin-top: var(--MARGIN);
     width: 80%;
-    font-size: var(--FS-CARD);
     font-weight: bold;
 }
 
@@ -116,7 +127,12 @@
     .product-card__price,
     .productCard_unit {
         white-space: nowrap;
-        font-size: 70%;
+        font-size: 0.6rem;
+    }
+
+    .resizeCard { 
+        font-size: 0.3rem;
+        white-space: wrap;
     }
 
     .productCard_plusMinus button {
@@ -143,7 +159,12 @@
     .product-card__price,
     .productCard_unit {
         white-space: nowrap;
-        font-size: 110%;
+        font-size: 0.6rem;
+    }
+
+    .resizeCard { 
+        font-size: 0.3rem;
+        white-space: wrap;
     }
 
     .productCard_plusMinus button {

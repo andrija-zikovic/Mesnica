@@ -5,12 +5,24 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
     // Initialize state for input value and selected unit
     const [selectedUnit, setSelectedUnit] = useState('kg');
     const [amount, setAmount] = useState(0);
+    const [imageLoaded, setImageLoaded] = useState(false);
+    
+    const handleImageLoad = () => {
+        setImageLoaded(true);
+      };
 
     return (
-        <article className='product-card' id={id}>
-             <form id={id} onSubmit={(e) => e.preventDefault()}>    
-                <p className='product-card__title'>{title}</p>
-                <img src={src} alt={title} />
+        <article className={`product-card ${imageLoaded ? 'loaded' : ''}`} id={id}>
+            <form id={id} onSubmit={(e) => e.preventDefault()}>    
+                <p className={`product-card__title ${title.length > 18 ? 'resizeCard' : ''}`}>{title}</p>
+                
+                <img 
+                    src={src} 
+                    alt={title} 
+                    onLoad={handleImageLoad}
+                />
+                {imageLoaded && (
+                <>
                 <p className='product-card__price'>{price} € / kg</p>
                 <div className='productCard_unit'>
                     <input
@@ -44,8 +56,11 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
                     />
                     <button onClick={() => handleAmountChange('increment', id, title, price, selectedUnit, amount, setAmount)}>+</button>
                 </div>
+                </>
+                )}
             </form>
         </article>
+            
     );
 };
 

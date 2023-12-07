@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./ProductsList.css";
 import ProductCard from "./ProductCard";
 
-const ProductList = ({ handleAmountChange, meatType, host }) => {
+const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
   const [noProductsCheck, setNoProductsCheck] = useState(false);
   const [products, setProducts] = useState([]);
+  
   useEffect(() => {
     const fetchData = async () => {
       let success = false;
@@ -40,13 +41,16 @@ const ProductList = ({ handleAmountChange, meatType, host }) => {
 
   if (noProductsCheck) {
     return (
-      <h2 style={{ textAlign: "center", marginTop: "25vh" }}>
+      <h2 className="noProducts">
         Nema proizvoda!
       </h2>
     );
   } else {
+    if (host === "home") {
+    setLoaded(true);
+    }
     return (
-      <section className="products-list">
+      <section className={`products-list ${host === 'home' ? 'homeList' : ''}`} >
         {products.length < 1 ? (
           <div className="loading">
             <svg
