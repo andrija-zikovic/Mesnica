@@ -42,7 +42,7 @@
     }
 
     .header__logo {
-        padding: var(--PADDING-TB) var(--PADDING-SIDE);
+        padding-left: 1rem;
     }
     
 }
