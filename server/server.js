@@ -16,23 +16,17 @@ const PORT = process.env.PORT || 3500;
 
 // connect to MongoDB
 connectDB();
-
 // custom middleware logger
 app.use(logger);
-
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
 app.use(credentials);
-
 // Cross Origin Resource Sharing
 app.use(cors(corsOptions));
-
 // bulit-in middleware to handle urlencoded data
 app.use(express.urlencoded({ extended: false }));
-
 // built-in middleware for json
 app.use(express.json());
-
 //middleware for cookies
 app.use(cookieParser());
 

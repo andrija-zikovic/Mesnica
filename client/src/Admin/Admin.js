@@ -44,7 +44,8 @@ const Admin = () => {
 
     const logOut = async () => {
         try {
-            const response = await fetch('/api/logout', {
+            const url = process.env.REACT_APP_LOGOUT;
+            const response = await fetch(url, {
               method: 'POST',
               credentials: 'include',
               headers: {
@@ -110,7 +111,7 @@ const Admin = () => {
         <main className='adminMain'>
       {!isLoggedIn ? (
         <section className='adminLogInSection'>
-            <h3 style={{marginBottom: 0}}>Log in:</h3>
+            <h3 style={{marginBottom: 0, color: 'var(--LINK-ACTIVE)'}}>Log in:</h3>
             <AdminLogIn handleLogin={handleLogin} />
             {message && (
               <p style={{ color: 'red' }}>{message}</p>

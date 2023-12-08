@@ -182,7 +182,7 @@ const AdminProducts = (token) => {
           </button>
           <p>{message}</p>
         </div>
-        <h1 style={{ padding: "1rem" }}>Products</h1>
+        <h1>Products</h1>
         <div className="adminProSearch">
           <label htmlFor="adminProSearchInput">Search : </label>
           <input
@@ -194,26 +194,25 @@ const AdminProducts = (token) => {
             onChange={handleSearchInputChange}
           ></input>
         </div>
-        <table className="adminPro__table">
-          <thead className="adminPro__thead">
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Meat</th>
-              <th>Price/kg</th>
-              <th>On Storage</th>
-              <th>IMG</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody className="adminPro__tbody">
+        <div className="adminPro__table">
+          <div className="adminPro__thead">
+              <p></p>
+              <p>Name</p>
+              <p>Meat</p>
+              <p>Price/kg</p>
+              <p>On Storage</p>
+              <p>IMG</p>
+              <p></p>
+          </div>
+          <div className="adminPro__tbody">
             {filteredProducts.map((product, index) => (
-              <tr key={product._id}>
-                <td>{index + 1}</td>
-                <td className={`${product.title.length > 30 ? 'resize' : ''}`}>{product.title}</td>
-                <td>{product.meatType}</td>
-                <td>
-                  <input
+              <div>
+              <div key={product._id} className="adminPro__tbody__tr">
+                <p>{index + 1}</p>
+                <p className={`${product.title.length > 20 ? 'resize' : ''}`}>{product.title}</p>
+                <p>{product.meatType}</p>
+                <div>
+                <input
                     type="number"
                     name="price"
                     id="price"
@@ -228,8 +227,8 @@ const AdminProducts = (token) => {
                     }
                   ></input>{" "}
                   €
-                </td>
-                <td>
+                </div>
+                <div>
                   <input
                     type="number"
                     name="onStorage"
@@ -245,40 +244,39 @@ const AdminProducts = (token) => {
                     }
                   ></input>{" "}
                   kg
-                </td>
-                <td>
-                  <button onClick={() => handleClick(index)}>Slika</button>
-                  {showImage[index] && (
+                </div>
+                <div>
+                  <button className="adminPro__tbody__tr__img" onClick={() => handleClick(index)}>Slika</button>
+                </div>
+                <div>
+                  <button className="adminPro__tbody__tr_delete" onClick={() => setProductDeleteInfo({id: product._id, title: product.title})}>DELETE</button>
+                </div>
+              </div>
+              {showImage[index] && (
                     <div className="adminProImg">
-                      <div className="adminProImg_close">
-                        <button onClick={() => handleClick(index)}>X</button>
-                      </div>
                       <img
                         src={product.imgSrc}
                         alt={product.name}
                       />
-                      <label htmlFor='imgSrc'>Odaberi novu sliku:</label>
-                      <input type='file' name='imgSrc' id='imgSrc' accept='image/*'
-                          onChange={(e) => handleFileChange(e, product._id)} required />
+                      <div className="adminProImgSrc">
+                        <div className="adminProImgSrcLabelAndClose">
+                          <label htmlFor='imgSrc'>Odaberi novu sliku:</label>
+                          <button onClick={() => handleClick(index)}>X</button>
+                        </div>
+                        <input type='file' name='imgSrc' id='imgSrc' accept='image/*'
+                            onChange={(e) => handleFileChange(e, product._id)} required />
+                      </div>
                     </div>
                   )}
-                </td>
-                <td>
-                  <button style={{backgroundColor: 'rgba(255, 0, 0, 0.574)', padding: '0.1rem 0.1rem'}} onClick={() => setProductDeleteInfo({id: product._id, title: product.title})}>DELETE</button>
-                </td>
-              </tr>
+              </div>
             ))}
-          </tbody>
-          <tfoot className="adminPro__tfoot">
-            <tr>
-              <td colSpan={7}>
+          </div>
+          <div className="adminPro__tfoot">
                 <button onClick={handleProductsChangeSubmit}>
                   SUBMIT CHANGES
                 </button>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
+          </div>
+        </div>
       </div>
     )}
     </>

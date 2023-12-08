@@ -1,3 +1,14 @@
+.adminMain {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+}
+
 .adminLogInSection {
   display: flex;
   flex-flow: column;
@@ -18,16 +29,32 @@
 }
 
 .adminLogIn_submit {
-  padding: 0 1rem;
+  background-color: var(--LINK-ACTIVE); /* Change to your preferred background color */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 5px 10px; /* Adjust padding for desired button size */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer;
+  font-size: 15px; /* Adjust font size */
+  transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.adminLogIn_submit:hover {
+  background-color: #333; /* Change to a slightly darker shade on hover */
 }
 
 .nav__admin {
   top: 0;
+  width: 100%;
+  max-height: 6vh;
   background-color: aliceblue;
   border-bottom: var(--BORDERS);
   font-weight: bold;
   position: sticky;
   z-index: 2;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
   padding-top: var(--PADDING-TB);
   padding-bottom: var(--PADDING-TB);
 }
@@ -36,13 +63,16 @@
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   list-style-type: none;
   display: flex;
-  justify-content: right;
+  justify-content: center;
   gap: 1rem;
 }
 
 .link__nav a {
   display: block;
   padding: 0.2rem 0.5rem;
+  display: flex;
+  justify-self: center;
+  align-items: center;
 }
 
 .link__nav:hover,
@@ -63,22 +93,38 @@
   text-decoration: none;
   color: black;
   font-size: 1.7rem;
+  max-height: 100%;
 }
 
 .link__nav_logOut {
-  padding: 0.2rem 0.5rem;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
   border-bottom: var(--BORDERS);
   border-left: var(--BORDERS);
   border-right: var(--BORDERS);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.link__nav_logOut:hover,
+.link__nav_logOut:focus,
+.link__nav_logOut:active {
+  background-color: var(--LINK-ACTIVE);
 }
 
 .adminPro {
-  max-width: 100%;
+  max-height: 94vh;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
   font-size: 0.8rem;
+  margin-top: 1vh;
+}
+
+.adminPro h1 {
+  max-height: 7vh;
 }
 
 .adminPro_delete {
@@ -123,7 +169,8 @@
   width: 90%;
   margin-bottom: 1rem;
   gap: 1;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  max-height: 7vh;
 }
 
 .adminProSearch_Input {
@@ -169,11 +216,106 @@
 
 .adminPro__table {
   max-width: 90%;
+  max-height: 80vh;
   width: 90%;
   border: 1px solid black;
   text-align: center;
   border-spacing: 10px;
   border-collapse: collapse;
+}
+
+.adminPro__thead {
+  max-height: 5vh;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  border-bottom: 1px solid black;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.adminPro__thead p {
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.adminPro__tbody {
+  max-height: 70vh;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.adminPro__tbody__tr {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.adminPro__tbody__tr p {
+  padding: var(--PADDING-TB);
+  text-align: center;
+}
+
+.adminPro__tbody__tr div {
+  padding: var(--PADDING-TB);
+  display: flex;
+  justify-content: center;
+}
+
+.adminPro__tbody__tr_delete {
+  background-color: rgba(255, 0, 0, 0.574);
+  padding: 0.1rem 0.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.adminPro__tbody__tr_delete:hover,
+.adminPro__tbody__tr_delete:focus,
+.adminPro__tbody__tr_delete:active {
+  background-color: #333;
+  color: aliceblue;
+}
+
+.adminPro__tbody__tr__img  {
+  background-color: #3498db; 
+  color: #fff;
+  padding: 0.1rem 0.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.adminPro__tbody__tr_img:hover,
+.adminPro__tbody__tr_img:focus,
+.adminPro__tbody__tr_img:active {
+  background-color: #333;
+  color: aliceblue;
+}
+
+.adminPro__tfoot {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  max-height: 5vh;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid black;
+}
+
+.adminPro__tfoot button:first-child {
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  font-weight: bold;
+  font-size: 0.6rem;
 }
 
 .adminPro__input {
@@ -194,20 +336,19 @@
 }
 
 .adminProImg {
-  position: absolute;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  width: 100%;
+  height: auto;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  background-color: aliceblue;
+}
+
+.adminProImgSrc {
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  width: 80vw;
-  height: auto;
-  top: 20vh;
-  left: 10vw;
-  font-size: 1.5rem;
-  z-index: 1;
-  border: 1px solid black;
-  border-radius: var(--BORDER-RADIUS);
-  background-color: aliceblue;
-  padding: var(--PADDING-TB) var(--PADDING-SIDE);
 }
 
 .adminProImg input,
@@ -222,8 +363,8 @@
 }
 
 .adminProImg img {
-  padding: var(--PADDING-TB) var(--PADDING-SIDE);
-  border: 1px solid black;
+  max-width: 48%;
+  height: auto;
 }
 
 .adminProImg_close {
@@ -235,10 +376,31 @@
   font-size: 1.5rem;
 }
 
-.adminProImg_close button {
-  padding: 0.2rem 0.5rem;
-  background-color: red;
-  color: black;
+.adminProImgSrcLabelAndClose {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.adminProImgSrcLabelAndClose button {
+  position: absolute;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #e74c3c; /* Red color */
+  border: none;
+  border-radius: 50%;
+  color: #fff; /* White text color */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.adminProImg_close button:hover {
+  background-color: #c0392b; /* Darker red on hover */
 }
 
 .show-img {
@@ -456,7 +618,7 @@
 }
 
 .resize { 
-  font-size: 0.5rem;
+  font-size: 0.4rem;
   white-space: wrap;
 }
 
@@ -520,6 +682,20 @@
   .adminPro_delete {
     font-size: 1.5rem;
   }
+
+  .nav__admin li,
+  .nav__admin a,
+  .adminPro__thead p {
+    font-size: 1.2rem;
+  }
+
+  .adminLogInSection {
+    font-size: 1.3rem;
+  }
+
+  .adminLogIn_submit {
+    font-size: 1rem;
+  }
   
 }
 
@@ -542,15 +718,44 @@
   .adminPro_delete {
     font-size: 1.5rem;
   }
+
+  .nav__admin li,
+  .nav__admin a {
+    font-size: 0.7rem;
+  }
+
+  .adminPro h1 {
+    font-size: 1rem;
+  }
+
+  .adminPro__tfoot button:first-child {
+    padding: 0 var(--PADDING-SIDE);
+  }
+
+  .adminPro__tfoot {
+    padding: 0.2rem 0.5rem;
+  }
+
+  .adminLogInSection {
+    font-size: 0.8rem;
+  }
+
+  .adminLogIn_submit {
+    font-size: 0.7rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
+  .nav__admin {
+    justify-content: right;
+  }
+
   .adminLogInSection {
-    font-size: 0.5rem;
     height: 100vh;
   }
 
-  .adminPro {
+  .adminPro,
+  .adminPro__thead p {
     font-size: 0.5rem;
   }
 
@@ -563,8 +768,13 @@
   }
 
   .nav__admin a,
-  .nav__admin li {
+  .nav__admin li,
+  .link__nav_logOut p {
     font-size: 0.5rem;
+  }
+
+  .link__nav_logOut p {
+    line-height: 0%;
   }
 
   .adminMain {
@@ -700,5 +910,18 @@
 
   .adminPro_delete_buttons button {
     padding: 0.1rem 0.5rem;
+  }
+
+  .adminPro h1 {
+    align-self: end;
+    margin-right: 2rem;
+  }
+
+  .adminProSearch {
+    justify-content: right;
+  }
+
+  .adminPro__tfoot button:first-child {
+    font-size: 0.5rem;
   }
 }
