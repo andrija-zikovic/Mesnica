@@ -35,6 +35,12 @@ const AdminProducts = (token) => {
     }
   };
 
+  const handleClearImage = (id) => {
+    const newProductsChange = {...produtsChange};
+    delete newProductsChange[id].image;
+    setProductsChange(newProductsChange);
+  }
+
   const handleClick = (index) => {
     const initialShowImage = Array(adminPro.length).fill(false);
     setShowImage(initialShowImage);
@@ -254,15 +260,18 @@ const AdminProducts = (token) => {
               </div>
               {showImage[index] && (
                     <div className="adminProImg">
+                      <button className="adminProImg_XButton" onClick={() => handleClick(index)}>X</button>
                       <img
                         src={product.imgSrc}
                         alt={product.name}
+                        className="adminProImg_img"
                       />
                       <div className="adminProImgSrc">
                         <div className="adminProImgSrcLabelAndClose">
                           <label htmlFor='imgSrc'>Odaberi novu sliku:</label>
-                          <button onClick={() => handleClick(index)}>X</button>
+                          <button className="adminProImg_RemoveButton" onClick={() => handleClearImage(product._id)}>Ukloni novu sliku</button>
                         </div>
+                        <img className="adminProImgSrc_img" src={produtsChange[product._id] && produtsChange[product._id].image ? URL.createObjectURL(produtsChange[product._id].image) : ''} alt="Nova Slika"></img>
                         <input type='file' name='imgSrc' id='imgSrc' accept='image/*'
                             onChange={(e) => handleFileChange(e, product._id)} required />
                       </div>
