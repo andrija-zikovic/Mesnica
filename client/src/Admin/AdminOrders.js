@@ -15,6 +15,12 @@ const AdminOrders = (token) => {
     }
   };
 
+  function handleKeyPress(event, orderId) {
+    if (event.key === "Enter") {
+      toggleVisibility(orderId);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -141,61 +147,63 @@ const AdminOrders = (token) => {
         </div>
       ) : (
         <div className="adminOrd">
-          <h1 style={{ padding: "1rem" }}>Orders</h1>
-          <table className="adminOrd__table">
-            <thead className="adminOrd__thead">
-              <tr>
-                <th>Num</th>
-                <th>Buyer</th>
-                <th>Date</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody className="adminOrd__tbody">
+          <div className="adminOrd__title">
+            <h1>Naruđbe</h1>
+          </div>
+          <section className="adminOrd__table">
+            <div className="adminOrd__thead">
+                <p>Broj</p>
+                <p>Vrijeme</p>
+                <p>Kupac</p>
+                <p>Datum</p>
+            </div>
+            <div className="adminOrd__tbody">
               {adminOrd
                 .slice()
                 .reverse()
                 .map((orderData, index) => (
                   <React.Fragment key={orderData._id}>
-                    <tr
+                    <div
                       onClick={() => toggleVisibility(orderData._id)}
-                      style={{
-                        backgroundColor: orderData.status
-                          ? "rgba(0, 128, 0, 0.574)"
-                          : orderData.status === false
-                          ? "rgba(255, 0, 0, 0.574)"
-                          : "",
-                      }}
+                      className={`adminOrd__tbody_td ${
+                        orderData.status ? "status-true" : !orderData.status ? "status-false" : ""
+                      }`}
+                      tabIndex={0}
+                      onKeyPress={(e) => handleKeyPress(e, orderData._id)}
                     >
-                      <td>{orderData.num}</td>
-                      <td>{orderData.buyer.name}</td>
-                      <td>{orderData.date}</td>
-                      <td></td>
-                    </tr>
+                      <p>{orderData.num}</p>
+                      <p>
+                        {(() => {
+                            let word = orderData.date.split(" ");
+                            return `${word[1]}`;
+                        })()}
+                      </p>
+                      <p>{orderData.buyer.name}</p>
+                      <p>
+                        {(() => {
+                            let word = orderData.date.split(" ");
+                            return `${word[0]}`;
+                        })()}
+                      </p>
+                    </div>
                     {visibleOrders.includes(orderData._id) && (
-                      <tr>
-                        <td colSpan="4" className="adminOrd_td">
-                          <AdminOrder
-                            orderData={orderData}
-                            toggleVisibility={() =>
-                              toggleVisibility(orderData._id)
-                            }
-                            setMessage={setMessage}
-                            setShouldRefetch={setShouldRefetch}
-                            token={token}
-                          />
-                        </td>
-                      </tr>
+                    <AdminOrder
+                      orderData={orderData}
+                      toggleVisibility={() =>
+                        toggleVisibility(orderData._id)
+                      }
+                      setMessage={setMessage}
+                      setShouldRefetch={setShouldRefetch}
+                      token={token}
+                    />
                     )}
                   </React.Fragment>
                 ))}
-            </tbody>
-            <tfoot className="adminOrd__tfoot">
-              <tr>
-                <td colSpan={7}>Data</td>
-              </tr>
-            </tfoot>
-          </table>
+            </div>
+            <div className="adminOrd__tfoot">
+                <p>Data</p>
+            </div>
+          </section>
           <div className={`message ${message ? "visible" : "hidden"}`}>
             <button className="messageButton" onClick={() => setMessage("")}>
               X

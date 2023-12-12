@@ -120,32 +120,32 @@ const Admin = () => {
         </section>
       ) : (
         <>
-            <nav className='nav__admin'>
-                <ul className='nav__ul'>
-                    <li className='link__nav__dropdown' onClick={toggleDropdown} onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown} ref={dropdownRef}>
+            <div className='nav__admin'>
+                <div className='nav__ul'>
+                    <div className='link__nav__dropdown' onClick={toggleDropdown} onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown} ref={dropdownRef}>
                         Proizvodi
                         {isDropdownOpen && (
-                            <ul className='dropdown'>
-                                <li>
+                            <div className='dropdown'>
+                                <div>
                                     <Link to='/admin'>Lista</Link>
-                                </li>
-                                <li>
+                                </div>
+                                <div>
                                     <Link to='addProduct'>Dodaj</Link>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         )}
-                    </li>
-                    <li className='link__nav'>
+                    </div>
+                    <div className='link__nav'>
                         <Link to="adminorders">Naruđbe</Link>
-                    </li>
-                    <li className='link__nav'>
+                    </div>
+                    <div className='link__nav'>
                         <Link to="adminstats">Statistika</Link>
-                    </li>
-                    <li className='link__nav_logOut' onClick={logOut}>
+                    </div>
+                    <div className='link__nav_logOut' onClick={logOut}>
                         Log out
-                    </li>
-                </ul>
-            </nav>
+                    </div>
+                </div>
+            </div>
             <Routes>
                 <Route path='/' element={<AdminProducts token={token}/>} />
                 <Route path='/adminorders' element={<AdminOrders token={token}/>} />

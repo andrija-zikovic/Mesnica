@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const AdminProducts = (token) => {
   const [adminPro, setAdminPro] = useState([]);
@@ -7,6 +7,7 @@ const AdminProducts = (token) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [message, setMessage] = useState("");
   const [productDeleteInfo, setProductDeleteInfo] = useState();
+  const fileInputRef = useRef();
 
   const filteredProducts = adminPro.filter((product) =>
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -39,6 +40,9 @@ const AdminProducts = (token) => {
     const newProductsChange = {...produtsChange};
     delete newProductsChange[id].image;
     setProductsChange(newProductsChange);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''; 
+    }
   }
 
   const handleClick = (index) => {
@@ -130,8 +134,46 @@ const AdminProducts = (token) => {
   }, [token.token]);
 
   return (
-    <>
-    { filteredProducts.length < 1 ? ( 
+    <> 
+      <div className="adminPro">
+        {productDeleteInfo && (
+          <div className="adminPro_delete">
+            <p>Jeste li sigurni da zelite izbrisati proizvod <span style={{fontWeight: 'bold', whiteSpace: 'nowrap'}}>{productDeleteInfo.title}</span>?</p>
+            <div className="adminPro_delete_buttons">
+              <button onClick={() => handleProductDelete(productDeleteInfo.id)}>DA</button>
+              <button onClick={() => setProductDeleteInfo()}>NE</button>
+            </div>
+          </div>
+        )}
+        <div className={`message ${message ? "visible" : "hidden"}`}>
+          <button className="messageButton" onClick={() => setMessage("")}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+          </button>
+          <p>{message}</p>
+        </div>
+        <h1>Proizvodi</h1>
+        <div className="adminProSearch">
+          <label htmlFor="adminProSearchInput">Pretraži : </label>
+          <input
+            type="search"
+            id="adminProSearchInput"
+            name="adminProSearchInput"
+            className="adminProSearch_Input"
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          ></input>
+        </div>
+        <div className="adminPro__table">
+          <div className="adminPro__thead">
+              <p></p>
+              <p>Ime</p>
+              <p>Vrsta mesa</p>
+              <p>Cijena / kg</p>
+              <p>Na stanju</p>
+              <p>Slika</p>
+              <p></p>
+          </div>
+          { filteredProducts.length < 1 ? ( 
       <div className='loading'>
         <svg width="100" height="80" fill='#e33535cc' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <style>
@@ -171,45 +213,7 @@ const AdminProducts = (token) => {
             <circle className="spinner_DupU spinner_eUaP" cx="12" cy="21" r="0"/>
         </svg>
       </div>
-    ) : ( 
-      <div className="adminPro">
-        {productDeleteInfo && (
-          <div className="adminPro_delete">
-            <p>Jeste li sigurni da zelite izbrisati proizvod <span style={{fontWeight: 'bold', whiteSpace: 'nowrap'}}>{productDeleteInfo.title}</span>?</p>
-            <div className="adminPro_delete_buttons">
-              <button onClick={() => handleProductDelete(productDeleteInfo.id)}>DA</button>
-              <button onClick={() => setProductDeleteInfo()}>NE</button>
-            </div>
-          </div>
-        )}
-        <div className={`message ${message ? "visible" : "hidden"}`}>
-          <button className="messageButton" onClick={() => setMessage("")}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
-          </button>
-          <p>{message}</p>
-        </div>
-        <h1>Products</h1>
-        <div className="adminProSearch">
-          <label htmlFor="adminProSearchInput">Search : </label>
-          <input
-            type="search"
-            id="adminProSearchInput"
-            name="adminProSearchInput"
-            className="adminProSearch_Input"
-            value={searchQuery}
-            onChange={handleSearchInputChange}
-          ></input>
-        </div>
-        <div className="adminPro__table">
-          <div className="adminPro__thead">
-              <p></p>
-              <p>Name</p>
-              <p>Meat</p>
-              <p>Price/kg</p>
-              <p>On Storage</p>
-              <p>IMG</p>
-              <p></p>
-          </div>
+    ) : (
           <div className="adminPro__tbody">
             {filteredProducts.map((product, index) => (
               <div>
@@ -217,7 +221,7 @@ const AdminProducts = (token) => {
                 <p>{index + 1}</p>
                 <p className={`${product.title.length > 20 ? 'resize' : ''}`}>{product.title}</p>
                 <p>{product.meatType}</p>
-                <div>
+                <div style={{justifyContent: "center", gap: "0.5rem"}}>
                 <input
                     type="number"
                     name="price"
@@ -231,10 +235,9 @@ const AdminProducts = (token) => {
                         parseFloat(e.target.value)
                       )
                     }
-                  ></input>{" "}
-                  €
-                </div>
-                <div>
+                  ></input>{" €"}
+                  </div>
+                <div style={{justifyContent: "center", gap: "0.5rem"}}>
                   <input
                     type="number"
                     name="onStorage"
@@ -248,8 +251,7 @@ const AdminProducts = (token) => {
                         parseInt(e.target.value)
                       )
                     }
-                  ></input>{" "}
-                  kg
+                  ></input>{" kg"}
                 </div>
                 <div>
                   <button className="adminPro__tbody__tr__img" onClick={() => handleClick(index)}>Slika</button>
@@ -269,25 +271,30 @@ const AdminProducts = (token) => {
                       <div className="adminProImgSrc">
                         <div className="adminProImgSrcLabelAndClose">
                           <label htmlFor='imgSrc'>Odaberi novu sliku:</label>
-                          <button className="adminProImg_RemoveButton" onClick={() => handleClearImage(product._id)}>Ukloni novu sliku</button>
+                          {produtsChange[product._id] && produtsChange[product._id].image && (
+                          <button className="adminProImg_RemoveButton" onClick={() => handleClearImage(product._id)}>Ukloni novu sliku</button>  
+                          )} 
                         </div>
-                        <img className="adminProImgSrc_img" src={produtsChange[product._id] && produtsChange[product._id].image ? URL.createObjectURL(produtsChange[product._id].image) : ''} alt="Nova Slika"></img>
+                        {produtsChange[product._id] && produtsChange[product._id].image && (
+                          <img className="adminProImgSrc_img" src={produtsChange[product._id] && produtsChange[product._id].image ? URL.createObjectURL(produtsChange[product._id].image) : ''} alt="Nova Slika"></img>
+                        )}
                         <input type='file' name='imgSrc' id='imgSrc' accept='image/*'
-                            onChange={(e) => handleFileChange(e, product._id)} required />
+                            onChange={(e) => handleFileChange(e, product._id)} ref={fileInputRef} required />
                       </div>
                     </div>
                   )}
               </div>
             ))}
           </div>
+          )}
           <div className="adminPro__tfoot">
                 <button onClick={handleProductsChangeSubmit}>
-                  SUBMIT CHANGES
+                  Potvrdi promjene
                 </button>
           </div>
         </div>
       </div>
-    )}
+    
     </>
   );
 };

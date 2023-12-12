@@ -93,7 +93,7 @@ const AdminOrder = ({
         <h2>Products</h2>
         {products.map((product) => (
           <div key={product._id} className={`product ${checkedProducts.includes(product._id) ? 'checked' : ''} ${status === 'null' ? '' : 'done'}`}>
-          <p className={`productTitle ${product.description.length > 20 ? 'resize' : ''}`}>{product.description}</p>
+          <p className={`productTitle ${product.description.length > 20 ? 'ordResize' : ''}`}>{product.description}</p>
           <p>{product.quantity} kg</p>
           {status || !status ? null : (
           <button
@@ -117,19 +117,19 @@ const AdminOrder = ({
           style={{ fontWeight: "bold", backgroundColor: "var(--HERO-BGCOLOR)" }}
           className="adminOrdDis_message"
         >
-          Order Confirmed!
+          Naruđba potvrđena!
         </p>
       ) : orderStatus === false ? (
         <p
           style={{ fontWeight: "bold", backgroundColor: "var(--BGCOLOR-FADE)" }}
           className="adminOrdDis_message"
         >
-          Order Rejected!
+          Naruđba odbijena!
         </p>
       ) : (
         <div className="adminOrdDis__ButtonBottom">
-          <button onClick={handleConfirme}>Confirm</button>
-          <button onClick={handleReject}>Reject</button>
+          <button onClick={handleConfirme}>Potvrid</button>
+          <button onClick={handleReject}>Odbaci</button>
         </div>
       )}
     </div>

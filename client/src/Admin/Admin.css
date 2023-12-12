@@ -1,11 +1,11 @@
 .adminMain {
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 0;
   width: 100%;
-  height: auto;
+  height: 100vh;
   max-height: 100vh;
 }
 
@@ -55,8 +55,7 @@
   display: flex;
   flex-flow: row;
   justify-content: center;
-  padding-top: var(--PADDING-TB);
-  padding-bottom: var(--PADDING-TB);
+  font-size: 1.8rem;
 }
 
 .nav__ul {
@@ -92,7 +91,6 @@
 .nav__admin li {
   text-decoration: none;
   color: black;
-  font-size: 1.7rem;
   max-height: 100%;
 }
 
@@ -111,6 +109,10 @@
 .link__nav_logOut:focus,
 .link__nav_logOut:active {
   background-color: var(--LINK-ACTIVE);
+}
+
+.loading {
+  min-height: 70vh;
 }
 
 .adminPro {
@@ -170,8 +172,8 @@
   width: 90%;
   margin-bottom: 1rem;
   gap: 1;
-  font-size: 1rem;
   max-height: 7vh;
+  font-weight: bold;
 }
 
 .adminProSearch_Input {
@@ -231,7 +233,6 @@
   grid-template-columns: repeat(7, 1fr);
   align-items: center;
   border-bottom: 1px solid black;
-  font-size: 1.2rem;
   white-space: nowrap;
 }
 
@@ -320,7 +321,7 @@
 }
 
 .adminPro__input {
-  max-width: 3rem;
+  max-width: 2rem;
   text-align: center;
 }
 
@@ -351,7 +352,7 @@
 .adminProImgSrc {
   display: flex;
   flex-flow: column;
-  justify-content: space-evenly;
+  justify-content: center;
   gap: 0;
   max-width: 52%;
 }
@@ -464,7 +465,6 @@
   position: absolute;
   flex-flow: column;
   width: auto;
-  font-size: 1rem;
   gap: 0.2rem;
   list-style-type: none;
   background-color: var(--LINK-ACTIVE);
@@ -544,16 +544,34 @@
 
 .adminOrd {
   max-width: 100%;
+  min-width: 100%;
+  max-height: 94vh;
+  min-height: 94vh;
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-size: 1.1rem;
 }
 
+.adminOrd__title {
+  max-height: 6vh;
+  min-height: 6vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.adminOrd__title h1 {
+  font-size: 4vh;
+}
+
 .adminOrd__table {
+  display: flex;
+  flex-flow: column;
   max-width: 90%;
   width: 90%;
+  max-height: 88vh;
   border: 1px solid black;
   text-align: center;
   border-spacing: 10px;
@@ -565,16 +583,57 @@
   text-align: center;
 }
 
-.adminOrd__tbody td {
-  padding: 10px 5px;
-  text-align: center;
+.status-true {
+  background-color: rgba(0, 128, 0, 0.574);
+  cursor: pointer;
+}
+
+.status-true:hover,
+.status-true:focus,
+.status-true:active {
+  background-color:  rgba(0, 128, 0, 0.8);
+}
+
+.status-false {
+  background-color: rgba(255, 0, 0, 0.574);
+  cursor: pointer;
+}
+
+.status-false:hover,
+.status-false:focus,
+.status-false:active {
+  background-color: rgba(255, 0, 0, 0.8);
+}
+
+.adminOrd__thead {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  border-bottom: 1px solid black;
   white-space: nowrap;
 }
 
-.adminOrd__thead th {
+.adminOrd__thead p {
   white-space: nowrap;
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   text-align: center;
+  font-weight: bolder;
+}
+
+.adminOrd__tbody {
+  max-height: 80vh;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.adminOrd__tbody_td {
+  padding: 10px 5px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  border-bottom: 1px solid black;
+  white-space: nowrap;
+  font-weight: bold;
 }
 
 .adminOrd .adminOrd_td {
@@ -657,6 +716,11 @@
   white-space: wrap;
 }
 
+.ordResize {
+  font-size: 0.7rem;
+  white-space: wrap;
+}
+
 .adminOrdDis_message {
   font-size: 1rem;
   left: 0;
@@ -714,14 +778,12 @@
     top: -3.5rem;
   }
 
-  .adminPro_delete {
+  .nav__admin {
     font-size: 1.5rem;
   }
 
-  .nav__admin li,
-  .nav__admin a,
-  .adminPro__thead p {
-    font-size: 1.2rem;
+  .adminPro_delete {
+    font-size: 1.5rem;
   }
 
   .adminLogInSection {
@@ -755,13 +817,12 @@
     margin-bottom: -0.2rem;
   }
 
-  .adminPro_delete {
-    font-size: 1.5rem;
+  .adminOrd {
+    font-size: 0.8rem;
   }
 
-  .nav__admin li,
-  .nav__admin a {
-    font-size: 0.7rem;
+  .adminPro_delete {
+    font-size: 1.5rem;
   }
 
   .adminPro h1 {
@@ -788,14 +849,14 @@
 @media screen and (min-width: 992px) {
   .nav__admin {
     justify-content: right;
+    font-size: 0.9rem;
   }
 
   .adminLogInSection {
     height: 100vh;
   }
 
-  .adminPro,
-  .adminPro__thead p {
+  .adminPro {
     font-size: 0.5rem;
   }
 
@@ -805,16 +866,6 @@
 
   .adminProImg {
     font-size: 0.6rem;
-  }
-
-  .nav__admin a,
-  .nav__admin li,
-  .link__nav_logOut p {
-    font-size: 0.5rem;
-  }
-
-  .link__nav_logOut p {
-    line-height: 0%;
   }
 
   .adminMain {
@@ -964,5 +1015,9 @@
   .adminProImg_XButton {
     left: unset;
     right: 0.2rem;
+  }
+
+  .ordResize {
+    font-size: 0.6rem;
   }
 }

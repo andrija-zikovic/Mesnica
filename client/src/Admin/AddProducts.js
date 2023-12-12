@@ -61,15 +61,15 @@ const AddProducts = (token) => {
                 <input type='text' name='title' id='title' placeholder='Ime'
                     onChange={handleInputChange} required />
 
-                <label htmlFor='price' className='offscreen'>Name</label>
+                <label htmlFor='price' className='offscreen'>Price</label>
                 <input type='number' name='price' id='price' placeholder='Cijena' step="0.01" min={0}
                     onChange={handleInputChange} required />
 
-                <label htmlFor='onStorage' className='offscreen'>Name</label>
+                <label htmlFor='onStorage' className='offscreen'>On storage</label>
                 <input type='number' name='onStorage' id='onStorage' placeholder='Na stanju'
                     onChange={handleInputChange} required />
 
-                <label htmlFor='meatType' className='offscreen'>Name</label>
+                <label htmlFor='meatType' className='offscreen'>Meat type</label>
                 <input type='text' name='meatType' id='meatType' placeholder='Vrsta mesa'
                     onChange={handleInputChange} required />
                 <div className='imgForm'>
