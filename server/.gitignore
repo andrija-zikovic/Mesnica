@@ -4,3 +4,7 @@
 /gr
 /uploads
 /config/
+/logs
+
+git config --global user.email "andrija.zikovic@gmail.com"
+git config --global user.name "Andrija"
