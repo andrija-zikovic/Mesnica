@@ -15,6 +15,7 @@ const ordersSchema = new Schema({
             unit: String
         }
     ],
+    total: Number,
     date: String,
     num: Number,
     status: Boolean,

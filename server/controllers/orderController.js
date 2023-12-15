@@ -128,6 +128,11 @@ async function orderSave(data, date, invNum) {
       email: data.buyer.email,
     },
     products: data.products,
+    total: data.products
+      .reduce((accumulator, object) => {
+        return accumulator + priceCalculation(object);
+      }, 0)
+      .toFixed(2),
     date: date,
     num: invNum,
     status: null,
