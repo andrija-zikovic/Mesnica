@@ -74,6 +74,16 @@ const Admin = () => {
         }
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            if (e.target.className === 'link__nav_logOut') {
+                logOut();
+            } else if (e.target.className === 'link__nav__dropdown') {
+                toggleDropdown();
+            }
+        }
+    }
+
     useEffect(() => {
         document.addEventListener('click', handleOutsideClick);
 
@@ -122,18 +132,16 @@ const Admin = () => {
         <>
             <div className='nav__admin'>
                 <div className='nav__ul'>
-                    <div className='link__nav__dropdown' onClick={toggleDropdown} onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown} ref={dropdownRef}>
+                    <div className='link__nav__dropdown' onClick={toggleDropdown} onKeyPress={(e) => handleKeyPress(e)} ref={dropdownRef} tabIndex={0}>
                         Proizvodi
-                        {isDropdownOpen && (
-                            <div className='dropdown'>
-                                <div>
-                                    <Link to='/admin'>Lista</Link>
-                                </div>
-                                <div>
-                                    <Link to='addProduct'>Dodaj</Link>
-                                </div>
-                            </div>
-                        )}
+                    </div>
+                    <div className={`dropdown ${isDropdownOpen ? 'visible' : ''}`} onMouseLeave={toggleDropdown} aria-haspopup={true}>
+                        <div className='dropdown__li'>
+                            <Link to='/admin'>Lista</Link>
+                        </div>
+                        <div className='dropdown__li'>
+                            <Link to='addProduct'>Dodaj</Link>
+                        </div>
                     </div>
                     <div className='link__nav'>
                         <Link to="adminorders">Naruđbe</Link>
@@ -141,7 +149,7 @@ const Admin = () => {
                     <div className='link__nav'>
                         <Link to="adminstats">Statistika</Link>
                     </div>
-                    <div className='link__nav_logOut' onClick={logOut}>
+                    <div className='link__nav_logOut' onClick={logOut} tabIndex={0} onKeyPress={(e) => handleKeyPress(e)}>
                         Log out
                     </div>
                 </div>
