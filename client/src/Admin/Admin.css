@@ -767,6 +767,7 @@
   gap: 0.5rem;
   text-align: center;
   padding: 0.5rem;
+  font-size: 2rem;
 }
 
 .checked p:first-child {
@@ -855,6 +856,60 @@
 #revenueByDayChart {
   width: 90%;
   height: auto;
+}
+
+.adminStats__productsSales {
+  width: 100%;
+  height: auto;
+  border: 1px solid black;
+  color: var(--LINK-ACTIVE);
+  padding: 0.5rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.productStats,
+.adminsStats__productsSales__sortControls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.productStats {
+  text-align: left;
+}
+
+.adminsStats__productsSales__sortControls {
+  text-align: right;
+}
+
+.productStats__title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+}
+
+.productStats__numbers,
+.adminStats__prductsSales__buttons {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.productStats__quantity,
+.productStats__revenue {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.productStats__revenue {
+  color: black;
 }
 
 @media screen and (min-width: 576px) {

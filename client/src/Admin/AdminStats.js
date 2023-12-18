@@ -35,8 +35,12 @@ const AdminStats = (token) => {
   const dayChartRef = useRef(null);
   const monthChartRef = useRef(null);
   const yearChartRef = useRef(null);
+  const productsChartRef = useRef(null);
   const [chartType, setChartType] = useState("bar");
   const [statsRevenu, setStatsRevenu] = useState("day");
+  const [productsChartType, setProductsChartType] = useState("bar");
+  const [productsStats, setProductsStats] = useState([]);
+  const [productsSort, setProductsSort] = useState("quantityUp");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -144,9 +148,26 @@ const AdminStats = (token) => {
         chartInstance.destroy();
       };
     } else if (statsRevenu === "mjesec") {
+      const monthNames = [
+        "siječanj",
+        "veljača",
+        "ožujak",
+        "travanj",
+        "svibanj",
+        "lipanj",
+        "srpanj",
+        "kolovoz",
+        "rujan",
+        "listopad",
+        "studeni",
+        "prosinac",
+      ];
+
       const revenueByMonth = adminOrd.reduce((acc, order) => {
         const date = order.date.split(" ")[0].split("-")[1];
-        acc[date] = (acc[date] || 0) + order.total;
+        const monthName = monthNames[parseInt(date) - 1];
+
+        acc[monthName] = (acc[monthName] || 0) + order.total;
         return acc;
       }, {});
 
@@ -306,6 +327,31 @@ const AdminStats = (token) => {
     }
   }, [adminOrd, statsRevenu, chartType]);
 
+  useEffect(() => {
+    const products = adminOrd.reduce((acc, order) => {
+      order.products.forEach((product) => {
+        const { description, quantity, price } = product;
+        if (acc[description]) {
+          acc[description].quantity += quantity;
+          acc[description].totalPrice += price * quantity;
+        } else {
+          acc[description] = {
+            title: description,
+            quantity: quantity,
+            totalPrice: price * quantity,
+          };
+        }
+      });
+      return acc;
+    }, {});
+    console.log("Products:", products);
+    const sortedProducts = Object.entries(products).sort(
+      (a, b) => b[1].quantity - a[1].quantity
+    );
+    setProductsStats(sortedProducts);
+    console.log("Sorted Products:", sortedProducts);
+  }, [adminOrd]);
+
   return (
     <div className="adminStats">
       <h1>Statistika</h1>
@@ -441,9 +487,35 @@ const AdminStats = (token) => {
           </div>
           <canvas ref={yearChartRef}></canvas>
         </div>
-      ) : (
-        <h2>No stats!</h2>
-      )}
+      ) : null}
+      ,
+      <div className="adminStats__productsSales">
+        <h2>Proizvodi</h2>
+        <div className="adminsStats__productsSales__sortControls">
+          <p>Sort:</p>
+          <div className="adminStats__prductsSales__buttons">
+            <button onClick={() => setProductsSort("quantityUp")}>UP</button>
+            <button onClick={() => setProductsSort("revenueUp")}>UP</button>
+          </div>
+        </div>
+        {productsStats.length > 0
+          ? productsStats.map((product, index) => (
+              <div key={index} className="productStats">
+                <p className="productStats__title">
+                  {index + 1}. {product[0]}
+                </p>
+                <div className="productStats__numbers">
+                  <p className="productStats__quantity">
+                    {product[1].quantity.toFixed(2)} kg
+                  </p>
+                  <p className="productStats__revenue">
+                    {product[1].totalPrice.toFixed(2)} €
+                  </p>
+                </div>
+              </div>
+            ))
+          : null}
+      </div>
     </div>
   );
 };
