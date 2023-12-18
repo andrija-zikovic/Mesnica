@@ -35,12 +35,10 @@ const AdminStats = (token) => {
   const dayChartRef = useRef(null);
   const monthChartRef = useRef(null);
   const yearChartRef = useRef(null);
-  const productsChartRef = useRef(null);
   const [chartType, setChartType] = useState("bar");
   const [statsRevenu, setStatsRevenu] = useState("day");
-  const [productsChartType, setProductsChartType] = useState("bar");
   const [productsStats, setProductsStats] = useState([]);
-  const [productsSort, setProductsSort] = useState("quantityUp");
+  const [productsSort, setProductsSort] = useState("quantityDown");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -345,12 +343,38 @@ const AdminStats = (token) => {
       return acc;
     }, {});
     console.log("Products:", products);
-    const sortedProducts = Object.entries(products).sort(
-      (a, b) => b[1].quantity - a[1].quantity
-    );
-    setProductsStats(sortedProducts);
-    console.log("Sorted Products:", sortedProducts);
-  }, [adminOrd]);
+    if (productsSort === "quantityUp") {
+      const sortedProducts = Object.entries(products).sort(
+        (a, b) => a[1].quantity - b[1].quantity
+      );
+      setProductsStats(sortedProducts);
+      console.log("Sorted Products:", sortedProducts);
+    } else if (productsSort === "quantityDown") {
+      const sortedProducts = Object.entries(products).sort(
+        (a, b) => b[1].quantity - a[1].quantity
+      );
+      setProductsStats(sortedProducts);
+      console.log("Sorted Products:", sortedProducts);
+    } else if (productsSort === "revenueUp") {
+      const sortedProducts = Object.entries(products).sort(
+        (a, b) => a[1].totalPrice - b[1].totalPrice
+      );
+      setProductsStats(sortedProducts);
+      console.log("Sorted Products:", sortedProducts);
+    } else if (productsSort === "revenueDown") {
+      const sortedProducts = Object.entries(products).sort(
+        (a, b) => b[1].totalPrice - a[1].totalPrice
+      );
+      setProductsStats(sortedProducts);
+      console.log("Sorted Products:", sortedProducts);
+    } else {
+      const sortedProducts = Object.entries(products).sort(
+        (a, b) => b[1].totalPrice - a[1].totalPrice
+      );
+      setProductsStats(sortedProducts);
+      console.log("Sorted Products:", sortedProducts);
+    }
+  }, [adminOrd, productsSort]);
 
   return (
     <div className="adminStats">
@@ -488,22 +512,95 @@ const AdminStats = (token) => {
           <canvas ref={yearChartRef}></canvas>
         </div>
       ) : null}
-      ,
       <div className="adminStats__productsSales">
         <h2>Proizvodi</h2>
         <div className="adminsStats__productsSales__sortControls">
+          <span></span>
           <p>Sort:</p>
           <div className="adminStats__prductsSales__buttons">
-            <button onClick={() => setProductsSort("quantityUp")}>UP</button>
-            <button onClick={() => setProductsSort("revenueUp")}>UP</button>
+            {productsSort === "quantityUp" ? (
+              <button
+                onClick={() => setProductsSort("quantityDown")}
+                className={`${
+                  productsSort === "quantityUp" ||
+                  productsSort === "quantityDown"
+                    ? "sortActive"
+                    : ""
+                }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="12"
+                  viewBox="0 0 384 512"
+                >
+                  <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+                </svg>
+              </button>
+            ) : (
+              <button
+                onClick={() => setProductsSort("quantityUp")}
+                className={`${
+                  productsSort === "quantityUp" ||
+                  productsSort === "quantityDown"
+                    ? "sortActive"
+                    : ""
+                }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="12"
+                  viewBox="0 0 384 512"
+                >
+                  <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+                </svg>
+              </button>
+            )}
+            {productsSort === "revenueUp" ? (
+              <button
+                onClick={() => setProductsSort("revenueDown")}
+                className={`${
+                  productsSort === "revenueUp" || productsSort === "revenueDown"
+                    ? "sortActive"
+                    : ""
+                }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="12"
+                  viewBox="0 0 384 512"
+                >
+                  <path d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+                </svg>
+              </button>
+            ) : (
+              <button
+                onClick={() => setProductsSort("revenueUp")}
+                className={`${
+                  productsSort === "revenueUp" || productsSort === "revenueDown"
+                    ? "sortActive"
+                    : ""
+                }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16"
+                  width="12"
+                  viewBox="0 0 384 512"
+                >
+                  <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+                </svg>
+              </button>
+            )}
           </div>
         </div>
         {productsStats.length > 0
           ? productsStats.map((product, index) => (
               <div key={index} className="productStats">
-                <p className="productStats__title">
-                  {index + 1}. {product[0]}
-                </p>
+                <p className="productStats__index">{index + 1}.</p>
+                <p className="productStats__title">{product[0]}</p>
                 <div className="productStats__numbers">
                   <p className="productStats__quantity">
                     {product[1].quantity.toFixed(2)} kg

@@ -874,7 +874,7 @@
 .productStats,
 .adminsStats__productsSales__sortControls {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 0.5fr 2fr 3fr;
   gap: 1rem;
   width: 100%;
 }
@@ -900,6 +900,21 @@
   justify-content: space-evenly;
   align-items: center;
   gap: 0.5rem;
+}
+
+.adminStats__prductsSales__buttons button {
+  border-radius: 1rem;
+  padding: 0.2rem 0.7rem;
+}
+
+.adminStats__prductsSales__buttons button:hover,
+.adminStats__prductsSales__buttons button:focus,
+.adminStats__prductsSales__buttons button:active {
+  background-color: #3288e4cc;
+}
+
+.sortActive {
+  background-color: #3288e4cc;
 }
 
 .productStats__quantity,
