@@ -39,3 +39,6 @@
 06.12.2023	12:25:14	40a00030-4f6f-4904-81db-1f1223968a51	PayloadTooLargeError: request entity too large
 06.12.2023	12:27:55	ff7fe40b-d73b-4d98-bf11-28a87db84dd2	PayloadTooLargeError: request entity too large
 18.12.2023	10:06:49	eab939ec-eca6-4c34-b9bd-e05a2b25d9e7	Error: Not allowed by CORS
+20.12.2023	09:46:28	80a8cac4-c3b6-402a-aa00-2519dab880b1	SyntaxError: Unexpected token '-', "#" is not valid JSON
+20.12.2023	09:47:40	c5cb67db-6896-40b4-aac8-154ea3804aa1	SyntaxError: Unexpected token '-', "#" is not valid JSON
+20.12.2023	09:49:51	c22fe2b2-140e-4174-a50a-af6f8edb793c	SyntaxError: Unexpected token '-', "#" is not valid JSON

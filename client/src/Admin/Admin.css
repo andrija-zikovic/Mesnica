@@ -257,6 +257,22 @@
   border-bottom: 1px solid #ddd;
 }
 
+.adminPro__tbody__tr__ChangeConfirme {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid black;
+  background-color: rgba(240, 248, 255, 0.8);
+  width: 100%;
+}
+
+.adminPro__tbody__tr__ChangeConfirme button {
+  padding: 0.2rem 1rem;
+}
+
 .adminPro__tbody__tr p {
   padding: var(--PADDING-TB);
   text-align: center;
@@ -323,7 +339,7 @@
 }
 
 .adminPro__input {
-  max-width: 2rem;
+  max-width: 2.7rem;
   text-align: center;
 }
 
@@ -510,6 +526,22 @@
   row-gap: 30px;
   padding: var(--PADDING-SIDE) var(--PADDING-TB);
   margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.addProMessage {
+  color: red;
+  font-size: 1.5rem;
+  text-align: center;
+  animation: fadeIn 1s ease-in;
 }
 
 .imgForm {
@@ -1066,6 +1098,10 @@
     padding: 0.2rem 0.5rem;
   }
 
+  .adminPro__tbody__tr__ChangeConfirme {
+    font-size: 0.7rem;
+  }
+
   .adminLogInSection {
     font-size: 0.8rem;
   }
@@ -1241,6 +1277,10 @@
   }
 
   .adminPro__tfoot button:first-child {
+    font-size: 0.5rem;
+  }
+
+  .adminPro__tbody__tr__ChangeConfirme {
     font-size: 0.5rem;
   }
 
