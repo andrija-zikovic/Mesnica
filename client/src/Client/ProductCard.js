@@ -29,7 +29,17 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
   }
 
   useEffect(() => {
-    setFontSizeToFit(`title${id}`);
+    const adjustFontSize = () => {
+      setFontSizeToFit(`title${id}`);
+    };
+
+    adjustFontSize();
+
+    window.addEventListener("resize", adjustFontSize);
+
+    return () => {
+      window.removeEventListener("resize", adjustFontSize);
+    };
   }, [id]);
 
   return (
