@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&family=Nunito&display=swap");
 
 /* || RESET */
 
@@ -20,6 +20,10 @@ input,
 button,
 textarea {
   font: inherit;
+}
+
+main {
+  flex: 1;
 }
 
 /* || UTILITY CLASSES */
@@ -56,14 +60,10 @@ textarea {
 }
 
 @media screen and (min-width: 992px) {
-    .client_top {
-        flex-flow: row;
-        justify-content: space-between;
-    }
-}
-
-main {
-  flex: 1;
+  .client_top {
+    flex-flow: row;
+    justify-content: space-between;
+  }
 }
 
 /* || VARIABLES */
@@ -79,7 +79,7 @@ main {
   --BGCOLOR-FADE: #e33535cc;
   --BGCOLOR: rgba(255, 255, 255, 0.801);
   --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE));
-  --BODY-BGCOLOR: #FFF;
+  --BODY-BGCOLOR: #fff;
   --BORDER-COLOR: #333;
   --BUTTON-COLOR: white;
   --FONT-COLOR: #000;
@@ -145,6 +145,6 @@ p {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

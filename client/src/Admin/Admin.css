@@ -59,7 +59,7 @@
   font-size: 1.8rem;
 }
 
-.nav__ul {
+.adminNav__ul {
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   list-style-type: none;
   display: flex;
@@ -67,7 +67,7 @@
   gap: 1rem;
 }
 
-.link__nav a {
+.adminLink__nav a {
   display: block;
   padding: 0.2rem 0.5rem;
   text-align: center;
@@ -76,15 +76,15 @@
   height: 100%;
 }
 
-.link__nav a:hover,
-.link__nav a:focus,
-.link__nav a:active {
+.adminLink__nav a:hover,
+.adminLink__nav a:focus,
+.adminLink__nav a:active {
   background-color: var(--LINK-ACTIVE);
 }
 
-.link__nav__dropdown:active,
-.link__nav__dropdown:focus,
-.link__nav__dropdown:hover {
+.adminLink__nav__dropdown:active,
+.adminLink__nav__dropdown:focus,
+.adminLink__nav__dropdown:hover {
   box-shadow: 2px 2px 5px var(--LINK-ACTIVE);
   cursor: pointer;
 }
@@ -96,7 +96,7 @@
   max-height: 100%;
 }
 
-.link__nav_logOut {
+.adminLink__nav_logOut {
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   border-bottom: var(--BORDERS);
   border-left: var(--BORDERS);
@@ -107,9 +107,9 @@
   white-space: nowrap;
 }
 
-.link__nav_logOut:hover,
-.link__nav_logOut:focus,
-.link__nav_logOut:active {
+.adminLink__nav_logOut:hover,
+.adminLink__nav_logOut:focus,
+.adminLink__nav_logOut:active {
   background-color: var(--LINK-ACTIVE);
   cursor: pointer;
 }
@@ -461,13 +461,13 @@
   visibility: visible;
 }
 
-.link__nav__dropdown:hover,
-.link__nav__dropdown:focus,
-.link__nav__dropdown:active {
+.adminLink__nav__dropdown:hover,
+.adminLink__nav__dropdown:focus,
+.adminLink__nav__dropdown:active {
   background-color: var(--LINK-ACTIVE);
 }
 
-.link__nav__dropdown {
+.adminLink__nav__dropdown {
   position: relative;
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   border-bottom: var(--BORDERS);
@@ -1309,20 +1309,20 @@
     font-size: 0.7rem;
   }
 
-  .nav__ul {
+  .adminNav__ul {
     flex-flow: column;
     width: 100%;
     gap: 0.5rem;
   }
 
-  .link__nav,
-  .link__nav__dropdown,
-  .link__nav_logOut {
+  .adminLink__nav,
+  .adminLink__nav__dropdown,
+  .adminLink__nav_logOut {
     border: var(--BORDERS);
     border-radius: 1rem;
   }
 
-  .link__nav_logOut {
+  .adminLink__nav_logOut {
     position: absolute;
     bottom: 0.5rem;
     width: 95%;

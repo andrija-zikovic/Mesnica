@@ -1,204 +1,232 @@
 /* || PRODUCT CARD */
 
 .product-card {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    max-width: 205px;
-    background-color: var(--BGCOLOR);
-    width: 100%;
-    height: auto;
-    border: var(--BORDERS);
-    border-radius: var(--BORDER-RADIUS);
-    box-shadow: 2px 2px 10px var(--LINK-HOVER);
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
-    margin-top: 0;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-end;
+  max-width: 205px;
+  background-color: var(--BGCOLOR);
+  width: 100%;
+  height: auto;
+  border: var(--BORDERS);
+  border-radius: var(--BORDER-RADIUS);
+  box-shadow: 2px 2px 10px var(--LINK-HOVER);
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  margin-top: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  font-size: 1.5rem;
 }
 
 .product-card.loaded {
-    opacity: 1;
+  opacity: 1;
 }
 
 .product-card form {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    width: 100%;
-    height: auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
 }
 
 .product-card img {
-    margin-top: var(--MARGIN);
-    border: var(--BORDERS);
-    border-radius: var(--BORDER-RADIUS);
-    max-width: 100%;
+  margin-top: var(--MARGIN);
+  border: var(--BORDERS);
+  border-radius: var(--BORDER-RADIUS);
+  max-width: 100%;
 }
 
-
+.title__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  max-height: 30px;
+  min-height: 30px;
+  border-bottom: var(--BORDERS);
+}
 
 .product-card__title {
-    font-weight: bolder;
-    letter-spacing: 0.1rem;
-    border-bottom: var(--BORDERS);
-    width: 100%;
-    font-size: 1.4rem;
+  white-space: wrap;
+  font-weight: bolder;
+  letter-spacing: 0.1rem;
+  width: 100%;
 }
 
-.resizeCard { 
-    font-size: 0.8rem;
-    white-space: wrap;
+.resizeCard {
+  font-size: 1.3rem;
+  white-space: wrap;
 }
 
 .product-card__price {
-    font-weight: bolder;
-    letter-spacing: 0.1rem;
-    margin-top: var(--MARGIN);
-    width: 100%;
+  font-weight: bolder;
+  letter-spacing: 0.1rem;
+  margin-top: var(--MARGIN);
+  width: 100%;
 }
 
 .productCard_unit {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: var(--MARGIN);
-    width: 80%;
-    font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--MARGIN);
+  width: 80%;
+  font-weight: bold;
 }
 
 .productCard_plusMinus {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: var(--MARGIN);
-    margin-bottom: var(--MARGIN);
-    width: 90%;
-    align-self: center;
-    gap: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--MARGIN);
+  margin-bottom: var(--MARGIN);
+  width: 90%;
+  align-self: center;
+  gap: 0;
 }
 
 .productCard_plusMinus button {
-    background-color: var(--BGCOLOR);
-    border: var(--BORDERS);
-    font-size: 1.5rem;
-    height: 2.5rem;
-    width: 2.5rem;
-    font-weight: bolder;
-    text-align: center;
+  background-color: var(--BGCOLOR);
+  border: var(--BORDERS);
+  font-size: 1.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  font-weight: bolder;
+  text-align: center;
 }
 
 .productCard_plusMinus button:first-child {
-    border-radius: var(--BORDER-RADIUS) 0 0 var(--BORDER-RADIUS);
+  border-radius: var(--BORDER-RADIUS) 0 0 var(--BORDER-RADIUS);
 }
 
 .productCard_plusMinus button:last-child {
-    border-radius: 0 var(--BORDER-RADIUS) var(--BORDER-RADIUS) 0;
+  border-radius: 0 var(--BORDER-RADIUS) var(--BORDER-RADIUS) 0;
 }
 
 .productCard_plusMinus input {
-    background-color: var(--BGCOLOR);
-    border: var(--BORDERS);
-    font-size: 1.5rem;
-    height: 2.5rem;
-    width: 3.5rem;
-    font-weight: bolder;
-    text-align: center;
+  background-color: var(--BGCOLOR);
+  border: var(--BORDERS);
+  font-size: 1.5rem;
+  height: 2.5rem;
+  width: 3.5rem;
+  font-weight: bolder;
+  text-align: center;
 }
 
 .productCard_plusMinus button:hover {
-    background-color: var(--LINK-HOVER);
-    color: var(--BGCOLOR);
+  background-color: var(--LINK-HOVER);
+  color: var(--BGCOLOR);
 }
- 
+
 @media screen and (min-width: 576px) {
+  .product-card__price,
+  .productCard_unit {
+    white-space: nowrap;
+    font-size: 0.8rem;
+  }
 
-    .product-card {
-        white-space: nowrap;
-        max-width: none;
-    }
+  .resizeCard {
+    font-size: 0.6rem;
+    white-space: wrap;
+  }
 
+  .productCard_plusMinus button {
+    font-size: 1rem;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .productCard_plusMinus input {
+    font-size: 1rem;
+    height: 1.5rem;
+    width: 2.5rem;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .product-card__price,
+  .productCard_unit {
+    white-space: nowrap;
+    font-size: 0.6rem;
+  }
 
-    .product-card__title,
-    .product-card__price,
-    .productCard_unit {
-        white-space: nowrap;
-        font-size: 0.6rem;
-    }
+  .resizeCard {
+    font-size: 0.5rem;
+    white-space: wrap;
+  }
 
-    .resizeCard { 
-        font-size: 0.3rem;
-        white-space: wrap;
-    }
+  .productCard_plusMinus button {
+    font-size: 0.7rem;
+    height: 1.2rem;
+    width: 1.2rem;
+  }
 
-    .productCard_plusMinus button {
-        font-size: 0.7rem;
-        height: 1.2rem;
-        width: 1.2rem;
-    }
-
-    .productCard_plusMinus input {
-        font-size: 0.7rem;
-        height: 1.2rem;
-        width: 2rem;
-    }
-
+  .productCard_plusMinus input {
+    font-size: 0.7rem;
+    height: 1.2rem;
+    width: 2rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
+  .product-card {
+    max-width: 250px;
+  }
 
-    .product-card {
-        max-width: 250px;
-    }
+  .product-card__price,
+  .productCard_unit {
+    white-space: nowrap;
+    font-size: 0.6rem;
+  }
 
-    .product-card__title,
-    .product-card__price,
-    .productCard_unit {
-        white-space: nowrap;
-        font-size: 0.6rem;
-    }
+  .resizeCard {
+    font-size: 0.5rem;
+    white-space: wrap;
+  }
 
-    .resizeCard { 
-        font-size: 0.3rem;
-        white-space: wrap;
-    }
+  .productCard_plusMinus button {
+    font-size: 0.7rem;
+    height: 1rem;
+    width: 1rem;
+  }
 
-    .productCard_plusMinus button {
-        font-size: 0.7rem;
-        height: 1rem;
-        width: 1rem;
-    }
+  .productCard_plusMinus input {
+    font-size: 0.6rem;
+    height: 1rem;
+    width: auto;
+    text-align: center;
+  }
 
-    .productCard_plusMinus input {
-        font-size: 0.6rem;
-        height: 1rem;
-        width: auto;
-        text-align: center;
-    }   
+  .productCard_unit input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px; /* Set the desired width */
+    height: 20px; /* Set the desired height */
+    border-radius: 50%; /* Make it circular */
+    border: 2px solid #333; /* Add a border */
+  }
 
-    .productCard_unit input[type="radio"] {
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        width: 20px; /* Set the desired width */
-        height: 20px; /* Set the desired height */
-        border-radius: 50%; /* Make it circular */
-        border: 2px solid #333; /* Add a border */
-    }
-    
-    .productCard_unit input[type="radio"]:checked {
-        background-color: var(--LINK-HOVER);
-        border-color: white;
-        outline: var(--LINK-HOVER) solid 1px;
-    }
+  .productCard_unit input[type="radio"]:checked {
+    background-color: var(--LINK-HOVER);
+    border-color: white;
+    outline: var(--LINK-HOVER) solid 1px;
+  }
 
-    .productCard_unit input[type="radio"]:hover {
-        background-color: var(--LINK-HOVER);
-        border-color: white;
-        outline: black solid 1px;}
+  .productCard_unit input[type="radio"]:hover {
+    background-color: var(--LINK-HOVER);
+    border-color: white;
+    outline: black solid 1px;
+  }
+}
 
+@media screen and (min-width: 1200px) {
+  .resizeCard {
+    font-size: 0.4rem;
+    white-space: wrap;
+  }
 }

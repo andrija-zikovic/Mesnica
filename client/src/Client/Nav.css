@@ -1,318 +1,339 @@
 /* || NAV */
 
 .nav {
-    top: 0;
-    background-color: aliceblue;
-    border-bottom: var(--BORDERS);
-    font-weight: bold;
-    position: sticky;
-    z-index: 2;
-    font-size: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  top: 0;
+  background-color: aliceblue;
+  border-bottom: var(--BORDERS);
+  font-weight: bold;
+  position: sticky;
+  z-index: 2;
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
 }
 
 .nav ul {
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .nav a {
-    display: block;
-    padding: 0.4rem 0.5rem;
-    margin-bottom: 0;
-    text-decoration: none;
-    color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  text-align: center;
 }
 
 .nav__input {
-    width: 7rem;
+  width: 7rem;
 }
 
 .link__nav {
-    border-bottom: var(--BORDERS);
-    border-left: var(--BORDERS);
-    border-right: var(--BORDERS);
+  border: 1px solid black;
+  border-radius: var(--BORDER-RADIUS);
+  padding: 0.2rem 0.2rem;
+  background-color: rgba(255, 255, 255, 0);
+  width: 25%;
+  height: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link__nav:hover,
 .link__nav:focus,
 .link__nav:active {
-    box-shadow: 2px 2px 10px var(--LINK-HOVER);
-    background-color: var(--LINK-ACTIVE);
+  box-shadow: 2px 2px 10px var(--LINK-HOVER);
+  background-color: var(--LINK-ACTIVE);
 }
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 .nav_bucket {
-    padding: 0;
-    border-radius: 10%;
-    padding: 0.2rem 0.2rem;
-    border: 1px solid aliceblue;
+  padding: 0;
+  border-radius: 10%;
+  padding: 0.2rem 0.2rem;
+  border: 1px solid aliceblue;
 }
 
 .nav_bucket button {
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    padding: 0.2rem 0.2rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.2rem;
 }
 
 .nav_bucket:hover,
 .nav_bucket:focus,
 .nav_bucket:active {
-    background-color: var(--LINK-ACTIVE);
-    border: 1px solid black;
-    box-shadow: 2px 2px 10px var(--LINK-HOVER);
-    cursor: pointer;
+  background-color: transparent;
+  border: 1px solid black;
+  box-shadow: 2px 2px 10px var(--LINK-HOVER);
+  cursor: pointer;
 }
 
 .bucket {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    background-color: #333333f7;
-    color: aliceblue;
-    position: absolute;
-    bottom: -1;
-    width: 100vw;
-    height: auto;
-    border: 2px solid var(--HEADER-BGCOLOR);
-    border-radius: 2px;
-    z-index: 1;
-    font-size: 1.2em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: #333333f7;
+  color: aliceblue;
+  position: absolute;
+  top: 100%;
+  width: 100vw;
+  height: auto;
+  border: 2px solid var(--HEADER-BGCOLOR);
+  border-radius: 2px;
+  z-index: 1;
+  font-size: 1.2em;
 }
 
 .bucket thead tr th:nth-child(1),
 .bucket thead tr th:nth-child(2),
 .bucket thead tr th:nth-child(3),
-.bucket thead tr th:nth-child(4), 
+.bucket thead tr th:nth-child(4),
 .bucket thead tr th:nth-child(5) {
-    border-bottom: 2px solid aliceblue;
+  border-bottom: 2px solid aliceblue;
 }
 
 .bucket div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
 }
 
 .bucket__table {
-    padding: 0 1rem;
-    width: 100%;
+  padding: 0 1rem;
+  width: 100%;
 }
 
 .bucket__thead {
-    font-weight: bold;
-    border-bottom: 1px solid aliceblue;
-    padding: auto;
+  font-weight: bold;
+  border-bottom: 1px solid aliceblue;
+  padding: auto;
 }
 
 .bucket button {
-    color: var(--BUTTON-COLOR);
-    font-weight: bold;
-    margin-bottom: 5px;
+  color: var(--BUTTON-COLOR);
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .bucket__tbody tr td:first-child {
-    text-align: left;
+  text-align: left;
 }
 
 .bucket__tbody tr td:last-child {
-    text-align: right;
+  text-align: right;
 }
 
 .clear {
-    border-radius: var(--BORDER-RADIUS);
-    padding: '0.5rem 1rem';
-    background-color: rgba(255, 0, 0, 0.918);
+  border-radius: var(--BORDER-RADIUS);
+  padding: "0.5rem 1rem";
+  background-color: rgba(255, 0, 0, 0.918);
 }
 
 .clear:hover,
 .clear:focus {
-    background-color: rgba(255, 0, 0, 0.600);
+  background-color: rgba(255, 0, 0, 0.6);
 }
 
 .send {
-    border-radius: var(--BORDER-RADIUS);
-    padding: '0.5rem 1rem';
-    background-color: rgba(0, 128, 0, 0.918);
+  border-radius: var(--BORDER-RADIUS);
+  padding: "0.5rem 1rem";
+  background-color: rgba(0, 128, 0, 0.918);
 }
 
 .send:hover,
 .send:focus {
-    background-color: rgba(0, 128, 0, 0.600);
+  background-color: rgba(0, 128, 0, 0.6);
 }
 
 .delete {
-    border-radius: 50%;
-    height: 1.5em;
-    width: 1.5em;
+  border-radius: 50%;
+  height: 1.5em;
+  width: 1.5em;
 }
 
 .delete svg {
-    margin-top: 0.2rem;
+  margin-top: 0.2rem;
 }
 
 .delete:hover,
 .delete:focus {
-    background-color: var(--LINK-ACTIVE);
+  background-color: var(--LINK-ACTIVE);
 }
 
 .bucket__button svg {
-    margin-top: 0.2rem;
+  margin-top: 0.2rem;
 }
 
 .bucket tfoot tr td:nth-child(1),
 .bucket tfoot tr td:nth-child(2),
 .bucket tfoot tr td:nth-child(3),
-.bucket tfoot tr td:nth-child(4), 
+.bucket tfoot tr td:nth-child(4),
 .bucket tfoot tr td:nth-child(5) {
-    border-top: 2px solid aliceblue;
+  border-top: 2px solid aliceblue;
 }
 
 .cartItemsCount {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background-color: var(--LINK-ACTIVE);
-    color: var(--HEADER-COLOR);
-    border-radius: 50%;
-    padding: 0.1rem 0.5rem;
-    font-size: 0.7em;
-    border: 1px solid black;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--LINK-ACTIVE);
+  color: var(--HEADER-COLOR);
+  border-radius: 50%;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.7em;
+  border: 1px solid black;
 }
 
 .orderSendClear {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
 }
 
 @media screen and (min-width: 576px) {
-    .bucket {
-        right: 2px;
-        width: 25rem;
-        font-size: 1rem;
-    }
+  .bucket {
+    right: 2px;
+    width: 25rem;
+    font-size: 1rem;
+  }
 
-    .bucket div {
-        justify-content: space-evenly;
-    }
+  .link__nav {
+    width: 20%;
+  }
 
+  .nav {
+    font-size: 0.8rem;
+  }
+
+  .bucket div {
+    justify-content: space-evenly;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .bucket {
+    width: 15rem;
+    font-size: 0.5rem;
+  }
 
-    .bucket {
-        width: 15rem;
-        font-size: 0.5rem;
-    }
+  .clear,
+  .send {
+    padding: 0.1rem 0.4rem;
+  }
 
-    .clear, 
-    .send {
-        padding: 0.1rem 0.4rem; 
-    }
+  .delete {
+    height: 2em;
+    width: 2em;
+  }
 
-    .delete {
-        height: 2em;
-        width: 2em;
-    }
+  .nav {
+    font-size: 0.7rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+  }
 
-    .nav {
-        font-size: 0.7rem;
-        padding-top: 0.1rem;
-        padding-bottom: 0.1rem;
-    }
-
-    .nav ul {
-        justify-content: flex-end;
-    }
-    .cartItemsCount {
-        padding: 0.1rem 0.3rem;
-        font-size: 0.4rem;
-        top: 0.2rem;
-        right: 0.7rem;
-    }
+  .nav ul {
+    justify-content: flex-end;
+  }
+  .cartItemsCount {
+    padding: 0.1rem 0.3rem;
+    font-size: 0.4rem;
+    top: 0.2rem;
+    right: 0.7rem;
+  }
 }
 
-
 @media screen and (min-width: 992px) {
+  .nav {
+    width: 100%;
+    font-size: 55%;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    background-color: var(--HEADER-BGCOLOR);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
 
-    .nav {
-        width: 100%;
-        font-size: 55%;
-        padding-top: 0.1rem;
-        padding-bottom: 0.1rem;
-        background-color: var(--HEADER-BGCOLOR);
-    }
+  .nav ul {
+    justify-content: flex-end;
+    width: 100%;
+  }
 
-    .nav ul {
-        justify-content: flex-end;
-    }
+  .link__nav:hover,
+  .link__nav:focus,
+  .link__nav:active {
+    box-shadow: 2px 2px 10px aliceblue;
+    background-color: black;
+    color: aliceblue;
+  }
 
-    .link__nav:hover,
-    .link__nav:focus,
-    .link__nav:active {
-        box-shadow: 2px 2px 10px aliceblue;
-        background-color: black;
-    }
+  .link__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    padding: unset;
+  }
 
-    .link__nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .nav a:hover,
+  .nav a:focus,
+  .nav a:active {
+    color: aliceblue;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    border-radius: var(--BORDER-RADIUS);
+  }
 
-    .nav a:hover,
-    .nav a:focus,   
-    .nav a:active {
-        color: aliceblue;
-        background-color: black;
-        height: 100%;
-    }
+  .orderSendClear a:hover,
+  .orderSendClear a:focus,
+  .orderSendClear a:active {
+    background-color: #333333f7;
+  }
 
-    .orderSendClear a:hover,
-    .orderSendClear a:focus,
-    .orderSendClear a:active {
-        background-color: #333333f7;
-    }
+  .nav_bucket {
+    border-color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+  }
 
-    .nav_bucket {
-        border-color: rgba(0, 0, 0, 0);
-        display: flex; 
-        justify-content: center;
-    }
+  .nav_bucket:hover,
+  .nav_bucket:focus,
+  .nav_bucket:active {
+    background-color: black;
+  }
 
-    .nav_bucket:hover,
-    .nav_bucket:focus,
-    .nav_bucket:active {
-        background-color: black;
-    }
+  .nav_bucket:hover svg,
+  .nav_bucket:focus svg,
+  .nav_bucket:active svg {
+    fill: aliceblue;
+  }
 
-    .nav_bucket:hover svg,
-    .nav_bucket:focus svg,
-    .nav_bucket:active svg {
-        fill: aliceblue;
-    }
-
-    .cartItemsCount {
-        padding: 0.1rem 0.3rem;
-        font-size: 0.4rem;
-        top: 0.2rem;
-        right: 0.4rem;
-    }
-
+  .cartItemsCount {
+    padding: 0.1rem 0.3rem;
+    font-size: 0.4rem;
+    top: 0.2rem;
+    right: 0.4rem;
+  }
 }

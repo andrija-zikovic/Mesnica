@@ -5,7 +5,7 @@ import ProductCard from "./ProductCard";
 const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
   const [noProductsCheck, setNoProductsCheck] = useState(false);
   const [products, setProducts] = useState([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       let success = false;
@@ -30,8 +30,8 @@ const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
           success = true;
         } catch (error) {
           console.error("Error fetching data:", error);
-          
-          await new Promise(resolve => setTimeout(resolve, 1000));
+
+          await new Promise((resolve) => setTimeout(resolve, 1000));
         }
       }
     };
@@ -40,17 +40,13 @@ const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
   }, [meatType]);
 
   if (noProductsCheck) {
-    return (
-      <h2 className="noProducts">
-        Nema proizvoda!
-      </h2>
-    );
+    return <h2 className="noProducts">Nema proizvoda!</h2>;
   } else {
     if (host === "home") {
-    setLoaded(true);
+      setLoaded(true);
     }
     return (
-      <section className={`products-list ${host === 'home' ? 'homeList' : ''}`} >
+      <section className={`${host === "home" ? "homeList" : "products-list"}`}>
         {products.length < 1 ? (
           <div className="loading">
             <svg
@@ -83,7 +79,7 @@ const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
                 }
                 `}
               </style>
-              <circle class="spinner_DupU" cx="12" cy="3" r="0" />
+              <circle className="spinner_DupU" cx="12" cy="3" r="0" />
               <circle
                 class="spinner_DupU spinner_GWtZ"
                 cx="16.50"

@@ -1,259 +1,267 @@
 .aboutUs {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .aboutUs__section {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
 }
 
 .aboutUs__article-imgs {
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
-    position: relative;
-    width: 90vw;
-    height: 25rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 500px;
-    max-width: 100%;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  position: relative;
+  width: 90vw;
+  height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 500px;
+  max-width: 100%;
 }
 
 .aboutUs__article-imgs img {
-    z-index: 0;
-    position: absolute;
-    max-width: 600px;
-    width: auto;
-    height: 80%;
-    border: var(--BORDERS);
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #333;
+  z-index: 0;
+  position: absolute;
+  width: auto;
+  height: auto;
+  border: var(--BORDERS);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #333;
 }
 
 .aboutUs__section_o-nama {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
-    margin-bottom: 10px;
-    max-width: 800px;
-    font-size: 1rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  margin-bottom: 10px;
+  max-width: 800px;
+  font-size: 1rem;
+}
+
+.aboutUs__section_o-nama h2 {
+  text-align: center;
+  margin: unset;
+  padding: 2% 0;
 }
 
 .aboutUs__article_o-nama {
-    text-align: justify;
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
-    margin-bottom: 10px;
-    border-bottom: var(--BORDERS);
+  text-align: justify;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  margin-bottom: 10px;
+  border-bottom: var(--BORDERS);
 }
 
 .aboutUs__article_o-nama h3 {
-    text-align: center;
+  text-align: center;
+  margin: unset;
+  padding: 2% 0;
+}
+
+.aboutUs__article_o-nama p {
+  text-indent: 1rem;
+  padding: 2% 0;
 }
 
 .aboutUs__section_lokacija {
-    text-align: center;
+  text-align: center;
 }
 
 .aboutUs__article_lokacija {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-flow: row;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-flow: row;
 }
 
 .aboutUs__article_lokacija img {
-    width: 50%;
-    height: auto;
-    border: var(--BORDERS);
-    border-radius: 5px;
+  width: 50%;
+  height: auto;
+  border: var(--BORDERS);
+  border-radius: 5px;
 }
 
 .aboutUs__section_contact {
-    margin-top: 1rem;
-    border-top: 1px solid #333;
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
-    width: 100%;
+  margin-top: 1rem;
+  border-top: 1px solid #333;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  width: 100%;
 }
 
 .aboutUs__article_contact {
-    width: 100%;
-    margin-top: 10px;
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  width: 100%;
+  margin-top: 10px;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
 }
 
-
 .contact__form {
-    margin-top: 5px;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    width: 90%;
+  margin-top: 5px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 90%;
 }
 
 .contact__form div {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .contact__fieldset {
-    border: none;
-    width: 100%;
+  border: none;
+  width: 100%;
 }
 
 .contact__p {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 .contact__lable {
-    display: block;
-    font-weight: bold;
+  display: block;
+  font-weight: bold;
 }
 
 .contact__input,
 .contact__textarea {
-    padding: 0.5em;
-    border-radius: var(--BORDER-RADIUS);
-    border-width: 2px;
-    width: 100%;
+  padding: 0.5em;
+  border-radius: var(--BORDER-RADIUS);
+  border-width: 2px;
+  width: 100%;
 }
 
 .contact__button {
-    padding: 0.5em;
-    border-radius: var(--BORDER-RADIUS);
-    background-color: var(--LINK-ACTIVE);
-    color: var(--BUTTON-COLOR);
-    font-weight: bold;
-    margin-right: 10px;
+  padding: 0.5em;
+  border-radius: var(--BORDER-RADIUS);
+  background-color: var(--LINK-ACTIVE);
+  color: var(--BUTTON-COLOR);
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 /* Apply the animation to the element */
 .fade {
-    animation-name: fade;
-    /* Use the "fade" keyframes animation */
-    animation-duration: 10s;
-    /* Animation duration (adjust as needed) */
-    animation-timing-function: ease-in-out;
-    /* Timing function for easing */
-    animation-iteration-count: infinite;
-    /* Repeat the animation infinitely */
+  animation-name: fade;
+  /* Use the "fade" keyframes animation */
+  animation-duration: 10s;
+  /* Animation duration (adjust as needed) */
+  animation-timing-function: ease-in-out;
+  /* Timing function for easing */
+  animation-iteration-count: infinite;
+  /* Repeat the animation infinitely */
 }
 
 .hidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .show {
-    visibility: visible;
+  visibility: visible;
 }
 
-
 @keyframes fade {
-    0% {
-        z-index: 1;
-        opacity: 0;
-        /* Start with full transparency (invisible) */
-    }
+  0% {
+    z-index: 1;
+    opacity: 0;
+    /* Start with full transparency (invisible) */
+  }
 
-    50% {
-        z-index: 1;
-        opacity: 1;
-        /* Middle of the animation, fully visible */
-    }
+  50% {
+    z-index: 1;
+    opacity: 1;
+    /* Middle of the animation, fully visible */
+  }
 
-    100% {
-        z-index: 1;
-        opacity: 0;
-        /* End with full transparency (invisible) */
-    }
+  100% {
+    z-index: 1;
+    opacity: 0;
+    /* End with full transparency (invisible) */
+  }
 }
 
 @media screen and (min-width: 992px) {
+  .aboutUs__section_o-nama {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-auto-rows: auto;
+    grid-template-areas:
+      "hd hd"
+      "cl cr";
+    gap: 1rem;
+    min-width: 100%;
+    order: 1;
+  }
 
-    .aboutUs__section_o-nama {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-auto-rows: auto;
-        grid-template-areas:
-            "hd hd"
-            "cl cr";
-        gap: 1rem;
-        min-width: 100%;
-        order: 1;
-    }
+  .aboutUs__section_o-nama h2 {
+    grid-area: hd;
+    text-align: center;
+  }
 
-    .aboutUs__section_o-nama h2 {
-        grid-area: hd;
-        text-align: center;
-    }
+  .aboutUs__section_o-nama:nth-child(even) {
+    grid-area: mn;
+  }
 
-    .aboutUs__section_o-nama:nth-child(even) {
-        grid-area: mn;
-    }
+  .aboutUs__article_o-nama {
+    min-height: 100%;
+    font-size: 0.5rem;
+  }
 
-    .aboutUs__article_o-nama {
-        min-height: 100%;
-        font-size: 0.5rem;
-    }
+  .aboutUs__section {
+    order: 2;
+  }
 
-    .aboutUs__section {
-        order: 2;
-    }
+  .aboutUs__section_contact {
+    order: 4;
+  }
 
-    .aboutUs__section_contact {
-        order: 4;
-    }
+  .aboutUs__section_lokacija {
+    order: 3;
+  }
 
-    .aboutUs__section_lokacija {
-        order: 3;
-    }
+  .aboutUs {
+    font-size: 0.5rem;
+  }
 
-    .aboutUs {
-        font-size: 0.5rem;
-    }
+  .contact__form div {
+    justify-content: left;
+  }
 
-    .contact__form div {
-        justify-content: left;
-    }
+  .aboutUs__article_contact {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+  }
 
-    .aboutUs__article_contact {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-flow: column;
-    }
+  .contact__form {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .contact__form {
-        width: 100%;
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .contact__fieldset {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .contact__fieldset {
-        width: 100%;
-        display: flex;
-        flex-flow: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .contact__p {
+    width: 50%;
+  }
 
-    .contact__p {
-        width: 50%;
-    }
-
-    .contact__input,
-    .contact__textarea {
-        width: 100%;
-    }
-
+  .contact__input,
+  .contact__textarea {
+    width: 100%;
+  }
 }
