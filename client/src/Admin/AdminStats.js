@@ -87,14 +87,15 @@ const AdminStats = (token) => {
               backgroundColor: colors,
               borderColor: "rgba(75, 192, 192, 1)",
               borderWidth: 1,
-              barPercentage: 1,
-              categoryPercentage: 1,
+              barPercentage: 0.5,
+              categoryPercentage: 0.5,
               maxBarThickness: 50,
             },
           ],
         },
         options: {
-          maintainAspectRatio: true,
+          maintainAspectRatio: false,
+          responsive: true,
           indexAxis: "y",
           scales: {
             x: {
@@ -103,6 +104,11 @@ const AdminStats = (token) => {
                 callback: function (value, index, values) {
                   return value + "€";
                 },
+              },
+            },
+            y: {
+              ticks: {
+                autoSkip: false,
               },
             },
           },
@@ -187,14 +193,15 @@ const AdminStats = (token) => {
               backgroundColor: colors,
               borderColor: "rgba(75, 192, 192, 1)",
               borderWidth: 1,
-              barPercentage: 1,
-              categoryPercentage: 1,
+              barPercentage: 0.5,
+              categoryPercentage: 0.5,
               maxBarThickness: 50,
             },
           ],
         },
         options: {
-          maintainAspectRatio: true,
+          maintainAspectRatio: false,
+          responsive: true,
           indexAxis: "y",
           scales: {
             x: {
@@ -203,6 +210,11 @@ const AdminStats = (token) => {
                 callback: function (value, index, values) {
                   return value + "€";
                 },
+              },
+            },
+            y: {
+              ticks: {
+                autoSkip: false,
               },
             },
           },
@@ -270,14 +282,15 @@ const AdminStats = (token) => {
               backgroundColor: colors,
               borderColor: "rgba(75, 192, 192, 1)",
               borderWidth: 1,
-              barPercentage: 1,
-              categoryPercentage: 1,
+              barPercentage: 0.5,
+              categoryPercentage: 0.5,
               maxBarThickness: 50,
             },
           ],
         },
         options: {
-          maintainAspectRatio: true,
+          maintainAspectRatio: false,
+          responsive: true,
           indexAxis: "y",
           scales: {
             x: {
@@ -286,6 +299,11 @@ const AdminStats = (token) => {
                 callback: function (value, index, values) {
                   return value + "€";
                 },
+              },
+            },
+            y: {
+              ticks: {
+                autoSkip: false,
               },
             },
           },
@@ -416,7 +434,9 @@ const AdminStats = (token) => {
                 </button>
               </div>
             </div>
-            <canvas ref={dayChartRef}></canvas>
+            <div className="canvasContainer">
+              <canvas ref={dayChartRef}></canvas>
+            </div>
           </div>
         ) : statsRevenu === "mjesec" ? (
           <div className="adminStats__revenueByMonth">
@@ -445,7 +465,9 @@ const AdminStats = (token) => {
                 </button>
               </div>
             </div>
-            <canvas ref={monthChartRef}></canvas>
+            <div className="canvasContainer">
+              <canvas ref={monthChartRef}></canvas>
+            </div>
           </div>
         ) : statsRevenu === "godina" ? (
           <div className="adminStats__revenueByYear">
@@ -474,7 +496,9 @@ const AdminStats = (token) => {
                 </button>
               </div>
             </div>
-            <canvas ref={yearChartRef}></canvas>
+            <div className="canvasContainer">
+              <canvas ref={yearChartRef}></canvas>
+            </div>
           </div>
         ) : null}
         <div className="adminStats__productsSales">
