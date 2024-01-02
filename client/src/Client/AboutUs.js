@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AboutUs.css";
 
 const AboutUs = () => {
@@ -43,41 +43,8 @@ const AboutUs = () => {
       });
   };
 
-  // Create a context to require all image files inside the public/img folder
-  const imageContext = require.context(
-    "/public/img",
-    false,
-    /\.(jpg|jpeg|png)$/
-  );
-
-  const images = imageContext.keys().map(imageContext);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
   return (
     <main className="aboutUs">
-      <section className="aboutUs__section">
-        <article className="aboutUs__article-imgs">
-          {images.map((image, index) => (
-            <img
-              key={index}
-              src={process.env.PUBLIC_URL + image}
-              alt="img"
-              width="600"
-              height="400"
-              className={`${index === currentIndex ? "fade show" : ""}`}
-            />
-          ))}
-        </article>
-      </section>
       <section className="aboutUs__section_o-nama">
         <h2 style={{ whiteSpace: "nowrap" }}>O nama</h2>
         <article className="aboutUs__article_o-nama">
@@ -87,6 +54,14 @@ const AboutUs = () => {
             zajednicu od 1923. godine. S više od stoljetnom tradicijom u
             mesarskom poslu, posvećeni smo pružanju vrhunskih mesnih proizvoda i
             usluga našim vjernim kupcima.
+          </p>
+        </article>
+        <article className="aboutUs__article_o-nama">
+          <h3>Naša Misija</h3>
+          <p>
+            Naša misija je pružiti vam najbolje meso i mesne proizvode u gradu.
+            S ponosom smo služili našu zajednicu više od 100 godina, i radujemo
+            se što ćemo nastaviti tradiciju kvalitete i pouzdanosti.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">
@@ -126,6 +101,14 @@ const AboutUs = () => {
             Zahvalni smo našoj zajednici na dugogodišnjoj podršci. Sve ove
             godine, vaša podrška motivira nas da budemo još bolji i da nastavimo
             tradiciju kvalitete i pouzdanosti.
+          </p>
+        </article>
+        <article className="aboutUs__article_o-nama">
+          <h3>Naši Kupci</h3>
+          <p>
+            Naši kupci su naša najveća vrijednost. Sve što radimo, radimo za
+            vas. Vaše zadovoljstvo je naša najveća nagrada, i radujemo se što
+            ćemo vas i dalje služiti.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">

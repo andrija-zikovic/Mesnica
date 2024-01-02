@@ -20,7 +20,7 @@ const ProductCard = ({ id, src, title, price, handleAmountChange }) => {
     const parentHeight = parentElement.offsetHeight;
     let fontSize = parseFloat(window.getComputedStyle(element).fontSize);
     console.log(fontSize);
-    while (element.scrollHeight > parentHeight && fontSize > 10) {
+    while (element.scrollHeight > parentHeight && fontSize > 5) {
       // Minimum font size of 10px
       console.log(element.scrollHeight);
       fontSize -= 1;

@@ -197,7 +197,7 @@
   .productCard_plusMinus input {
     font-size: 0.6rem;
     height: 1rem;
-    width: auto;
+    width: 40%;
     text-align: center;
   }
 
