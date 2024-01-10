@@ -7,7 +7,7 @@ import AboutUs from "./AboutUs";
 import OrderForm from "./OrderForm";
 import Products from "./Products";
 import Footer from "./Footer";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Client = () => {
   const [cartItems, setCartItems] = useState([
@@ -98,15 +98,48 @@ const Client = () => {
     }
   };
 
+  const referenceElement = useRef(null);
+  const targetElement = useRef(null);
+  const [bucketVisibleCheck, setBucketVisibleCheck] = useState(false);
+
+  useEffect(() => {
+    const reference = referenceElement.current;
+    const target = targetElement.current;
+
+    if (reference && target) {
+      const updateTop = () => {
+        const height = reference.offsetHeight;
+        target.style.top = `${height}px`;
+      };
+
+      // Initialize with the current height
+      updateTop();
+
+      // Create a resize observer to observe reference element
+      const resizeObserver = new ResizeObserver(() => {
+        updateTop();
+      });
+
+      resizeObserver.observe(reference);
+
+      // Cleanup function
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }
+  }, [bucketVisibleCheck]);
+
   return (
     <div className="client">
-      <div className="client_top">
+      <div className="client_top" ref={referenceElement}>
         <Header title={"Mesnica"} />
         <Nav
           cartItems={cartItems}
           setCartItems={setCartItems}
           deleteItem={deleteItem}
           clearCart={clearCart}
+          setBucketVisibleCheck={setBucketVisibleCheck}
+          ref={targetElement}
         />
       </div>
       <Routes>

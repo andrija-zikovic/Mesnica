@@ -107,6 +107,7 @@ const createProduct = async (req, res) => {
           price: req.body.price,
           onStorage: req.body.onStorage,
           meatType: req.body.meatType,
+          description: req.body.description,
           imgSrc: imgSrc,
         });
         console.log("Product created successfully!");
@@ -188,6 +189,7 @@ const changeProducts = async (req, res) => {
               price: req.body.price,
               onStorage: req.body.onStorage,
               meatType: req.body.meatType,
+              description: req.body.description,
               imgSrc: imgSrc,
             },
             { new: true }
@@ -213,6 +215,7 @@ const changeProducts = async (req, res) => {
               price: req.body.price,
               onStorage: req.body.onStorage,
               meatType: req.body.meatType,
+              description: req.body.description,
             },
             { new: true }
           );

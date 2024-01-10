@@ -21,6 +21,7 @@ const AddProducts = (token) => {
       formData.append("onStorage", productInfo.onStorage);
       formData.append("meatType", productInfo.meatType);
       formData.append("image", productInfo.image);
+      formData.append("description", productInfo.description);
 
       const req = await fetch(url, {
         method: "POST",
@@ -122,6 +123,17 @@ const AddProducts = (token) => {
             required
           />
         </div>
+
+        <label htmlFor="description" className="offscreen">
+          Description
+        </label>
+        <textarea
+          name="description"
+          id="description"
+          placeholder="Opis"
+          onChange={handleInputChange}
+          required
+        ></textarea>
 
         <div className="addButton">
           <button className="add" type="submit">

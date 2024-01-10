@@ -91,12 +91,11 @@ table {
   background-color: #333333f7;
   color: aliceblue;
   position: absolute;
-  top: 100%;
   width: 100vw;
   height: auto;
   border: 2px solid var(--HEADER-BGCOLOR);
   border-radius: 2px;
-  z-index: 1;
+  z-index: 99;
   font-size: 1.2em;
 }
 
@@ -142,7 +141,7 @@ table {
 
 .clear {
   border-radius: var(--BORDER-RADIUS);
-  padding: "0.5rem 1rem";
+  padding: 0.5rem 1rem;
   background-color: rgba(255, 0, 0, 0.918);
 }
 
@@ -153,7 +152,7 @@ table {
 
 .send {
   border-radius: var(--BORDER-RADIUS);
-  padding: "0.5rem 1rem";
+  padding: 0.5rem 1rem;
   background-color: rgba(0, 128, 0, 0.918);
 }
 
@@ -208,6 +207,7 @@ table {
   align-items: center;
   width: 100%;
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  margin-top: 10px;
 }
 
 @media screen and (min-width: 576px) {

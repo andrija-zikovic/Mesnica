@@ -67,11 +67,16 @@
   gap: 1rem;
 }
 
+.adminLink__nav {
+  border-bottom: var(--BORDERS);
+  border-left: var(--BORDERS);
+  border-right: var(--BORDERS);
+}
+
 .adminLink__nav a {
   display: block;
   padding: 0.2rem 0.5rem;
   text-align: center;
-  border-radius: 1rem;
   width: 100%;
   height: 100%;
 }
@@ -513,10 +518,13 @@
   border-bottom: var(--BORDERS);
 }
 
+.addProducts {
+  font-size: 2rem;
+}
+
 .addProducts h2 {
   margin-top: 1rem;
   text-align: center;
-  font-size: 3rem;
 }
 
 .addProForm {
@@ -526,6 +534,7 @@
   row-gap: 30px;
   padding: var(--PADDING-SIDE) var(--PADDING-TB);
   margin-top: 1rem;
+  font-size: 1em;
 }
 
 @keyframes fadeIn {
@@ -539,7 +548,6 @@
 
 .addProMessage {
   color: red;
-  font-size: 1.5rem;
   text-align: center;
   animation: fadeIn 1s ease-in;
 }
@@ -550,24 +558,19 @@
   text-align: center;
 }
 
-.imgForm label {
-  font-size: 2.5rem;
-}
-
 .imgForm input[type="file"] {
   border-top: var(--BORDERS);
   padding-top: var(--PADDING-SIDE);
   border-bottom: var(--BORDERS);
   padding-bottom: var(--PADDING-SIDE);
-  font-size: 1.5rem;
   white-space: normal;
   text-align: center;
+  font-size: 0.8rem;
 }
 
 .addButton {
   display: flex;
   justify-content: center;
-  font-size: 2.5rem;
 }
 
 .addButton button {
@@ -576,7 +579,6 @@
 
 .addProForm input {
   width: 90vw;
-  font-size: 3rem;
 }
 
 .adminOrd {
@@ -1133,11 +1135,19 @@
   .adminStats__buttons {
     font-size: 1rem;
   }
+
+  .addProducts {
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
   .adminLogInSection {
     height: 100vh;
+  }
+
+  .adminLink__nav a {
+    border-radius: 1rem;
   }
 
   .adminPro {
@@ -1204,9 +1214,6 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-  }
-
-  .addProducts h2 {
     font-size: 1rem;
   }
 
@@ -1216,7 +1223,6 @@
   }
 
   .addProForm input {
-    font-size: 0.7rem;
     width: auto;
   }
 
@@ -1237,18 +1243,17 @@
     white-space: nowrap;
   }
 
-  .imgForm label {
-    font-size: 1rem;
-  }
-
   .imgForm input[type="file"] {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     padding: 0.2rem;
     width: auto;
   }
 
+  .addProducts textarea {
+    grid-column: 1 / 3;
+  }
+
   .addButton {
-    font-size: 0.6rem;
     grid-column: 1 / 3;
   }
 

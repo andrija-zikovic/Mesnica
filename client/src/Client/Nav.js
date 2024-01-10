@@ -3,11 +3,13 @@ import "./Nav.css";
 import { Link, Outlet } from "react-router-dom";
 import Bucket from "./Bucket";
 
-const Nav = ({ cartItems, deleteItem, clearCart }) => {
+const Nav = React.forwardRef((props, ref) => {
+  const { cartItems, deleteItem, clearCart, setBucketVisibleCheck } = props;
   const [isBucketVisible, setIsBucketVisible] = useState(false);
 
   const toggleBucketVisibility = () => {
     setIsBucketVisible((prevState) => !prevState);
+    setBucketVisibleCheck((prevState) => !prevState);
   };
 
   return (
@@ -45,11 +47,12 @@ const Nav = ({ cartItems, deleteItem, clearCart }) => {
           deleteItem={deleteItem}
           clearCart={clearCart}
           toggleBucketVisibility={toggleBucketVisibility}
+          ref={ref}
         />
       )}
       <Outlet />
     </>
   );
-};
+});
 
 export default Nav;
