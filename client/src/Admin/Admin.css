@@ -189,31 +189,31 @@
 }
 
 .message {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   background-color: aliceblue;
   position: absolute;
-  width: 90vw;
-  left: 5vw;
+  width: 80vw;
+  left: 10vw;
   top: 20vh;
   padding: 1rem 1rem;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
   border-radius: var(--BORDER-RADIUS);
   border: 1px solid black;
+  z-index: 99;
 }
 
 .messageButton {
-  position: absolute;
-  border-radius: 50%;
+  border-radius: 3px;
   padding: 0.4rem 0.9rem;
   font-size: 2rem;
   right: 3px;
   top: -5rem;
-  background-color: red;
+  background-color: lightgreen;
   border: 1px solid black;
-}
-
-.messageButton svg {
-  margin-bottom: -0.3rem;
 }
 
 .visible {
@@ -360,6 +360,19 @@
   text-align: center;
 }
 
+.adminProEdit {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.adminProEdit h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .adminProImg {
   display: flex;
   flex-flow: row;
@@ -425,18 +438,15 @@
 
 .adminProImg_XButton {
   position: absolute;
-  left: 3px;
-  margin-top: 3px;
-  width: 30px;
-  height: 30px;
-  background-color: #e74c3c; /* Red color */
-  border: none;
-  border-radius: 50%;
-  color: #fff; /* White text color */
-  font-size: 16px;
+  right: 5px;
+  top: 3px;
+  background-color: unset;
+  border: unset;
+  color: black; /* White text color */
+  font-size: 14px;
+  font-weight: bolder;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border: 1px solid black;
 }
 
 .adminProImg_RemoveButton {
@@ -444,7 +454,7 @@
   padding: 0.05rem 0.2rem;
   border: none;
   border-radius: 5%;
-  font-size: 0.6rem;
+  font-size: inherit;
   cursor: pointer;
   transition: background-color 0.3s ease;
   border: 1px solid black;
@@ -453,7 +463,26 @@
 .adminProImg_XButton:hover,
 .adminProImg_XButton:focus,
 .adminProImg_XButton:active {
-  background-color: #c0392b; /* Darker red on hover */
+  animation: spinAndChangeColor 0.5s forwards;
+}
+
+@keyframes spinAndChangeColor {
+  0% {
+    transform: rotate(0deg);
+    color: #c0392b;
+  }
+  50% {
+    transform: rotate(180deg);
+    color: black;
+  }
+  100% {
+    transform: rotate(360deg);
+    color: #c0392b;
+  }
+}
+
+.element {
+  animation: spinAndChangeColor 3s linear infinite;
 }
 
 .adminProImg_RemoveButton:hover,
@@ -464,6 +493,46 @@
 
 .show-img {
   visibility: visible;
+}
+
+.adminProEditInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid #ddd;
+  background-color: aliceblue;
+}
+
+.adminProEditInfo__title,
+.adminProEditInfo__meatType {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.adminProEditInfo__title input,
+.adminProEditInfo__meatType select {
+  width: 70%;
+}
+
+.adminProEditInfo__description {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  grid-row: 1 / 3;
+  grid-column: 2 / 3;
+}
+
+.adminProEditInfo__description textarea {
+  width: 100%;
+  height: 100%;
 }
 
 .adminLink__nav__dropdown:hover,
@@ -581,6 +650,10 @@
   width: 90vw;
 }
 
+.addProForm select {
+  font-size: inherit;
+}
+
 .adminOrd {
   max-width: 100%;
   min-width: 100%;
@@ -680,10 +753,8 @@
 }
 
 .adminOrdDis {
+  position: relative;
   border: 1px solid black;
-  left: 0;
-  right: 0;
-  top: 0;
   background-color: aliceblue;
   width: 100%;
   height: auto;
@@ -692,14 +763,25 @@
 }
 
 .adminOrdDis__ButtonTop {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.2rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: flex-end;
 }
 
 .adminOrdDis__ButtonTop button {
-  margin-top: 5px;
-  margin-right: 5px;
-  min-width: 1.5rem;
+  color: var(--LINK-ACTIVE);
+  background-color: unset;
+  border: unset;
+  font-weight: bolder;
+}
+
+.adminOrdDis__ButtonTop button:hover,
+.adminOrdDis__ButtonTop button:focus,
+.adminOrdDis__ButtonTop button:active {
+  animation: spinAndChangeColor 0.5s forwards;
 }
 
 .adminOrdDis__head {
@@ -727,15 +809,14 @@
 
 .product {
   display: grid;
-  grid-template-columns: repeat(3, 33%);
-  gap: 2rem;
+  grid-template-columns: repeat(4, 25%);
   justify-items: center;
   padding: 0 1rem;
+  border-bottom: var(--BORDERS);
 }
 
 .done {
-  grid-template-columns: repeat(2, 50%);
-  gap: 0rem;
+  grid-template-columns: repeat(3, 33%);
 }
 
 .product button {
@@ -789,6 +870,12 @@
 
 .adminOrdDis__ButtonBottom :last-child {
   background-color: red;
+}
+
+.adminOrdDis__total {
+  text-align: end;
+  width: 41.5%;
+  align-self: center;
 }
 
 .adminStats {
@@ -1159,7 +1246,7 @@
   }
 
   .adminProImg {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
   }
 
   .adminMain {
@@ -1208,6 +1295,14 @@
     font-size: 0.5rem;
   }
 
+  .adminOrdDis__ButtonTop {
+    font-size: 1rem;
+  }
+
+  .adminOrdDis__total {
+    width: 41.5%;
+  }
+
   .addProducts {
     width: 100%;
     padding: 0.5rem;
@@ -1218,7 +1313,6 @@
   }
 
   .addProForm {
-    grid-template-columns: repeat(2, 1fr);
     width: 80%;
   }
 
@@ -1303,11 +1397,43 @@
 
   .adminPro__tbody__tr__ChangeConfirme {
     font-size: 0.5rem;
+    grid-column: 1 / 3;
+  }
+
+  .adminProEdit {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.5rem;
+  }
+
+  .adminProEdit h2 {
+    grid-column: 1 / 3;
+  }
+
+  .adminProEditInfo {
+    min-height: 100%;
+  }
+
+  .adminProEditInfo__title {
+    align-items: flex-end;
+  }
+
+  .adminProEditInfo__meatType {
+    align-items: flex-start;
   }
 
   .adminProImg_XButton {
-    left: unset;
-    right: 0.2rem;
+    right: 0.5rem;
+    top: 0.2rem;
+    font-size: 0.6rem;
+  }
+
+  .adminProImgSrc_img {
+    min-height: 3rem;
+    max-height: 3rem;
   }
 
   .ordResize {

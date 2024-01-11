@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
+import Clock from "./Clock";
 
 const AdminProducts = (token) => {
   const [adminPro, setAdminPro] = useState([]);
-  const [showImage, setShowImage] = useState([]); // Use an array to track image visibility for each row
+  const [showEdit, setShowEdit] = useState([]); // Use an array to track image visibility for each row
   const [productsChange, setProductsChange] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [message, setMessage] = useState("");
   const [productDeleteInfo, setProductDeleteInfo] = useState();
+  const [reFetch, setReFetch] = useState(false);
   const fileInputRef = useRef();
 
   const filteredProducts = adminPro.filter((product) =>
@@ -46,14 +48,14 @@ const AdminProducts = (token) => {
   };
 
   const handleClick = (index) => {
-    const initialShowImage = Array(adminPro.length).fill(false);
-    setShowImage(initialShowImage);
-    const newShowImage = [...showImage];
-    newShowImage[index] = !newShowImage[index];
-    setShowImage(newShowImage);
+    const initialShowEdit = Array(adminPro.length).fill(false);
+    setShowEdit(initialShowEdit);
+    const newShowEdit = [...showEdit];
+    newShowEdit[index] = !newShowEdit[index];
+    setShowEdit(newShowEdit);
   };
 
-  const handleProductsChangeSubmit = (id) => {
+  const handleProductsChangeSubmit = (id, index) => {
     console.log(id);
     const formData = new FormData();
 
@@ -67,6 +69,15 @@ const AdminProducts = (token) => {
     }
     if (productsChange[id].image) {
       formData.append("image", productsChange[id].image);
+    }
+    if (productsChange[id].title) {
+      formData.append("title", productsChange[id].title);
+    }
+    if (productsChange[id].meatType) {
+      formData.append("meatType", productsChange[id].meatType);
+    }
+    if (productsChange[id].description) {
+      formData.append("description", productsChange[id].description);
     }
 
     fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
@@ -83,6 +94,8 @@ const AdminProducts = (token) => {
             delete newProductsChange[id];
             return newProductsChange;
           });
+          setReFetch(!reFetch);
+          handleClick(index);
           return response.json();
         }
         setMessage("Error while updating data!");
@@ -151,7 +164,7 @@ const AdminProducts = (token) => {
     };
 
     fetchData();
-  }, [token.token]);
+  }, [token.token, reFetch]);
 
   return (
     <>
@@ -174,16 +187,10 @@ const AdminProducts = (token) => {
           </div>
         )}
         <div className={`message ${message ? "visible" : "hidden"}`}>
-          <button className="messageButton" onClick={() => setMessage("")}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 384 512"
-            >
-              <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-            </svg>
-          </button>
           <p>{message}</p>
+          <button className="messageButton" onClick={() => setMessage("")}>
+            Ok
+          </button>
         </div>
         <h1>Proizvodi</h1>
         <div className="adminProSearch">
@@ -204,7 +211,7 @@ const AdminProducts = (token) => {
             <p>Vrsta mesa</p>
             <p>Cijena / kg</p>
             <p>Na stanju</p>
-            <p>Slika</p>
+            <p></p>
             <p></p>
           </div>
           {filteredProducts.length < 1 ? (
@@ -359,7 +366,7 @@ const AdminProducts = (token) => {
                         className="adminPro__tbody__tr__img"
                         onClick={() => handleClick(index)}
                       >
-                        Slika
+                        Uredi
                       </button>
                     </div>
                     <div>
@@ -376,73 +383,151 @@ const AdminProducts = (token) => {
                       </button>
                     </div>
                   </div>
-                  {showImage[index] && (
-                    <div className="adminProImg">
+                  {showEdit[index] && (
+                    <div className="adminProEdit">
+                      <h2>Uredi Proizvod</h2>
                       <button
                         className="adminProImg_XButton"
                         onClick={() => handleClick(index)}
                       >
                         X
                       </button>
-                      <img
-                        src={product.imgSrc}
-                        alt={product.name}
-                        className="adminProImg_img"
-                      />
-                      <div className="adminProImgSrc">
-                        <div className="adminProImgSrcLabelAndClose">
-                          <label htmlFor="imgSrc">Odaberi novu sliku:</label>
+                      <div className="adminProEditInfo">
+                        <div className="adminProEditInfo__title">
+                          <label htmlFor="title" className="offscreen">
+                            Ime:
+                          </label>
+                          <input
+                            type="text"
+                            name="title"
+                            id="title"
+                            placeholder={product.title}
+                            onChange={(e) =>
+                              handleProductChange(
+                                product._id,
+                                "title",
+                                e.target.value
+                              )
+                            }
+                          ></input>
+                        </div>
+                        <div className="adminProEditInfo__meatType">
+                          <label htmlFor="meatType" className="offscreen">
+                            Vrsta mesa:
+                          </label>
+                          <select
+                            name="meatType"
+                            id="meatType"
+                            onChange={(e) =>
+                              handleProductChange(
+                                product._id,
+                                "meatType",
+                                e.target.value
+                              )
+                            }
+                          >
+                            <option value="svinjetina">svinjetina</option>
+                            <option value="svinjetina mljeveno">
+                              svinjetina mljeveno
+                            </option>
+                            <option value="junetina">junetina</option>
+                            <option value="junetina mljeveno">
+                              junetina mljeveno
+                            </option>
+                            <option value="telecina">teletina</option>
+                            <option value="govedina">govedina</option>
+                            <option value="piletina">piletina</option>
+                            <option value="puretina">puretina</option>
+                            <option value="ostalo">ostalo</option>
+                          </select>
+                        </div>
+                        <div className="adminProEditInfo__description">
+                          <label htmlFor="description" className="offscreen">
+                            Opis:
+                          </label>
+                          <textarea
+                            name="description"
+                            id="description"
+                            placeholder={
+                              product.description
+                                ? product.description
+                                : "Opis..."
+                            }
+                            onChange={(e) =>
+                              handleProductChange(
+                                product._id,
+                                "description",
+                                e.target.value
+                              )
+                            }
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div className="adminProImg">
+                        <img
+                          src={product.imgSrc}
+                          alt={product.name}
+                          className="adminProImg_img"
+                        />
+                        <div className="adminProImgSrc">
+                          <div className="adminProImgSrcLabelAndClose">
+                            <label htmlFor="imgSrc">Odaberi novu sliku:</label>
+                            {productsChange[product._id] &&
+                              productsChange[product._id].image && (
+                                <button
+                                  className="adminProImg_RemoveButton"
+                                  onClick={() => handleClearImage(product._id)}
+                                >
+                                  Ukloni
+                                </button>
+                              )}
+                          </div>
                           {productsChange[product._id] &&
                             productsChange[product._id].image && (
-                              <button
-                                className="adminProImg_RemoveButton"
-                                onClick={() => handleClearImage(product._id)}
-                              >
-                                Ukloni novu sliku
-                              </button>
+                              <img
+                                className="adminProImgSrc_img"
+                                src={
+                                  productsChange[product._id] &&
+                                  productsChange[product._id].image
+                                    ? URL.createObjectURL(
+                                        productsChange[product._id].image
+                                      )
+                                    : ""
+                                }
+                                alt="Nova Slika"
+                              ></img>
                             )}
+                          <input
+                            type="file"
+                            name="imgSrc"
+                            id="imgSrc"
+                            accept="image/*"
+                            onChange={(e) => handleFileChange(e, product._id)}
+                            ref={fileInputRef}
+                            required
+                          />
                         </div>
-                        {productsChange[product._id] &&
-                          productsChange[product._id].image && (
-                            <img
-                              className="adminProImgSrc_img"
-                              src={
-                                productsChange[product._id] &&
-                                productsChange[product._id].image
-                                  ? URL.createObjectURL(
-                                      productsChange[product._id].image
-                                    )
-                                  : ""
-                              }
-                              alt="Nova Slika"
-                            ></img>
-                          )}
-                        <input
-                          type="file"
-                          name="imgSrc"
-                          id="imgSrc"
-                          accept="image/*"
-                          onChange={(e) => handleFileChange(e, product._id)}
-                          ref={fileInputRef}
-                          required
-                        />
                       </div>
-                    </div>
-                  )}
-                  {productsChange[product._id] && (
-                    <div className="adminPro__tbody__tr__ChangeConfirme">
-                      <button
-                        onClick={() => handleProductsChangeSubmit(product._id)}
-                      >
-                        Potvrdi promjene
-                      </button>
+                      {productsChange[product._id] && (
+                        <div className="adminPro__tbody__tr__ChangeConfirme">
+                          <button
+                            onClick={() =>
+                              handleProductsChangeSubmit(product._id, index)
+                            }
+                          >
+                            Potvrdi promjene
+                          </button>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
               ))}
             </div>
           )}
-          <div className="adminPro__tfoot"></div>
+          <div className="adminPro__tfoot">
+            <Clock />
+          </div>
         </div>
       </div>
     </>

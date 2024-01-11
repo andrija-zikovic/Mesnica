@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AdminOrder from "./AdminOrder";
+import Clock from "./Clock";
 
 const AdminOrders = (token) => {
   const [adminOrd, setAdminOrd] = useState([]);
@@ -173,9 +174,9 @@ const AdminOrders = (token) => {
                       className={`adminOrd__tbody_td ${
                         orderData.status
                           ? "status-true"
-                          : !orderData.status
-                          ? "status-false"
-                          : ""
+                          : orderData.status === null
+                          ? ""
+                          : "status-false"
                       }`}
                       tabIndex={0}
                       onKeyPress={(e) => handleKeyPress(e, orderData._id)}
@@ -208,7 +209,7 @@ const AdminOrders = (token) => {
                 ))}
             </div>
             <div className="adminOrd__tfoot">
-              <p>Data</p>
+              <Clock />
             </div>
           </section>
           <div className={`message ${message ? "visible" : "hidden"}`}>

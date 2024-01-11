@@ -27,6 +27,7 @@ const Admin = () => {
 
       if (response.ok) {
         const { accessToken } = await response.json();
+        localStorage.setItem("token", accessToken);
         setToken(accessToken);
         setIsLoggedIn(true); // Set isLoggedIn to true if the response is positive
       } else {
@@ -53,6 +54,7 @@ const Admin = () => {
       });
 
       if (response.ok) {
+        localStorage.removeItem("token");
         setIsLoggedIn(false);
         console.log("Logout successful");
       } else {
@@ -84,8 +86,13 @@ const Admin = () => {
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+      setIsLoggedIn(true);
+    }
 
+    document.addEventListener("click", handleOutsideClick);
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };

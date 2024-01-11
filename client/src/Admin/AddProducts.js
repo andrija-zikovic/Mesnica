@@ -104,14 +104,22 @@ const AddProducts = (token) => {
         <label htmlFor="meatType" className="offscreen">
           Meat type
         </label>
-        <input
-          type="text"
+        <select
           name="meatType"
           id="meatType"
-          placeholder="Vrsta mesa"
           onChange={handleInputChange}
           required
-        />
+        >
+          <option value="svinjetina">svinjetina</option>
+          <option value="svinjetina mljeveno">svinjetina mljeveno</option>
+          <option value="junetina">junetina</option>
+          <option value="junetina mljeveno">junetina mljeveno</option>
+          <option value="telecina">teletina</option>
+          <option value="govedina">govedina</option>
+          <option value="piletina">piletina</option>
+          <option value="puretina">puretina</option>
+          <option value="ostalo">ostalo</option>
+        </select>
         <div className="imgForm">
           <label htmlFor="imgSrc">Dodaj sliku</label>
           <input
