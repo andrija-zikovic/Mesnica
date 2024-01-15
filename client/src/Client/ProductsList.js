@@ -159,7 +159,7 @@ const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
                 title={product.title}
                 price={product.price}
                 handleAmountChange={handleAmountChange}
-                about={product.about}
+                description={product.description}
               />
             ))
         ) : (
@@ -172,6 +172,7 @@ const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
               price={product.price}
               about={product.about}
               handleAmountChange={handleAmountChange}
+              description={product.description}
             />
           ))
         )}

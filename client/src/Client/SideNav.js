@@ -8,7 +8,7 @@ const SideNav = ({ setMeatType }) => {
   return (
     <section className="sideNav">
       <div className="sideNav_h3" onClick={() => handleMeatTypeChange("")}>
-        <h3>Proizvodi</h3>
+        <h3>Products</h3>
       </div>
       <ul className="sideNav__ul">
         <li

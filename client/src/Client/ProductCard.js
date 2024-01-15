@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./ProductCard.css";
 
-const ProductCard = ({ id, src, title, price, handleAmountChange, about }) => {
+const ProductCard = ({
+  id,
+  src,
+  title,
+  price,
+  handleAmountChange,
+  description,
+}) => {
   // Initialize state for input value and selected unit
   const [selectedUnit, setSelectedUnit] = useState("kg");
   const [amount, setAmount] = useState(0);
@@ -68,7 +75,7 @@ const ProductCard = ({ id, src, title, price, handleAmountChange, about }) => {
               </svg>
             </button>
           </div>
-          <p>{about}</p>
+          <p>{description}</p>
         </div>
       )}
       <form id={id} onSubmit={(e) => e.preventDefault()}>
