@@ -269,8 +269,6 @@
   align-items: center;
   padding: 0.5rem 0.5rem;
   font-size: 1rem;
-  border: 1px solid black;
-  background-color: rgba(240, 248, 255, 0.8);
   width: 100%;
 }
 
@@ -366,6 +364,7 @@
   flex-flow: column;
   justify-content: flex-start;
   align-items: center;
+  border-bottom: 1px solid black;
 }
 
 .adminProEdit h2 {
@@ -381,8 +380,6 @@
   max-width: 100%;
   height: auto;
   font-size: 0.8rem;
-  border: 1px solid #ddd;
-  background-color: aliceblue;
 }
 
 .adminProImgSrc {
@@ -502,8 +499,6 @@
   width: 100%;
   max-width: 100%;
   padding: 0.5rem 0.5rem;
-  border: 1px solid #ddd;
-  background-color: aliceblue;
 }
 
 .adminProEditInfo__title,
@@ -695,26 +690,38 @@
   text-align: center;
 }
 
+.status-null {
+  cursor: pointer;
+}
+
+.status-null:hover,
+.status-null:focus,
+.status-null:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .status-true {
-  background-color: rgba(0, 128, 0, 0.574);
+  background-color: rgb(155, 235, 155);
   cursor: pointer;
 }
 
 .status-true:hover,
 .status-true:focus,
 .status-true:active {
-  background-color: rgba(0, 128, 0, 0.8);
+  background-color: unset;
+  background-color: rgba(155, 235, 155, 0.8);
 }
 
 .status-false {
-  background-color: rgba(255, 0, 0, 0.574);
+  background-color: rgb(235, 100, 100);
   cursor: pointer;
 }
 
 .status-false:hover,
 .status-false:focus,
 .status-false:active {
-  background-color: rgba(255, 0, 0, 0.8);
+  background-color: unset;
+  background-color: rgba(235, 100, 100, 0.8);
 }
 
 .adminOrd__thead {
@@ -750,6 +757,15 @@
 
 .adminOrd .adminOrd_td {
   padding: 0;
+}
+
+.adminOrd__tfoot {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  max-height: 5vh;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid black;
 }
 
 .adminOrdDis {

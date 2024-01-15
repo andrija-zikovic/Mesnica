@@ -172,7 +172,7 @@ const AdminProducts = (token) => {
         {productDeleteInfo && (
           <div className="adminPro_delete">
             <p>
-              Jeste li sigurni da zelite izbrisati proizvod{" "}
+              Are you sure that you want to delete{" "}
               <span style={{ fontWeight: "bold", whiteSpace: "nowrap" }}>
                 {productDeleteInfo.title}
               </span>
@@ -180,9 +180,9 @@ const AdminProducts = (token) => {
             </p>
             <div className="adminPro_delete_buttons">
               <button onClick={() => handleProductDelete(productDeleteInfo.id)}>
-                DA
+                YES
               </button>
-              <button onClick={() => setProductDeleteInfo()}>NE</button>
+              <button onClick={() => setProductDeleteInfo()}>NO</button>
             </div>
           </div>
         )}
@@ -192,9 +192,9 @@ const AdminProducts = (token) => {
             Ok
           </button>
         </div>
-        <h1>Proizvodi</h1>
+        <h1>Products</h1>
         <div className="adminProSearch">
-          <label htmlFor="adminProSearchInput">Pretraži : </label>
+          <label htmlFor="adminProSearchInput">Search : </label>
           <input
             type="search"
             id="adminProSearchInput"
@@ -207,10 +207,10 @@ const AdminProducts = (token) => {
         <div className="adminPro__table">
           <div className="adminPro__thead">
             <p></p>
-            <p>Ime</p>
-            <p>Vrsta mesa</p>
-            <p>Cijena / kg</p>
-            <p>Na stanju</p>
+            <p>Name</p>
+            <p>Type</p>
+            <p>Price / kg</p>
+            <p>On storage</p>
             <p></p>
             <p></p>
           </div>
@@ -366,7 +366,7 @@ const AdminProducts = (token) => {
                         className="adminPro__tbody__tr__img"
                         onClick={() => handleClick(index)}
                       >
-                        Uredi
+                        Edit
                       </button>
                     </div>
                     <div>
@@ -385,7 +385,7 @@ const AdminProducts = (token) => {
                   </div>
                   {showEdit[index] && (
                     <div className="adminProEdit">
-                      <h2>Uredi Proizvod</h2>
+                      <h2>Edit Product</h2>
                       <button
                         className="adminProImg_XButton"
                         onClick={() => handleClick(index)}
@@ -395,7 +395,7 @@ const AdminProducts = (token) => {
                       <div className="adminProEditInfo">
                         <div className="adminProEditInfo__title">
                           <label htmlFor="title" className="offscreen">
-                            Ime:
+                            Name:
                           </label>
                           <input
                             type="text"
@@ -413,7 +413,7 @@ const AdminProducts = (token) => {
                         </div>
                         <div className="adminProEditInfo__meatType">
                           <label htmlFor="meatType" className="offscreen">
-                            Vrsta mesa:
+                            Type:
                           </label>
                           <select
                             name="meatType"
@@ -426,24 +426,22 @@ const AdminProducts = (token) => {
                               )
                             }
                           >
-                            <option value="svinjetina">svinjetina</option>
-                            <option value="svinjetina mljeveno">
-                              svinjetina mljeveno
+                            <option value="pork">pork</option>
+                            <option value="ground pork">ground pork</option>
+                            <option value="baby beef">baby beef</option>
+                            <option value="ground baby beef">
+                              ground baby beef
                             </option>
-                            <option value="junetina">junetina</option>
-                            <option value="junetina mljeveno">
-                              junetina mljeveno
-                            </option>
-                            <option value="telecina">teletina</option>
-                            <option value="govedina">govedina</option>
-                            <option value="piletina">piletina</option>
-                            <option value="puretina">puretina</option>
-                            <option value="ostalo">ostalo</option>
+                            <option value="veal">veal</option>
+                            <option value="beef">beef</option>
+                            <option value="chicken">chicken</option>
+                            <option value="turkey">turkey</option>
+                            <option value="other">other</option>
                           </select>
                         </div>
                         <div className="adminProEditInfo__description">
                           <label htmlFor="description" className="offscreen">
-                            Opis:
+                            Description:
                           </label>
                           <textarea
                             name="description"
@@ -471,14 +469,14 @@ const AdminProducts = (token) => {
                         />
                         <div className="adminProImgSrc">
                           <div className="adminProImgSrcLabelAndClose">
-                            <label htmlFor="imgSrc">Odaberi novu sliku:</label>
+                            <label htmlFor="imgSrc">Select new picture:</label>
                             {productsChange[product._id] &&
                               productsChange[product._id].image && (
                                 <button
                                   className="adminProImg_RemoveButton"
                                   onClick={() => handleClearImage(product._id)}
                                 >
-                                  Ukloni
+                                  Remove
                                 </button>
                               )}
                           </div>
@@ -494,7 +492,7 @@ const AdminProducts = (token) => {
                                       )
                                     : ""
                                 }
-                                alt="Nova Slika"
+                                alt="new"
                               ></img>
                             )}
                           <input
@@ -515,7 +513,7 @@ const AdminProducts = (token) => {
                               handleProductsChangeSubmit(product._id, index)
                             }
                           >
-                            Potvrdi promjene
+                            Confirem changes
                           </button>
                         </div>
                       )}

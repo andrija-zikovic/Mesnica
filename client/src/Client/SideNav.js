@@ -13,51 +13,51 @@ const SideNav = ({ setMeatType }) => {
       <ul className="sideNav__ul">
         <li
           className="sideNav__li"
-          onClick={() => handleMeatTypeChange("piletina")}
+          onClick={() => handleMeatTypeChange("chicken")}
         >
-          <p className="sideNav__p">Piletina</p>
+          <p className="sideNav__p">Chicken</p>
         </li>
         <li
           className="sideNav__li"
-          onClick={() => handleMeatTypeChange("svinjetina")}
+          onClick={() => handleMeatTypeChange("pork")}
         >
-          <p className="sideNav__p">Svinjetina</p>
+          <p className="sideNav__p">Pork</p>
         </li>
         <li
           className="sideNav__li"
-          onClick={() => handleMeatTypeChange("junetina")}
+          onClick={() => handleMeatTypeChange("baby beef")}
         >
-          <p className="sideNav__p">Junetina</p>
+          <p className="sideNav__p">Baby beef</p>
         </li>
         <li
           className="sideNav__li"
-          onClick={() => handleMeatTypeChange("govedina")}
+          onClick={() => handleMeatTypeChange("beef")}
         >
-          <p className="sideNav__p">Govedina</p>
+          <p className="sideNav__p">Beef</p>
         </li>
         <li
           className="sideNav__li"
-          onClick={() => handleMeatTypeChange("teletina")}
+          onClick={() => handleMeatTypeChange("veal")}
         >
-          <p className="sideNav__p">Teletina</p>
+          <p className="sideNav__p">Veal</p>
         </li>
         <li
           className="sideNav__li"
-          onClick={() => handleMeatTypeChange("suhomesnato")}
+          onClick={() => handleMeatTypeChange("dried")}
         >
-          <p className="sideNav__p">Suhomesnato</p>
+          <p className="sideNav__p">Dried meat</p>
         </li>
         <li
           className="sideNav__li"
-          onClick={() => handleMeatTypeChange("mljeveno")}
+          onClick={() => handleMeatTypeChange("ground")}
         >
-          <p className="sideNav__p">Mljeveno</p>
+          <p className="sideNav__p">Ground meat</p>
         </li>
         <li
           className="sideNav__li"
-          onClick={() => handleMeatTypeChange("ostalo")}
+          onClick={() => handleMeatTypeChange("other")}
         >
-          <p className="sideNav__p">Ostalo</p>
+          <p className="sideNav__p">Other</p>
         </li>
       </ul>
     </section>

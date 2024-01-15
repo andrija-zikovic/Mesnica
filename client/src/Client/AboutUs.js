@@ -46,86 +46,87 @@ const AboutUs = () => {
   return (
     <main className="aboutUs">
       <section className="aboutUs__section_o-nama">
-        <h2 style={{ whiteSpace: "nowrap" }}>O nama</h2>
+        <h2 style={{ whiteSpace: "nowrap" }}>About Us</h2>
         <article className="aboutUs__article_o-nama">
-          <h3>Dobrodošli u Mesnicu sa Stoljetnom Tradicijom</h3>
+          <h3>Welcome to the Centuries-Old Butcher Shop</h3>
           <p>
-            S ponosom vam predstavljamo našu mesnicu koja s ponosom služi svoju
-            zajednicu od 1923. godine. S više od stoljetnom tradicijom u
-            mesarskom poslu, posvećeni smo pružanju vrhunskih mesnih proizvoda i
-            usluga našim vjernim kupcima.
+            We proudly present our butcher shop, which has been proudly serving
+            its community since 1923. With more than a century-long tradition in
+            the butchery business, we are dedicated to providing top-quality
+            meat products and services to our loyal customers.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">
-          <h3>Naša Misija</h3>
+          <h3>Our Mission</h3>
           <p>
-            Naša misija je pružiti vam najbolje meso i mesne proizvode u gradu.
-            S ponosom smo služili našu zajednicu više od 100 godina, i radujemo
-            se što ćemo nastaviti tradiciju kvalitete i pouzdanosti.
+            Our mission is to provide you with the best meat and meat products
+            in town. We have proudly served our community for over 100 years,
+            and we look forward to continuing the tradition of quality and
+            reliability.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">
-          <h3>Povijest</h3>
+          <h3>History</h3>
           <p>
-            Naša priča započela je prije više od 100 godina, kada je naša
-            osnivačka obitelj prvi put otvorila vrata svoje mesnice. Od tada pa
-            sve do danas, predani smo istoj strasti prema izvrsnosti, kvaliteti
-            i ukusu. Generacije su se naslijedile u poslu, svaka donoseći svoje
-            jedinstvene tehnike i recepte, no jedna stvar ostala je
-            nepromijenjena - naša posvećenost vrhunskoj kvaliteti.
+            Our story began more than 100 years ago, when our founding family
+            first opened the doors of their butcher shop. Since then, we have
+            been committed to the same passion for excellence, quality, and
+            taste. Generations have succeeded in the business, each bringing
+            their unique techniques and recipes, but one thing has remained
+            unchanged - our commitment to top quality.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">
-          <h3>Kvaliteta i Izvrsnost</h3>
+          <h3>Quality and Excellence</h3>
           <p>
-            Naša mesnica temelji se na visokim standardima kvalitete. Surađujemo
-            s lokalnim dobavljačima i biramo samo najbolje sastojke kako bismo
-            osigurali da naši proizvodi uvijek budu svježi i ukusni. Naši mesari
-            su stručnjaci u svom poslu i pažljivo pripremaju svaku porciju mesa
-            kako bi zadovoljili vaše zahtjeve.
+            Our butcher shop is based on high standards of quality. We
+            collaborate with local suppliers and select only the best
+            ingredients to ensure that our products are always fresh and tasty.
+            Our butchers are experts in their field and carefully prepare each
+            cut of meat to meet your demands.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">
-          <h3>Asortiman</h3>
+          <h3>Assortment</h3>
           <p>
-            U našoj mesnici možete pronaći širok asortiman svježeg mesa,
-            delikatesa, kobasica i drugih proizvoda po kojima smo poznati. Od
-            klasičnih rezova mesa do specijalnih marinada i priprema, trudimo se
-            ponuditi vam raznovrsne opcije kako biste zadovoljili svoje potrebe
-            i želje.
+            In our butcher shop, you can find a wide range of fresh meats,
+            delicacies, sausages, and other products for which we are known.
+            From classic meat cuts to special marinades and preparations, we
+            strive to offer you a variety of options to satisfy your needs and
+            desires.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">
-          <h3>Naša Zajednica</h3>
+          <h3>Our Community</h3>
           <p>
-            Zahvalni smo našoj zajednici na dugogodišnjoj podršci. Sve ove
-            godine, vaša podrška motivira nas da budemo još bolji i da nastavimo
-            tradiciju kvalitete i pouzdanosti.
+            We are grateful to our community for their long-standing support.
+            All these years, your support motivates us to be even better and to
+            continue the tradition of quality and reliability.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">
-          <h3>Naši Kupci</h3>
+          <h3>Our Customers</h3>
           <p>
-            Naši kupci su naša najveća vrijednost. Sve što radimo, radimo za
-            vas. Vaše zadovoljstvo je naša najveća nagrada, i radujemo se što
-            ćemo vas i dalje služiti.
+            Our customers are our greatest asset. Everything we do, we do for
+            you. Your satisfaction is our greatest reward, and we look forward
+            to continuing to serve you.
           </p>
         </article>
         <article className="aboutUs__article_o-nama">
-          <h3>Posjetite Nas</h3>
+          <h3>Visit Us</h3>
           <p>
-            Pozivamo vas da nas posjetite i doživite okus tradicije koji pružamo
-            već više od stoljeća. Naša vrata su vam uvijek otvorena, i radujemo
-            se što ćemo vas poslužiti.
+            We invite you to visit us and experience the taste of tradition that
+            we have been providing for over a century. Our doors are always open
+            to you, and we look forward to serving you.
             <br />
-            Hvala vam što ste dio naše priče i tradicije.
+            Thank you for being a part of our story and tradition.
             <br />
-            Vaša Mesnica
+            Your Butcher Shop
           </p>
         </article>
       </section>
       <section className="aboutUs__section_lokacija">
-        <h2>LOKACIJA</h2>
+        <h2>Location</h2>
         <article className="aboutUs__article_lokacija">
           <img
             src={process.env.PUBLIC_URL + "libero-pula897x487.jpg"}
@@ -134,28 +135,28 @@ const AboutUs = () => {
             height="400"
           />
           <address>
-            <p>Šijanska cesta 5</p>
-            <p>52100 Pula</p>
-            <p>Hrvtaska</p>
+            <p>Sample Road 5</p>
+            <p>52100 Sample city</p>
+            <p>Sample state</p>
           </address>
         </article>
       </section>
       <section className="aboutUs__section_contact">
         <article className="aboutUs__article_contact">
-          <h2 style={{ textAlign: "center" }}>Kontaktirajte nas</h2>
+          <h2 style={{ textAlign: "center" }}>Contact Us</h2>
           <form method="post" className="contact__form" onSubmit={handleSubmit}>
             <fieldset className="contact__fieldset">
               <legend className="offscreen">Pošaljite poruku</legend>
               <p className="contact__p">
                 <label className="contact__lable" htmlFor="name">
-                  Ime:
+                  Name:
                 </label>
                 <input
                   className="contact__input"
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Vaše ime.."
+                  placeholder="Your name.."
                   onChange={handleInputChange}
                   required
                 />
@@ -169,14 +170,14 @@ const AboutUs = () => {
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Vaš email.."
+                  placeholder="Your email.."
                   onChange={handleInputChange}
                   required
                 />
               </p>
               <p className="contact__p">
                 <label className="contact__lable" htmlFor="message">
-                  Poruka:
+                  Message:
                 </label>
                 <br />
                 <textarea
@@ -185,17 +186,17 @@ const AboutUs = () => {
                   id="message"
                   cols="30"
                   rows="10"
-                  placeholder="Upišite poruku..."
+                  placeholder="Write message here..."
                   onChange={handleInputChange}
                 ></textarea>
               </p>
             </fieldset>
             <div>
               <button className="contact__button" type="submit">
-                Pošalji
+                Send
               </button>
               <button className="contact__button" type="reset">
-                Očisti
+                Clear
               </button>
             </div>
           </form>

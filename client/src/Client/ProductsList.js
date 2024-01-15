@@ -40,7 +40,7 @@ const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
   }, [meatType]);
 
   if (noProductsCheck) {
-    return <h2 className="noProducts">Nema proizvoda!</h2>;
+    return <h2 className="noProducts">No products!</h2>;
   } else {
     if (host === "home") {
       setLoaded(true);

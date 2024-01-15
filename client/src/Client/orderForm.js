@@ -72,13 +72,13 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
   if (buyStatus) {
     return (
       <main className="buyResOk">
-        <h2>Račun je poslan na vašu email adresu!</h2>
+        <h2>The invoice has been sent to your email address!</h2>
         <br />
-        <h2>Možete platiti odmah ili u poslovnici!</h2>
+        <h2>You can pay now or at the store!</h2>
         <br />
-        <h2>Dobiti će te potvrud na email kad vaša naruđba bude spremna!</h2>
+        <h2>You will receive a confirmation email when your order is ready!</h2>
         <br />
-        <h2>Hvala!</h2>
+        <h2>Thank you!</h2>
       </main>
     );
   } else if (cartItems.length < 1) {
@@ -87,7 +87,7 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
         className="order"
         style={{ alignItems: "center", justifyContent: "center" }}
       >
-        <h2 className="emptyMessage">Vaša košarica je prazna!</h2>
+        <h2 className="emptyMessage">Your cart is empty!</h2>
       </main>
     );
   } else {
@@ -188,21 +188,21 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
               />
               <circle class="spinner_DupU spinner_eUaP" cx="12" cy="21" r="0" />
             </svg>
-            <h1>Šaljem naruđbu!</h1>
+            <h1>Sending!</h1>
           </div>
         )}
         <table className="order__table">
           <thead className="order__thead">
             <tr>
               <th colSpan={4}>
-                <h3 style={{ marginBottom: 0 }}>Košarica</h3>
+                <h3 style={{ marginBottom: 0 }}>Cart</h3>
               </th>
             </tr>
             <tr>
-              <th>Proizvod</th>
-              <th>Cijena</th>
-              <th>Količina</th>
-              <th>Ukupno</th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
               <th></th>
             </tr>
           </thead>
@@ -240,32 +240,10 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
                 colSpan={3}
                 style={{ textAlign: "right", paddingBottom: "0" }}
               >
-                UKUPNO:
+                Total:
               </td>
               <td style={{ paddingBottom: "0" }}>{calculateTotalPrice()} €</td>
               <td style={{ paddingBottom: "0" }}></td>
-            </tr>
-            <tr
-              style={{
-                fontSize: "0.3rem",
-                fontWeight: "normal",
-                borderTop: "none",
-              }}
-            >
-              <td
-                colSpan={3}
-                style={{
-                  textAlign: "right",
-                  paddingTop: "0",
-                  fontWeight: "normal",
-                }}
-              >
-                (1 € = 7.5345 HRK)
-              </td>
-              <td style={{ paddingTop: "0", fontWeight: "normal" }}>
-                {(calculateTotalPrice() * 7.5345).toFixed(2)} kn
-              </td>
-              <td style={{ paddingTop: "0" }}></td>
             </tr>
           </tfoot>
         </table>
@@ -275,7 +253,7 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
           className="buyerInfo"
           onSubmit={handleFormSubmit}
         >
-          <h3 className="buyerInfo_Form">Vaše informacije:</h3>
+          <h3 className="buyerInfo_Form">Your information:</h3>
           <label htmlFor="fname" className="offscreen">
             First Name
           </label>
@@ -356,10 +334,10 @@ const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
 
           <div className="orderButtons">
             <button className="clear" onClick={() => clearCart()}>
-              Očisti
+              Clear
             </button>
             <button className="send" type="submit">
-              Pošalji naruđbu
+              Send
             </button>
           </div>
         </form>

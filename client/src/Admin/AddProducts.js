@@ -61,7 +61,7 @@ const AddProducts = (token) => {
 
   return (
     <section className="addProducts">
-      <h2>Dodaj Proizvod</h2>
+      <h2>Add Product</h2>
       <form id="addProForm" className="addProForm" onSubmit={handleAddSubmit}>
         <label htmlFor="title" className="offscreen">
           Name
@@ -110,18 +110,18 @@ const AddProducts = (token) => {
           onChange={handleInputChange}
           required
         >
-          <option value="svinjetina">svinjetina</option>
-          <option value="svinjetina mljeveno">svinjetina mljeveno</option>
-          <option value="junetina">junetina</option>
-          <option value="junetina mljeveno">junetina mljeveno</option>
-          <option value="telecina">teletina</option>
-          <option value="govedina">govedina</option>
-          <option value="piletina">piletina</option>
-          <option value="puretina">puretina</option>
-          <option value="ostalo">ostalo</option>
+          <option value="pork">pork</option>
+          <option value="ground pork">ground pork</option>
+          <option value="baby beef">baby beef</option>
+          <option value="ground baby beef">ground baby beef</option>
+          <option value="veal">veal</option>
+          <option value="beef">beef</option>
+          <option value="chicken">chicken</option>
+          <option value="turkey">turkey</option>
+          <option value="other">other</option>
         </select>
         <div className="imgForm">
-          <label htmlFor="imgSrc">Dodaj sliku</label>
+          <label htmlFor="imgSrc">Add picture</label>
           <input
             type="file"
             name="imgSrc"
@@ -145,7 +145,7 @@ const AddProducts = (token) => {
 
         <div className="addButton">
           <button className="add" type="submit">
-            DODAJ
+            ADD
           </button>
         </div>
       </form>

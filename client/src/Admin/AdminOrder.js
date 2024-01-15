@@ -133,26 +133,26 @@ const AdminOrder = ({
             ) : null}
           </div>
         ))}
-        <p className="adminOrdDis__total">Ukupno: {orderData.total} €</p>
+        <p className="adminOrdDis__total">Total: {orderData.total} €</p>
       </div>
       {orderStatus === true ? (
         <p
           style={{ fontWeight: "bold", backgroundColor: "var(--HERO-BGCOLOR)" }}
           className="adminOrdDis_message"
         >
-          Naruđba potvrđena!
+          Order Confirmed!
         </p>
       ) : orderStatus === false ? (
         <p
           style={{ fontWeight: "bold", backgroundColor: "var(--BGCOLOR-FADE)" }}
           className="adminOrdDis_message"
         >
-          Naruđba odbijena!
+          Order Rejected!
         </p>
       ) : (
         <div className="adminOrdDis__ButtonBottom">
-          <button onClick={handleConfirme}>Potvrid</button>
-          <button onClick={handleReject}>Odbaci</button>
+          <button onClick={handleConfirme}>Confirm</button>
+          <button onClick={handleReject}>Reject</button>
         </div>
       )}
     </div>

@@ -132,7 +132,7 @@ const Client = () => {
   return (
     <div className="client">
       <div className="client_top" ref={referenceElement}>
-        <Header title={"Mesnica"} />
+        <Header title={"Bucher shop"} />
         <Nav
           cartItems={cartItems}
           setCartItems={setCartItems}

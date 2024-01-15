@@ -82,7 +82,7 @@ const AdminStats = (token) => {
           labels: labels,
           datasets: [
             {
-              label: "Promet po danu",
+              label: "Revenue by day",
               data: data,
               backgroundColor: colors,
               borderColor: "rgba(75, 192, 192, 1)",
@@ -156,18 +156,18 @@ const AdminStats = (token) => {
       };
     } else if (statsRevenu === "mjesec") {
       const monthNames = [
-        "siječanj",
-        "veljača",
-        "ožujak",
-        "travanj",
-        "svibanj",
-        "lipanj",
-        "srpanj",
-        "kolovoz",
-        "rujan",
-        "listopad",
-        "studeni",
-        "prosinac",
+        "january",
+        "february",
+        "march",
+        "april",
+        "may",
+        "june",
+        "july",
+        "august",
+        "september",
+        "october",
+        "november",
+        "december",
       ];
 
       const revenueByMonth = adminOrd.reduce((acc, order) => {
@@ -188,7 +188,7 @@ const AdminStats = (token) => {
           labels: labels,
           datasets: [
             {
-              label: "Promet po mjesecu",
+              label: "Revenue by month",
               data: data,
               backgroundColor: colors,
               borderColor: "rgba(75, 192, 192, 1)",
@@ -277,7 +277,7 @@ const AdminStats = (token) => {
           labels: labels,
           datasets: [
             {
-              label: "Promet po godini",
+              label: "Revenue by year",
               data: data,
               backgroundColor: colors,
               borderColor: "rgba(75, 192, 192, 1)",
@@ -405,16 +405,16 @@ const AdminStats = (token) => {
 
   return (
     <div className="adminStats">
-      <h1>Statistika</h1>
+      <h1>Statistics</h1>
       <div className="adminStats__grid">
         {statsRevenu === "day" ? (
           <div className="adminStats__revenueByDay">
-            <h2>Promet po danu</h2>
+            <h2>Revenue by day</h2>
             <div className="adminStats__revenueByDay__controls">
               <div className="adminStats__buttons">
-                <button onClick={() => setStatsRevenu("day")}>Dan</button>
-                <button onClick={() => setStatsRevenu("mjesec")}>Mjesec</button>
-                <button onClick={() => setStatsRevenu("godina")}>Godina</button>
+                <button onClick={() => setStatsRevenu("day")}>Day</button>
+                <button onClick={() => setStatsRevenu("mjesec")}>Mounth</button>
+                <button onClick={() => setStatsRevenu("godina")}>Year</button>
               </div>
               <div className="adminStats__revenueByDay__buttons">
                 <button onClick={() => setChartType("bar")}>
@@ -440,12 +440,12 @@ const AdminStats = (token) => {
           </div>
         ) : statsRevenu === "mjesec" ? (
           <div className="adminStats__revenueByMonth">
-            <h2>Promet po mjesecu</h2>
+            <h2>Revenue by mounth</h2>
             <div className="adminStats__revenueByMonth__controls">
               <div className="adminStats__buttons">
-                <button onClick={() => setStatsRevenu("day")}>Dan</button>
-                <button onClick={() => setStatsRevenu("mjesec")}>Mjesec</button>
-                <button onClick={() => setStatsRevenu("godina")}>Godina</button>
+                <button onClick={() => setStatsRevenu("day")}>Day</button>
+                <button onClick={() => setStatsRevenu("mjesec")}>Mounth</button>
+                <button onClick={() => setStatsRevenu("godina")}>Year</button>
               </div>
               <div className="adminStats__revenueByMonth__buttons">
                 <button onClick={() => setChartType("bar")}>
@@ -471,12 +471,12 @@ const AdminStats = (token) => {
           </div>
         ) : statsRevenu === "godina" ? (
           <div className="adminStats__revenueByYear">
-            <h2>Promet po godini</h2>
+            <h2>Revenue by year</h2>
             <div className="adminStats__revenueByYear__controls">
               <div className="adminStats__buttons">
-                <button onClick={() => setStatsRevenu("day")}>Dan</button>
-                <button onClick={() => setStatsRevenu("mjesec")}>Mjesec</button>
-                <button onClick={() => setStatsRevenu("godina")}>Godina</button>
+                <button onClick={() => setStatsRevenu("day")}>Day</button>
+                <button onClick={() => setStatsRevenu("mjesec")}>Mounth</button>
+                <button onClick={() => setStatsRevenu("godina")}>Year</button>
               </div>
               <div className="adminStats__revenueByYear__buttons">
                 <button onClick={() => setChartType("bar")}>
@@ -502,10 +502,10 @@ const AdminStats = (token) => {
           </div>
         ) : null}
         <div className="adminStats__productsSales">
-          <h2>Proizvodi</h2>
+          <h2>Products</h2>
           <div className="adminsStats__productsSales__sortControls">
             <div className="adminStats__prductsSales__buttons">
-              <span class="info-label">Sortiraj po količini (kg)</span>
+              <span class="info-label">Sort by amount (kg)</span>
               {productsSort === "quantityUp" ? (
                 <button
                   onClick={() => setProductsSort("quantityDown")}
@@ -540,7 +540,7 @@ const AdminStats = (token) => {
                   </svg>
                 </button>
               )}
-              <span class="info-label">Sortiraj po prodaji (€)</span>
+              <span class="info-label">Sort by revenue (€)</span>
               {productsSort === "revenueUp" ? (
                 <button
                   onClick={() => setProductsSort("revenueDown")}

@@ -154,14 +154,14 @@ const AdminOrders = (token) => {
       ) : (
         <div className="adminOrd">
           <div className="adminOrd__title">
-            <h1>Naruđbe</h1>
+            <h1>Orders</h1>
           </div>
           <section className="adminOrd__table">
             <div className="adminOrd__thead">
-              <p>Broj</p>
-              <p>Vrijeme</p>
-              <p>Kupac</p>
-              <p>Datum</p>
+              <p>Num</p>
+              <p>Time</p>
+              <p>Buyer</p>
+              <p>Date</p>
             </div>
             <div className="adminOrd__tbody">
               {adminOrd
@@ -175,7 +175,7 @@ const AdminOrders = (token) => {
                         orderData.status
                           ? "status-true"
                           : orderData.status === null
-                          ? ""
+                          ? "status-null"
                           : "status-false"
                       }`}
                       tabIndex={0}

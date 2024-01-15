@@ -34,20 +34,20 @@ const Bucket = React.forwardRef((props, ref) => {
   if (cartItems.length < 1) {
     return (
       <section className="bucket" ref={ref}>
-        <p style={{ textAlign: "center" }}>Vaša košarica je prazna!</p>
+        <p style={{ textAlign: "center" }}>Your cart is empty!</p>
       </section>
     );
   } else {
     return (
       <section className="bucket" ref={ref}>
-        <h1>Košarica</h1>
+        <h1>Cart</h1>
         <table className="bucket__table">
           <thead className="bucket__thead">
             <tr>
               <th></th>
-              <th>Proizvod</th>
-              <th>Količina</th>
-              <th>Cijena</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
               <th></th>
             </tr>
           </thead>
@@ -80,7 +80,7 @@ const Bucket = React.forwardRef((props, ref) => {
           <tfoot className="bucket__tfoot">
             <tr>
               <td></td>
-              <td colSpan={2}>UKUPNO:</td>
+              <td colSpan={2}>TOTAL:</td>
               <td
                 style={{
                   fontWeight: "bolder",
@@ -96,10 +96,10 @@ const Bucket = React.forwardRef((props, ref) => {
 
         <div className="orderSendClear">
           <button className="clear" onClick={() => handleClearCart()}>
-            OČISTI
+            CLEAR
           </button>
           <button className="send" onClick={() => handleViaLink()}>
-            NARUČI
+            ORDER
           </button>
         </div>
       </section>

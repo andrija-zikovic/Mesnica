@@ -144,7 +144,7 @@ const Admin = () => {
                 ref={dropdownRef}
                 tabIndex={0}
               >
-                Proizvodi
+                Products
               </div>
               <div
                 className={`dropdown ${isDropdownOpen ? "visible" : ""}`}
@@ -152,17 +152,17 @@ const Admin = () => {
                 aria-haspopup={true}
               >
                 <div className="dropdown__li">
-                  <Link to="/admin">Lista</Link>
+                  <Link to="/admin">List</Link>
                 </div>
                 <div className="dropdown__li">
-                  <Link to="addProduct">Dodaj</Link>
+                  <Link to="addProduct">Add</Link>
                 </div>
               </div>
               <div className="adminLink__nav">
-                <Link to="adminorders">Naruđbe</Link>
+                <Link to="adminorders">Orders</Link>
               </div>
               <div className="adminLink__nav">
-                <Link to="adminstats">Statistika</Link>
+                <Link to="adminstats">Stats</Link>
               </div>
               <div
                 className="adminLink__nav_logOut"

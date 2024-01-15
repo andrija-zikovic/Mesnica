@@ -68,13 +68,7 @@ const ProductCard = ({ id, src, title, price, handleAmountChange, about }) => {
               </svg>
             </button>
           </div>
-          <p>
-            Mljeveno meso marke Mesnica, 100% juneće, 500g. Meso je mljeveno od
-            mesa iz buta, bez dodataka. Meso je mljeveno od mesa iz buta, bez
-            dodataka. Meso je mljeveno od mesa iz buta, bez dodataka. Meso je
-            mljeveno od mesa iz buta, bez dodataka. Meso je mljeveno od mesa iz
-            buta, bez dodataka. Meso je mljeveno od mesa iz buta,
-          </p>
+          <p>{about}</p>
         </div>
       )}
       <form id={id} onSubmit={(e) => e.preventDefault()}>

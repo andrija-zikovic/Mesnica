@@ -20,10 +20,10 @@ const Nav = React.forwardRef((props, ref) => {
             <Link to="/">Home</Link>
           </li>
           <li className="link__nav">
-            <Link to="/products">Proizvodi</Link>
+            <Link to="/products">Products</Link>
           </li>
           <li className="link__nav">
-            <Link to="/about-us">O nama</Link>
+            <Link to="/about-us">About us</Link>
           </li>
           <li className="nav_bucket" onClick={toggleBucketVisibility}>
             <svg
