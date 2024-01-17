@@ -103,7 +103,7 @@ ${bankAcc}
 HR04
 123456879-123456
 COST
-RAČUN BR ${nextInvoiceNumber}
+INVOICE NUM ${nextInvoiceNumber}
 }
 ```
 
