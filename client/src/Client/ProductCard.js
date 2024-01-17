@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
 import "./ProductCard.css";
+import { useContext, useEffect, useState } from "react";
+import DataClient from "../context/DataClient";
 
-const ProductCard = ({
-  id,
-  src,
-  title,
-  price,
-  handleAmountChange,
-  description,
-}) => {
-  // Initialize state for input value and selected unit
+const ProductCard = ({ id, src, title, price, description }) => {
+  const { handleAmountChange } = useContext(DataClient);
   const [selectedUnit, setSelectedUnit] = useState("kg");
   const [amount, setAmount] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);

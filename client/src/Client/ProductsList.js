@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
 import "./ProductsList.css";
 import ProductCard from "./ProductCard";
+import { useContext, useEffect } from "react";
+import DataClient from "../context/DataClient";
 
-const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
-  const [noProductsCheck, setNoProductsCheck] = useState(false);
-  const [products, setProducts] = useState([]);
+const ProductList = ({ host, meatType }) => {
+  const {
+    setNoProductsCheck,
+    noProductsCheck,
+    setLoaded,
+    setProducts,
+    products,
+  } = useContext(DataClient);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -158,7 +164,6 @@ const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
                 src={product.imgSrc}
                 title={product.title}
                 price={product.price}
-                handleAmountChange={handleAmountChange}
                 description={product.description}
               />
             ))
@@ -171,7 +176,6 @@ const ProductList = ({ handleAmountChange, meatType, host, setLoaded }) => {
               title={product.title}
               price={product.price}
               about={product.about}
-              handleAmountChange={handleAmountChange}
               description={product.description}
             />
           ))

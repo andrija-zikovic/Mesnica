@@ -1,45 +1,26 @@
-import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
+import DataClient from "../context/DataClient";
 
-const Bucket = React.forwardRef((props, ref) => {
-  const { cartItems, deleteItem, clearCart, toggleBucketVisibility } = props;
-  const navigate = useNavigate();
-  // Calculate the total price based on selectedUnit
-  const calculateTotalPrice = () => {
-    const totalPrice = cartItems.reduce((total, cartItem) => {
-      return total + handlePriceCaluclation(cartItem);
-    }, 0);
-
-    return totalPrice.toFixed(2); // Rounds to two decimal places
-  };
-
-  const handleViaLink = () => {
-    toggleBucketVisibility();
-    navigate("/order");
-  };
-
-  const handlePriceCaluclation = (cartItem) => {
-    if (cartItem.unit === "dag") {
-      return cartItem.quantity * cartItem.price;
-    } else {
-      return cartItem.quantity * cartItem.price;
-    }
-  };
-
-  const handleClearCart = () => {
-    clearCart();
-    toggleBucketVisibility();
-  };
+const Bucket = React.forwardRef(() => {
+  const {
+    cartItems,
+    targetElement,
+    handlePriceCaluclation,
+    deleteItem,
+    calculateTotalPrice,
+    handleClearCart,
+    handleViaLink,
+  } = useContext(DataClient);
 
   if (cartItems.length < 1) {
     return (
-      <section className="bucket" ref={ref}>
+      <section className="bucket" ref={targetElement}>
         <p style={{ textAlign: "center" }}>Your cart is empty!</p>
       </section>
     );
   } else {
     return (
-      <section className="bucket" ref={ref}>
+      <section className="bucket" ref={targetElement}>
         <h1>Cart</h1>
         <table className="bucket__table">
           <thead className="bucket__thead">
