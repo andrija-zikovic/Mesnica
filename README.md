@@ -17,7 +17,7 @@
 12. [orderForm.js](#12-orderformjs)
 13. [Footer.js](#13-footerjs)
 
-- ### [Admin](#admin)
+- ### [Admin](#admin-1)
 
   1. [Admin.js](#1-adminjs)
   2. [AdminLogIn.js](#2-adminloginjs)
