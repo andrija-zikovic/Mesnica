@@ -1,7 +1,7 @@
 # [Meat Web Shop](https://mesnica02.oa.r.appspot.com/)
 
 - ## [Frontend](#frontend-development-with-react)
-  - ### [Client](#client-side)
+- ### [Client](#client-side)
 
 1. [Client.js](#1-clientjs)
 2. [Nav.js](#2-navjs)
