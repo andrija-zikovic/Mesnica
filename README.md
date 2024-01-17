@@ -1,15 +1,7 @@
 # [Meat Web Shop](https://mesnica02.oa.r.appspot.com/)
 
 - ## [Frontend](#frontend-development-with-react)
-- ### [Client](#client-side)
-
-The first framework for **Node.js** that I got acquainted with is **express**, in this project I use it to define URL routes.
-
-After creating the first routes, I had to define a credentials middleware so I could define which URL
-has access to this server. For this, I created two files, one in which I define the list of URLs that will
-have access, and the other is middleware that checks whether the URL from which the request is coming is in the list of URLs
-and gives permission to send credentials. After that, I use "**cors**" which also checks whether the URL has
-permission to send requests.
+  - ### [Client](#client-side)
 
 1. [Client.js](#1-clientjs)
 2. [Nav.js](#2-navjs)
