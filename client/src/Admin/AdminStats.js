@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
+import DataAdmin from "../context/DataAdmin";
 import {
   Chart,
   BarElement,
@@ -30,7 +31,8 @@ Chart.register(
   Legend
 );
 
-const AdminStats = (token) => {
+const AdminStats = () => {
+  const { token } = useContext(DataAdmin);
   const [adminOrd, setAdminOrd] = useState([]);
   const dayChartRef = useRef(null);
   const monthChartRef = useRef(null);

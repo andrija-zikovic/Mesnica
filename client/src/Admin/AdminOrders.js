@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import DataAdmin from "../context/DataAdmin";
 import AdminOrder from "./AdminOrder";
 import Clock from "./Clock";
 
-const AdminOrders = (token) => {
+const AdminOrders = () => {
+  const { token } = useContext(DataAdmin);
   const [adminOrd, setAdminOrd] = useState([]);
   const [shouldRefetch, setShouldRefetch] = useState(true);
   const [message, setMessage] = useState("");
@@ -202,7 +204,6 @@ const AdminOrders = (token) => {
                         toggleVisibility={() => toggleVisibility(orderData._id)}
                         setMessage={setMessage}
                         setShouldRefetch={setShouldRefetch}
-                        token={token}
                       />
                     )}
                   </React.Fragment>

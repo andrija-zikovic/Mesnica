@@ -13,6 +13,7 @@ const ProductList = ({ meatType, host, setLoaded }) => {
         try {
           const baseUrl = process.env.REACT_APP_PRODUCTS_CALL_API;
           const url = `${baseUrl}/${meatType}`;
+          console.log(url);
 
           const res = await fetch(url);
           if (!res.ok) {

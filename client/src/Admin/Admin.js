@@ -1,126 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useContext } from "react";
+import DataAdmin from "../context/DataAdmin";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
 import AdminLogIn from "./AdminLogIn";
 import AdminOrders from "./AdminOrders";
 import AdminProducts from "./AdminProducts";
 import AdminStats from "./AdminStats";
 import AddProducts from "./AddProducts";
 import "./Admin.css";
-import { Link, Outlet, Route, Routes } from "react-router-dom";
 
 const Admin = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [token, setToken] = useState("");
-  const dropdownRef = useRef(null);
-  const [message, setMessage] = useState("");
-
-  const handleLogin = async (username, password) => {
-    try {
-      const url = process.env.REACT_APP_LOGIN;
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        const { accessToken } = await response.json();
-        localStorage.setItem("token", accessToken);
-        setToken(accessToken);
-        setIsLoggedIn(true); // Set isLoggedIn to true if the response is positive
-      } else {
-        // Handle authentication failure, show error message, etc.
-        const errorResponse = await response.json();
-        setMessage(errorResponse.error);
-        console.error("Authentication failed");
-      }
-    } catch (error) {
-      // Handle network errors, server errors, etc.
-      console.error("Error occurred during login:", error);
-    }
-  };
-
-  const logOut = async () => {
-    try {
-      const url = process.env.REACT_APP_LOGOUT;
-      const response = await fetch(url, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.ok) {
-        localStorage.removeItem("token");
-        setIsLoggedIn(false);
-        console.log("Logout successful");
-      } else {
-        console.error("Logout failed");
-      }
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const handleOutsideClick = (e) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-      setIsDropdownOpen(false);
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      if (e.target.className === "link__nav_logOut") {
-        logOut();
-      } else if (e.target.className === "link__nav__dropdown") {
-        toggleDropdown();
-      }
-    }
-  };
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-      setIsLoggedIn(true);
-    }
-
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
-
-  /*  const refreshTokens = async () => {
-        try {
-          const refreshResponse = await fetch(process.env.REACT_APP_REFRESH, {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-      
-          if (refreshResponse.ok) {
-            setIsLoggedIn(true);
-            console.log('Tokens refreshed successfully');
-          } else {
-            // Handle refresh failure
-            setIsLoggedIn(false);
-            console.error('Token refresh failed');
-          }
-        } catch (error) {
-          // Handle network errors, server errors, etc.
-          console.error('Error occurred during token refresh:', error);
-        }
-      }; */
+  const {
+    isLoggedIn,
+    isDropdownOpen,
+    toggleDropdown,
+    dropdownRef,
+    message,
+    logOut,
+    handleKeyPress,
+  } = useContext(DataAdmin);
 
   return (
     <main className="adminMain">
@@ -129,7 +26,7 @@ const Admin = () => {
           <h3 style={{ marginBottom: 0, color: "var(--LINK-ACTIVE)" }}>
             Log in:
           </h3>
-          <AdminLogIn handleLogin={handleLogin} />
+          <AdminLogIn />
           {message && <p style={{ color: "red" }}>{message}</p>}
           <p>username: admin | password: admin</p>
         </section>
@@ -175,13 +72,10 @@ const Admin = () => {
             </div>
           </div>
           <Routes>
-            <Route path="/" element={<AdminProducts token={token} />} />
-            <Route
-              path="/adminorders"
-              element={<AdminOrders token={token} />}
-            />
-            <Route path="/adminstats" element={<AdminStats token={token} />} />
-            <Route path="/addproduct" element={<AddProducts token={token} />} />
+            <Route path="/" element={<AdminProducts />} />
+            <Route path="/adminorders" element={<AdminOrders />} />
+            <Route path="/adminstats" element={<AdminStats />} />
+            <Route path="/addproduct" element={<AddProducts />} />
           </Routes>
           <Outlet />
         </>

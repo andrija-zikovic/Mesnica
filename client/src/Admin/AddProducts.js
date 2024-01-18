@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import DataAdmin from "../context/DataAdmin";
 
-const AddProducts = (token) => {
+const AddProducts = () => {
+  const { token } = useContext(DataAdmin);
   const [message, setMessage] = useState("");
 
   const [productInfo, setProductInfo] = useState({

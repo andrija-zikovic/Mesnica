@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import DataAdmin from "../context/DataAdmin";
 
 const AdminOrder = ({
   orderData,
   toggleVisibility,
   setMessage,
   setShouldRefetch,
-  token,
 }) => {
+  const { token } = useContext(DataAdmin);
   const { _id, buyer, date, num, products, status } = orderData;
 
   const [orderStatus, setOrderStatus] = useState(status);

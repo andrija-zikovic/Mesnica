@@ -3,6 +3,7 @@ import Client from "./Client/Client";
 import Admin from "./Admin/Admin";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DataClientProvider } from "./context/DataClient";
+import { DataAdminProvider } from "./context/DataAdmin";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
             </DataClientProvider>
           }
         />
-        <Route path="admin/*" element={<Admin />} />
+        <Route
+          path="admin/*"
+          element={
+            <DataAdminProvider>
+              <Admin />
+            </DataAdminProvider>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

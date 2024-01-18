@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState, useContext } from "react";
+import DataAdmin from "../context/DataAdmin";
 
-const AdminLogIn = ({handleLogin}) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const AdminLogIn = () => {
+  const { handleLogin } = useContext(DataAdmin);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,24 +12,26 @@ const AdminLogIn = ({handleLogin}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='adminLogIn'>
+    <form onSubmit={handleSubmit} className="adminLogIn">
       <input
         type="text"
         placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        className='adminLogIn_username'
+        className="adminLogIn_username"
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className='adminLogIn_password'
+        className="adminLogIn_password"
       />
-      <button type="submit" className='adminLogIn_submit'>Login</button>
+      <button type="submit" className="adminLogIn_submit">
+        Login
+      </button>
     </form>
   );
-}
+};
 
 export default AdminLogIn;

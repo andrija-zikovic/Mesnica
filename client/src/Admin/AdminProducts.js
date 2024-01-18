@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
+import DataAdmin from "../context/DataAdmin";
 import Clock from "./Clock";
 
-const AdminProducts = (token) => {
+const AdminProducts = () => {
+  const { token } = useContext(DataAdmin);
   const [adminPro, setAdminPro] = useState([]);
   const [showEdit, setShowEdit] = useState([]); // Use an array to track image visibility for each row
   const [productsChange, setProductsChange] = useState({});
