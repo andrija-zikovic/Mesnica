@@ -85,7 +85,7 @@ const AdminProducts = () => {
     fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${token.token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: formData,
     })
@@ -117,7 +117,7 @@ const AdminProducts = () => {
     fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token.token}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ id: id }),
@@ -151,7 +151,7 @@ const AdminProducts = () => {
       try {
         const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
           headers: {
-            Authorization: `Bearer ${token.token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         if (!res.ok) {
@@ -166,7 +166,7 @@ const AdminProducts = () => {
     };
 
     fetchData();
-  }, [token.token, reFetch]);
+  }, [token, reFetch]);
 
   return (
     <>

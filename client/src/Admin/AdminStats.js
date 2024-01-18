@@ -48,7 +48,7 @@ const AdminStats = () => {
         const res = await fetch(process.env.REACT_APP_ADMIN_GET_ORDERS, {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token.token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         if (!res.ok) {

@@ -30,7 +30,7 @@ const AdminOrders = () => {
         const res = await fetch(process.env.REACT_APP_ADMIN_GET_ORDERS, {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${token.token}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         if (!res.ok) {
@@ -214,10 +214,10 @@ const AdminOrders = () => {
             </div>
           </section>
           <div className={`message ${message ? "visible" : "hidden"}`}>
-            <button className="messageButton" onClick={() => setMessage("")}>
-              X
-            </button>
             <p>{message}</p>
+            <button className="messageButton" onClick={() => setMessage("")}>
+              Ok
+            </button>
           </div>
         </div>
       )}

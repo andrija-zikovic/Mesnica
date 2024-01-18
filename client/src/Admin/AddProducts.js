@@ -28,7 +28,7 @@ const AddProducts = () => {
       const req = await fetch(url, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token.token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: formData,
       });

@@ -28,7 +28,7 @@ const AdminOrder = ({
       const response = await fetch(process.env.REACT_APP_ADMIN_ORDER_CONFIRM, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token.token}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ _id: _id }),
@@ -57,7 +57,7 @@ const AdminOrder = ({
       const response = await fetch(process.env.REACT_APP_ADMIN_ORDER_REJECT, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token.token}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ _id: _id }),
