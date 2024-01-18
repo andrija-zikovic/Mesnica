@@ -232,8 +232,12 @@ table {
 
 @media screen and (min-width: 768px) {
   .bucket {
-    width: 15rem;
+    width: 20rem;
     font-size: 0.5rem;
+  }
+
+  .bucket p {
+    font-size: 0.8rem;
   }
 
   .clear,

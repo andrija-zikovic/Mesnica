@@ -1,16 +1,10 @@
+import React, { useEffect, useState } from "react";
 import "./ProductsList.css";
 import ProductCard from "./ProductCard";
-import { useContext, useEffect } from "react";
-import DataClient from "../context/DataClient";
 
-const ProductList = ({ host, meatType }) => {
-  const {
-    setNoProductsCheck,
-    noProductsCheck,
-    setLoaded,
-    setProducts,
-    products,
-  } = useContext(DataClient);
+const ProductList = ({ meatType, host, setLoaded }) => {
+  const [noProductsCheck, setNoProductsCheck] = useState(false);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,12 +39,15 @@ const ProductList = ({ host, meatType }) => {
     fetchData();
   }, [meatType]);
 
-  if (noProductsCheck) {
-    return <h2 className="noProducts">No products!</h2>;
-  } else {
+  useEffect(() => {
     if (host === "home") {
       setLoaded(true);
     }
+  }, [host, products, setLoaded]);
+
+  if (noProductsCheck) {
+    return <h2 className="noProducts">No products!</h2>;
+  } else {
     return (
       <section className={`${host === "home" ? "homeList" : "products-list"}`}>
         {products.length < 1 ? (

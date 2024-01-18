@@ -1,27 +1,9 @@
 import { createContext, useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 
 const DataClient = createContext({});
 
 export const DataClientProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: "650ab10d30663028f708db34",
-      description: "Svinjska lopatica",
-      price: 4.19,
-      "tax-rate": 5,
-      quantity: 0.7,
-      unit: "dag",
-    },
-    {
-      id: "650ab19d30663028f708db36",
-      description: "Čevapčići",
-      price: 7.69,
-      "tax-rate": 5,
-      quantity: 1.2,
-      unit: "kg",
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
   const deleteItem = (itemId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
@@ -94,6 +76,7 @@ export const DataClientProvider = ({ children }) => {
 
   const referenceElement = useRef(null);
   const targetElement = useRef(null);
+
   const [bucketVisibleCheck, setBucketVisibleCheck] = useState(false);
 
   useEffect(() => {
@@ -121,7 +104,7 @@ export const DataClientProvider = ({ children }) => {
         resizeObserver.disconnect();
       };
     }
-  }, [bucketVisibleCheck]);
+  }, [bucketVisibleCheck, referenceElement, targetElement]);
 
   const [isBucketVisible, setIsBucketVisible] = useState(false);
 
@@ -130,42 +113,26 @@ export const DataClientProvider = ({ children }) => {
     setBucketVisibleCheck((prevState) => !prevState);
   };
 
-  const calculateTotalPrice = () => {
-    const totalPrice = cartItems.reduce((total, cartItem) => {
-      return total + handlePriceCaluclation(cartItem);
-    }, 0);
-
-    return totalPrice.toFixed(2); // Rounds to two decimal places
-  };
-
-  const navigate = useNavigate();
-
-  const handleViaLink = () => {
-    toggleBucketVisibility();
-    navigate("/order");
-  };
-
-  const handlePriceCaluclation = (cartItem) => {
-    if (cartItem.unit === "dag") {
-      return cartItem.quantity * cartItem.price;
-    } else {
-      return cartItem.quantity * cartItem.price;
-    }
-  };
-
-  const handleClearCart = () => {
-    clearCart();
-    toggleBucketVisibility();
-  };
-
-  /* HOME */
-  const [loaded, setLoaded] = useState(false);
-
-  /* PRODUCT LIST */
-  const [noProductsCheck, setNoProductsCheck] = useState(false);
-  const [products, setProducts] = useState([]);
-
-  return <DataClient.Provider value={{}}>{children}</DataClient.Provider>;
+  return (
+    <DataClient.Provider
+      value={{
+        cartItems,
+        setCartItems,
+        deleteItem,
+        clearCart,
+        handleAmountChange,
+        referenceElement,
+        targetElement,
+        bucketVisibleCheck,
+        setBucketVisibleCheck,
+        isBucketVisible,
+        setIsBucketVisible,
+        toggleBucketVisibility,
+      }}
+    >
+      {children}
+    </DataClient.Provider>
+  );
 };
 
 export default DataClient;

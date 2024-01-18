@@ -3,7 +3,7 @@ import SideNav from "./SideNav";
 import ProductsList from "./ProductsList";
 import "./Products.css";
 
-const Products = () => {
+const Products = ({ setLoaded }) => {
   const [meatType, setMeatType] = useState("");
   return (
     <main className="products">

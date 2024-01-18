@@ -28,7 +28,7 @@
 .about_article h2,
 .about_location h2 {
   width: 100%;
-  font-size: 2.8em;
+  font-size: 2em;
   margin: auto;
   margin-bottom: 10px;
   text-shadow: 2px 2px 5px var(--BGCOLOR-FADE);
@@ -48,23 +48,15 @@
 
 .about_location address {
   margin-top: 10px;
-  font-size: 2rem;
+  font-size: 1em;
   font-family: var(--FF);
 }
 
-@media screen and (min-width: 576px) {
-  .about h2,
-  .about p {
-    font-size: 1.2rem;
-  }
-}
-
 @media screen and (min-width: 768px) {
-  .about h2,
-  .about p {
-    font-size: 0.8rem;
+  .about h2 {
+    font-size: 1.5em;
   }
-}
-
-@media screen and (min-width: 992px) {
+  .about p {
+    font-size: 0.8em;
+  }
 }

@@ -1,12 +1,10 @@
+import { Link, Outlet } from "react-router-dom";
 import React, { useContext } from "react";
 import DataClient from "../context/DataClient";
 import "./Nav.css";
-import { Link, Outlet } from "react-router-dom";
-import Bucket from "./Bucket";
 
-const Nav = React.forwardRef(() => {
-  const { cartItems, toggleBucketVisibility, isBucketVisible } =
-    useContext(DataClient);
+const Nav = () => {
+  const { toggleBucketVisibility, cartItems } = useContext(DataClient);
 
   return (
     <>
@@ -37,10 +35,9 @@ const Nav = React.forwardRef(() => {
           </li>
         </ul>
       </nav>
-      {isBucketVisible && <Bucket />}
       <Outlet />
     </>
   );
-});
+};
 
 export default Nav;

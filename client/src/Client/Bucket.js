@@ -1,16 +1,43 @@
+import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import DataClient from "../context/DataClient";
 
 const Bucket = React.forwardRef(() => {
   const {
     cartItems,
-    targetElement,
-    handlePriceCaluclation,
     deleteItem,
-    calculateTotalPrice,
-    handleClearCart,
-    handleViaLink,
+    clearCart,
+    setIsBucketVisible,
+    targetElement,
   } = useContext(DataClient);
+
+  const navigate = useNavigate();
+  // Calculate the total price based on selectedUnit
+  const calculateTotalPrice = () => {
+    const totalPrice = cartItems.reduce((total, cartItem) => {
+      return total + handlePriceCaluclation(cartItem);
+    }, 0);
+
+    return totalPrice.toFixed(2); // Rounds to two decimal places
+  };
+
+  const handleViaLink = () => {
+    setIsBucketVisible(false);
+    navigate("/order");
+  };
+
+  const handlePriceCaluclation = (cartItem) => {
+    if (cartItem.unit === "dag") {
+      return cartItem.quantity * cartItem.price;
+    } else {
+      return cartItem.quantity * cartItem.price;
+    }
+  };
+
+  const handleClearCart = () => {
+    setIsBucketVisible(false);
+    clearCart();
+  };
 
   if (cartItems.length < 1) {
     return (

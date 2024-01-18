@@ -1,15 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import DataClient from "../context/DataClient";
 import "./orderForm.css";
 
-const OrderForm = ({ cartItems, deleteItem, clearCart }) => {
-  console.log(cartItems);
+const OrderForm = () => {
+  const { cartItems, deleteItem, clearCart } = useContext(DataClient);
   const [buyStatus, setBuyStatus] = useState(false);
   const formRef = useRef(null);
   const [isLoadingVisible, setIsLoadingVisible] = useState(false);
-
-  const toggleLoadingVisibility = () => {
-    setIsLoadingVisible((prevState) => !prevState);
-  };
 
   const handlePriceCaluclation = (cartItem) => {
     if (cartItem.unit === "dag") {

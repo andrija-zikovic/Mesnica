@@ -5,6 +5,7 @@
   border-bottom: var(--BORDERS);
   text-align: center;
   position: relative;
+  font-size: 1.7rem;
 }
 
 .header__logo {
