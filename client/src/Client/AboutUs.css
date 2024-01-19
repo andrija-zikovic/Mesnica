@@ -43,7 +43,7 @@
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   margin-bottom: 10px;
   max-width: 800px;
-  font-size: 1rem;
+  font-size: 1.8rem;
 }
 
 .aboutUs__section_o-nama h2 {
@@ -72,6 +72,7 @@
 
 .aboutUs__section_lokacija {
   text-align: center;
+  font-size: 1.8rem;
 }
 
 .aboutUs__article_lokacija {
@@ -89,13 +90,23 @@
 }
 
 .aboutUs__section_contact {
+  display: flex;
+  flex-flow: column;
+  justify-self: center;
+  align-items: center;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   border-top: 1px solid #333;
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   width: 100%;
+  font-size: 1.8rem;
 }
 
 .aboutUs__article_contact {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin-top: 10px;
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
@@ -106,7 +117,7 @@
   display: flex;
   flex-flow: column;
   justify-content: center;
-  width: 90%;
+  width: 100%;
 }
 
 .contact__form div {

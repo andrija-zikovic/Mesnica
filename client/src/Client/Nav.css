@@ -7,7 +7,7 @@
   font-weight: bold;
   position: sticky;
   z-index: 2;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   padding: 0.5rem 0;
 }
 
@@ -41,7 +41,6 @@
   background-color: rgba(255, 255, 255, 0);
   width: 25%;
   height: auto;
-
   display: flex;
   justify-content: center;
   align-items: center;

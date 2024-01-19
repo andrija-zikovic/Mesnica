@@ -5,7 +5,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 5rem;
   padding: 0 0.5rem;
   margin-top: 30px;
 }
@@ -15,7 +15,10 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  width: 90vw;
+  height: calc(90vw);
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px var(--LINK-ACTIVE);
 }
 
 .about_article01_img {
@@ -27,17 +30,23 @@
 }
 .about_article h2,
 .about_location h2 {
-  width: 100%;
-  font-size: 2em;
+  width: 90%;
+  font-size: 4em;
   margin: auto;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 5px var(--BGCOLOR-FADE);
-  white-space: nowrap;
+  margin-bottom: unset;
+  margin-top: unset;
+  text-shadow: 2px 2px 5px black;
+  white-space: wrap;
+  color: firebrick;
 }
 
 .about_article p {
   font-size: 2rem;
-  font-family: var(--FF-HEADINGS);
+  font-family: var(--FF);
+  font-weight: bold;
+  text-align: center;
+  color: whitesmoke;
+  text-shadow: 1px 1px 2px black;
 }
 
 .about_location {

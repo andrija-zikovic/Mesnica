@@ -1,36 +1,37 @@
 import React from "react";
 import "./About.css";
-import Mesnica1987 from "../img/1987_mesnica.jpg";
+import AboutArticle from "./AboutArticle";
+import img from "../img/shop.png";
 
 const About = () => {
+  const content = [
+    {
+      title: "A Hundred Years of Tradition!",
+      text: "Since 1923!",
+      backgroundImg: `url(${img})`,
+    },
+    {
+      title: "All Kinds of Meat!",
+      text: "Our offer includes a variety of meat, from beef to pork and chicken!",
+      backgroundImg: `url(${img})`,
+    },
+    {
+      title: "Visit Us!",
+      text: "Join us with your family and friends and enjoy the best meat in town!",
+      backgroundImg: `url(${img})`,
+    },
+  ];
   return (
     <section className="about">
-      <article className="about_article">
-        <h2>A Hundred Years of Tradition!</h2>
-        <img
-          src={Mesnica1987}
-          width="736px"
-          height="486px"
-          alt="1987"
-          className="about_article01_img"
-        />
-        <h2>Since 1923!</h2>
-      </article>
-      <article className="about_article">
-        <h2>All Kinds of Meat!</h2>
-        <p>
-          Our offer includes a variety of meats, from fresh cuts and delicious
-          sausages to special meat preparations that we make with love.
-        </p>
-      </article>
-      <article className="about_article">
-        <h2>Visit Us!</h2>
-        <p>
-          Join us with your family and friends in discovering the true flavors.
-          Be sure that we will win you over with our quality, service, and
-          passion for meat.
-        </p>
-      </article>
+      <>
+        {content.map((item) => (
+          <AboutArticle
+            title={item.title}
+            text={item.text}
+            bacgroundImg={item.backgroundImg}
+          />
+        ))}
+      </>
       <article className="about_location">
         <h2>Location</h2>
         <address>
