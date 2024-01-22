@@ -21,7 +21,7 @@ const ProductCard = ({ id, src, title, price, description }) => {
     const parentElement = element.parentElement;
     const parentHeight = parentElement.offsetHeight;
     let fontSize = parseFloat(window.getComputedStyle(element).fontSize);
-    while (element.scrollHeight > parentHeight && fontSize > 5) {
+    while (element.scrollHeight > parentHeight && fontSize > 10) {
       // Minimum font size of 10px
       fontSize -= 1;
       element.style.fontSize = `${fontSize}px`;
@@ -44,18 +44,6 @@ const ProductCard = ({ id, src, title, price, description }) => {
 
   return (
     <article className={`product-card ${imageLoaded ? "loaded" : ""}`} id={id}>
-      <div className="product-card__showAbout">
-        <button onClick={() => setShowAbout(!showAbout)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="16"
-            width="10"
-            viewBox="0 0 320 512"
-          >
-            <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
-          </svg>
-        </button>
-      </div>
       {showAbout && (
         <div className="product-card__about">
           <div className="product-card__showAbout">
@@ -74,6 +62,18 @@ const ProductCard = ({ id, src, title, price, description }) => {
         </div>
       )}
       <form id={id} onSubmit={(e) => e.preventDefault()}>
+        <div className="product-card__showAbout">
+          <button onClick={() => setShowAbout(true)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16"
+              width="10"
+              viewBox="0 0 320 512"
+            >
+              <path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+            </svg>
+          </button>
+        </div>
         <div className="title__container">
           <p className="product-card__title" id={`title${id}`}>
             {title}

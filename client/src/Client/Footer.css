@@ -19,6 +19,10 @@
   gap: 1rem;
 }
 
+.footerInfo a:first-child {
+  display: none;
+}
+
 .footerInfo a {
   text-decoration: none;
   color: black;
@@ -37,7 +41,11 @@
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
+  .footerInfo a:first-child {
+    display: inline-block;
+  }
+
   .footer {
     font-size: 0.5rem;
     flex-flow: row-reverse;

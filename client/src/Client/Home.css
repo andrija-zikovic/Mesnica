@@ -6,9 +6,9 @@
 
 .prducts-list__h2 {
   color: var(--LINK-ACTIVE);
-  text-shadow: 1px 1px 5px #7f1a1a;
+  text-shadow: 2px 2px 2px black;
   letter-spacing: 0.3rem;
-  font-size: 5rem;
+  font-size: 8rem;
   margin-bottom: 0;
   opacity: 0;
   animation: fadeIn 0.5s ease-in-out forwards;
@@ -28,22 +28,17 @@
   .prducts-list__h2 {
     font-size: 4rem;
   }
-  
 }
 
 @media screen and (min-width: 768px) {
   .prducts-list__h2 {
     font-size: 3rem;
+    letter-spacing: 1rem;
   }
-  
-} 
+}
 
 @media screen and (min-width: 992px) {
   .prducts-list__h2 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
-  
-} 
-
-
-
+}

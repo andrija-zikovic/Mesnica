@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -121,7 +125,7 @@ body::-webkit-scrollbar-thumb:hover,
   --HERO-BGCOLOR: rgba(51, 178, 51, 0.75);
   --HERO-COLOR: rgba(228, 50, 50, 0.801);
   --HIGHLIGHT-COLOR: rgba(0, 0, 0, 0.668);
-  --LINK-ACTIVE: #e43232cc;
+  --LINK-ACTIVE: #e43232f3;
   --LINK-COLOR: black;
   --LINK-HOVER: rgba(228, 50, 50, 0.801);
   --NAV-BGCOLOR: white;

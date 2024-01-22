@@ -9,7 +9,6 @@ const Home = () => {
 
   return (
     <main className="home">
-      <Hero />
       {loaded && <h2 className="prducts-list__h2">TOP SELLERS</h2>}
       <ProductsList meatType={""} host={"home"} setLoaded={setLoaded} />
       <About />

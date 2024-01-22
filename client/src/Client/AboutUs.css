@@ -196,7 +196,7 @@
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .aboutUs__section_o-nama {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -212,6 +212,7 @@
   .aboutUs__section_o-nama h2 {
     grid-area: hd;
     text-align: center;
+    font-size: 2rem;
   }
 
   .aboutUs__section_o-nama:nth-child(even) {
@@ -220,7 +221,7 @@
 
   .aboutUs__article_o-nama {
     min-height: 100%;
-    font-size: 0.5rem;
+    font-size: 0.8rem;
   }
 
   .aboutUs__section {
@@ -233,14 +234,16 @@
 
   .aboutUs__section_lokacija {
     order: 3;
+    font-size: 0.8rem;
   }
 
   .aboutUs {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
   }
 
   .contact__form div {
-    justify-content: left;
+    justify-content: space-evenly;
+    width: 50%;
   }
 
   .aboutUs__article_contact {
@@ -249,6 +252,7 @@
     justify-content: center;
     align-items: center;
     flex-flow: column;
+    font-size: 0.8rem;
   }
 
   .contact__form {
@@ -257,6 +261,7 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    font-size: 0.8rem;
   }
 
   .contact__fieldset {
@@ -265,6 +270,8 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
+    font-size: 0.5rem;
   }
 
   .contact__p {
@@ -274,5 +281,10 @@
   .contact__input,
   .contact__textarea {
     width: 100%;
+  }
+
+  .contact__button {
+    font-size: 0.5rem;
+    width: 16%;
   }
 }

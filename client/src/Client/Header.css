@@ -50,11 +50,17 @@
     display: flex;
     flex-flow: row;
     font-size: 0.5rem;
-    width: 50%;
+    width: 60%;
     align-items: flex-start;
   }
 
   .header__logo {
-    padding-left: 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    margin-top: unset;
+    width: 100%;
+  }
+
+  .header__h1 {
+    letter-spacing: 0.5rem;
   }
 }
