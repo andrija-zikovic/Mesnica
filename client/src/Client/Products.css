@@ -1,18 +1,45 @@
 .products {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr 5fr);
-  grid-auto-rows: 82vh auto 75px;
-  gap: 0.5rem;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  height: 82vh;
+}
+
+.products__arrow {
+  position: absolute;
+  top: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  height: 20px;
+  width: 20px;
 }
 
 .sideNav {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+  height: 82vh;
+  width: 130px;
+  left: 0;
+  top: 0;
   border-right: var(--BORDERS);
   padding: var(--PADDING-SIDE) var(--PADDING-TB);
-  font-size: 1rem;
+  font-size: 2rem;
+  background-color: var(--HEADER-BGCOLOR);
+  z-index: 1;
+  font-weight: bold;
 }
 
 .sideNav_h3 {
   border-bottom: var(--BORDERS);
+  grid-column: 1 / 2;
 }
 
 .sideNav_h3:hover {
@@ -31,6 +58,7 @@
 
 .sideNav__ul {
   list-style: none;
+  grid-column: 1 / 2;
 }
 
 .sideNav__li {
@@ -49,10 +77,33 @@
   box-shadow: 2px 2px 10px var(--LINK-HOVER);
 }
 
+.sideNav_arrow {
+  position: absolute;
+  top: 41vh;
+  right: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 50px;
+}
+
+.sideNav_arrow svg {
+  height: 100%;
+  width: auto;
+  fill: var(--HEADER-BGCOLOR);
+}
+
 @media screen and (min-width: 576px) {
 }
 
 @media screen and (min-width: 768px) {
+  .products {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr 5fr);
+    grid-auto-rows: 82vh auto 75px;
+    gap: 0.5rem;
+  }
   .sideNav {
     font-size: 0.5rem;
   }
@@ -64,7 +115,7 @@
 
 @media screen and (min-width: 992px) {
   .products {
-    grid-auto-rows: 85vh auto 75px;
+    grid-auto-rows: 86vh auto 75px;
   }
 
   .sideNav {

@@ -5,9 +5,14 @@ import "./Products.css";
 
 const Products = ({ setLoaded }) => {
   const [meatType, setMeatType] = useState("");
+  const [showSideNav, setShowSideNav] = useState(false);
   return (
     <main className="products">
-      <SideNav setMeatType={setMeatType} />
+      <SideNav
+        setMeatType={setMeatType}
+        showSideNav={showSideNav}
+        setShowSideNav={setShowSideNav}
+      />
       <ProductsList meatType={meatType} host={""} />
     </main>
   );

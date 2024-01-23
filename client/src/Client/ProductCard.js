@@ -24,7 +24,11 @@ const ProductCard = ({ id, src, title, price, description }) => {
     while (element.scrollHeight > parentHeight && fontSize > 10) {
       // Minimum font size of 10px
       fontSize -= 1;
-      element.style.fontSize = `${fontSize}px`;
+      if (fontSize > 20) {
+        // Maximum font size of 20px
+        fontSize = 20;
+      }
+      element.style.fontSize = `${fontSize - 1}px`;
     }
   }
 
@@ -33,6 +37,8 @@ const ProductCard = ({ id, src, title, price, description }) => {
       setFontSizeToFit(`title${id}`);
     };
 
+    console.log(`ProductCard ${id} mounted`);
+
     adjustFontSize();
 
     window.addEventListener("resize", adjustFontSize);
@@ -40,7 +46,7 @@ const ProductCard = ({ id, src, title, price, description }) => {
     return () => {
       window.removeEventListener("resize", adjustFontSize);
     };
-  }, [id]);
+  }, [id, imageLoaded]);
 
   return (
     <article className={`product-card ${imageLoaded ? "loaded" : ""}`} id={id}>

@@ -70,14 +70,14 @@ body::-webkit-scrollbar-track,
 *::-webkit-scrollbar-track {
   background-color: unset;
   border: unset;
-  width: 12px;
+  width: 6px;
 }
 
 /* Customizing the scrollbar thumb */
 html::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb,
 *::-webkit-scrollbar-thumb {
-  background-color: var(--LINK-ACTIVE);
+  background-color: var(--HEADER-BGCOLOR);
   border-radius: 10px; /* Rounded corners on the thumb */
 }
 
@@ -85,7 +85,7 @@ body::-webkit-scrollbar-thumb,
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 *::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
+  width: 8px; /* Width of the scrollbar */
   border: unset;
 }
 

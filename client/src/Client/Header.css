@@ -52,10 +52,11 @@
     font-size: 0.5rem;
     width: 60%;
     align-items: flex-start;
+    height: 9vh;
   }
 
   .header__logo {
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    padding: 0.1rem 0.5rem 0.1rem 1rem;
     margin-top: unset;
     width: 100%;
   }

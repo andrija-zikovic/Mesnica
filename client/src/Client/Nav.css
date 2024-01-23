@@ -269,13 +269,14 @@ table {
 @media screen and (min-width: 992px) {
   .nav {
     width: 100%;
-    font-size: 55%;
+    font-size: 40%;
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
     background-color: var(--HEADER-BGCOLOR);
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    height: 9vh;
   }
 
   .nav ul {
