@@ -2,7 +2,7 @@
 
 .nav {
   top: 0;
-  background-color: aliceblue;
+  background-color: whitesmoke;
   border-bottom: var(--BORDERS);
   font-weight: bold;
   position: sticky;
@@ -96,7 +96,7 @@ table {
   border: 2px solid var(--HEADER-BGCOLOR);
   border-radius: 2px;
   z-index: 99;
-  font-size: 1.2em;
+  font-size: 1.7rem;
 }
 
 .bucket thead tr th:nth-child(1),
@@ -129,6 +129,7 @@ table {
   color: var(--BUTTON-COLOR);
   font-weight: bold;
   margin-bottom: 5px;
+  margin-right: 7px;
 }
 
 .bucket__tbody tr td:first-child {

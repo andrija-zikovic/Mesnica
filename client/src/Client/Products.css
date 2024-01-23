@@ -60,6 +60,7 @@
 .sideNav__ul {
   list-style: none;
   grid-column: 1 / 2;
+  width: 100%;
 }
 
 .sideNav__li {
@@ -104,7 +105,7 @@
   .products {
     position: static;
     display: grid;
-    grid-template-columns: repeat(1, 0.6fr 5fr);
+    grid-template-columns: repeat(1, 1fr 5fr);
     grid-auto-rows: 82vh auto 75px;
     align-items: start;
     gap: 0.5rem;
