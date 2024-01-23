@@ -67,7 +67,7 @@ const SideNav = ({ setMeatType, showSideNav, setShowSideNav }) => {
     return (
       <section
         className="sideNav"
-        style={{ left: `${showSideNav ? "0" : "-130px"}` }}
+        style={{ left: `${showSideNav ? "0" : "-200px"}` }}
       >
         <div className="sideNav_h3" onClick={() => handleMeatTypeChange("")}>
           <h3 onClick={() => handleMeatTypeChange("")}>Products</h3>
