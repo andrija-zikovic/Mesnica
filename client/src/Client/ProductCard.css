@@ -6,9 +6,9 @@
   flex-flow: column;
   align-items: center;
   justify-content: flex-end;
+  min-width: 100%;
   max-width: 205px;
   background-color: var(--BGCOLOR);
-  width: 100%;
   height: auto;
   border: var(--BORDERS);
   border-radius: var(--BORDER-RADIUS);

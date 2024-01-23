@@ -40,6 +40,7 @@
 .sideNav_h3 {
   border-bottom: var(--BORDERS);
   grid-column: 1 / 2;
+  width: 100%;
 }
 
 .sideNav_h3:hover {
@@ -63,10 +64,12 @@
 
 .sideNav__li {
   border-bottom: var(--BORDERS);
+  width: 100%;
 }
 
 .sideNav__p {
   padding: 0.4rem 0.4rem;
+  width: 100%;
 }
 
 .sideNav__p:hover,
@@ -99,23 +102,33 @@
 
 @media screen and (min-width: 768px) {
   .products {
+    position: static;
     display: grid;
-    grid-template-columns: repeat(1, 1fr 5fr);
+    grid-template-columns: repeat(1, 0.6fr 5fr);
     grid-auto-rows: 82vh auto 75px;
+    align-items: start;
     gap: 0.5rem;
   }
   .sideNav {
+    position: static;
     font-size: 0.5rem;
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
   }
 
   .sideNav__p {
     padding: 0.2rem 0.2rem;
   }
+
+  .sideNav_arrow {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 992px) {
   .products {
-    grid-auto-rows: 86vh auto 75px;
+    grid-auto-rows: 85vh auto 75px;
   }
 
   .sideNav {

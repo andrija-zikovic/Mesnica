@@ -8,7 +8,7 @@
   width: 100%;
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   border-top: 1px solid black;
-  background-color: var(--LINK-ACTIVE);
+  background-color: var(--HEADER-BGCOLOR);
   font-size: 1.2rem;
 }
 

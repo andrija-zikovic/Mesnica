@@ -5,7 +5,7 @@ const SideNav = ({ setMeatType, showSideNav, setShowSideNav }) => {
     setMeatType(type);
   };
 
-  if (window.innerWidth > 992) {
+  if (window.innerWidth > 768) {
     return (
       <section className="sideNav">
         <div className="sideNav_h3" onClick={() => handleMeatTypeChange("")}>
@@ -67,7 +67,10 @@ const SideNav = ({ setMeatType, showSideNav, setShowSideNav }) => {
     return (
       <section
         className="sideNav"
-        style={{ left: `${showSideNav ? "0" : "-200px"}` }}
+        style={{
+          left: `${showSideNav ? "0" : "-200px"}`,
+          transition: "all 0.5s ease",
+        }}
       >
         <div className="sideNav_h3" onClick={() => handleMeatTypeChange("")}>
           <h3 onClick={() => handleMeatTypeChange("")}>Products</h3>
@@ -126,15 +129,16 @@ const SideNav = ({ setMeatType, showSideNav, setShowSideNav }) => {
           className="sideNav_arrow"
           onClick={() => setShowSideNav((prevState) => !prevState)}
         >
-          {showSideNav ? (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-              <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-              <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
-            </svg>
-          )}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 320 512"
+            style={{
+              transform: `${showSideNav ? "rotateY(180deg)" : ""}`,
+              transition: "all 0.5s ease",
+            }}
+          >
+            <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+          </svg>
         </div>
       </section>
     );
