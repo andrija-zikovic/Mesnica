@@ -2,9 +2,8 @@
   position: relative;
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  height: 82vh;
 }
 
 .products__arrow {
@@ -25,13 +24,13 @@
   justify-content: flex-start;
   align-items: flex-start;
   gap: 0.5rem;
-  height: 82vh;
+  height: 100%;
   width: 200px;
   left: 0;
   top: 0;
   border-right: var(--BORDERS);
   padding: var(--PADDING-SIDE) var(--PADDING-TB);
-  font-size: 2rem;
+  font-size: 2.9vmax;
   background-color: var(--HEADER-BGCOLOR);
   z-index: 1;
   font-weight: bold;
@@ -41,6 +40,7 @@
   border-bottom: var(--BORDERS);
   grid-column: 1 / 2;
   width: 100%;
+  font-size: 2.9vmax;
 }
 
 .sideNav_h3:hover {
@@ -52,8 +52,10 @@
   margin-bottom: 0;
 }
 
+.sideNav h3:hover,
+.sideNav h3:active,
 .sideNav h3:hover {
-  color: var(--LINK-HOVER);
+  color: whitesmoke;
   cursor: pointer;
 }
 
@@ -76,14 +78,14 @@
 .sideNav__p:hover,
 .sideNav__p:active,
 .sideNav__p:hover {
-  background-color: var(--LINK-HOVER);
+  background-color: whitesmoke;
   cursor: pointer;
-  box-shadow: 2px 2px 10px var(--LINK-HOVER);
+  box-shadow: 2px 2px 10px whitesmoke;
 }
 
 .sideNav_arrow {
   position: absolute;
-  top: 41vh;
+  top: 30vh;
   right: -40px;
   display: flex;
   justify-content: center;
@@ -106,16 +108,32 @@
     position: static;
     display: grid;
     grid-template-columns: repeat(1, 1fr 5fr);
-    grid-auto-rows: 82vh auto 75px;
+    grid-auto-rows: 100% auto 75px;
     align-items: start;
     gap: 0.5rem;
   }
+
   .sideNav {
     position: static;
     font-size: 0.5rem;
     width: 100%;
     height: 100%;
     background-color: whitesmoke;
+  }
+
+  .sideNav h3:hover,
+  .sideNav h3:active,
+  .sideNav h3:hover {
+    color: var(--LINK-HOVER);
+    cursor: pointer;
+  }
+
+  .sideNav__p:hover,
+  .sideNav__p:active,
+  .sideNav__p:hover {
+    background-color: var(--LINK-HOVER);
+    cursor: pointer;
+    box-shadow: 2px 2px 10px var(--LINK-HOVER);
   }
 
   .sideNav__p {
@@ -128,10 +146,6 @@
 }
 
 @media screen and (min-width: 992px) {
-  .products {
-    grid-auto-rows: 85vh auto 75px;
-  }
-
   .sideNav {
     font-size: 0.7rem;
   }

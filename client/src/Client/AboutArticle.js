@@ -6,6 +6,7 @@ const AboutArticle = ({ title, text, bacgroundImg, title2, text2 }) => {
       <article
         className="about_article"
         style={{ backgroundImage: bacgroundImg, backgroundSize: "cover" }}
+        loading="lazy"
       >
         <h2>{title}</h2>
         <p>{text}</p>

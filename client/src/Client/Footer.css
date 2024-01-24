@@ -1,15 +1,18 @@
 .footer {
+  position: sticky;
   display: flex;
-  flex-flow: column;
-  justify-content: center;
+  flex-flow: row-reverse;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  margin-top: auto;
   width: 100%;
+  height: 10%;
+  max-height: 5vh;
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   border-top: 1px solid black;
   background-color: var(--HEADER-BGCOLOR);
-  font-size: 1.2rem;
+  font-size: 1.5vmax;
+  z-index: 3;
 }
 
 .footerInfo {
@@ -34,7 +37,7 @@
 
 @media screen and (min-width: 576px) {
   .footer {
-    font-size: 0.7rem;
+    font-size: 1.5vmax;
     gap: 0.2rem;
     flex-flow: row;
     justify-content: space-between;
@@ -47,7 +50,6 @@
   }
 
   .footer {
-    font-size: 0.5rem;
     flex-flow: row-reverse;
     justify-content: space-between;
     width: 100%;

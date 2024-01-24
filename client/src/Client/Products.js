@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import { forwardRef, useState, useContext } from "react";
 import SideNav from "./SideNav";
 import ProductsList from "./ProductsList";
 import "./Products.css";
+import DataClient from "../context/DataClient";
 
-const Products = ({ setLoaded }) => {
+const Products = forwardRef(() => {
+  const { productsElement } = useContext(DataClient);
   const [meatType, setMeatType] = useState("");
   const [showSideNav, setShowSideNav] = useState(false);
   return (
-    <main className="products">
+    <main className="products" ref={productsElement}>
       <SideNav
         setMeatType={setMeatType}
         showSideNav={showSideNav}
@@ -16,6 +18,6 @@ const Products = ({ setLoaded }) => {
       <ProductsList meatType={meatType} host={""} />
     </main>
   );
-};
+});
 
 export default Products;

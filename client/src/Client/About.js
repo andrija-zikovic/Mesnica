@@ -2,7 +2,6 @@ import React from "react";
 import "./About.css";
 import AboutArticle from "./AboutArticle";
 import img from "../img/shop.png";
-import img1 from "../img/shop1.png";
 import img2 from "../img/shop2.png";
 import img3 from "../img/shop3.png";
 

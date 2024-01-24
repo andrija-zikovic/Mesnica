@@ -4,7 +4,6 @@ import "./ProductCard.css";
 
 const ProductCard = ({ id, src, title, price, description }) => {
   // Initialize state for input value and selected unit
-  const [selectedUnit, setSelectedUnit] = useState("kg");
   const [amount, setAmount] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
@@ -48,6 +47,16 @@ const ProductCard = ({ id, src, title, price, description }) => {
     };
   }, [id, imageLoaded]);
 
+  const [totalProductPrice, setTotalProductPrice] = useState(0);
+
+  useEffect(() => {
+    const updateTotalProductPrice = () => {
+      setTotalProductPrice((price * amount) / 100);
+    };
+
+    updateTotalProductPrice();
+  }, [amount]);
+
   return (
     <article className={`product-card ${imageLoaded ? "loaded" : ""}`} id={id}>
       {showAbout && (
@@ -88,25 +97,14 @@ const ProductCard = ({ id, src, title, price, description }) => {
         <img src={src} alt={title} onLoad={handleImageLoad} />
         {imageLoaded && (
           <>
-            <p className="product-card__price">{price} € / kg</p>
-            <div className="productCard_unit">
-              <input
-                type="radio"
-                name="plusOne"
-                id={id + "-plusOne"}
-                checked={selectedUnit === "plusOne"}
-                onChange={() => setSelectedUnit("plusOne")}
-              />
-              <label htmlFor={id + "-plusOne"}>+ 1</label>
-              <input
-                type="radio"
-                name="plusTen"
-                id={id + "-plusTen"}
-                checked={selectedUnit === "plusTen"}
-                onChange={() => setSelectedUnit("plusTen")}
-              />
-              <label htmlFor={id + "-plusTen"}>+ 10</label>
-            </div>
+            <p className="product-card__price">
+              <span className="product-card__price_highlight">
+                {totalProductPrice ? totalProductPrice.toFixed(2) : price} €
+              </span>
+              {totalProductPrice
+                ? ` / ${(amount / 100).toFixed(2)}kg`
+                : " / kg"}
+            </p>
             <div className="productCard_plusMinus">
               <button
                 onClick={() =>
@@ -115,7 +113,6 @@ const ProductCard = ({ id, src, title, price, description }) => {
                     id,
                     title,
                     price,
-                    selectedUnit,
                     amount,
                     setAmount
                   )
@@ -129,7 +126,7 @@ const ProductCard = ({ id, src, title, price, description }) => {
                 min={0}
                 max={98}
                 placeholder="0"
-                value={amount}
+                value={(amount / 100).toFixed(2)}
                 readOnly
                 onChange={(e) => setAmount(parseInt(e.target.value))}
               />
@@ -140,7 +137,6 @@ const ProductCard = ({ id, src, title, price, description }) => {
                     id,
                     title,
                     price,
-                    selectedUnit,
                     amount,
                     setAmount
                   )

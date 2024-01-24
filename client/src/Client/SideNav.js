@@ -73,7 +73,7 @@ const SideNav = ({ setMeatType, showSideNav, setShowSideNav }) => {
         }}
       >
         <div className="sideNav_h3" onClick={() => handleMeatTypeChange("")}>
-          <h3 onClick={() => handleMeatTypeChange("")}>Products</h3>
+          <h3 onClick={() => handleMeatTypeChange("")}>ALL Products</h3>
         </div>
         <ul className="sideNav__ul">
           <li

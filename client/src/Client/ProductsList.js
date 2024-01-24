@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./ProductsList.css";
 import ProductCard from "./ProductCard";
+import DataClient from "../context/DataClient";
 
 const ProductList = ({ meatType, host, setLoaded }) => {
   const [noProductsCheck, setNoProductsCheck] = useState(false);
-  const [products, setProducts] = useState([]);
+  const { products, setProducts } = useContext(DataClient);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +53,7 @@ const ProductList = ({ meatType, host, setLoaded }) => {
     return (
       <section className={`${host === "home" ? "homeList" : "products-list"}`}>
         {products.length < 1 ? (
-          <div className="loading">
+          <div className="loading_client">
             <svg
               width="100"
               height="80"

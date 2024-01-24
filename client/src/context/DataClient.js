@@ -4,6 +4,7 @@ const DataClient = createContext({});
 
 export const DataClientProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const deleteItem = (itemId) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
@@ -23,11 +24,10 @@ export const DataClientProvider = ({ children }) => {
     id,
     title,
     price,
-    selectedUnit,
     amount,
     setAmount
   ) => {
-    const incrementValue = selectedUnit === "plusOne" ? 1 : 10;
+    const incrementValue = 10;
     const newAmount =
       operation === "increment"
         ? amount + incrementValue
@@ -113,6 +113,38 @@ export const DataClientProvider = ({ children }) => {
     setBucketVisibleCheck((prevState) => !prevState);
   };
 
+  const footer = useRef(null);
+  const productsElement = useRef(null);
+
+  useEffect(() => {
+    const clineTopElement = referenceElement.current;
+    const footerElement = footer.current;
+    const products = productsElement.current;
+
+    const updateProductsHeight = () => {
+      if (clineTopElement && footerElement && products) {
+        const clineTopHeight = clineTopElement.offsetHeight;
+        const footerHeight = footerElement.offsetHeight;
+        const productsHeight =
+          window.innerHeight - clineTopHeight - footerHeight;
+
+        products.style.maxHeight = `${productsHeight}px`;
+        products.style.minHeight = `${productsHeight}px`;
+      }
+    };
+
+    // Initial update
+    updateProductsHeight();
+
+    // Update on window resize
+    window.addEventListener("resize", updateProductsHeight);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener("resize", updateProductsHeight);
+    };
+  }, [products]);
+
   return (
     <DataClient.Provider
       value={{
@@ -128,6 +160,10 @@ export const DataClientProvider = ({ children }) => {
         isBucketVisible,
         setIsBucketVisible,
         toggleBucketVisibility,
+        footer,
+        productsElement,
+        products,
+        setProducts,
       }}
     >
       {children}

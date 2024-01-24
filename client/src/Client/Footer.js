@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Footer.css";
+import DataClient from "../context/DataClient";
 
-const Footer = () => {
+const Footer = React.forwardRef(() => {
+  const { footer } = useContext(DataClient);
   return (
-    <footer className="footer">
+    <footer className="footer" ref={footer}>
       <div className="footerInfo">
         <a href="https://www.google.com/maps/place/Mesnica+Libero/@44.8687127,13.8614181,17z/data=!4m6!3m5!1s0x477cd2d873068427:0x3c8ce2bf12b6cf78!8m2!3d44.8685085!4d13.8591933!16s%2Fg%2F1tdxjq45?entry=ttu">
           <svg
@@ -39,6 +41,6 @@ const Footer = () => {
       <p>&reg; Bucher shop 2023.</p>
     </footer>
   );
-};
+});
 
 export default Footer;

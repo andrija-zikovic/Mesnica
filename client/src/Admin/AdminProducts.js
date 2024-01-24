@@ -6,6 +6,7 @@ const AdminProducts = () => {
   const { token } = useContext(DataAdmin);
   const [adminPro, setAdminPro] = useState([]);
   const [showEdit, setShowEdit] = useState([]); // Use an array to track image visibility for each row
+  const [animation, setAnimation] = useState([]); // Use animation to trigger image visibility
   const [productsChange, setProductsChange] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [message, setMessage] = useState("");
@@ -55,6 +56,20 @@ const AdminProducts = () => {
     const newShowEdit = [...showEdit];
     newShowEdit[index] = !newShowEdit[index];
     setShowEdit(newShowEdit);
+  };
+
+  const handleClickClose = (index) => {
+    const newAnimation = [...animation];
+    newAnimation[index] = true;
+    setAnimation(newAnimation);
+    setTimeout(() => {
+      const newShowEdit = [...showEdit];
+      newShowEdit[index] = false;
+      setShowEdit(newShowEdit);
+      const newAnimation = [...animation];
+      newAnimation[index] = false;
+      setAnimation(newAnimation);
+    }, 500);
   };
 
   const handleProductsChangeSubmit = (id, index) => {
@@ -386,19 +401,21 @@ const AdminProducts = () => {
                     </div>
                   </div>
                   {showEdit[index] && (
-                    <div className="adminProEdit">
+                    <div
+                      className={`adminProEdit ${
+                        animation[index] ? "closing" : "opening"
+                      }`}
+                    >
                       <h2>Edit Product</h2>
                       <button
                         className="adminProImg_XButton"
-                        onClick={() => handleClick(index)}
+                        onClick={() => handleClickClose(index)}
                       >
                         X
                       </button>
                       <div className="adminProEditInfo">
                         <div className="adminProEditInfo__title">
-                          <label htmlFor="title" className="offscreen">
-                            Name:
-                          </label>
+                          <label htmlFor="title">Name:</label>
                           <input
                             type="text"
                             name="title"
@@ -414,9 +431,7 @@ const AdminProducts = () => {
                           ></input>
                         </div>
                         <div className="adminProEditInfo__meatType">
-                          <label htmlFor="meatType" className="offscreen">
-                            Type:
-                          </label>
+                          <label htmlFor="meatType">Type:</label>
                           <select
                             name="meatType"
                             id="meatType"
@@ -442,9 +457,7 @@ const AdminProducts = () => {
                           </select>
                         </div>
                         <div className="adminProEditInfo__description">
-                          <label htmlFor="description" className="offscreen">
-                            Description:
-                          </label>
+                          <label htmlFor="description">Description:</label>
                           <textarea
                             name="description"
                             id="description"
@@ -465,13 +478,24 @@ const AdminProducts = () => {
                       </div>
                       <div className="adminProImg">
                         <img
-                          src={product.imgSrc}
-                          alt={product.name}
+                          src={
+                            productsChange[product._id] &&
+                            productsChange[product._id].image
+                              ? URL.createObjectURL(
+                                  productsChange[product._id].image
+                                )
+                              : product.imgSrc
+                          }
+                          alt={
+                            productsChange[product._id] &&
+                            productsChange[product._id].image
+                              ? "new"
+                              : product.name
+                          }
                           className="adminProImg_img"
                         />
                         <div className="adminProImgSrc">
                           <div className="adminProImgSrcLabelAndClose">
-                            <label htmlFor="imgSrc">Select new picture:</label>
                             {productsChange[product._id] &&
                               productsChange[product._id].image && (
                                 <button
@@ -482,21 +506,7 @@ const AdminProducts = () => {
                                 </button>
                               )}
                           </div>
-                          {productsChange[product._id] &&
-                            productsChange[product._id].image && (
-                              <img
-                                className="adminProImgSrc_img"
-                                src={
-                                  productsChange[product._id] &&
-                                  productsChange[product._id].image
-                                    ? URL.createObjectURL(
-                                        productsChange[product._id].image
-                                      )
-                                    : ""
-                                }
-                                alt="new"
-                              ></img>
-                            )}
+                          <label htmlFor="imgSrc">Select new picture:</label>
                           <input
                             type="file"
                             name="imgSrc"
