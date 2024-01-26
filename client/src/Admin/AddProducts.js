@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import DataAdmin from "../context/DataAdmin";
 
 const AddProducts = () => {
-  const { token } = useContext(DataAdmin);
+  const { token, loading, setLoading } = useContext(DataAdmin);
   const [message, setMessage] = useState("");
 
   const [productInfo, setProductInfo] = useState({
@@ -16,6 +16,7 @@ const AddProducts = () => {
   const handleAddSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const url = process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API;
       const formData = new FormData();
       formData.append("title", productInfo.title);
@@ -33,6 +34,7 @@ const AddProducts = () => {
         body: formData,
       });
       if (req.ok) {
+        setLoading(false);
         console.log("Product Added");
         e.target.reset();
         setMessage("Proizvod je dodan!");
@@ -41,6 +43,7 @@ const AddProducts = () => {
         setMessage(`Proizvod nije dodan! ${req.status} ${req.statusText}`);
       }
     } catch (err) {
+      setLoading(false);
       console.error("Error giving product:", err);
       setMessage(`Proizvod nije dodan! ${err}`);
     }
@@ -65,65 +68,61 @@ const AddProducts = () => {
     <section className="addProducts">
       <h2>Add Product</h2>
       <form id="addProForm" className="addProForm" onSubmit={handleAddSubmit}>
-        <label htmlFor="title" className="offscreen">
-          Name
-        </label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Ime"
-          onChange={handleInputChange}
-          required
-        />
-
-        <label htmlFor="price" className="offscreen">
-          Price
-        </label>
-        <input
-          type="number"
-          name="price"
-          id="price"
-          placeholder="Cijena"
-          step="0.01"
-          min={0}
-          onChange={handleInputChange}
-          required
-        />
-
-        <label htmlFor="onStorage" className="offscreen">
-          On storage
-        </label>
-        <input
-          type="number"
-          name="onStorage"
-          id="onStorage"
-          placeholder="Na stanju"
-          onChange={handleInputChange}
-          required
-        />
-
-        <label htmlFor="meatType" className="offscreen">
-          Meat type
-        </label>
-        <select
-          name="meatType"
-          id="meatType"
-          onChange={handleInputChange}
-          required
-        >
-          <option value="pork">pork</option>
-          <option value="ground pork">ground pork</option>
-          <option value="baby beef">baby beef</option>
-          <option value="ground baby beef">ground baby beef</option>
-          <option value="veal">veal</option>
-          <option value="beef">beef</option>
-          <option value="chicken">chicken</option>
-          <option value="turkey">turkey</option>
-          <option value="other">other</option>
-        </select>
+        <div className="addProduct__title">
+          <label htmlFor="title">Name</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Ime"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="addProduct__price">
+          <label htmlFor="price">Price</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            placeholder="Cijena"
+            step="0.01"
+            min={0}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="addProduct__onStorage">
+          <label htmlFor="onStorage">On storage</label>
+          <input
+            type="number"
+            name="onStorage"
+            id="onStorage"
+            placeholder="Na stanju"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="addProduct__meatType">
+          <label htmlFor="meatType">Product type</label>
+          <select
+            name="meatType"
+            id="meatType"
+            onChange={handleInputChange}
+            required
+          >
+            <option value="pork">pork</option>
+            <option value="ground pork">ground pork</option>
+            <option value="baby beef">baby beef</option>
+            <option value="ground baby beef">ground baby beef</option>
+            <option value="veal">veal</option>
+            <option value="beef">beef</option>
+            <option value="chicken">chicken</option>
+            <option value="turkey">turkey</option>
+            <option value="other">other</option>
+          </select>
+        </div>
         <div className="imgForm">
-          <label htmlFor="imgSrc">Add picture</label>
           <input
             type="file"
             name="imgSrc"
@@ -133,21 +132,14 @@ const AddProducts = () => {
             required
           />
         </div>
-
-        <label htmlFor="description" className="offscreen">
-          Description
-        </label>
-        <textarea
-          name="description"
-          id="description"
-          placeholder="Opis"
-          onChange={handleInputChange}
-          required
-        ></textarea>
-
+        {productInfo.image && (
+          <div className="imgPreview">
+            <img src={URL.createObjectURL(productInfo.image)} alt="preview" />
+          </div>
+        )}
         <div className="addButton">
           <button className="add" type="submit">
-            ADD
+            ADD PRODUCT
           </button>
         </div>
       </form>

@@ -8,6 +8,7 @@ export const DataAdminProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const dropdownRef = useRef(null);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (username, password) => {
     try {
@@ -129,6 +130,8 @@ export const DataAdminProvider = ({ children }) => {
         logOut,
         handleLogin,
         handleKeyPress,
+        loading,
+        setLoading,
       }}
     >
       {children}

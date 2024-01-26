@@ -24,27 +24,40 @@ const AdminProducts = () => {
 
   const handleProductChange = (id, key, value) => {
     console.log(id, key, value);
-    if (productsChange[id]) {
-      setProductsChange((prevState) => ({
-        ...prevState,
-        [id]: {
-          ...prevState[id],
-          [key]: value,
-        },
-      }));
-    } else {
-      setProductsChange((prevState) => ({
-        ...prevState,
-        [id]: {
-          [key]: value,
-        },
-      }));
-    }
+
+    setProductsChange((prevState) => {
+      const newState = { ...prevState };
+
+      if (newState[id]) {
+        newState[id] = { ...newState[id], [key]: value };
+      } else {
+        newState[id] = { [key]: value };
+      }
+
+      if (key === "price" && Number.isNaN(value)) {
+        delete newState[id].price;
+      } else if (key === "onStorage" && Number.isNaN(value)) {
+        delete newState[id].onStorage;
+      }
+
+      if (newState[id] && Object.keys(newState[id]).length === 0) {
+        delete newState[id];
+      }
+
+      return newState;
+    });
   };
 
   const handleClearImage = (id) => {
     const newProductsChange = { ...productsChange };
     delete newProductsChange[id].image;
+    if (
+      newProductsChange[id] &&
+      Object.keys(newProductsChange[id]).length === 0
+    ) {
+      delete newProductsChange[id];
+    }
+
     setProductsChange(newProductsChange);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
@@ -493,29 +506,28 @@ const AdminProducts = () => {
                             className="adminProImg_img"
                           />
                         )}
-
-                        <div className="adminProImgSrc">
-                          <div className="adminProImgSrcLabelAndClose">
-                            {productsChange[product._id] &&
-                              productsChange[product._id].image && (
-                                <button
-                                  className="adminProImg_RemoveButton"
-                                  onClick={() => handleClearImage(product._id)}
-                                >
-                                  Remove
-                                </button>
-                              )}
-                          </div>
-                          <label htmlFor="imgSrc">Select new picture:</label>
-                          <input
-                            type="file"
-                            name="imgSrc"
-                            id="imgSrc"
-                            accept="image/*"
-                            onChange={(e) => handleFileChange(e, product._id)}
-                            ref={fileInputRef}
-                            required
-                          />
+                      </div>
+                      <div className="adminProImgSrc">
+                        <label htmlFor="imgSrc">Select new picture:</label>
+                        <input
+                          type="file"
+                          name="imgSrc"
+                          id="imgSrc"
+                          accept="image/*"
+                          onChange={(e) => handleFileChange(e, product._id)}
+                          ref={fileInputRef}
+                          required
+                        />
+                        <div className="adminProImgSrcLabelAndClose">
+                          {productsChange[product._id] &&
+                            productsChange[product._id].image && (
+                              <button
+                                className="adminProImg_RemoveButton"
+                                onClick={() => handleClearImage(product._id)}
+                              >
+                                Remove
+                              </button>
+                            )}
                         </div>
                       </div>
                     </div>

@@ -1,11 +1,12 @@
 .adminMain {
+  position: relative;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
   align-items: center;
   gap: 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .adminLogInSection {
@@ -45,34 +46,37 @@
 }
 
 .nav__admin {
-  top: 0;
-  width: 100%;
-  max-height: 6vh;
-  height: 6dvh;
-  min-height: 6vh;
-  background-color: aliceblue;
-  box-shadow: 0px 1px 2px 0px black;
-  font-weight: bold;
-  position: sticky;
-  z-index: 2;
   display: flex;
   flex-flow: row;
   justify-content: center;
-  font-size: 1.8rem;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: aliceblue;
+  box-shadow: 0px 1px 2px 0px black;
+  font-weight: bold;
+  font-size: 2vmax;
+  z-index: 2;
 }
 
 .adminNav__ul {
-  padding: var(--PADDING-TB) var(--PADDING-SIDE);
-  list-style-type: none;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
   justify-content: center;
-  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+  list-style-type: none;
+  gap: 0.5rem;
 }
 
 .adminLink__nav {
   border-bottom: var(--BORDERS);
   border-left: var(--BORDERS);
   border-right: var(--BORDERS);
+  width: 90%;
 }
 
 .adminLink__nav a {
@@ -94,6 +98,7 @@
 .adminLink__nav__dropdown:hover {
   box-shadow: 2px 2px 5px var(--LINK-ACTIVE);
   cursor: pointer;
+  width: 90%;
 }
 
 .nav__admin a,
@@ -112,6 +117,7 @@
   justify-content: center;
   align-items: center;
   white-space: nowrap;
+  width: 90%;
 }
 
 .adminLink__nav_logOut:hover,
@@ -122,7 +128,13 @@
 }
 
 .loading {
-  min-height: 70vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-height: 94vh;
+  min-height: 94vh;
 }
 
 .adminPro {
@@ -184,7 +196,7 @@
   text-align: center;
   width: 90%;
   margin-bottom: 1rem;
-  gap: 1;
+  gap: 0.2rem;
   max-height: 7vh;
   font-weight: bold;
 }
@@ -231,7 +243,7 @@
 }
 
 .adminPro__table {
-  height: 90%;
+  height: 79dvh;
   width: 98%;
   border: 1px solid black;
   text-align: center;
@@ -257,8 +269,8 @@
 }
 
 .adminPro__tbody {
-  max-height: 92%;
-  min-height: 92%;
+  max-height: 95.5%;
+  min-height: 95.5%;
   overflow-y: scroll;
   position: relative;
 }
@@ -413,7 +425,9 @@
   border-bottom: 1px solid black;
   gap: 1rem;
   font-size: 2vmax;
+  width: 100%;
   max-width: 100%;
+  padding: 1rem 0rem;
 }
 
 .opening {
@@ -436,7 +450,6 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   max-width: 100%;
 }
 
@@ -475,6 +488,7 @@
   max-width: 80%;
   object-fit: cover;
   transform: scale(1);
+  border: 1px solid black;
 }
 
 .adminProImg_close {
@@ -564,7 +578,6 @@
   max-width: 100%;
 }
 
-.adminProEditInfo__title,
 .adminProEditInfo__meatType {
   display: flex;
   flex-flow: column;
@@ -572,8 +585,21 @@
   align-items: center;
   width: 100%;
 }
+.adminProEditInfo__title {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
-.adminProEditInfo__title input,
+.adminProEditInfo__title input {
+  width: 80%;
+  font-size: 2vmax;
+}
+
 .adminProEditInfo__meatType select {
   width: 59%;
   font-size: 2vmax;
@@ -615,26 +641,35 @@
 
 .dropdown {
   visibility: hidden;
-  display: flex;
   position: absolute;
+  display: flex;
   flex-flow: column;
   justify-content: center;
   width: 100%;
-  padding: var(--PADDING-TB) 0;
   background-color: aliceblue;
-  box-shadow: 0px 1px 2px 0px var(--LINK-ACTIVE);
+  box-shadow: 0px 2px 2px 0px var(--LINK-ACTIVE);
   top: 99%;
   min-width: 100%;
   text-align: center;
+  left: 0;
+  font-size: 2vmax;
 }
 
 .visible {
   visibility: visible;
 }
 
+.dropdown div:first-child {
+  border-top: 1px solid black;
+}
+
+.dropdown div:nth-child(2) {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
 .dropdown__li {
   white-space: nowrap;
-  padding: var(--PADDING-TB) 0;
   width: 100%;
 }
 
@@ -644,12 +679,21 @@
   background-color: var(--LINK-ACTIVE);
 }
 
+.dropdown__li a {
+  padding: 1rem 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .dropdown:first-child {
   border-bottom: var(--BORDERS);
 }
 
 .addProducts {
-  font-size: 2rem;
+  font-size: 2vmax;
+  position: relative;
+  width: 100%;
 }
 
 .addProducts h2 {
@@ -659,12 +703,74 @@
 
 .addProForm {
   display: grid;
+  grid-template-columns: repeat(2, 50%);
   justify-content: center;
-  column-gap: 5%;
-  row-gap: 30px;
+  row-gap: 2vmax;
   padding: var(--PADDING-SIDE) var(--PADDING-TB);
   margin-top: 1rem;
   font-size: 1em;
+}
+
+.addProduct__title,
+.addProduct__price,
+.addProduct__meatType,
+.addProduct__onStorage,
+.addProduct__description,
+.imgForm {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.addProduct__description textarea {
+  width: 90%;
+  min-height: 80px;
+}
+
+.addProduct__description,
+.imgForm,
+.imgPreview {
+  grid-column: 1 / 3;
+}
+
+.imgPreview {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: auto;
+}
+
+.imgPreview img {
+  max-width: 90%;
+  width: 90%;
+  height: auto;
+  border: 1px solid black;
+}
+
+.addProduct__loading {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #333333b7;
+  z-index: 99;
+}
+
+.addProduct__loading svg {
+  width: 10vmax;
+  height: 10vmax;
+  fill: var(--LINK-ACTIVE);
 }
 
 @keyframes fadeIn {
@@ -689,18 +795,21 @@
 }
 
 .imgForm input[type="file"] {
-  border-top: var(--BORDERS);
   padding-top: var(--PADDING-SIDE);
   border-bottom: var(--BORDERS);
   padding-bottom: var(--PADDING-SIDE);
   white-space: normal;
   text-align: center;
-  font-size: 0.8rem;
+}
+
+.imgForm input[type="file"]::file-selector-button:hover {
+  background-color: var(--LINK-ACTIVE);
 }
 
 .addButton {
   display: flex;
   justify-content: center;
+  grid-column: 1 / 3;
 }
 
 .addButton button {
@@ -708,7 +817,7 @@
 }
 
 .addProForm input {
-  width: 90vw;
+  width: 90%;
 }
 
 .addProForm select {
@@ -1203,10 +1312,6 @@
     top: -3.5rem;
   }
 
-  .nav__admin {
-    font-size: 1rem;
-  }
-
   .adminPro_delete {
     font-size: 1.5rem;
   }
@@ -1273,10 +1378,6 @@
     font-size: 1.5rem;
   }
 
-  .adminPro h1 {
-    font-size: 1rem;
-  }
-
   .adminPro__tfoot button:first-child {
     padding: 0 var(--PADDING-SIDE);
   }
@@ -1285,8 +1386,8 @@
     padding: 0.2rem 0.5rem;
   }
 
-  .adminPro__tbody__tr__ChangeConfirme {
-    font-size: 0.7rem;
+  .adminPro__input {
+    width: 40%;
   }
 
   .adminLogInSection {
@@ -1320,15 +1421,30 @@
   }
 
   .adminPro {
-    font-size: 0.5rem;
+    font-size: 1vmax;
+    max-height: 100dvh;
+    height: 97dvh;
+    margin-top: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .adminPro__table {
+    height: 85dvh;
   }
 
   .adminPro__tbody {
     position: relative;
   }
 
+  .adminPro__tbody__tr {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
   .adminProImg {
-    font-size: 0.5rem;
+    font-size: 1vmax;
+    flex-flow: row-reverse;
+    grid-column: 3 / 4;
   }
 
   .adminMain {
@@ -1391,7 +1507,7 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1vmax;
   }
 
   .addProForm {
@@ -1420,7 +1536,7 @@
   }
 
   .imgForm input[type="file"] {
-    font-size: 0.7rem;
+    font-size: 1vmax;
     padding: 0.2rem;
     width: auto;
   }
@@ -1483,34 +1599,78 @@
   }
 
   .adminProEdit {
+    grid-column: 1 / 3;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 30% 30% 40%);
+    align-items: start;
     width: 100%;
     max-width: 100%;
+    height: auto;
+    max-height: 35dvh;
     padding: 0.5rem 0.5rem;
     font-size: 0.5rem;
+    gap: 0.2rem;
+  }
+
+  .adminProEdit label {
+    font-weight: bold;
   }
 
   .adminProEdit h2 {
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
   }
 
   .adminProEditInfo {
-    min-height: 100%;
+    max-height: 24dvh;
+    height: 100%;
+    max-width: 100%;
+    grid-template-rows: repeat(1, 20% 80%);
+    gap: 0.2rem;
   }
 
   .adminProEditInfo__title {
-    align-items: flex-end;
+    align-items: center;
+  }
+
+  .adminProEditInfo__title input {
+    font-size: 1vmax;
   }
 
   .adminProEditInfo__meatType {
-    align-items: flex-start;
+    align-items: center;
+  }
+
+  .adminProEditInfo__meatType select {
+    font-size: 1vmax;
+  }
+
+  .adminProEditInfo__description {
+    height: 100%;
+    gap: 0.2rem;
+    justify-content: flex-end;
+    grid-column: 1 / 3;
+  }
+
+  .adminProEditInfo__description textarea {
+    height: 80%;
   }
 
   .adminProImg_XButton {
     right: 0.5rem;
     top: 0.2rem;
     font-size: 0.6rem;
+  }
+
+  .adminProImg_img {
+    height: 100%;
+    width: auto;
+    max-height: 24dvh;
+  }
+
+  .adminProImgSrc {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    max-width: 100%;
   }
 
   .adminProImgSrc_img {
@@ -1524,7 +1684,7 @@
 
   .adminMain {
     display: grid;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 7% 93%;
     align-items: start;
   }
 
@@ -1535,12 +1695,18 @@
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
-    font-size: 0.7rem;
+    font-size: 1vmax;
+    padding: 0.5rem 0;
+    width: 100%;
   }
 
   .adminNav__ul {
+    display: flex;
     flex-flow: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    padding: unset;
     gap: 0.5rem;
   }
 
@@ -1549,6 +1715,11 @@
   .adminLink__nav_logOut {
     border: var(--BORDERS);
     border-radius: 1rem;
+    width: 95%;
+  }
+
+  .adminLink__nav__dropdown {
+    padding: 0.2rem 0.5rem;
   }
 
   .adminLink__nav_logOut {
@@ -1561,6 +1732,14 @@
     top: 0;
     left: 100%;
     gap: 0.5rem;
+    padding: 0.5rem 0.2rem;
+    width: auto;
+    font-size: 1vmax;
+  }
+
+  .dropdown div:first-child,
+  .dropdown div:nth-child(2) {
+    border: unset;
   }
 
   .dropdown__li {
@@ -1578,8 +1757,8 @@
   .dropdown__li a {
     border: 1px solid black;
     border-radius: 1rem;
-    width: 90%;
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    width: auto;
+    padding: var(--PADDING-TB) 0.5rem;
   }
 
   .dropdown__li a:hover,
