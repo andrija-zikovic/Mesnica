@@ -48,6 +48,8 @@
   top: 0;
   width: 100%;
   max-height: 6vh;
+  height: 6dvh;
+  min-height: 6vh;
   background-color: aliceblue;
   box-shadow: 0px 1px 2px 0px black;
   font-weight: bold;
@@ -124,14 +126,17 @@
 }
 
 .adminPro {
-  max-height: 94vh;
+  max-height: 90dvh;
+  height: 90dvh;
+  min-height: 90dvh;
   min-width: 100%;
+  max-width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
-  margin-top: 1vh;
+  font-size: 2vmax;
+  margin-top: 3dvh;
 }
 
 .adminPro h1 {
@@ -198,7 +203,7 @@
   position: absolute;
   width: 80vw;
   left: 10vw;
-  top: 20vh;
+  top: 50dvh;
   padding: 1rem 1rem;
   font-size: 2rem;
   text-align: center;
@@ -226,8 +231,7 @@
 }
 
 .adminPro__table {
-  max-width: 98%;
-  max-height: 80vh;
+  height: 90%;
   width: 98%;
   border: 1px solid black;
   text-align: center;
@@ -236,12 +240,14 @@
 }
 
 .adminPro__thead {
-  max-height: 5vh;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  max-height: 4%;
+  min-height: 4%;
+  display: flex;
+  justify-content: center;
   align-items: center;
   border-bottom: 1px solid black;
   white-space: nowrap;
+  font-weight: bold;
 }
 
 .adminPro__thead p {
@@ -251,16 +257,33 @@
 }
 
 .adminPro__tbody {
-  max-height: 70vh;
+  max-height: 92%;
+  min-height: 92%;
   overflow-y: scroll;
   position: relative;
 }
 
 .adminPro__tbody__tr {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
   border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0.2rem;
+}
+
+.adminPro__tbody__tr__Info {
+  display: grid;
+  grid-template-columns: repeat(3, 10% 45% 45%);
+  width: 100%;
+  font-weight: bold;
+}
+
+.adminPro__tbody__tr__Edit {
+  display: grid;
+  grid-template-columns: repeat(4, 30% 30% 20% 20%);
+  width: 100%;
+  max-width: 100%;
 }
 
 .adminPro__tbody__tr__ChangeConfirme {
@@ -269,7 +292,6 @@
   justify-content: center;
   align-items: center;
   padding: 0.5rem 0.5rem;
-  font-size: 1rem;
   width: 100%;
 }
 
@@ -280,12 +302,8 @@
 .adminPro__tbody__tr p {
   padding: var(--PADDING-TB);
   text-align: center;
-}
-
-.adminPro__tbody__tr div {
-  padding: var(--PADDING-TB);
-  display: flex;
-  justify-content: center;
+  white-space: nowrap;
+  overflow: auto;
 }
 
 .adminPro__tbody__tr_delete {
@@ -298,6 +316,8 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 80%;
+  height: 100%;
 }
 
 .adminPro__tbody__tr_delete:hover,
@@ -318,6 +338,7 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 80%;
 }
 
 .adminPro__tbody__tr_img:hover,
@@ -328,6 +349,8 @@
 }
 
 .adminPro__tfoot {
+  max-height: 4%;
+  min-height: 4%;
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -343,7 +366,7 @@
 }
 
 .adminPro__input {
-  max-width: 2.7rem;
+  max-width: 60%;
   text-align: center;
 }
 
@@ -388,8 +411,9 @@
   justify-content: flex-start;
   align-items: center;
   border-bottom: 1px solid black;
-  gap: 0.5rem;
-  font-size: 1.5vmax;
+  gap: 1rem;
+  font-size: 2vmax;
+  max-width: 100%;
 }
 
 .opening {
@@ -409,11 +433,11 @@
 
 .adminProImg {
   display: flex;
-  flex-flow: row;
-  justify-content: space-evenly;
-  width: 90%;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   max-width: 100%;
-  height: auto;
 }
 
 .adminProImgSrc {
@@ -421,7 +445,7 @@
   flex-flow: column;
   justify-content: center;
   gap: 1rem;
-  max-width: 52%;
+  max-width: 80%;
 }
 
 .adminProImgSrc_img {
@@ -445,9 +469,12 @@
 }
 
 .adminProImg_img {
-  max-height: 100px;
-  width: auto;
+  width: 80%;
   height: auto;
+  max-height: 53%;
+  max-width: 80%;
+  object-fit: cover;
+  transform: scale(1);
 }
 
 .adminProImg_close {
@@ -528,13 +555,13 @@
 }
 
 .adminProEditInfo {
-  display: flex;
-  flex-flow: column;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  width: 90%;
-  max-width: 90%;
+  gap: 2rem 0rem;
+  width: 100%;
+  max-width: 100%;
 }
 
 .adminProEditInfo__title,
@@ -543,12 +570,13 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
 }
 
 .adminProEditInfo__title input,
 .adminProEditInfo__meatType select {
-  width: 80%;
+  width: 59%;
+  font-size: 2vmax;
 }
 
 .adminProEditInfo__description {
@@ -559,13 +587,13 @@
   gap: 0.5rem;
   min-height: 50px;
   width: 100%;
-  grid-row: 1 / 3;
-  grid-column: 2 / 3;
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
 }
 
 .adminProEditInfo__description textarea {
   width: 80%;
-  min-height: 50px;
+  min-height: 80px;
 }
 
 .adminLink__nav__dropdown:hover,

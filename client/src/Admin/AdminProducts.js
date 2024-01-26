@@ -23,6 +23,7 @@ const AdminProducts = () => {
   };
 
   const handleProductChange = (id, key, value) => {
+    console.log(id, key, value);
     if (productsChange[id]) {
       setProductsChange((prevState) => ({
         ...prevState,
@@ -73,7 +74,6 @@ const AdminProducts = () => {
   };
 
   const handleProductsChangeSubmit = (id, index) => {
-    console.log(id);
     const formData = new FormData();
 
     formData.append("id", id);
@@ -85,6 +85,7 @@ const AdminProducts = () => {
       formData.append("onStorage", productsChange[id].onStorage);
     }
     if (productsChange[id].image) {
+      console.log("image", productsChange[id].image);
       formData.append("image", productsChange[id].image);
     }
     if (productsChange[id].title) {
@@ -112,7 +113,7 @@ const AdminProducts = () => {
             return newProductsChange;
           });
           setReFetch(!reFetch);
-          handleClick(index);
+          handleClickClose(index);
           return response.json();
         }
         setMessage("Error while updating data!");
@@ -156,8 +157,7 @@ const AdminProducts = () => {
 
   const handleFileChange = (e, id) => {
     if (e.target.files && e.target.files.length > 0) {
-      const selectedImage = e.target.files[0];
-      handleProductChange(id, "image", selectedImage);
+      handleProductChange(id, "image", e.target.files[0]);
     }
   };
 
@@ -223,13 +223,7 @@ const AdminProducts = () => {
         </div>
         <div className="adminPro__table">
           <div className="adminPro__thead">
-            <p></p>
-            <p>Name</p>
-            <p>Type</p>
-            <p>Price / kg</p>
-            <p>On storage</p>
-            <p></p>
-            <p></p>
+            <Clock />
           </div>
           {filteredProducts.length < 1 ? (
             <div className="loading">
@@ -335,15 +329,17 @@ const AdminProducts = () => {
           ) : (
             <div className="adminPro__tbody">
               {filteredProducts.map((product, index) => (
-                <div>
-                  <div key={product._id} className="adminPro__tbody__tr">
+                <div key={product._id} className="adminPro__tbody__tr">
+                  <div className="adminPro__tbody__tr__Info">
                     <p>{index + 1}</p>
                     <p
                       className={`${product.title.length > 20 ? "resize" : ""}`}
                     >
-                      {product.title}
+                      {product.title.toUpperCase()}
                     </p>
-                    <p>{product.meatType}</p>
+                    <p>{product.meatType.toUpperCase()}</p>
+                  </div>
+                  <div className="adminPro__tbody__tr__Edit">
                     <div style={{ justifyContent: "center", gap: "0.5rem" }}>
                       <input
                         type="number"
@@ -477,23 +473,27 @@ const AdminProducts = () => {
                         </div>
                       </div>
                       <div className="adminProImg">
-                        <img
-                          src={
-                            productsChange[product._id] &&
-                            productsChange[product._id].image
-                              ? URL.createObjectURL(
-                                  productsChange[product._id].image
-                                )
-                              : product.imgSrc
-                          }
-                          alt={
-                            productsChange[product._id] &&
-                            productsChange[product._id].image
-                              ? "new"
-                              : product.name
-                          }
-                          className="adminProImg_img"
-                        />
+                        {productsChange[product._id] &&
+                        productsChange[product._id].image ? (
+                          <img
+                            src={
+                              productsChange[product._id] &&
+                              productsChange[product._id].image &&
+                              URL.createObjectURL(
+                                productsChange[product._id].image
+                              )
+                            }
+                            alt="Crop preview"
+                            className="adminProImg_img"
+                          />
+                        ) : (
+                          <img
+                            src={product.imgSrc}
+                            alt={product.name}
+                            className="adminProImg_img"
+                          />
+                        )}
+
                         <div className="adminProImgSrc">
                           <div className="adminProImgSrcLabelAndClose">
                             {productsChange[product._id] &&
@@ -518,26 +518,23 @@ const AdminProducts = () => {
                           />
                         </div>
                       </div>
-                      {productsChange[product._id] && (
-                        <div className="adminPro__tbody__tr__ChangeConfirme">
-                          <button
-                            onClick={() =>
-                              handleProductsChangeSubmit(product._id, index)
-                            }
-                          >
-                            Confirem changes
-                          </button>
-                        </div>
-                      )}
+                    </div>
+                  )}
+                  {productsChange[product._id] && (
+                    <div className="adminPro__tbody__tr__ChangeConfirme">
+                      <button
+                        onClick={() =>
+                          handleProductsChangeSubmit(product._id, index)
+                        }
+                      >
+                        Confirem changes
+                      </button>
                     </div>
                   )}
                 </div>
               ))}
             </div>
           )}
-          <div className="adminPro__tfoot">
-            <Clock />
-          </div>
         </div>
       </div>
     </>
