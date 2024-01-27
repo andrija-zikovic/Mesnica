@@ -43,13 +43,14 @@ const AddProducts = () => {
         const updateResponse = await handleAddSubmit(e);
         return updateResponse.json();
       } else {
+        setLoading(false);
         console.error("Failed to add product:", req.status, req.statusText);
         setMessage(`Proizvod nije dodan! ${req.status} ${req.statusText}`);
       }
     } catch (err) {
       setLoading(false);
       console.error("Error giving product:", err);
-      setMessage(`Proizvod nije dodan! ${err}`);
+      setMessage(`Product is not added! ERROR: ${err}`);
     }
   };
 

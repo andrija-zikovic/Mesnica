@@ -1236,6 +1236,8 @@ const totalPrice = cartItems.reduce((total, cartItem) => {
 
 # Admin
 
+[Web](https://mesnica02.oa.r.appspot.com/admin)
+
 ## 1. [Admin.js](https://github.com/andrija-zikovic/Mesnica/blob/main/client/src/Admin/Admin.js)
 
 <div align="right">

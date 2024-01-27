@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const sharp = require("sharp");
 const path = require("path");
-const fs = require("fs");
+const fs = require("fs").promises;
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // specify the folder where files will be stored
+    cb(null, "tmp/"); // specify the folder where files will be stored
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname); // generate a unique filename
@@ -73,7 +73,7 @@ const createProduct = async (req, res) => {
       const imagePath = req.file.path;
 
       try {
-        const resizedImageBuffer = await sharp(imagePath)
+        const resizedImageBuffer = await sharp(await fs.readFile(imagePath))
           .resize(600, 400)
           .toBuffer();
         console.log("Image resized successfully!");
@@ -153,7 +153,7 @@ const changeProducts = async (req, res) => {
         const bucketName = "mesnica02.appspot.com";
 
         try {
-          const resizedImageBuffer = await sharp(imagePath)
+          const resizedImageBuffer = await sharp(await fs.readFile(imagePath))
             .resize(600, 400)
             .toBuffer();
           console.log("Image resized successfully!");
