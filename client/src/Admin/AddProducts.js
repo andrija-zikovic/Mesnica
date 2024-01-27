@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import DataAdmin from "../context/DataAdmin";
 
 const AddProducts = () => {
-  const { token, loading, setLoading } = useContext(DataAdmin);
+  const { token, setLoading, setReFetch } = useContext(DataAdmin);
   const [message, setMessage] = useState("");
 
   const [productInfo, setProductInfo] = useState({
@@ -38,6 +38,10 @@ const AddProducts = () => {
         console.log("Product Added");
         e.target.reset();
         setMessage("Proizvod je dodan!");
+      } else if (req.status === 403) {
+        await setReFetch((prevState) => !prevState);
+        const updateResponse = await handleAddSubmit(e);
+        return updateResponse.json();
       } else {
         console.error("Failed to add product:", req.status, req.statusText);
         setMessage(`Proizvod nije dodan! ${req.status} ${req.statusText}`);

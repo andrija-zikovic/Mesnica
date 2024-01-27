@@ -32,7 +32,7 @@ Chart.register(
 );
 
 const AdminStats = () => {
-  const { token } = useContext(DataAdmin);
+  const { token, setRefetch } = useContext(DataAdmin);
   const [adminOrd, setAdminOrd] = useState([]);
   const dayChartRef = useRef(null);
   const monthChartRef = useRef(null);
@@ -53,6 +53,10 @@ const AdminStats = () => {
         });
         if (!res.ok) {
           throw new Error("Network response was not ok");
+        } else if (res.status === 403) {
+          await setRefetch((prev) => !prev);
+          const updateResponse = await fetchData();
+          return updateResponse.json();
         } else {
           const ordersData = await res.json();
           setAdminOrd(ordersData);
@@ -371,37 +375,31 @@ const AdminStats = () => {
       });
       return acc;
     }, {});
-    console.log("Products:", products);
     if (productsSort === "quantityUp") {
       const sortedProducts = Object.entries(products).sort(
         (a, b) => a[1].quantity - b[1].quantity
       );
       setProductsStats(sortedProducts);
-      console.log("Sorted Products:", sortedProducts);
     } else if (productsSort === "quantityDown") {
       const sortedProducts = Object.entries(products).sort(
         (a, b) => b[1].quantity - a[1].quantity
       );
       setProductsStats(sortedProducts);
-      console.log("Sorted Products:", sortedProducts);
     } else if (productsSort === "revenueUp") {
       const sortedProducts = Object.entries(products).sort(
         (a, b) => a[1].totalPrice - b[1].totalPrice
       );
       setProductsStats(sortedProducts);
-      console.log("Sorted Products:", sortedProducts);
     } else if (productsSort === "revenueDown") {
       const sortedProducts = Object.entries(products).sort(
         (a, b) => b[1].totalPrice - a[1].totalPrice
       );
       setProductsStats(sortedProducts);
-      console.log("Sorted Products:", sortedProducts);
     } else {
       const sortedProducts = Object.entries(products).sort(
         (a, b) => b[1].totalPrice - a[1].totalPrice
       );
       setProductsStats(sortedProducts);
-      console.log("Sorted Products:", sortedProducts);
     }
   }, [adminOrd, productsSort]);
 

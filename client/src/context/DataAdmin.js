@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState, useRef } from "react";
+import Cookies from "js-cookie";
 
 const DataAdmin = createContext({});
 
@@ -9,12 +10,14 @@ export const DataAdminProvider = ({ children }) => {
   const dropdownRef = useRef(null);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [reFetch, setReFetch] = useState(false);
 
   const handleLogin = async (username, password) => {
     try {
       const url = process.env.REACT_APP_LOGIN;
       const response = await fetch(url, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -22,6 +25,7 @@ export const DataAdminProvider = ({ children }) => {
       });
 
       if (response.ok) {
+        Cookies.set("jwt", response.headers.get("set-cookie"));
         const { accessToken } = await response.json();
         localStorage.setItem("token", accessToken);
         setToken(accessToken);
@@ -82,41 +86,36 @@ export const DataAdminProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-      setIsLoggedIn(true);
-    }
+    const refreshTokens = async () => {
+      try {
+        const refreshResponse = await fetch(process.env.REACT_APP_REFRESH, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-    document.addEventListener("click", handleOutsideClick);
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
-
-  /*  const refreshTokens = async () => {
-        try {
-          const refreshResponse = await fetch(process.env.REACT_APP_REFRESH, {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-      
-          if (refreshResponse.ok) {
-            setIsLoggedIn(true);
-            console.log('Tokens refreshed successfully');
-          } else {
-            // Handle refresh failure
-            setIsLoggedIn(false);
-            console.error('Token refresh failed');
-          }
-        } catch (error) {
-          // Handle network errors, server errors, etc.
-          console.error('Error occurred during token refresh:', error);
+        if (refreshResponse.ok) {
+          const { accessToken } = await refreshResponse.json();
+          localStorage.setItem("token", accessToken);
+          setToken(accessToken);
+          setIsLoggedIn(true);
+          console.log("Tokens refreshed successfully");
+        } else {
+          // Handle refresh failure
+          setIsLoggedIn(false);
+          console.error("Token refresh failed");
         }
-      }; */
+      } catch (error) {
+        // Handle network errors, server errors, etc.
+        console.error("Error occurred during token refresh:", error);
+      }
+    };
+
+    refreshTokens();
+  }, [reFetch]);
 
   return (
     <DataAdmin.Provider
@@ -132,6 +131,8 @@ export const DataAdminProvider = ({ children }) => {
         handleKeyPress,
         loading,
         setLoading,
+        reFetch,
+        setReFetch,
       }}
     >
       {children}

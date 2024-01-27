@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import DataAdmin from "../context/DataAdmin";
 import { Link, Outlet, Route, Routes } from "react-router-dom";
 import AdminLogIn from "./AdminLogIn";
@@ -22,16 +22,7 @@ const Admin = () => {
 
   return (
     <main className="adminMain">
-      {!isLoggedIn ? (
-        <section className="adminLogInSection">
-          <h3 style={{ marginBottom: 0, color: "var(--LINK-ACTIVE)" }}>
-            Log in:
-          </h3>
-          <AdminLogIn />
-          {message && <p style={{ color: "red" }}>{message}</p>}
-          <p>username: admin | password: admin</p>
-        </section>
-      ) : (
+      {isLoggedIn ? (
         <>
           <div className="nav__admin">
             <div className="adminNav__ul">
@@ -80,6 +71,15 @@ const Admin = () => {
           </Routes>
           <Outlet />
         </>
+      ) : (
+        <section className="adminLogInSection">
+          <h3 style={{ marginBottom: 0, color: "var(--LINK-ACTIVE)" }}>
+            Log in:
+          </h3>
+          <AdminLogIn />
+          {message && <p style={{ color: "red" }}>{message}</p>}
+          <p>username: admin | password: admin</p>
+        </section>
       )}
       {loading && (
         <div className="addProduct__loading">

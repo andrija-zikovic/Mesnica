@@ -36,8 +36,6 @@ const ProductCard = ({ id, src, title, price, description }) => {
       setFontSizeToFit(`title${id}`);
     };
 
-    console.log(`ProductCard ${id} mounted`);
-
     adjustFontSize();
 
     window.addEventListener("resize", adjustFontSize);

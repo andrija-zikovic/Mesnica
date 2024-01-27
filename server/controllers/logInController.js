@@ -1,44 +1,48 @@
-const User = require('../model/User');
-const bcrypt = require('bcrypt');
-const JWT = require('jsonwebtoken');
+const User = require("../model/User");
+const bcrypt = require("bcrypt");
+const JWT = require("jsonwebtoken");
 
 const auth = async (req, res) => {
-    const { username, password } = req.body;
+  const { username, password } = req.body;
 
-    try {
-        const foundUser = await User.findOne({ username });
+  try {
+    const foundUser = await User.findOne({ username });
 
-        if (!foundUser) {
-        return res.status(401).json({ error: 'Invalid username!' });
-        }
-
-        const isPasswordMatch = await bcrypt.compare(password, foundUser.password);
-
-        if (isPasswordMatch) {
-
-          const accessToken = JWT.sign(
-              { "username": foundUser.username },
-              process.env.ACCESS_TOKEN_SECRET,
-              { expiresIn: '1h' }
-          );
-          const refreshToken = JWT.sign(
-              { "username": foundUser.username },
-              process.env.REFRESH_TOKEN_SECRET,
-              { expiresIn: '1d' }
-          );
-
-          foundUser.refreshToken = refreshToken;
-          const result = await foundUser.save();
-
-          res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 }); /* secure: true, */
-          res.json({ accessToken });
-        } else {
-          return res.status(401).json({ error: 'Invalid password!' });
-        }
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'Internal Server Error' });
+    if (!foundUser) {
+      return res.status(401).json({ error: "Invalid username!" });
     }
+
+    const isPasswordMatch = await bcrypt.compare(password, foundUser.password);
+
+    if (isPasswordMatch) {
+      const accessToken = JWT.sign(
+        { username: foundUser.username },
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: "1h" }
+      );
+      const refreshToken = JWT.sign(
+        { username: foundUser.username },
+        process.env.REFRESH_TOKEN_SECRET,
+        { expiresIn: "1d" }
+      );
+
+      foundUser.refreshToken = refreshToken;
+      const result = await foundUser.save();
+
+      res.cookie("jwt", refreshToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        maxAge: 24 * 60 * 60 * 1000,
+      });
+      res.json({ accessToken });
+    } else {
+      return res.status(401).json({ error: "Invalid password!" });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
 /* const userCreate = async (req, res) => {
@@ -66,4 +70,4 @@ const auth = async (req, res) => {
   }
 }; */
 
-module.exports = {auth};
+module.exports = { auth };

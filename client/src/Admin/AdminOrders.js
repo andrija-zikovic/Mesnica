@@ -4,7 +4,7 @@ import AdminOrder from "./AdminOrder";
 import Clock from "./Clock";
 
 const AdminOrders = () => {
-  const { token } = useContext(DataAdmin);
+  const { token, setReFetch } = useContext(DataAdmin);
   const [adminOrd, setAdminOrd] = useState([]);
   const [shouldRefetch, setShouldRefetch] = useState(true);
   const [message, setMessage] = useState("");
@@ -33,7 +33,11 @@ const AdminOrders = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        if (!res.ok) {
+        if (res.status === 403) {
+          await setReFetch((prevState) => !prevState);
+          const updateResponse = await fetchData();
+          return updateResponse.json();
+        } else if (!res.ok) {
           throw new Error("Network response was not ok");
         } else {
           const ordersData = await res.json();

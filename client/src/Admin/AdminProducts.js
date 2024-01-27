@@ -3,7 +3,7 @@ import DataAdmin from "../context/DataAdmin";
 import Clock from "./Clock";
 
 const AdminProducts = () => {
-  const { token } = useContext(DataAdmin);
+  const { token, reFetch, setReFetch } = useContext(DataAdmin);
   const [adminPro, setAdminPro] = useState([]);
   const [showEdit, setShowEdit] = useState([]); // Use an array to track image visibility for each row
   const [animation, setAnimation] = useState([]); // Use animation to trigger image visibility
@@ -11,7 +11,7 @@ const AdminProducts = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [message, setMessage] = useState("");
   const [productDeleteInfo, setProductDeleteInfo] = useState();
-  const [reFetch, setReFetch] = useState(false);
+  const [reFetchLocal, setReFetchLocal] = useState(false);
   const fileInputRef = useRef();
 
   const filteredProducts = adminPro.filter((product) =>
@@ -23,8 +23,6 @@ const AdminProducts = () => {
   };
 
   const handleProductChange = (id, key, value) => {
-    console.log(id, key, value);
-
     setProductsChange((prevState) => {
       const newState = { ...prevState };
 
@@ -98,7 +96,6 @@ const AdminProducts = () => {
       formData.append("onStorage", productsChange[id].onStorage);
     }
     if (productsChange[id].image) {
-      console.log("image", productsChange[id].image);
       formData.append("image", productsChange[id].image);
     }
     if (productsChange[id].title) {
@@ -118,16 +115,20 @@ const AdminProducts = () => {
       },
       body: formData,
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.ok) {
           setProductsChange((prevState) => {
             const newProductsChange = { ...prevState };
             delete newProductsChange[id];
             return newProductsChange;
           });
-          setReFetch(!reFetch);
+          setReFetchLocal(!reFetchLocal);
           handleClickClose(index);
           return response.json();
+        } else if (response.status === 403) {
+          await setReFetch((prevState) => !prevState);
+          const updateResponse = await handleProductsChangeSubmit(id, index);
+          return updateResponse.json();
         }
         setMessage("Error while updating data!");
         throw new Error("Network response was not ok.");
@@ -151,8 +152,12 @@ const AdminProducts = () => {
       },
       body: JSON.stringify({ id: id }),
     })
-      .then((response) => {
-        if (!response.ok) {
+      .then(async (response) => {
+        if (response.status === 403) {
+          await setReFetch((prevState) => !prevState);
+          const updateResponse = await handleProductDelete(id);
+          return updateResponse.json();
+        } else if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const updatedProducts = adminPro.filter(
@@ -182,7 +187,11 @@ const AdminProducts = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        if (!res.ok) {
+        if (res.status === 403) {
+          await setReFetch((prevState) => !prevState);
+          const updateResponse = await fetchData();
+          return updateResponse.json();
+        } else if (!res.ok) {
           throw new Error("Network response was not ok");
         } else {
           const productsData = await res.json();
@@ -194,7 +203,7 @@ const AdminProducts = () => {
     };
 
     fetchData();
-  }, [token, reFetch]);
+  }, [token, reFetch, reFetchLocal]);
 
   return (
     <>

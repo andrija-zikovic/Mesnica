@@ -7,7 +7,7 @@ const AdminOrder = ({
   setMessage,
   setShouldRefetch,
 }) => {
-  const { token } = useContext(DataAdmin);
+  const { token, setReFetch } = useContext(DataAdmin);
   const { _id, buyer, date, num, products, status } = orderData;
 
   const [orderStatus, setOrderStatus] = useState(status);
@@ -39,6 +39,10 @@ const AdminOrder = ({
         setShouldRefetch(true);
         setMessage(`Order ${num} Confirmed!`);
         toggleVisibility();
+      } else if (response.status === 403) {
+        await setReFetch((prevState) => !prevState);
+        const updateResponse = await handleConfirme();
+        return updateResponse.json();
       } else if (response.status === 400) {
         const errorResponse = await response.json();
         setMessage(errorResponse.error);
@@ -68,6 +72,10 @@ const AdminOrder = ({
         setShouldRefetch(true);
         setMessage(`Order ${num} Rejected!`);
         toggleVisibility(_id);
+      } else if (response.status === 403) {
+        await setReFetch((prevState) => !prevState);
+        const updateResponse = await handleReject();
+        return updateResponse.json();
       } else if (response.status === 400) {
         const errorResponse = await response.json();
         setMessage(errorResponse.error);
@@ -80,17 +88,10 @@ const AdminOrder = ({
     }
   };
 
-  console.log("orderData:", orderData);
-
   return (
     <div className="adminOrdDis">
       <div className="adminOrdDis__ButtonTop">
         <button onClick={toggleVisibility}>X</button>
-      </div>
-      <div className="adminOrdDis__head">
-        <p>{buyer.name}</p>
-        <p>{date}</p>
-        <p style={{ fontWeight: "bold" }}>{num}</p>
       </div>
       <div className="adminOrdDis__products">
         <h2>Products</h2>
@@ -134,7 +135,10 @@ const AdminOrder = ({
             ) : null}
           </div>
         ))}
-        <p className="adminOrdDis__total">Total: {orderData.total} €</p>
+        <div className="adminOrdDis__total">
+          <p>Total:</p>
+          <p>{orderData.total} €</p>
+        </div>
       </div>
       {orderStatus === true ? (
         <p
