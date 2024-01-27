@@ -394,7 +394,7 @@ const AdminProducts = () => {
                           )
                         }
                       ></input>
-                      {" kg"}
+                      {product.meatType === "other" ? " pcs" : " kg"}
                     </div>
                     <div>
                       <button

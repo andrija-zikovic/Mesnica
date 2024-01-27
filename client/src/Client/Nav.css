@@ -96,15 +96,7 @@ table {
   border: 2px solid var(--HEADER-BGCOLOR);
   border-radius: 2px;
   z-index: 99;
-  font-size: 1.7rem;
-}
-
-.bucket thead tr th:nth-child(1),
-.bucket thead tr th:nth-child(2),
-.bucket thead tr th:nth-child(3),
-.bucket thead tr th:nth-child(4),
-.bucket thead tr th:nth-child(5) {
-  border-bottom: 2px solid aliceblue;
+  font-size: 1.5vmax;
 }
 
 .bucket div {
@@ -117,12 +109,71 @@ table {
 .bucket__table {
   padding: 0 1rem;
   width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .bucket__thead {
   font-weight: bold;
   border-bottom: 1px solid aliceblue;
   padding: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-self: flex-start;
+  width: 100%;
+}
+
+.bucket__thead tr {
+  padding: 0.2rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 30% 30% 30% 10%);
+  align-items: center;
+  width: 100%;
+}
+
+.bucket__tbody {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  width: 100%;
+  max-height: 30dvh;
+}
+
+.bucket__tbody tr {
+  padding: 0.2rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 30% 30% 30% 10%);
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid aliceblue;
+}
+
+.bucket__tbody td {
+  text-align: center;
+}
+
+.bucket__tfoot {
+  font-weight: bold;
+  border-top: 1px solid aliceblue;
+  padding: auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-self: flex-start;
+  width: 100%;
+}
+
+.bucket__tfoot tr {
+  padding: 0.5rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 30% 30% 30% 10%);
+  align-items: center;
+  width: 100%;
 }
 
 .bucket button {
@@ -130,14 +181,6 @@ table {
   font-weight: bold;
   margin-bottom: 5px;
   margin-right: 7px;
-}
-
-.bucket__tbody tr td:first-child {
-  text-align: left;
-}
-
-.bucket__tbody tr td:last-child {
-  text-align: right;
 }
 
 .clear {
@@ -179,14 +222,6 @@ table {
 
 .bucket__button svg {
   margin-top: 0.2rem;
-}
-
-.bucket tfoot tr td:nth-child(1),
-.bucket tfoot tr td:nth-child(2),
-.bucket tfoot tr td:nth-child(3),
-.bucket tfoot tr td:nth-child(4),
-.bucket tfoot tr td:nth-child(5) {
-  border-top: 2px solid aliceblue;
 }
 
 .cartItemsCount {
@@ -233,8 +268,8 @@ table {
 
 @media screen and (min-width: 768px) {
   .bucket {
-    width: 20rem;
-    font-size: 0.5rem;
+    width: 35vmax;
+    font-size: 1vmax;
   }
 
   .bucket p {

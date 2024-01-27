@@ -10,6 +10,7 @@ const Bucket = React.forwardRef(() => {
     setIsBucketVisible,
     targetElement,
   } = useContext(DataClient);
+  console.log(cartItems);
 
   const navigate = useNavigate();
   // Calculate the total price based on selectedUnit
@@ -52,7 +53,6 @@ const Bucket = React.forwardRef(() => {
         <table className="bucket__table">
           <thead className="bucket__thead">
             <tr>
-              <th></th>
               <th>Product</th>
               <th>Quantity</th>
               <th>Price</th>
@@ -62,9 +62,12 @@ const Bucket = React.forwardRef(() => {
           <tbody className="bucket__tbody">
             {cartItems.map((cartItem, index) => (
               <tr key={index}>
-                <td></td>
                 <td>{cartItem.description}</td>
-                <td>{cartItem.quantity.toFixed(2)} kg</td>
+                <td>
+                  {cartItem.unit === "piece"
+                    ? `${cartItem.quantity} pcs`
+                    : `${cartItem.quantity.toFixed(2)} kg`}
+                </td>
                 <td>
                   {parseFloat(handlePriceCaluclation(cartItem)).toFixed(2)} €
                 </td>

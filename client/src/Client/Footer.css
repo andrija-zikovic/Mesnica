@@ -11,7 +11,7 @@
   padding: var(--PADDING-TB) var(--PADDING-SIDE);
   border-top: 1px solid black;
   background-color: var(--HEADER-BGCOLOR);
-  font-size: 1.5vmax;
+  font-size: 1.2vmax;
   z-index: 3;
 }
 
@@ -37,7 +37,7 @@
 
 @media screen and (min-width: 576px) {
   .footer {
-    font-size: 1.5vmax;
+    font-size: 1vmax;
     gap: 0.2rem;
     flex-flow: row;
     justify-content: space-between;

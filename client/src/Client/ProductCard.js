@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import DataClient from "../context/DataClient";
 import "./ProductCard.css";
 
-const ProductCard = ({ id, src, title, price, description }) => {
+const ProductCard = ({ id, src, title, price, description, meatType }) => {
   // Initialize state for input value and selected unit
   const [amount, setAmount] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -99,7 +99,9 @@ const ProductCard = ({ id, src, title, price, description }) => {
               <span className="product-card__price_highlight">
                 {totalProductPrice ? totalProductPrice.toFixed(2) : price} €
               </span>
-              {totalProductPrice
+              {meatType === "other"
+                ? " / piece"
+                : totalProductPrice
                 ? ` / ${(amount / 100).toFixed(2)}kg`
                 : " / kg"}
             </p>
@@ -112,7 +114,8 @@ const ProductCard = ({ id, src, title, price, description }) => {
                     title,
                     price,
                     amount,
-                    setAmount
+                    setAmount,
+                    meatType
                   )
                 }
               >
@@ -124,7 +127,11 @@ const ProductCard = ({ id, src, title, price, description }) => {
                 min={0}
                 max={98}
                 placeholder="0"
-                value={(amount / 100).toFixed(2)}
+                value={
+                  meatType === "other"
+                    ? amount / 100
+                    : (amount / 100).toFixed(2)
+                }
                 readOnly
                 onChange={(e) => setAmount(parseInt(e.target.value))}
               />
@@ -136,7 +143,8 @@ const ProductCard = ({ id, src, title, price, description }) => {
                     title,
                     price,
                     amount,
-                    setAmount
+                    setAmount,
+                    meatType
                   )
                 }
               >

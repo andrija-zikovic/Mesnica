@@ -163,6 +163,7 @@ const ProductList = ({ meatType, host, setLoaded }) => {
                 title={product.title}
                 price={product.price}
                 description={product.description}
+                meatType={product.meatType}
               />
             ))
         ) : (
@@ -175,6 +176,7 @@ const ProductList = ({ meatType, host, setLoaded }) => {
               price={product.price}
               about={product.about}
               description={product.description}
+              meatType={product.meatType}
             />
           ))
         )}

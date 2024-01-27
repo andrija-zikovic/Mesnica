@@ -25,14 +25,24 @@ export const DataClientProvider = ({ children }) => {
     title,
     price,
     amount,
-    setAmount
+    setAmount,
+    meatType
   ) => {
-    const incrementValue = 10;
+    let incrementValue = 0;
+    let newUnite = "";
+
+    if (meatType === "other") {
+      incrementValue = 100;
+      newUnite = "piece";
+    } else {
+      incrementValue = 10;
+      newUnite = "kg";
+    }
+
     const newAmount =
       operation === "increment"
         ? amount + incrementValue
         : amount - incrementValue;
-    const newUnite = "kg";
 
     if (newAmount >= 1) {
       setAmount(newAmount);

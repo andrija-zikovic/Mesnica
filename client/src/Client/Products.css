@@ -115,10 +115,14 @@
 
   .sideNav {
     position: static;
-    font-size: 0.5rem;
+    font-size: 1.5vmax;
     width: 100%;
     height: 100%;
     background-color: whitesmoke;
+  }
+
+  .sideNav_h3 {
+    font-size: 1.5vmax;
   }
 
   .sideNav h3:hover,

@@ -72,7 +72,7 @@ body::-webkit-scrollbar-track,
   right: 0;
   background-color: whitesmoke;
   border: unset;
-  width: 6px;
+  width: 0.6vmax;
 }
 
 /* Customizing the scrollbar thumb */
@@ -87,7 +87,7 @@ body::-webkit-scrollbar-thumb,
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 *::-webkit-scrollbar {
-  width: 8px; /* Width of the scrollbar */
+  width: 0.6vmax; /* Width of the scrollbar */
   border: unset;
 }
 
