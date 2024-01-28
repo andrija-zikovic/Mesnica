@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const multer = require("multer");
 const sharp = require("sharp");
 const path = require("path");
-const fs = require("fs").promises;
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "tmp/"); // specify the folder where files will be stored
+    cb(null, path.join("tmp/")); // specify the folder where files will be stored
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname); // generate a unique filename
@@ -69,11 +69,20 @@ const createProduct = async (req, res) => {
         console.error(err);
         return res.status(500).json({ message: "Unknown error occurred." });
       }
-
-      const imagePath = req.file.path;
+      let path = req.file.path;
+      const imagePath = fs.readFile(req.file.path, (err, data) => {
+        if (err) {
+          // Handle error
+          console.error(err);
+        } else {
+          // Use the 'data' variable for further processing
+          path = data;
+          // Rest of your code
+        }
+      });
 
       try {
-        const resizedImageBuffer = await sharp(await fs.readFile(imagePath))
+        const resizedImageBuffer = await sharp(path)
           .resize(600, 400)
           .toBuffer();
         console.log("Image resized successfully!");
@@ -98,7 +107,7 @@ const createProduct = async (req, res) => {
         const imgSrc = `https://storage.googleapis.com/${bucketName}/${uploadOptions.destination}`;
 
         // Delete the local resized image file
-        await fs.unlinkSync(imagePath);
+        await fs.unlinkSync(req.file.path);
         console.log("Local file deleted successfully!");
 
         // Handle other form data or business logic here
@@ -142,7 +151,7 @@ const changeProducts = async (req, res) => {
       const image = req.file;
 
       if (image) {
-        const imagePath = req.file.path;
+        const imagePath = fs.readFile(req.file.path);
         const { Storage } = require("@google-cloud/storage");
 
         const storage = new Storage({
@@ -153,7 +162,7 @@ const changeProducts = async (req, res) => {
         const bucketName = "mesnica02.appspot.com";
 
         try {
-          const resizedImageBuffer = await sharp(await fs.readFile(imagePath))
+          const resizedImageBuffer = await sharp(imagePath)
             .resize(600, 400)
             .toBuffer();
           console.log("Image resized successfully!");
