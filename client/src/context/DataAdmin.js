@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState, useRef } from "react";
-import Cookies from "js-cookie";
 
 const DataAdmin = createContext({});
 

@@ -37,7 +37,7 @@ const AddProducts = () => {
         setLoading(false);
         console.log("Product Added");
         e.target.reset();
-        setMessage("Proizvod je dodan!");
+        setMessage("Product added successfully!");
       } else if (req.status === 403) {
         await setReFetch((prevState) => !prevState);
         const updateResponse = await handleAddSubmit(e);
@@ -128,6 +128,7 @@ const AddProducts = () => {
           </select>
         </div>
         <div className="imgForm">
+          <label htmlFor="imgSrc">Product image</label>
           <input
             type="file"
             name="imgSrc"
