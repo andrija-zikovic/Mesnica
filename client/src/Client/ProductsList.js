@@ -3,7 +3,7 @@ import "./ProductsList.css";
 import ProductCard from "./ProductCard";
 import DataClient from "../context/DataClient";
 
-const ProductList = ({ meatType, host, setLoaded }) => {
+const ProductList = ({ meatType, host }) => {
   const [noProductsCheck, setNoProductsCheck] = useState(false);
   const { products, setProducts } = useContext(DataClient);
 
@@ -38,13 +38,7 @@ const ProductList = ({ meatType, host, setLoaded }) => {
     };
 
     fetchData();
-  }, [meatType]);
-
-  useEffect(() => {
-    if (host === "home") {
-      setLoaded(true);
-    }
-  }, [host, products, setLoaded]);
+  }, [meatType, setProducts]);
 
   if (noProductsCheck) {
     return <h2 className="noProducts">No products!</h2>;

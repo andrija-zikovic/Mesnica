@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState, useRef } from "react";
+import Cookies from "js-cookie";
 
 const DataAdmin = createContext({});
 
@@ -68,11 +69,11 @@ export const DataAdminProvider = ({ children }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleOutsideClick = (e) => {
+  /* const handleOutsideClick = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setIsDropdownOpen(false);
     }
-  };
+  }; */
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -114,7 +115,7 @@ export const DataAdminProvider = ({ children }) => {
     };
 
     refreshTokens();
-  }, [reFetch]);
+  }, [reFetch, token]);
 
   return (
     <DataAdmin.Provider

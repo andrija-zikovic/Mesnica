@@ -3,7 +3,7 @@ import DataAdmin from "../context/DataAdmin";
 import Clock from "./Clock";
 
 const AdminProducts = () => {
-  const { token, reFetch, setReFetch } = useContext(DataAdmin);
+  const { token } = useContext(DataAdmin);
   const [adminPro, setAdminPro] = useState([]);
   const [showEdit, setShowEdit] = useState([]); // Use an array to track image visibility for each row
   const [animation, setAnimation] = useState([]); // Use animation to trigger image visibility
@@ -126,7 +126,7 @@ const AdminProducts = () => {
           handleClickClose(index);
           return response.json();
         } else if (response.status === 403) {
-          await setReFetch((prevState) => !prevState);
+          await setReFetchLocal((prevState) => !prevState);
           const updateResponse = await handleProductsChangeSubmit(id, index);
           return updateResponse.json();
         }
@@ -154,7 +154,7 @@ const AdminProducts = () => {
     })
       .then(async (response) => {
         if (response.status === 403) {
-          await setReFetch((prevState) => !prevState);
+          await setReFetchLocal((prevState) => !prevState);
           const updateResponse = await handleProductDelete(id);
           return updateResponse.json();
         } else if (!response.ok) {
@@ -188,7 +188,7 @@ const AdminProducts = () => {
           },
         });
         if (res.status === 403) {
-          await setReFetch((prevState) => !prevState);
+          await setReFetchLocal((prevState) => !prevState);
           const updateResponse = await fetchData();
           return updateResponse.json();
         } else if (!res.ok) {
@@ -203,7 +203,7 @@ const AdminProducts = () => {
     };
 
     fetchData();
-  }, [token, reFetch, reFetchLocal]);
+  }, [token, reFetchLocal, setReFetchLocal]);
 
   return (
     <>

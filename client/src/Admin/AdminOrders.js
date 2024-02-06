@@ -52,7 +52,7 @@ const AdminOrders = () => {
       fetchData();
       setShouldRefetch(false); // Reset the flag after refetching
     }
-  }, [token, shouldRefetch]);
+  }, [token, shouldRefetch, setReFetch]);
 
   return (
     <>

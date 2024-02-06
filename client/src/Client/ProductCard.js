@@ -53,7 +53,7 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
     };
 
     updateTotalProductPrice();
-  }, [amount]);
+  }, [amount, price]);
 
   return (
     <article className={`product-card ${imageLoaded ? "loaded" : ""}`} id={id}>

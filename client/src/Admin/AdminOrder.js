@@ -8,7 +8,7 @@ const AdminOrder = ({
   setShouldRefetch,
 }) => {
   const { token, setReFetch } = useContext(DataAdmin);
-  const { _id, buyer, date, num, products, status } = orderData;
+  const { _id, num, products, status } = orderData;
 
   const [orderStatus, setOrderStatus] = useState(status);
   const [checkedProducts, setCheckedProducts] = useState([]);

@@ -32,7 +32,7 @@ Chart.register(
 );
 
 const AdminStats = () => {
-  const { token, setRefetch } = useContext(DataAdmin);
+  const { token, setRefetch, reFetch } = useContext(DataAdmin);
   const [adminOrd, setAdminOrd] = useState([]);
   const dayChartRef = useRef(null);
   const monthChartRef = useRef(null);
@@ -67,7 +67,7 @@ const AdminStats = () => {
     };
 
     fetchData();
-  }, [token]);
+  }, [token, setRefetch, reFetch]);
 
   useEffect(() => {
     const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
