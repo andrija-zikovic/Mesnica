@@ -43,7 +43,7 @@ const Bucket = React.forwardRef(() => {
     const handleOutsideClick = (event) => {
       if (
         targetElement.current &&
-        !targetElement.current.contains(event.target) && 
+        !targetElement.current.contains(event.target)
       ) {
         console.log(targetElement);
         setIsBucketVisible(false);
