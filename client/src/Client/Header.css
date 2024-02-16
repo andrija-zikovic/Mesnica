@@ -11,7 +11,7 @@
   height: auto;
   background-color: var(--HEADER-BGCOLOR);
   border-bottom: var(--BORDERS);
-  font-size: 2vmax;
+  font-size: 1.5rem;
 }
 
 .header__logo {

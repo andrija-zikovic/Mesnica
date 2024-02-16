@@ -1,154 +1,161 @@
 .order {
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-flow: column;
-    align-items: flex-start;
-    font-size: 1.5rem;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
+  width: 100%;
+  height: auto;
+  max-height: 100dvh;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 1.5rem;
+  overflow-y: auto;
 }
 
 .order__table {
-    border-spacing: 10px;
-    border-collapse: collapse;
-    width: 100%;
+  border-spacing: 10px;
+  border-collapse: collapse;
+  width: 100%;
 }
 
 .order button {
-    color: var(--BUTTON-COLOR);
-    font-weight: bold;
-    margin-bottom: 5px;
+  color: var(--BUTTON-COLOR);
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .buyerInfo {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    display: grid;
-    grid-template-columns: 45% 45%;
-    grid-template-rows: auto auto auto auto;
-    column-gap: 10%;
-    row-gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 45%);
+  grid-template-rows: auto;
+  column-gap: 10%;
+  row-gap: 10px;
 }
 
 tbody td {
-    text-align: center;
-    padding: 5px 0;
+  text-align: center;
+  padding: 5px 0;
 }
 
 tbody tr {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 tfoot td,
 thead th,
 thead tr {
-    padding: 10px 0;
-    text-align: center;
-    font-weight: bolder;
-    font-size: 1.1em;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.1em;
 }
 
 tfoot tr,
 thead tr {
-    border-bottom: var(--BORDERS);
+  border-bottom: var(--BORDERS);
 }
 
 .orderButtons {
-    display: flex;
-    flex-flow: row;
-    justify-content: flex-start;
-    gap: 1rem;
-    margin: 10px 0;
-    grid-column-start: 1;
-    grid-column-end: 3;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  gap: 1rem;
+  margin: 10px 0;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .buyerInfo_Form {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    text-align: center;
-    margin-bottom: 2px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+  margin-bottom: 2px;
 }
 
 .buyerInfo__email {
-    grid-column-start: 1;
-    grid-column-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
 }
 
 .emptyMessage {
-    text-align: center;
+  text-align: center;
 }
 
 .buyResOk {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .orderLoading {
-    position: absolute;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    background-color: #33333376;
-    z-index: 100;
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #33333376;
+  z-index: 100;
 }
 
-.orderLoading h1{
-    color: #333;
-    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+.orderLoading h1 {
+  color: #333;
+  padding: var(--PADDING-TB) var(--PADDING-SIDE);
 }
 
 @media screen and (min-width: 576px) {
-    .buyResOk {
-        font-size: 1rem;
-    }
+  .buyResOk {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .buyResOk {
-        font-size: 0.7rem;
-    }
+  .order {
+    font-size: 1rem;
+  }
+
+  .buyResOk {
+    font-size: 0.7rem;
+  }
 }
 
 @media screen and (min-width: 992px) {
-    .order {
-        display: flex;
-        flex-flow: row;
-        justify-content: space-around;
-        font-size: 0.5rem;
-    }
+  .order {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-size: 1.2vmax;
+  }
 
-    .buyerInfo {
-        margin-top: 0;
-        width: 45%;
-        font-size: 0.6rem;
-    }
+  .buyerInfo {
+    margin-top: 0;
+    width: 45%;
+  }
 
-    .buyerInfo h3 {
-        padding: 10px 0;
-    }
+  .buyerInfo h3 {
+    padding: 10px 0;
+  }
 
-    .order__table {
-        width: 45%;
-    }
+  .order__table {
+    width: 45%;
+  }
 
-    .emptyMessage {
-        font-size: 1rem;
-    }
+  .emptyMessage {
+    font-size: 1rem;
+  }
 
-    .buyResOk {
-        font-size: 0.5rem;
-    }
+  .buyResOk {
+    font-size: 0.5rem;
+  }
 
-    .orderLoading svg {
-        width: 150px;
-        height: 150px;
-    }
+  .orderLoading svg {
+    width: 150px;
+    height: 150px;
+  }
 }

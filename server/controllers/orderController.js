@@ -3,7 +3,7 @@ var easyinvoice = require("easyinvoice");
 const { format } = require("date-fns");
 const QRCode = require("qrcode");
 const invoiceNum = require("./invoiceNumController");
-const emailSander = require("../middleware/emailSander");
+const { emailSender, emailStatusSend } = require("../middleware/emailSander");
 const orders = require("../model/Orders");
 require("dotenv").config();
 
@@ -91,16 +91,19 @@ const orderHandler = async (req, res) => {
 
     const pdfBuffer = Buffer.from(result.pdf, "base64");
 
-    await emailSander(
-      req.body.buyer.email,
-      nextInvoiceNumber,
-      req.body.buyer.company,
-      pdfBuffer
-    );
-
-    await orderSave(req.body, formattedDate, nextInvoiceNumber);
-
-    res.status(200).json({ message: "Invoice sent to email." });
+    try {
+      await emailSender(
+        req.body.buyer.email,
+        nextInvoiceNumber,
+        req.body.buyer.company,
+        pdfBuffer
+      );
+      await orderSave(req.body, formattedDate, nextInvoiceNumber);
+      res.status(200).json({ message: "Invoice sent to email." });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "Something went wrong!" });
+    }
   } catch (err) {
     res.status(500).json({ message: "Internal Server Error" });
   }
@@ -136,7 +139,7 @@ async function orderSave(data, date, invNum) {
     num: invNum,
     status: null,
   };
-  const order = await orders.create(orderData);
+  await orders.create(orderData);
   return 1;
 }
 
@@ -155,7 +158,8 @@ const getOrders = async (req, res) => {
 
 const orderConfirm = async (req, res) => {
   const id = req.body._id;
-
+  const time = req.body.pickup;
+  const orderStatus = true;
   try {
     const existingOrder = await orders.findById(id);
 
@@ -163,12 +167,26 @@ const orderConfirm = async (req, res) => {
       return res.status(400).json({ error: "Order is already confirmed" });
     }
 
-    await orders.findByIdAndUpdate(
-      id,
-      { $set: { status: true } },
-      { new: true }
-    );
-    res.status(200).json({ message: "Order confirm!" });
+    try {
+      await emailStatusSend(
+        existingOrder.buyer.email,
+        existingOrder.num,
+        existingOrder.buyer.name,
+        orderStatus,
+        time
+      );
+
+      await orders.findByIdAndUpdate(
+        id,
+        { $set: { status: orderStatus } },
+        { new: true }
+      );
+
+      res.status(200).json({ message: "Order confirm!" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -177,7 +195,7 @@ const orderConfirm = async (req, res) => {
 
 const orderReject = async (req, res) => {
   const id = req.body._id;
-
+  const orderStatus = false;
   try {
     const existingOrder = await orders.findById(id);
 
@@ -185,12 +203,25 @@ const orderReject = async (req, res) => {
       return res.status(400).json({ error: "Order is already rejected" });
     }
 
-    await orders.findByIdAndUpdate(
-      id,
-      { $set: { status: false } },
-      { new: true }
-    );
-    res.status(200).json({ message: "Order rejected!" });
+    try {
+      await emailStatusSend(
+        existingOrder.buyer.email,
+        existingOrder.num,
+        existingOrder.buyer.name,
+        orderStatus
+      );
+
+      await orders.findByIdAndUpdate(
+        id,
+        { $set: { status: orderStatus } },
+        { new: true }
+      );
+
+      res.status(200).json({ message: "Order confirm!" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }

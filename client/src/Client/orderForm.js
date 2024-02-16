@@ -4,9 +4,15 @@ import "./orderForm.css";
 
 const OrderForm = () => {
   const { cartItems, deleteItem, clearCart } = useContext(DataClient);
-  const [buyStatus, setBuyStatus] = useState(false);
+  const [buyStatus, setBuyStatus] = useState();
   const formRef = useRef(null);
   const [isLoadingVisible, setIsLoadingVisible] = useState(false);
+
+  const handleFocus = () => {
+    setTimeout(() => {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 300); // Delay to account for keyboard animation
+  };
 
   const handlePriceCaluclation = (cartItem) => {
     if (cartItem.unit === "dag") {
@@ -17,10 +23,11 @@ const OrderForm = () => {
   };
 
   const handleFormSubmit = (event) => {
-    event.preventDefault();
+    console.log("submiting");
     const formData = new FormData(formRef.current);
 
     const formValues = {};
+
     formData.forEach((value, key) => {
       if (key === "fname" || key === "lname") {
         formValues["company"] = `${formData.get("fname")} ${formData.get(
@@ -51,6 +58,14 @@ const OrderForm = () => {
         clearCart();
         const data = await res.json();
         console.log(data.message);
+      } else {
+        setIsLoadingVisible(false);
+        setBuyStatus(false);
+        const data = await res.json();
+        console.error(data.message);
+        setTimeout(() => {
+          setBuyStatus();
+        }, 2000);
       }
     } catch (err) {
       console.error("Error giving order:", err);
@@ -74,6 +89,16 @@ const OrderForm = () => {
         <h2>You can pay now or at the store!</h2>
         <br />
         <h2>You will receive a confirmation email when your order is ready!</h2>
+        <br />
+        <h2>Thank you!</h2>
+      </main>
+    );
+  } else if (buyStatus === false) {
+    return (
+      <main className="buyResOk">
+        <h2>Somthing went wrong!</h2>
+        <br />
+        <h2>Please try again!</h2>
         <br />
         <h2>Thank you!</h2>
       </main>
@@ -249,6 +274,7 @@ const OrderForm = () => {
           id="buyerInfo"
           className="buyerInfo"
           onSubmit={handleFormSubmit}
+          onFocus={handleFocus}
         >
           <h3 className="buyerInfo_Form">Your information:</h3>
           <label htmlFor="fname" className="offscreen">

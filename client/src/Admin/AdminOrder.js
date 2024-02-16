@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import DataAdmin from "../context/DataAdmin";
 
 const AdminOrder = ({
@@ -9,9 +9,21 @@ const AdminOrder = ({
 }) => {
   const { token, setReFetch } = useContext(DataAdmin);
   const { _id, num, products, status } = orderData;
-
+  const [recomTime, setRecomTime] = useState();
+  const [pickup, setPickup] = useState();
   const [orderStatus, setOrderStatus] = useState(status);
   const [checkedProducts, setCheckedProducts] = useState([]);
+
+  useEffect(() => {
+    const now = new Date();
+
+    now.setMinutes(now.getMinutes() + 30);
+
+    const newTime = now.toTimeString().split(" ")[0].substring(0, 5);
+
+    setRecomTime(newTime);
+    setPickup(newTime);
+  }, []);
 
   const toggleCheck = (productId) => {
     setCheckedProducts((prevCheckedProducts) => {
@@ -31,7 +43,7 @@ const AdminOrder = ({
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ _id: _id }),
+        body: JSON.stringify({ _id: _id, pickup: pickup }),
       });
 
       if (response.ok) {
@@ -155,10 +167,26 @@ const AdminOrder = ({
           Order Rejected!
         </p>
       ) : (
-        <div className="adminOrdDis__ButtonBottom">
-          <button onClick={handleConfirme}>Confirm</button>
-          <button onClick={handleReject}>Reject</button>
-        </div>
+        <>
+          <div className="pickupContainer">
+            <label htmlFor="pickup">Set pickup time: </label>
+            <input
+              type="time"
+              name="pickup"
+              id="pickup"
+              min="08:00"
+              max="20:00"
+              value={recomTime}
+              onChange={(event) => {
+                setPickup(event.target.value);
+              }}
+            ></input>
+          </div>
+          <div className="adminOrdDis__ButtonBottom">
+            <button onClick={handleConfirme}>Confirm</button>
+            <button onClick={handleReject}>Reject</button>
+          </div>
+        </>
       )}
     </div>
   );

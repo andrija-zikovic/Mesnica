@@ -318,4 +318,9 @@
     font-size: 0.4rem;
     white-space: wrap;
   }
+
+  .product-card__price_highlight,
+  .productCard_unit {
+    font-size: 1.5vmax;
+  }
 }
