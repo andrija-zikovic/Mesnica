@@ -137,7 +137,7 @@ table {
 .bucket__tbody {
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   overflow: auto;
   width: 100%;
@@ -209,10 +209,10 @@ table {
   border-radius: 50%;
   height: 1.5em;
   width: 1.5em;
-}
-
-.delete svg {
-  margin-top: 0.2rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .delete:hover,
@@ -282,8 +282,8 @@ table {
   }
 
   .delete {
-    height: 2em;
-    width: 2em;
+    height: 1.5em;
+    width: 1.5em;
   }
 
   .nav {
@@ -373,8 +373,17 @@ table {
 
   .cartItemsCount {
     padding: 0.1rem 0.3rem;
-    font-size: 0.4rem;
+    font-size: 0.8vmax;
     top: 0.2rem;
     right: 0.4rem;
+  }
+
+  .delete {
+    width: 2vmax;
+    height: 2vmax;
+  }
+
+  .bucket {
+    right: 0;
   }
 }

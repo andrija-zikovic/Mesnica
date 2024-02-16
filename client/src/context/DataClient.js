@@ -95,7 +95,7 @@ export const DataClientProvider = ({ children }) => {
 
     if (reference && target) {
       const updateTop = () => {
-        const height = reference.offsetHeight;
+        const height = reference.offsetHeight - 1;
         target.style.top = `${height}px`;
       };
 
@@ -119,6 +119,7 @@ export const DataClientProvider = ({ children }) => {
   const [isBucketVisible, setIsBucketVisible] = useState(false);
 
   const toggleBucketVisibility = () => {
+    console.log("toggleBucketVisibility");
     setIsBucketVisible((prevState) => !prevState);
     setBucketVisibleCheck((prevState) => !prevState);
   };
@@ -143,13 +144,10 @@ export const DataClientProvider = ({ children }) => {
       }
     };
 
-    // Initial update
     updateProductsHeight();
 
-    // Update on window resize
     window.addEventListener("resize", updateProductsHeight);
 
-    // Cleanup function
     return () => {
       window.removeEventListener("resize", updateProductsHeight);
     };

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import DataClient from "../context/DataClient";
 
 const Bucket = React.forwardRef(() => {
@@ -10,7 +10,6 @@ const Bucket = React.forwardRef(() => {
     setIsBucketVisible,
     targetElement,
   } = useContext(DataClient);
-  console.log(cartItems);
 
   const navigate = useNavigate();
   // Calculate the total price based on selectedUnit
@@ -39,6 +38,25 @@ const Bucket = React.forwardRef(() => {
     setIsBucketVisible(false);
     clearCart();
   };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        targetElement.current &&
+        !targetElement.current.contains(event.target) && 
+      ) {
+        console.log(targetElement);
+        setIsBucketVisible(false);
+        console.log("handleOutsideClick");
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [targetElement]);
 
   if (cartItems.length < 1) {
     return (
