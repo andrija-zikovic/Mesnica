@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import DataClient from "../context/DataClient";
 
 const Bucket = React.forwardRef(() => {
@@ -38,25 +38,6 @@ const Bucket = React.forwardRef(() => {
     setIsBucketVisible(false);
     clearCart();
   };
-
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (
-        targetElement.current &&
-        !targetElement.current.contains(event.target)
-      ) {
-        console.log(targetElement);
-        setIsBucketVisible(false);
-        console.log("handleOutsideClick");
-      }
-    };
-
-    document.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, [targetElement]);
 
   if (cartItems.length < 1) {
     return (

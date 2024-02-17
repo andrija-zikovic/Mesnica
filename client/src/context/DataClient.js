@@ -119,7 +119,6 @@ export const DataClientProvider = ({ children }) => {
   const [isBucketVisible, setIsBucketVisible] = useState(false);
 
   const toggleBucketVisibility = () => {
-    console.log("toggleBucketVisibility");
     setIsBucketVisible((prevState) => !prevState);
     setBucketVisibleCheck((prevState) => !prevState);
   };
@@ -153,6 +152,22 @@ export const DataClientProvider = ({ children }) => {
     };
   }, [products]);
 
+  const handleOutsideBucketClick = async (event) => {
+    const clickTarget = event.target;
+    if (
+      !clickTarget.classList.contains("cartIcon") &&
+      !clickTarget.classList.contains("nav_bucket") &&
+      event.target !== targetElement.current
+    ) {
+      document.removeEventListener("click", handleOutsideBucketClick);
+      await setIsBucketVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideBucketClick);
+  });
+
   return (
     <DataClient.Provider
       value={{
@@ -172,6 +187,7 @@ export const DataClientProvider = ({ children }) => {
         productsElement,
         products,
         setProducts,
+        handleOutsideBucketClick,
       }}
     >
       {children}
