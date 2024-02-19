@@ -121,10 +121,19 @@ const AdminOrders = () => {
             </div>
           </section>
           <div className={`message ${message ? "visible" : "hidden"}`}>
-            <p>{message}</p>
-            <button className="messageButton" onClick={() => setMessage("")}>
-              Ok
-            </button>
+            {message === "Loading" ? (
+              <Loading className={"messageLoading"} />
+            ) : (
+              <>
+                <p>{message}</p>
+                <button
+                  className="messageButton"
+                  onClick={() => setMessage("")}
+                >
+                  Ok
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}

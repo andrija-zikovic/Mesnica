@@ -52,6 +52,7 @@ const AdminOrder = ({
 
   const handleConfirme = async () => {
     try {
+      setMessage("Loading");
       const response = await fetch(process.env.REACT_APP_ADMIN_ORDER_CONFIRM, {
         method: "POST",
         headers: {
@@ -84,6 +85,7 @@ const AdminOrder = ({
   };
 
   const handleReject = async () => {
+    setMessage("Loading");
     try {
       const response = await fetch(process.env.REACT_APP_ADMIN_ORDER_REJECT, {
         method: "POST",

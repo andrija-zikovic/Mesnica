@@ -620,6 +620,7 @@
 .adminProEditInfo__description textarea {
   width: 80%;
   min-height: 80px;
+  resize: none;
 }
 
 .adminLink__nav__dropdown:hover,
