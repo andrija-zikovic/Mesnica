@@ -991,6 +991,7 @@
 }
 
 .adminOrdDis__products {
+  position: relative;
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
@@ -1018,13 +1019,24 @@
 .product button {
   background-color: aliceblue;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 2vmax;
   height: 2vmax;
+}
+
+.product button svg:hover,
+.product button svg:focus,
+.product button svg:active {
+  fill: var(--LINK-ACTIVE);
+  cursor: pointer;
 }
 
 .productTitle {
   font-size: 1em;
   white-space: wrap;
+  padding: 1px;
 }
 
 .resize {
@@ -1058,14 +1070,31 @@
 .adminOrdDis__ButtonBottom button {
   padding: 0.2rem 0.5rem;
   font-weight: bold;
+  border: 1px solid black;
+  border-radius: 1rem;
+  font-weight: bold;
 }
 
 .adminOrdDis__ButtonBottom :first-child {
-  background-color: green;
+  background-color: rgb(155, 235, 155);
+}
+
+.adminOrdDis__ButtonBottom :first-child:hover,
+.adminOrdDis__ButtonBottom :first-child:focus,
+.adminOrdDis__ButtonBottom :first-child:active {
+  background-color: rgba(155, 235, 155, 0.8);
+  cursor: pointer;
 }
 
 .adminOrdDis__ButtonBottom :last-child {
-  background-color: red;
+  background-color: rgb(235, 100, 100);
+}
+
+.adminOrdDis__ButtonBottom :last-child:hover,
+.adminOrdDis__ButtonBottom :last-child:focus,
+.adminOrdDis__ButtonBottom :last-child:active {
+  background-color: rgba(235, 100, 100, 0.8);
+  cursor: pointer;
 }
 
 .adminOrdDis__total {
@@ -1120,10 +1149,25 @@
 }
 
 .checked p {
-  text-decoration: line-through;
   font-weight: bold;
   color: green;
   width: 100%;
+}
+
+.checked .productTitle {
+  border-top: 1px solid green;
+  border-left: 1px solid green;
+  border-bottom: 1px solid green;
+  padding: unset;
+}
+.checked :nth-child(2) {
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+}
+.checked :nth-child(3) {
+  border-top: 1px solid green;
+  border-right: 1px solid green;
+  border-bottom: 1px solid green;
 }
 
 .adminStats h2 {
