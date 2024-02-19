@@ -36,7 +36,7 @@ const orderHandler = async (req, res) => {
       },
       // Your own data
       sender: {
-        company: "Mesnica",
+        company: "Butcher Shop",
         address: "Sample Street 123",
         zip: "1234 AB",
         city: "Sampletown",
@@ -59,7 +59,7 @@ const orderHandler = async (req, res) => {
       // Total values are being calculated automatically
       products: req.body.products,
       // The message you would like to display on the bottom of your invoice
-      "bottom-notice": "Hvala!",
+      "bottom-notice": "Thank you!",
       // Settings to customize your invoice
       settings: {
         currency: "EUR", // See documentation 'Locales and Currency' for more info. Leave empty for no currency.
@@ -75,15 +75,15 @@ const orderHandler = async (req, res) => {
       },
       // Translate your invoice to your preferred language
       translate: {
-        products: "Proizvodi",
-        quantity: "Količina",
-        price: "Cijena",
-        total: "Ukupno",
-        number: "Broj računa",
-        date: "Datum",
-        "tax-notation": "PDV",
-        subtotal: "Ukupno",
-        invoice: "RAČUN",
+        products: "Products",
+        quantity: "Quantity",
+        price: "Price",
+        total: "Total",
+        number: "Number",
+        date: "Date",
+        "tax-notation": "VAT",
+        subtotal: "Total",
+        invoice: "Invoice",
       },
     };
 

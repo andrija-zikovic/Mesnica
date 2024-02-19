@@ -8,6 +8,7 @@ import img3 from "../img/shop3.png";
 const About = () => {
   const content = [
     {
+      id: 1,
       title: "A Hundred Years of Tradition!",
       text: "Since 1923!",
       backgroundImg: `url(${img})`,
@@ -16,6 +17,7 @@ const About = () => {
         "Our family business has been around for almost a hundred years! We are proud to say that we have been serving our customers with the best meat in town since 1923! We are looking forward to serving you for another hundred years!",
     },
     {
+      id: 2,
       title: "All Kinds of Meat!",
       text: "Our offer includes a variety of meat, from beef to pork and chicken!",
       backgroundImg: `url(${img3})`,
@@ -24,6 +26,7 @@ const About = () => {
         "We offer a variety of meat, from beef to pork and chicken! We are sure that you will find something for yourself! Our meat is always fresh and of the highest quality, from local farmers! Great taste guaranteed!",
     },
     {
+      id: 3,
       title: "Visit Us!",
       text: "Join us with your family and friends and enjoy the best meat in town!",
       backgroundImg: `url(${img2})`,
@@ -42,6 +45,8 @@ const About = () => {
             bacgroundImg={item.backgroundImg}
             title2={item.title2}
             text2={item.text2}
+            key={item.id}
+            index={item.id}
           />
         ))}
       </>

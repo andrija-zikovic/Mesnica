@@ -25,6 +25,21 @@ const AdminOrder = ({
     setPickup(newTime);
   }, []);
 
+  const handleTimeChange = (event) => {
+    const now = new Date();
+    const nowTime = now.toTimeString().split(" ")[0].substring(0, 5);
+    const time = event.target.value;
+    console.log(time, nowTime);
+    if (time < nowTime) {
+      now.getMinutes(now.getMinutes() + 30);
+      setPickup(now.toTimeString().split(" ")[0].substring(0, 5));
+      setRecomTime(now.toTimeString().split(" ")[0].substring(0, 5));
+    } else {
+      setPickup(event.target.value);
+      setRecomTime(event.target.value);
+    }
+  };
+
   const toggleCheck = (productId) => {
     setCheckedProducts((prevCheckedProducts) => {
       if (prevCheckedProducts.includes(productId)) {
@@ -178,7 +193,7 @@ const AdminOrder = ({
               max="20:00"
               value={recomTime}
               onChange={(event) => {
-                setPickup(event.target.value);
+                handleTimeChange(event);
               }}
             ></input>
           </div>

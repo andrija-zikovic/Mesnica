@@ -44,9 +44,12 @@ export const DataClientProvider = ({ children }) => {
         ? amount + incrementValue
         : amount - incrementValue;
 
-    if (newAmount >= 1) {
+    if (
+      newAmount >= 1 &&
+      newAmount <= 990 &&
+      (newAmount * price) / 100 < 99.99
+    ) {
       setAmount(newAmount);
-
       // Create an item object
       const item = {
         id: id,
@@ -75,7 +78,7 @@ export const DataClientProvider = ({ children }) => {
           setCartItems([...cartItems, item]);
         }
       }
-    } else {
+    } else if (newAmount < 1) {
       const updatedCartItems = cartItems.filter(
         (cartItem) => cartItem.id !== id
       );

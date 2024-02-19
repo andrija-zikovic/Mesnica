@@ -505,7 +505,7 @@ const AdminStats = () => {
           <h2>Products</h2>
           <div className="adminsStats__productsSales__sortControls">
             <div className="adminStats__prductsSales__buttons">
-              <span class="info-label">Sort by amount (kg)</span>
+              <span className="info-label">Sort by amount (kg)</span>
               {productsSort === "quantityUp" ? (
                 <button
                   onClick={() => setProductsSort("quantityDown")}
@@ -540,7 +540,7 @@ const AdminStats = () => {
                   </svg>
                 </button>
               )}
-              <span class="info-label">Sort by revenue (€)</span>
+              <span className="info-label">Sort by revenue (€)</span>
               {productsSort === "revenueUp" ? (
                 <button
                   onClick={() => setProductsSort("revenueDown")}

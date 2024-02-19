@@ -127,6 +127,16 @@ const AddProducts = () => {
             <option value="other">other</option>
           </select>
         </div>
+        <div className="addProduct__description">
+          <label htmlFor="description">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            placeholder="Opis"
+            onChange={handleInputChange}
+            required
+          ></textarea>
+        </div>
         <div className="imgForm">
           <label htmlFor="imgSrc">Product image</label>
           <input

@@ -1,319 +1,316 @@
 <html>
-
-<head>
+  <head>
     <!--    <link rel="stylesheet" type="text/css" href="style.css">-->
-</head>
+  </head>
 
-<body>
+  <body>
     <style>
-        @font-face {
-            font-family: 'verdanaregular';
-            src: url(data:font/truetype;charset=utf-8;base64,AAEAAAASAQAABAAgRkZUTVzRK2...) format('truetype');
-            font-weight: normal;
-            font-style: normal;
+      @font-face {
+        font-family: "verdanaregular";
+        src: url(data:font/truetype;charset=utf-8;base64,AAEAAAASAQAABAAgRkZUTVzRK2...)
+          format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
 
-        }
+      @font-face {
+        font-family: "verdanaregular";
+        src: url(data:font/truetype;charset=utf-8;base64,AAEAAAAQAQAABAAARkZUTV+/OzYAAAEMAAAAHE...)
+          format("truetype");
+        font-weight: bold;
+        font-style: normal;
+      }
 
+      @font-face {
+        font-family: "verdanaregular";
+        src: url(data:font/truetype;charset=utf-8;base64,AAEAAAAQAQAABAAARkZUTWSpzYQAAA...)
+          format("truetype");
+        font-weight: normal;
+        font-style: italic;
+      }
 
+      @font-face {
+        font-family: "verdanaregular";
+        src: url(data:font/truetype;charset=utf-8;base64,AAEAAAAQAQAABAAARkZUTWAaYEkAAAEMA...)
+          format("truetype");
+        font-weight: bold;
+        font-style: italic;
+      }
 
+      body {
+        font-family: "verdanaregular";
+        /*letter-spacing: 0.0mm !important;*/
+        /*text-align: justify;*/
+        /*font-kerning: auto;*/
+        /*line-height: 80%;*/
+      }
 
-        @font-face {
-            font-family: 'verdanaregular';
-            src: url(data:font/truetype;charset=utf-8;base64,AAEAAAAQAQAABAAARkZUTV+/OzYAAAEMAAAAHE...) format('truetype');
-            font-weight: bold;
-            font-style: normal;
-        }
+      table {
+        width: 100%;
+      }
 
+      tr {
+        line-height: 70%;
+      }
 
+      td {
+        /*border: 1px black solid;*/
+        font-size: x-small;
+      }
 
+      #header-col-1 {
+        width: 39%;
+      }
 
-        @font-face {
-            font-family: 'verdanaregular';
-            src: url(data:font/truetype;charset=utf-8;base64,AAEAAAAQAQAABAAARkZUTWSpzYQAAA...) format('truetype');
-            font-weight: normal;
-            font-style: italic;
-        }
+      #header-col-2 {
+        width: 61%;
+      }
 
+      /*#header-col-3 {*/
+      /*    width: 44%;*/
+      /*}*/
 
+      #logo-wrapper {
+        vertical-align: top;
+        text-align: left;
+        width: auto;
+      }
 
+      #logo {
+        max-width: 200px;
+        max-height: 75px;
+      }
 
-        @font-face {
-            font-family: 'verdanaregular';
-            src: url(data:font/truetype;charset=utf-8;base64,AAEAAAAQAQAABAAARkZUTWAaYEkAAAEMA...) format('truetype');
-            font-weight: bold;
-            font-style: italic;
-        }
+      #document-type-wrapper {
+        text-align: right;
+        line-height: 1.2;
+        vertical-align: top;
+      }
 
-        body {
-            font-family: 'verdanaregular';
-            /*letter-spacing: 0.0mm !important;*/
-            /*text-align: justify;*/
-            /*font-kerning: auto;*/
-            /*line-height: 80%;*/
-        }
+      #document-type {
+        font-size: 20px;
+      }
 
-        table {
-            width: 100%;
-        }
+      #receiver-details-wrapper td {
+        vertical-align: top;
+      }
 
-        tr {
-            line-height: 70%;
-        }
+      #receiver-details-wrapper td:nth-child(2) {
+        text-align: right;
+      }
 
-        td {
-            /*border: 1px black solid;*/
-            font-size: x-small;
-        }
+      #receiver-details-wrapper-col-1 {
+        width: 50%;
+      }
 
-        #header-col-1 {
-            width: 39%;
-        }
+      #receiver-details-wrapper-col-2 {
+        width: 35%;
+      }
 
-        #header-col-2 {
-            width: 61%;
-        }
+      #receiver-details-wrapper-col-3 {
+        width: 15%;
+      }
 
-        /*#header-col-3 {*/
-        /*    width: 44%;*/
-        /*}*/
+      #products-table-col-1 {
+        width: 52%;
+      }
 
-        #logo-wrapper {
-            vertical-align: top;
-            text-align: left;
-            width: auto;
-        }
+      #products-table-col-2 {
+        width: 16%;
+      }
 
-        #logo {
-            max-width: 200px;
-            max-height: 75px;
-        }
+      #products-table-col-3 {
+        width: 16%;
+      }
 
-        #document-type-wrapper {
-            text-align: right;
-            line-height: 1.2;
-            vertical-align: top;
-        }
+      #products-table-col-4 {
+        width: 16%;
+      }
 
-        #document-type {
-            font-size: 20px;
-        }
+      #products-table thead tr td:nth-child(2) {
+        text-align: center;
+      }
 
-        #receiver-details-wrapper td {
-            vertical-align: top;
-        }
+      #products-table thead tr td:nth-child(3),
+      #products-table thead tr td:nth-child(4) {
+        text-align: right;
+      }
 
-        #receiver-details-wrapper td:nth-child(2) {
-            text-align: right;
-        }
+      #products-table tbody tr td:nth-child(3),
+      #products-table tbody tr td:nth-child(4) {
+        text-align: right;
+      }
 
-        #receiver-details-wrapper-col-1 {
-            width: 50%;
-        }
+      #total-wrapper-col-1 {
+        width: 60%;
+      }
 
-        #receiver-details-wrapper-col-2 {
-            width: 35%;
-        }
+      #total-wrapper-col-2 {
+        width: 24%;
+      }
 
-        #receiver-details-wrapper-col-3 {
-            width: 15%;
-        }
+      #total-wrapper-col-3 {
+        width: 16%;
+      }
 
-        #products-table-col-1 {
-            width: 52%;
-        }
+      #total-wrapper td {
+        text-align: right;
+      }
 
-        #products-table-col-2 {
-            width: 16%;
-        }
+      #bottom-notice-wrapper-col-1 {
+        width: 100%;
+      }
 
-        #products-table-col-3 {
-            width: 16%;
-        }
+      #bottom-notice-wrapper tbody tr td {
+        text-align: left;
+      }
 
-        #products-table-col-4 {
-            width: 16%;
-        }
+      #bottom-notice-wrapper p {
+        font-size: 0.5rem;
+      }
 
-        #products-table thead tr td:nth-child(2) {
-            text-align: center;
-        }
-
-        #products-table thead tr td:nth-child(3),
-        #products-table thead tr td:nth-child(4) {
-            text-align: right;
-        }
-
-        #products-table tbody tr td:nth-child(3),
-        #products-table tbody tr td:nth-child(4) {
-            text-align: right;
-        }
-
-        #total-wrapper-col-1 {
-            width: 60%;
-        }
-
-        #total-wrapper-col-2 {
-            width: 24%;
-        }
-
-        #total-wrapper-col-3 {
-            width: 16%;
-        }
-
-        #total-wrapper td {
-            text-align: right;
-        }
-
-        #bottom-notice-wrapper-col-1 {
-            width: 100%;
-        }
-
-        #bottom-notice-wrapper tbody tr td {
-            text-align: left;
-        }
-
-        #bottom-notice-wrapper p {
-            font-size: 0.5rem;
-        }
-
-        #logo-wrapper figcaption {
-            font-size: 0.5rem;
-            padding-left: 15px;
-        }
+      #logo-wrapper figcaption {
+        font-size: 0.5rem;
+        padding-left: 15px;
+      }
     </style>
     <table id="header">
-        <tr>
-            <th id="header-col-1"></th>
-            <th id="header-col-2"></th>
-        </tr>
-        <tr>
-            <td id="logo-wrapper">
-
-            </td>
-            <td id="document-type-wrapper">
-                <p id="document-type">%document-title%</p><br />
-                <b>%company-from%</b><br />
-                %address-from%<br />
-                %zip-from%, %city-from%<br />
-                %country-from%<br />
-            </td>
-        </tr>
+      <tr>
+        <th id="header-col-1"></th>
+        <th id="header-col-2"></th>
+      </tr>
+      <tr>
+        <td id="logo-wrapper"></td>
+        <td id="document-type-wrapper">
+          <p id="document-type">%document-title%</p>
+          <br />
+          <b>%company-from%</b><br />
+          %address-from%<br />
+          %zip-from%, %city-from%<br />
+          %country-from%<br />
+        </td>
+      </tr>
     </table>
     <hr />
     <table id="receiver-details-wrapper">
-        <tr>
-            <th id="receiver-details-wrapper-col-1"></th>
-            <th id="receiver-details-wrapper-col-2"></th>
-            <th id="receiver-details-wrapper-col-3"></th>
-        </tr>
-        <tr>
-            <td>
-                <b>%company-to%</b><br />
-                %address-to%<br />
-                %zip-to% %city-to%<br />
-            </td>
-            <td id="details-label-wrapper">
-                <b>%number-title%:</b><br />
-                <b>%date-title%:</b><br />
-                <b>Vrijeme:</b>
-            </td>
-            <td>
-                %number%<br />
-                %date%<br />
-            </td>
-        </tr>
+      <tr>
+        <th id="receiver-details-wrapper-col-1"></th>
+        <th id="receiver-details-wrapper-col-2"></th>
+        <th id="receiver-details-wrapper-col-3"></th>
+      </tr>
+      <tr>
+        <td>
+          <b>%company-to%</b><br />
+          %address-to%<br />
+          %zip-to% %city-to%<br />
+        </td>
+        <td id="details-label-wrapper">
+          <b>%number-title%:</b><br />
+          <b>%date-title%:</b><br />
+          <b>Time:</b>
+        </td>
+        <td>
+          %number%<br />
+          %date%<br />
+        </td>
+      </tr>
     </table>
     <br />
     <table id="products-table">
-        <thead>
-            <tr>
-                <th id="products-table-col-1"></th>
-                <th id="products-table-col-2"></th>
-                <th id="products-table-col-3"></th>
-                <th id="products-table-col-4"></th>
-            </tr>
-            <tr>
-                <td><b>%products-header-products%</b></td>
-                <td><b>%products-header-quantity%</b></td>
-                <td><b>%products-header-price%</b></td>
-                <td><b>%products-header-total%</b></td>
-            </tr>
-            <tr>
-                <td colspan="4">
-                    <hr />
-                </td>
-            </tr>
-        </thead>
-        <tbody>
-            <products>
-                <tr>
-                    <td>%description%</td>
-                    <td align="center">%quantity% kg</td>
-                    <td>%price%/kg</td>
-                    <td>%row-total%</td>
-                </tr>
-            </products>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="4">
-                    <hr />
-                </td>
-            </tr>
-        </tfoot>
+      <thead>
+        <tr>
+          <th id="products-table-col-1"></th>
+          <th id="products-table-col-2"></th>
+          <th id="products-table-col-3"></th>
+          <th id="products-table-col-4"></th>
+        </tr>
+        <tr>
+          <td><b>%products-header-products%</b></td>
+          <td><b>%products-header-quantity%</b></td>
+          <td><b>%products-header-price%</b></td>
+          <td><b>%products-header-total%</b></td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <hr />
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <products>
+          <tr>
+            <td>%description%</td>
+            <td align="center">%quantity% kg</td>
+            <td>%price%/kg</td>
+            <td>%row-total%</td>
+          </tr>
+        </products>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <hr />
+          </td>
+        </tr>
+      </tfoot>
     </table>
     <table id="total-wrapper">
-        <thead>
-            <tr>
-                <th id="total-wrapper-col-1"></th>
-                <th id="total-wrapper-col-2"></th>
-                <th id="total-wrapper-col-3"></th>
-            </tr>
-            <tax>
-                <tr>
-                    <td></td>
-                    <td><b>PDV %tax-rate%%:</b></td>
-                    <td>%tax%</td>
-                </tr>
-            </tax>
-        </thead>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td colspan="2">
-                    <hr />
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><b>%subtotal-title%:</b></td>
-                <td>%subtotal%</td>
-            </tr>
-        </tfoot>
+      <thead>
+        <tr>
+          <th id="total-wrapper-col-1"></th>
+          <th id="total-wrapper-col-2"></th>
+          <th id="total-wrapper-col-3"></th>
+        </tr>
+        <tax>
+          <tr>
+            <td></td>
+            <td><b>VAT %tax-rate%%:</b></td>
+            <td>%tax%</td>
+          </tr>
+        </tax>
+      </thead>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td colspan="2">
+            <hr />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><b>%subtotal-title%:</b></td>
+          <td>%subtotal%</td>
+        </tr>
+      </tfoot>
     </table>
     <figure id="logo-wrapper">
-        <figcaption>Slikaj i plati:</figcaption>
-        %logo%
+      <figcaption>Pay with QR code :</figcaption>
+      %logo%
     </figure>
     <table id="bottom-notice-wrapper">
-        <thead>
-            <tr>
-                <th id="bottom-notice-wrapper-col-1"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <p>Napomena: PDV je uračunat u cijenu proizvoda.</p>
-                    <p>Račun je pisan elektroničkim putem i važeći je bez štambilja i potpisa.</p>
-                    <p>Uplatu molimo izvršite na naš račun otvoren kod Sample bank d.d., broj: HRXXXXXXXXXXXXXXXX.</p>
-                    <p>Odgovorna osoba: XXXXXXX XXXXXXX</p>
-                    <p>Potpis:XXXXXXX</p>
-                    <p>%bottom-notice%</p>
-                </td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th id="bottom-notice-wrapper-col-1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p>VAT is included in the product price.</p>
+            <p>
+              The invoice is written electronically and is valid without a stamp
+              and signature.
+            </p>
+            <p>
+              Please make the payment to our account opened at Sample bank d.d.,
+              account number: HRXXXXXXXXXXXXXXXX.
+            </p>
+            <p>Responsible person: XXXXXXX XXXXXXX</p>
+            <p>Signature: XXXXXXX</p>
+            <p>%bottom-notice%</p>
+          </td>
+        </tr>
+      </tbody>
     </table>
-</body>
-
+  </body>
 </html>

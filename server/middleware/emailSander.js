@@ -18,7 +18,7 @@ const emailSender = async (email, invNum, buyName, pdfBuffer) => {
       from: '"Mesnica" bigblondeandrew@gmail.com',
       to: email,
       subject: `Invoice num ${invNum}`,
-      text: `${buyName}, thank you for your purchase. Attached is your invoice.`,
+      text: `Dear ${buyName},\n\nthank you for your purchase.\n\nAttached is your invoice.\n\nYour Bucher Shop.`,
       attachments: [
         {
           filename: `Invoice_num_${invNum}.pdf`,
@@ -49,7 +49,7 @@ const emailStatusSend = async (email, invNum, buyName, status, time) => {
       text: `Dear ${buyName},\n\n${
         !status
           ? "your order has been rejected, please try again later."
-          : `your order has been confirmed.\n\nYou can pick it up at ${time}h.\n\nThank you for your purchase.`
+          : `your order has been confirmed.\n\nYou can pick it up at ${time}h.\n\nThank you for your purchase.\n\nYour Bucher Shop.`
       }`,
     };
 
