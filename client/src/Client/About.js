@@ -1,9 +1,9 @@
 import React from "react";
 import "./About.css";
 import AboutArticle from "./AboutArticle";
-import img from "../img/shop.png";
-import img2 from "../img/shop2.png";
-import img3 from "../img/shop3.png";
+import img from ".../public/img/shop.png";
+import img2 from ".../public/img/shop2.png";
+import img3 from ".../public/img/shop3.png";
 
 const About = () => {
   const content = [
