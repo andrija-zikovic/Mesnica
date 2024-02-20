@@ -11,20 +11,6 @@ const AdminOrders = () => {
   const [message, setMessage] = useState("");
   const [visibleOrders, setVisibleOrders] = useState([]);
 
-  const toggleVisibility = (orderId) => {
-    if (visibleOrders.includes(orderId)) {
-      setVisibleOrders(visibleOrders.filter((id) => id !== orderId));
-    } else {
-      setVisibleOrders([...visibleOrders, orderId]);
-    }
-  };
-
-  function handleKeyPress(event, orderId) {
-    if (event.key === "Enter") {
-      toggleVisibility(orderId);
-    }
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,6 +41,20 @@ const AdminOrders = () => {
       setShouldRefetch(false); // Reset the flag after refetching
     }
   }, [token, shouldRefetch, setReFetch]);
+
+  const toggleVisibility = (orderId) => {
+    if (visibleOrders.includes(orderId)) {
+      setVisibleOrders(visibleOrders.filter((id) => id !== orderId));
+    } else {
+      setVisibleOrders([...visibleOrders, orderId]);
+    }
+  };
+
+  function handleKeyPress(event, orderId) {
+    if (event.key === "Enter") {
+      toggleVisibility(orderId);
+    }
+  }
 
   return (
     <>

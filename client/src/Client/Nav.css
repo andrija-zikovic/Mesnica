@@ -313,7 +313,6 @@ table {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 9vh;
   }
 
   .nav ul {

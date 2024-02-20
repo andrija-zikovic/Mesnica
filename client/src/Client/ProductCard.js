@@ -9,28 +9,6 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
   const [showAbout, setShowAbout] = useState(false);
   const { handleAmountChange } = useContext(DataClient);
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
-  function setFontSizeToFit(elementId) {
-    const element = document.querySelector(`#${elementId}`);
-    if (!element) return;
-
-    const parentElement = element.parentElement;
-    const parentHeight = parentElement.offsetHeight;
-    let fontSize = parseFloat(window.getComputedStyle(element).fontSize);
-    while (element.scrollHeight > parentHeight && fontSize > 10) {
-      // Minimum font size of 10px
-      fontSize -= 1;
-      if (fontSize > 20) {
-        // Maximum font size of 20px
-        fontSize = 20;
-      }
-      element.style.fontSize = `${fontSize - 1}px`;
-    }
-  }
-
   useEffect(() => {
     const adjustFontSize = () => {
       setFontSizeToFit(`title${id}`);
@@ -54,6 +32,26 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
 
     updateTotalProductPrice();
   }, [amount, price]);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  function setFontSizeToFit(elementId) {
+    const element = document.querySelector(`#${elementId}`);
+    if (!element) return;
+
+    const parentElement = element.parentElement;
+    const parentHeight = parentElement.offsetHeight;
+    let fontSize = parseFloat(window.getComputedStyle(element).fontSize);
+    while (element.scrollHeight > parentHeight && fontSize > 10) {
+      fontSize -= 1;
+      if (fontSize > 20) {
+        fontSize = 20;
+      }
+      element.style.fontSize = `${fontSize - 1}px`;
+    }
+  }
 
   return (
     <article className={`product-card ${imageLoaded ? "loaded" : ""}`} id={id}>
@@ -99,7 +97,7 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
               <span className="product-card__price_highlight">
                 {totalProductPrice ? totalProductPrice.toFixed(2) : price} €
               </span>
-              {meatType === "other"
+              {meatType.includes("piece")
                 ? " / piece"
                 : totalProductPrice
                 ? ` / ${(amount / 100).toFixed(2)}kg`
@@ -128,7 +126,7 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
                 max={98}
                 placeholder="0"
                 value={
-                  meatType === "other"
+                  meatType.includes("piece")
                     ? amount / 100
                     : (amount / 100).toFixed(2)
                 }

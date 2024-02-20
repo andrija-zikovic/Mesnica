@@ -31,7 +31,7 @@ export const DataClientProvider = ({ children }) => {
     let incrementValue = 0;
     let newUnite = "";
 
-    if (meatType === "other") {
+    if (meatType.includes("piece")) {
       incrementValue = 100;
       newUnite = "piece";
     } else {

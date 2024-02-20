@@ -12,13 +12,13 @@ const Bucket = React.forwardRef(() => {
   } = useContext(DataClient);
 
   const navigate = useNavigate();
-  // Calculate the total price based on selectedUnit
+
   const calculateTotalPrice = () => {
     const totalPrice = cartItems.reduce((total, cartItem) => {
       return total + handlePriceCaluclation(cartItem);
     }, 0);
 
-    return totalPrice.toFixed(2); // Rounds to two decimal places
+    return totalPrice.toFixed(2);
   };
 
   const handleViaLink = () => {

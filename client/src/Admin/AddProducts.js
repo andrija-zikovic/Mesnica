@@ -3,8 +3,8 @@ import DataAdmin from "../context/DataAdmin";
 
 const AddProducts = () => {
   const { token, setLoading, setReFetch } = useContext(DataAdmin);
-  const [message, setMessage] = useState("");
 
+  const [message, setMessage] = useState("");
   const [productInfo, setProductInfo] = useState({
     title: "",
     price: "",

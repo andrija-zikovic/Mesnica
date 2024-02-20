@@ -102,6 +102,7 @@ body::-webkit-scrollbar-thumb:hover,
   .client_top {
     flex-flow: row;
     justify-content: space-between;
+    height: 5vh;
   }
 }
 

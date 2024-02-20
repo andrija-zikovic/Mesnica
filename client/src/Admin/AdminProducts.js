@@ -15,6 +15,32 @@ const AdminProducts = () => {
   const [reFetchLocal, setReFetchLocal] = useState(false);
   const fileInputRef = useRef();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (res.status === 403) {
+          await setReFetchLocal((prevState) => !prevState);
+          const updateResponse = await fetchData();
+          return updateResponse.json();
+        } else if (!res.ok) {
+          throw new Error("Network response was not ok");
+        } else {
+          const productsData = await res.json();
+          setAdminPro(productsData);
+        }
+      } catch (error) {
+        console.error("Error Fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [token, reFetchLocal, setReFetchLocal]);
+
   const filteredProducts = adminPro.filter((product) =>
     product.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -179,32 +205,6 @@ const AdminProducts = () => {
       handleProductChange(id, "image", e.target.files[0]);
     }
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(process.env.REACT_APP_ADMIN_PRODUCTS_CALL_API, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if (res.status === 403) {
-          await setReFetchLocal((prevState) => !prevState);
-          const updateResponse = await fetchData();
-          return updateResponse.json();
-        } else if (!res.ok) {
-          throw new Error("Network response was not ok");
-        } else {
-          const productsData = await res.json();
-          setAdminPro(productsData);
-        }
-      } catch (error) {
-        console.error("Error Fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [token, reFetchLocal, setReFetchLocal]);
 
   return (
     <>
