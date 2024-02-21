@@ -26,14 +26,17 @@ export const DataClientProvider = ({ children }) => {
     price,
     amount,
     setAmount,
+    quantityType,
     meatType
   ) => {
     let incrementValue = 0;
     let newUnite = "";
+    console.log(quantityType);
+    console.log(meatType);
 
-    if (meatType.includes("piece")) {
+    if (quantityType === "pcs") {
       incrementValue = 100;
-      newUnite = "piece";
+      newUnite = "pcs";
     } else {
       incrementValue = 10;
       newUnite = "kg";
@@ -141,8 +144,8 @@ export const DataClientProvider = ({ children }) => {
         const productsHeight =
           window.innerHeight - clineTopHeight - footerHeight;
 
-        products.style.maxHeight = `${productsHeight}px`;
-        products.style.minHeight = `${productsHeight}px`;
+        products.style.maxHeight = `${productsHeight - 1}px`;
+        products.style.minHeight = `${productsHeight - 1}px`;
       }
     };
 

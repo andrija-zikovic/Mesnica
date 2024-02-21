@@ -116,6 +116,7 @@ const createProduct = async (req, res) => {
           price: req.body.price,
           onStorage: req.body.onStorage,
           meatType: req.body.meatType,
+          quantityType: req.body.quantityType,
           description: req.body.description,
           imgSrc: imgSrc,
         });

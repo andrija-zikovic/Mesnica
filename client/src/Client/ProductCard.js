@@ -2,7 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import DataClient from "../context/DataClient";
 import "./ProductCard.css";
 
-const ProductCard = ({ id, src, title, price, description, meatType }) => {
+const ProductCard = ({
+  id,
+  src,
+  title,
+  price,
+  quantityType,
+  description,
+  meatType,
+}) => {
   // Initialize state for input value and selected unit
   const [amount, setAmount] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -97,8 +105,8 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
               <span className="product-card__price_highlight">
                 {totalProductPrice ? totalProductPrice.toFixed(2) : price} €
               </span>
-              {meatType.includes("piece")
-                ? " / piece"
+              {quantityType === "pcs"
+                ? " / pcs"
                 : totalProductPrice
                 ? ` / ${(amount / 100).toFixed(2)}kg`
                 : " / kg"}
@@ -113,6 +121,7 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
                     price,
                     amount,
                     setAmount,
+                    quantityType,
                     meatType
                   )
                 }
@@ -126,7 +135,7 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
                 max={98}
                 placeholder="0"
                 value={
-                  meatType.includes("piece")
+                  quantityType === "pcs"
                     ? amount / 100
                     : (amount / 100).toFixed(2)
                 }
@@ -142,6 +151,7 @@ const ProductCard = ({ id, src, title, price, description, meatType }) => {
                     price,
                     amount,
                     setAmount,
+                    quantityType,
                     meatType
                   )
                 }

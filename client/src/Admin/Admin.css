@@ -716,6 +716,7 @@
 .addProduct__price,
 .addProduct__meatType,
 .addProduct__onStorage,
+.addPro__quantityType,
 .addProduct__description,
 .imgForm {
   display: flex;
@@ -1607,8 +1608,8 @@
 
   .addProForm {
     width: 80%;
-    grid-template-columns: repeat(4, 25%);
-    max-width: 50vw;
+    grid-template-columns: repeat(5, 20%);
+    max-width: 65vw;
     margin-top: unset;
   }
 
@@ -1653,7 +1654,7 @@
   }
 
   .imgForm {
-    grid-column: 3 / 5;
+    grid-column: 3 / 6;
     justify-content: flex-start;
   }
 

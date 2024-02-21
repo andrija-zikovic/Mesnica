@@ -10,6 +10,8 @@ const AddProducts = () => {
     price: "",
     onStorage: "",
     meatType: "",
+    description: "",
+    quantityType: "kg",
     image: null,
   });
 
@@ -23,6 +25,7 @@ const AddProducts = () => {
       formData.append("price", productInfo.price);
       formData.append("onStorage", productInfo.onStorage);
       formData.append("meatType", productInfo.meatType);
+      formData.append("quantityType", productInfo.quantityType);
       formData.append("image", productInfo.image);
       formData.append("description", productInfo.description);
 
@@ -125,6 +128,18 @@ const AddProducts = () => {
             <option value="chicken">chicken</option>
             <option value="turkey">turkey</option>
             <option value="other">other</option>
+          </select>
+        </div>
+        <div className="addPro__quantityType">
+          <label htmlFor="quantityType">Quantity type</label>
+          <select
+            name="quantityType"
+            id="quantityType"
+            onChange={handleInputChange}
+            required
+          >
+            <option value="kg">kg</option>
+            <option value="pcs">pcs</option>
           </select>
         </div>
         <div className="addProduct__description">

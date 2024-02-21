@@ -26,11 +26,7 @@ const OrderForm = () => {
   };
 
   const handlePriceCaluclation = (cartItem) => {
-    if (cartItem.unit === "dag") {
-      return cartItem.quantity * cartItem.price;
-    } else {
-      return cartItem.quantity * cartItem.price;
-    }
+    return cartItem.quantity * cartItem.price;
   };
 
   const handleFormSubmit = (event) => {
@@ -151,9 +147,13 @@ const OrderForm = () => {
               <tr key={index}>
                 <td>{cartItem.description}</td>
                 <td>
-                  {cartItem.price}€{" /kg"}
+                  {cartItem.price}€{cartItem.unit === "kg" ? "/kg" : ""}
                 </td>
-                <td>{cartItem.quantity.toFixed(2)} kg</td>
+                <td>
+                  {cartItem.unit === "kg"
+                    ? `${cartItem.quantity.toFixed(2)} kg`
+                    : `${cartItem.quantity}`}
+                </td>
                 <td>
                   {parseFloat(handlePriceCaluclation(cartItem)).toFixed(2)} €
                 </td>

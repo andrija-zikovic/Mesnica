@@ -6,6 +6,7 @@ const productsSchema = new Schema({
   price: Number,
   onStorage: Number,
   meatType: String,
+  quantityType: String,
   description: String,
   imgSrc: String,
 });

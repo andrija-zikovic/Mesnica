@@ -63,9 +63,9 @@ const Bucket = React.forwardRef(() => {
               <tr key={index}>
                 <td>{cartItem.description}</td>
                 <td>
-                  {cartItem.unit === "piece"
-                    ? `${cartItem.quantity} pcs`
-                    : `${cartItem.quantity.toFixed(2)} kg`}
+                  {cartItem.unit === "kg"
+                    ? `${cartItem.quantity.toFixed(2)} kg`
+                    : `${cartItem.quantity}`}
                 </td>
                 <td>
                   {parseFloat(handlePriceCaluclation(cartItem)).toFixed(2)} €

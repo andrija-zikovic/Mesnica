@@ -58,6 +58,7 @@ const ProductList = ({ meatType, host }) => {
                 src={product.imgSrc}
                 title={product.title}
                 price={product.price}
+                quantityType={product.quantityType}
                 description={product.description}
                 meatType={product.meatType}
               />
@@ -70,7 +71,7 @@ const ProductList = ({ meatType, host }) => {
               src={product.imgSrc}
               title={product.title}
               price={product.price}
-              about={product.about}
+              quantityType={product.quantityType}
               description={product.description}
               meatType={product.meatType}
             />
